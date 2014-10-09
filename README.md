@@ -1,4 +1,4 @@
-![Logo](admin/pushover.png)
+![Logo](admin/socketio.png)
 ioBroker socket.io adapter
 =================
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
