@@ -2,6 +2,7 @@
     "name": "ioBroker.socketio",
     "private": true,
     "dependencies": {
+        "express": "~4.9.6",
         "socket.io": "~1.1.0"
     },
     "devDependencies": {
