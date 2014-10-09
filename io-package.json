@@ -1,0 +1,28 @@
+{
+    "common": {
+        "name":                     "socketio",
+        "version":                  "0.0.1",
+        "title":                    "socket.io Adapter",
+        "desc":                     "This adapter allows to communicate different web applications with ioBroker",
+        "authors": [
+            "bluefox <bluefox@ccu.io>"
+        ],
+        "license":                  "MIT",
+        "platform":                 "Javascript/Node.js",
+        "mode":                     "daemon",
+        "loglevel":                 "info",
+        "icon":                     "socketio.png",
+        "keywords":                 ["web", "socket.io", "communication"],
+        "extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.png"
+    },
+    "native": {
+        "port":                     8084,
+        "auth":                     false,
+        "secure":                   false,
+        "bind":                     "0.0.0.0",
+        "cache":                    false
+    },
+    "objects": [
+
+    ]
+}
