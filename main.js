@@ -39,6 +39,7 @@ var adapter = require(__dirname + '/../../lib/adapter.js')({
         }
     },
     ready: function () {
+        main();
     }
 });
 
@@ -129,7 +130,6 @@ function initSocket(socket) {
 function socketEvents(socket, user) {
 
     // TODO Check if user may create and delete objects and so on
-
 
     /*
      *      objects
@@ -230,7 +230,6 @@ function socketEvents(socket, user) {
     socket.on('getStateHistory', function (id, start, end, callback) {
         adapter.getForeignStateHistory(id, start, end, callback);
     });
-
 
     // HTTP
     socket.on('httpGet', function (url, callback) {
