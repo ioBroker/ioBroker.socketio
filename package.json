@@ -1,6 +1,21 @@
 {
-    "name": "ioBroker.socketio",
-    "private": true,
+    "name": "iobroker.socketio",
+    "version": "0.0.3",
+    "description": "This adapter allows to communicate different web applications with ioBroker.",
+    "author": "bluefox <bluefox@ccu.io>",
+    "homepage": "https://github.com/ioBroker/ioBroker.socketio",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/ioBroker/ioBroker.socketio/blob/master/LICENSE"
+        }
+    ],
+    "keywords":  ["ioBroker", "web"],
+    "readmeFilename": "README.md",
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/ioBroker/ioBroker.socketio"
+    },
     "dependencies": {
         "express": "~4.9.6",
         "socket.io": "~1.1.0"

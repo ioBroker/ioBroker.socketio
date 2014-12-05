@@ -47,6 +47,50 @@ function main() {
     webServer = initWebServer(adapter.config);
 }
 
+function _initWebServer(settings, server) {
+
+    if (settings.secure) {
+        if (!settings.certificates) return;
+        server.server = require('https').createServer(settings.certificates, function (req, res) {
+            res.writeHead(501);
+            res.end('Not Implemented');
+        }).listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
+    } else {
+        server.server = require('http').createServer(function (req, res) {
+            res.writeHead(501);
+            res.end('Not Implemented');
+        }).listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
+    }
+
+    server.io = socketio.listen(server.server);
+
+//    server.io = socketio.listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
+
+    if (settings.auth) {
+
+        server.io.use(function (socket, next) {
+            if (!socket.request._query.user || !socket.request._query.pass) {
+                console.log("No password or username!");
+                next(new Error('Authentication error'));
+            } else {
+                adapter.checkPassword(socket.request._query.user, socket.request._query.pass, function (res) {
+                    if (res) {
+                        console.log("Logged in: " + socket.request._query.user + ', ' + socket.request._query.pass);
+                        return next();
+                    } else {
+                        console.log("Invalid password or user name: " + socket.request._query.user + ', ' + socket.request._query.pass);
+                        next(new Error('Invalid password or user name'));
+                    }
+                });
+            }
+        });
+    }
+    server.io.set('origins', '*:*');
+    server.io.on('connection', initSocket);
+
+    adapter.log.info((settings.secure ? 'Secure ' : '') + 'socket.io server listening on port ' + settings.port);
+}
+
 //settings: {
 //    "port":   8080,
 //    "auth":   false,
@@ -64,51 +108,43 @@ function initWebServer(settings) {
     };
 
     if (settings.port) {
-        var options = null;
+        var taskCnt = 0;
 
         if (settings.secure) {
-            try {
-                options = {
-                    // ToDO read certificates from CouchDB (May be upload in admin configuration page)
-                    key:  fs.readFileSync(__dirname + '/cert/privatekey.pem'),
-                    cert: fs.readFileSync(__dirname + '/cert/certificate.pem')
-                };
-            } catch (err) {
-                adapter.log.error(err.message);
-            }
-            if (!options) return null;
+
+            // Load certificates
+            taskCnt++;
+            adapter.getForeignObject('system.certificates', function (err, obj) {
+                if (err || !obj ||
+                    !obj.native.certificates ||
+                    !adapter.config.certPublic ||
+                    !adapter.config.certPrivate ||
+                    !obj.native.certificates[adapter.config.certPublic] ||
+                    !obj.native.certificates[adapter.config.certPrivate]
+                    ) {
+                    adapter.log.error('Cannot enable secure Legacy web server, because no certificates found: ' + adapter.config.certPublic + ', ' + adapter.config.certPrivate);
+                } else {
+                    server.certificates = {
+                        key:  obj.native.certificates[adapter.config.certPrivate],
+                        cert: obj.native.certificates[adapter.config.certPublic]
+                    };
+
+                }
+                taskCnt--;
+                if (!taskCnt) _initWebServer(settings, server);
+            });
         }
+        taskCnt++;
 
         adapter.getPort(settings.port, function (port) {
             if (port != settings.port && !adapter.config.findNextPort) {
                 adapter.log.error('port ' + settings.port + ' already in use');
                 process.exit(1);
             }
+            settings.port = port;
             //server.server.listen(port);
-
-            server.io = socketio.listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
-            if (settings.auth) {
-                server.io.use(function (socket, next) {
-                    if (!socket.request._query.user || !socket.request._query.pass) {
-                        console.log("No password or username!");
-                        next(new Error('Authentication error'));
-                    } else {
-                        adapter.checkPassword(socket.request._query.user, socket.request._query.pass, function (res) {
-                            if (res) {
-                                console.log("Logged in: " + socket.request._query.user + ', ' + socket.request._query.pass);
-                                return next();
-                            } else {
-                                console.log("Invalid password or user name: " + socket.request._query.user + ', ' + socket.request._query.pass);
-                                next(new Error('Invalid password or user name'));
-                            }
-                        });
-                    }
-                });
-            }
-
-            server.io.on('connection', initSocket);
-
-            adapter.log.info((settings.secure ? 'Secure ' : '') + 'socket.io server listening on port ' + port);
+            taskCnt--;
+            if (!taskCnt) _initWebServer(settings, server);
         });
     } else {
         adapter.log.error('port missing');
