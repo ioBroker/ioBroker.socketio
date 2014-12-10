@@ -175,10 +175,10 @@ function socketEvents(socket, user) {
     });
 
     socket.on('getObjects', function (callback) {
-        if (!states) {
+        if (!objects) {
             adapter.getForeignObjects('*', function (err, obj) {
-                states = obj;
-                if (callback) callback(null, states);
+                objects = obj;
+                if (callback) callback(null, objects);
             });
         } else {
             callback(null, objects);
