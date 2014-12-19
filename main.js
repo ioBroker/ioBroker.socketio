@@ -178,7 +178,7 @@ function socketEvents(socket, user) {
         if (!objects) {
             adapter.getForeignObjects('*', function (err, obj) {
                 objects = obj;
-                if (callback) callback(null, objects);
+                if (callback) callback(err, objects);
             });
         } else {
             callback(null, objects);
@@ -197,11 +197,11 @@ function socketEvents(socket, user) {
         console.log('getObjectView', design, search, params);
         adapter.objects.getObjectView(design, search, params, callback);
     });
-
-    /*socket.on('setObject', function (id, obj, callback) {
+    // TODO check user name
+    socket.on('setObject', function (id, obj, callback) {
         adapter.setForeignObject(id, obj, callback);
     });
-
+    /*
     socket.on('extendObject', function (id, obj, callback) {
         adapter.extendForeignObject(id, obj, callback);
     });
@@ -252,12 +252,16 @@ function socketEvents(socket, user) {
             callback(null, states[id]);
         }
     });
-
+    // Todo check user name
     socket.on('setState', function (id, state, callback) {
         if (typeof state !== 'object') state = {val: state};
         adapter.setForeignState(id, state, function (err, res) {
             if (typeof callback === 'function') callback(err, res);
         });
+    });
+
+    socket.on('getVersion', function (callback) {
+        if (typeof callback === 'function') callback(adapter.version);
     });
 
     /*
@@ -273,8 +277,13 @@ function socketEvents(socket, user) {
     });
 
     // iobroker commands
+    // Todo check user name
     socket.on('sendTo', function (adapterInstance, command, message, callback) {
         adapter.sendTo(adapterInstance, command, message, callback);
+    });
+
+    socket.on('authEnabled', function (callback) {
+        callback(adapter.config.auth);
     });
 
     socket.on('authEnabled', function (callback) {

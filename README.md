@@ -4,6 +4,9 @@ ioBroker socket.io adapter
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
+### 0.0.5 (2014-12-19)
+* (bluefox) support of setObjects command
+
 ### 0.0.4 (2014-12-10)
 * (bluefox) support of https sockets
 
