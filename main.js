@@ -286,7 +286,11 @@ function socketEvents(socket, user) {
         callback(adapter.config.auth);
     });
 
-    socket.on('authEnabled', function (callback) {
-        callback(adapter.config.auth);
+    socket.on('readFile', function (_adapter, fileName, callback) {
+        adapter.readFile(_adapter, fileName, callback);
     });
-}
+
+    // TODO Check authorisation
+    socket.on('writeFile', function (_adapter, fileName, data, callback) {
+        adapter.writeFile(_adapter, fileName, data, callback);
+    });}
