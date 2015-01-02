@@ -2,17 +2,17 @@
 /*jslint node: true */
 "use strict";
 
-var socketio =   require('socket.io');
-var fs =         require('fs');
-var request =    require('request');
-var config =     JSON.parse(fs.readFileSync(__dirname + '/../../conf/iobroker.json'));
+var socketio = require('socket.io');
+var fs =       require('fs');
+var request =  require('request');
+var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 
 var webServer =  null;
 var objects =    null;
 var states =     null;
 
-var adapter = require(__dirname + '/../../lib/adapter.js')({
-    name:           'socketio',
+var adapter = utils.adapter({
+    name: 'socketio',
     install: function (callback) {
         if (typeof callback === 'function') callback();
     },

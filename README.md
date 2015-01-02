@@ -4,6 +4,9 @@ ioBroker socket.io adapter
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
+### 0.1.1 (2015-01-02)
+* (bluefox) enable npm install
+
 ### 0.1.0 (2014-12-28)
 * (bluefox) support of read/write files
 
