@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "0.1.2",
+        "version":                  "0.1.3",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
         "authors": [
@@ -13,6 +13,7 @@
         "loglevel":                 "info",
         "icon":                     "socketio.png",
         "keywords":                 ["web", "socket.io", "communication"],
+		"enabled":                  true,
         "extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.png"
     },
     "native": {
