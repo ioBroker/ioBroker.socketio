@@ -4,6 +4,9 @@ ioBroker socket.io adapter
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
+### 0.1.4 (2015-01-06)
+* (bluefox) support of file manager in vis
+
 ### 0.1.3 (2015-01-02)
 * (bluefox) enable adapter by default
 

@@ -290,7 +290,44 @@ function socketEvents(socket, user) {
         adapter.readFile(_adapter, fileName, callback);
     });
 
+    socket.on('readFile64', function (_adapter, fileName, callback) {
+        adapter.readFile(_adapter, fileName, function (err, buffer) {
+            var data64;
+            if (buffer) {
+                data64 = buffer.toString('base64');
+            }
+            //Convert buffer to base 64
+            if (callback) {
+                callback(err, data64);
+            }
+        });
+    });
+
+    socket.on('writeFile64', function (_adapter, fileName, data64, callback) {
+        //Convert base 64 to buffer
+        var buffer = new Buffer(data64, 'base64');
+        adapter.writeFile(_adapter, fileName, buffer, function (err) {
+            if (callback) {
+                callback(err);
+            }
+        });
+    });
+
+    socket.on('readDir', function (_adapter, dirName, callback) {
+        adapter.readDir(_adapter, dirName, callback);
+    });
+
     // TODO Check authorisation
     socket.on('writeFile', function (_adapter, fileName, data, callback) {
         adapter.writeFile(_adapter, fileName, data, callback);
-    });}
+    });
+    socket.on('unlink', function (_adapter, name, callback) {
+        adapter.unlink(_adapter, name, callback);
+    });
+    socket.on('rename', function (_adapter, oldName, newName, callback) {
+        adapter.rename(_adapter, oldName, newName, callback);
+    });
+    socket.on('mkdir', function (_adapter, dirname, callback) {
+        adapter.mkdir(_adapter, dirname, callback);
+    });
+}
