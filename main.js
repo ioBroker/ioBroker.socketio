@@ -8,8 +8,6 @@ var request =  require('request');
 var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 
 var webServer =  null;
-var objects =    null;
-var states =     null;
 
 var adapter = utils.adapter({
     name: 'socketio',
@@ -17,16 +15,10 @@ var adapter = utils.adapter({
         if (typeof callback === 'function') callback();
     },
     objectChange: function (id, obj) {
-        if (objects) {
-            objects[id] = obj;
-            if (webServer) webServer.io.sockets.emit('objectChange', id, obj);
-        }
+        if (webServer) webServer.io.sockets.emit('objectChange', id, obj);
     },
     stateChange: function (id, state) {
-        if (states) {
-            states[id] = state;
-            if (webServer) webServer.io.sockets.emit('stateChange', id, state);
-        }
+        if (webServer) webServer.io.sockets.emit('stateChange', id, state);
     },
     unload: function (callback) {
         try {
@@ -175,14 +167,7 @@ function socketEvents(socket, user) {
     });
 
     socket.on('getObjects', function (callback) {
-        if (!objects) {
-            adapter.getForeignObjects('*', function (err, obj) {
-                objects = obj;
-                if (callback) callback(err, objects);
-            });
-        } else {
-            callback(null, objects);
-        }
+        adapter.getForeignObjects('*', callback);
     });
 
     socket.on('subscribe', function (pattern) {
@@ -194,7 +179,6 @@ function socketEvents(socket, user) {
     });
 
     socket.on('getObjectView', function (design, search, params, callback) {
-        console.log('getObjectView', design, search, params);
         adapter.objects.getObjectView(design, search, params, callback);
     });
     // TODO check user name
@@ -232,25 +216,11 @@ function socketEvents(socket, user) {
      *      states
      */
     socket.on('getStates', function (callback) {
-        if (!states) {
-            adapter.getForeignStates('*', function (err, obj) {
-                states = obj;
-                if (callback) callback(null, states);
-            });
-        } else {
-            if (callback) callback(null, states);
-        }
+        adapter.getForeignStates('*', callback);
     });
 
     socket.on('getState', function (id, callback) {
-        if (!states) {
-            adapter.getForeignStates('*', function (err, obj) {
-                states = obj;
-                if (callback) callback(null, states[id]);
-            });
-        } else {
-            callback(null, states[id]);
-        }
+        adapter.getForeignState(id, callback);
     });
     // Todo check user name
     socket.on('setState', function (id, state, callback) {
