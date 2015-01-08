@@ -8,6 +8,8 @@ var request =  require('request');
 var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 
 var webServer =  null;
+var subscribes = {};
+var infoTimeout = null;
 
 var adapter = utils.adapter({
     name: 'socketio',
@@ -15,10 +17,16 @@ var adapter = utils.adapter({
         if (typeof callback === 'function') callback();
     },
     objectChange: function (id, obj) {
-        if (webServer) webServer.io.sockets.emit('objectChange', id, obj);
+        if (webServer) {
+            publishAll('objectChange', id, obj);
+            //webServer.io.sockets.emit('objectChange', id, obj);
+        }
     },
     stateChange: function (id, state) {
-        if (webServer) webServer.io.sockets.emit('stateChange', id, state);
+        if (webServer) {
+            publishAll('stateChange', id, state);
+            //webServer.io.sockets.emit('stateChange', id, state);
+        }
     },
     unload: function (callback) {
         try {
@@ -143,6 +151,8 @@ function initWebServer(settings) {
         process.exit(1);
     }
 
+    if (!infoTimeout) infoTimeout = setTimeout(updateConnectedInfo, 1000);
+
     return server;
 }
 
@@ -155,9 +165,168 @@ function initSocket(socket) {
     }
 }
 
+function pattern2RegEx(pattern) {
+    if (pattern != '*') {
+        if (pattern[0] == '*' && pattern[pattern.length - 1] != '*') pattern += '$';
+        if (pattern[0] != '*' && pattern[pattern.length - 1] == '*') pattern = '^' + pattern;
+    }
+    pattern = pattern.replace(/\./g, '\\.');
+    pattern = pattern.replace(/\*/g, '.*');
+    return pattern;
+}
+
+function subscribe(socket, type, pattern) {
+    console.log(socket.id + ' subscribe ' + pattern);
+    socket._subscribe = socket._subscribe || {};
+    if (!subscribes[type]) subscribes[type] = {};
+
+    var s = socket._subscribe[type] = socket._subscribe[type] || [];
+    for (var i = 0; i < s.length; i++) {
+        if (s[i].pattern == pattern) {
+            console.log(socket.id + ' subscribe ' + pattern + ' found');
+            return;
+        }
+    }
+
+    s.push({pattern: pattern, regex: new RegExp(pattern2RegEx(pattern))});
+
+    if (subscribes[type][pattern] === undefined){
+        subscribes[type][pattern] = 1;
+        if (type == 'stateChange') {
+            console.log(socket.id + ' subscribeForeignStates ' + pattern);
+            adapter.subscribeForeignStates(pattern);
+        }
+    } else {
+        subscribes[type][pattern]++;
+        console.log(socket.id + ' subscribeForeignStates ' + pattern + ' ' + subscribes[type][pattern]);
+    }
+}
+
+function unsubscribe(socket, type, pattern) {
+    console.log(socket.id + ' unsubscribe ' + pattern);
+    if (!subscribes[type]) subscribes[type] = {};
+
+    if (!socket._subscribe || !socket._subscribe[type]) return;
+    for (var i = 0; i < socket._subscribe[type].length; i++) {
+        if (socket._subscribe[type][i].pattern == pattern) {
+
+            // Remove pattern from global list
+            if (subscribes[type][pattern] !== undefined){
+                subscribes[type][pattern]--;
+                if (!subscribes[type][pattern]) {
+                    if (type == 'stateChange') {
+                        console.log(socket.id + ' unsubscribeForeignStates ' + pattern);
+                        adapter.unsubscribeForeignStates(pattern);
+                    }
+                    delete subscribes[type][pattern];
+                } else {
+                    console.log(socket.id + ' unsubscribeForeignStates ' + pattern + ' ' + subscribes[type][pattern]);
+                }
+            }
+
+            delete socket._subscribe[type][i];
+            return;
+        }
+    }
+}
+
+function unsubscribeSocket(socket, type) {
+    console.log(socket.id + ' unsubscribeSocket');
+    if (!socket._subscribe || !socket._subscribe[type]) return;
+
+    for (var i = 0; i < socket._subscribe[type].length; i++) {
+        var pattern = socket._subscribe[type][i].pattern;
+        if (subscribes[type][pattern] !== undefined){
+            subscribes[type][pattern]--;
+            if (!subscribes[type][pattern]) {
+                if (type == 'stateChange') {
+                    console.log(socket.id + ' unsubscribeForeignStates ' + pattern);
+                    adapter.unsubscribeForeignStates(pattern);
+                }
+                delete subscribes[type][pattern];
+            } else {
+                console.log(socket.id + ' unsubscribeForeignStates ' + pattern + subscribes[type][pattern]);
+            }
+        }
+    }
+}
+
+function subscribeSocket(socket, type) {
+    console.log(socket.id + ' subscribeSocket');
+    if (!socket._subscribe || !socket._subscribe[type]) return;
+
+    for (var i = 0; i < socket._subscribe[type].length; i++) {
+        var pattern = socket._subscribe[type][i].pattern;
+        if (subscribes[type][pattern] === undefined){
+            subscribes[type][pattern] = 1;
+            if (type == 'stateChange') {
+                console.log(socket.id + ' subscribeForeignStates' + pattern);
+                adapter.subscribeForeignStates(pattern);
+            }
+        } else {
+            subscribes[type][pattern]++;
+        }
+    }
+}
+
+function publish(socket, type, id, obj) {
+    if (!socket._subscribe || !socket._subscribe[type]) return;
+    var s = socket._subscribe[type];
+    for (var i = 0; i < s.length; i++) {
+        if (s[i].regex.test(id)) {
+            socket.emit(type, id, obj);
+            return;
+        }
+    }
+}
+
+function publishAll(type, id, obj) {
+    if (id === undefined) {
+        console.log('Problem');
+    }
+
+    var clients = webServer.io.sockets.connected;
+
+    for (var i in clients) {
+        publish(clients[i], type, id, obj);
+    }
+}
+function updateConnectedInfo() {
+    if (infoTimeout) {
+        clearTimeout(infoTimeout);
+        infoTimeout = null;
+    }
+    var text = '';
+    var cnt = 0;
+    if (webServer && webServer.io && webServer.io.sockets) {
+        var clients = webServer.io.sockets.connected;
+
+        for (var i in clients) {
+            text += (text ? ', ' : '') + (clients[i]._name || 'noname');
+            cnt++;
+        }
+    }
+    text = '[' + cnt + ']' + text;
+    adapter.setState('connected', text, true);
+}
+
 function socketEvents(socket, user) {
 
     // TODO Check if user may create and delete objects and so on
+    subscribeSocket(socket, 'stateChange');
+
+    if (!infoTimeout) infoTimeout = setTimeout(updateConnectedInfo, 1000);
+
+
+    socket.on('name', function (name) {
+        if (this._name === undefined) {
+            this._name = name;
+            if (!infoTimeout) infoTimeout = setTimeout(updateConnectedInfo, 1000);
+        } else if (this._name != name) {
+            adapter.log.warn('socket ' + this.id + ' changed socket name from ' + this._name + ' to ' + name);
+            this._name = name;
+        }
+    });
 
     /*
      *      objects
@@ -171,11 +340,11 @@ function socketEvents(socket, user) {
     });
 
     socket.on('subscribe', function (pattern) {
-        adapter.subscribeForeignStates(pattern);
+        subscribe(this, 'stateChange', pattern)
     });
 
     socket.on('unsubscribe', function (pattern) {
-        adapter.unsubscribeForeignStates(pattern);
+        unsubscribe(this, 'stateChange', pattern)
     });
 
     socket.on('getObjectView', function (design, search, params, callback) {
@@ -285,6 +454,17 @@ function socketEvents(socket, user) {
 
     socket.on('readDir', function (_adapter, dirName, callback) {
         adapter.readDir(_adapter, dirName, callback);
+    });
+
+    socket.on('disconnect', function () {
+        console.log('disonnect');
+        unsubscribeSocket(this, 'stateChange');
+        if (!infoTimeout) infoTimeout = setTimeout(updateConnectedInfo, 1000);
+    });
+
+    socket.on('reconnect', function () {
+        console.log('reconnect');
+        subscribeSocket(this, 'stateChange');
     });
 
     // TODO Check authorisation
