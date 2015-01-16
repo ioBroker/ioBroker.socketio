@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "0.1.7",
+        "version":                  "0.2.0",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
         "authors": [
@@ -28,7 +28,7 @@
             "_id": "connected",
             "type": "info",
             "common": {
-                "name": "Info about connected sockets",
+                "name": "Info about connected socket clients",
                 "type": "string",
                 "read":  true,
                 "write": false
