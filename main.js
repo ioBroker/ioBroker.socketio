@@ -14,15 +14,13 @@ var adapter = utils.adapter({
         if (typeof callback === 'function') callback();
     },
     objectChange: function (id, obj) {
-        if (webServerc) {
+        if (webServer && webServer.io) {
             webServer.io.publishAll('objectChange', id, obj);
-            //webServer.io.sockets.emit('objectChange', id, obj);
         }
     },
     stateChange: function (id, state) {
         if (webServer && webServer.io) {
             webServer.io.publishAll('stateChange', id, state);
-            //webServer.io.sockets.emit('stateChange', id, state);
         }
     },
     unload: function (callback) {
