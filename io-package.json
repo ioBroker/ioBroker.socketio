@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "0.2.2",
+        "version":                  "0.2.3",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
         "authors": [
@@ -11,6 +11,7 @@
         "platform":                 "Javascript/Node.js",
         "mode":                     "daemon",
         "loglevel":                 "info",
+        "readme":                   "https://github.com/ioBroker/ioBroker.socketio/blob/master/README.md",
         "icon":                     "socketio.png",
         "keywords":                 ["web", "socket.io", "communication"],
 		"enabled":                  true,
