@@ -24,12 +24,22 @@
             "en": "On save the adapter restarts with new configuration immediately",
             "de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
             "ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
-        }
-
+        },
+        "Public certificate:":    {"en": "Public certificate:",     "de": "Publikzertifikat:",       "ru": "'Public' сертификат:"},
+        "Private certificate:":   {"en": "Private certificate:",    "de": "Privatzertifikat:",       "ru": "'Private' сертификат:"}
     };
 
+    function showHideSettings() {
+        if ($('#secure').prop('checked')) {
+            $('#_certPublic').show();
+            $('#_certPrivate').show();
+        } else {
+            $('#_certPublic').hide();
+            $('#_certPrivate').hide();
+        }
+    }
     // the function loadSettings has to exist ...
-    function load(settings) {
+    function load(settings, onChange) {
         if (!settings) return;
 
         getIPs(function(ips) {
@@ -43,23 +53,31 @@
             // example: select elements with id=key and class=value and insert value
             if ($('#' + key + '.value').attr('type') == 'checkbox') {
                 $('#' + key + '.value').prop('checked', settings[key]).change(function() {
-                    $('#save').button("enable");
+                    onChange();
                 });
             } else {
                 $('#' + key + '.value').val(settings[key]).change(function() {
-                    $('#save').button("enable");
+                    onChange();
                 }).keyup(function() {
-                    $('#save').button("enable");
+                    onChange();
                 });
             }
         }
-        $('#save').button("disable");
+        onChange(false);
+
+        fillSelectCertificates('#certPublic',  'public',  settings.certPublic);
+        fillSelectCertificates('#certPrivate', 'private', settings.certPrivate);
 
         $('#auth').change(function () {
             if ($(this).prop('checked')) {
                 $('#secure').prop('checked', true);
             }
+            showHideSettings();
         });
+        $('#secure').change(function () {
+            showHideSettings();
+        });
+        showHideSettings();
     }
 
     // ... and the function save has to exist.
@@ -76,7 +94,6 @@
             }
         });
         callback(obj);
-        $('#save').button("disable");
     }
 </script>
 
@@ -90,6 +107,14 @@
         <tr><td class="translate">Port:</td><td>          <input  class="value" id="port" size="5"  maxlength="5"/></td></tr>
         <tr><td class="translate">Secure(HTTPS):</td><td> <input  class="value" id="secure" type="checkbox" /></td></tr>
         <tr><td class="translate">Authentication:</td><td><input  class="value" id="auth"   type="checkbox" /></td></tr>
+        <tr id="_certPublic">
+            <td class="translate">Public certificate:</td>
+            <td><select id="certPublic" class="value"></select></td>
+        </tr>
+        <tr id="_certPrivate">
+            <td class="translate">Private certificate:</td>
+            <td><select id="certPrivate" class="value"></select></td>
+        </tr>
         <tr><td class="translate">Cache:</td><td>         <input  class="value" id="cache"  type="checkbox" /></td></tr>
     </table>
 
