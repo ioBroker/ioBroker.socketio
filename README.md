@@ -4,6 +4,9 @@ ioBroker socket.io adapter
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
+### 0.2.4 (2015-05-19)
+* (bluefox) support of subscribe on objectChanged
+
 ### 0.2.3 (2015-03-07)
 * (bluefox) extend getStates to support list of objects
 
