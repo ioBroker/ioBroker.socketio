@@ -1,6 +1,6 @@
 {
   "name": "iobroker.socketio",
-  "version": "0.2.4",
+  "version": "0.3.1",
   "description": "This adapter allows to communicate different web applications with ioBroker.",
   "author": {
     "name": "bluefox",
@@ -44,10 +44,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",
-  "readme": "![Logo](admin/socketio.png)\r\nioBroker socket.io adapter\r\n=================\r\nThis adapter used by some WEB applications and adapters to communicate with ioBroker.\r\n\r\n## Changelog\r\n### 0.1.3 (2015-01-02)\r\n* (bluefox) enable adapter by default\r\n\r\n### 0.1.2 (2015-01-02)\r\n* (bluefox) add \"request\" module to package.json\r\n\r\n### 0.1.1 (2015-01-02)\r\n* (bluefox) enable npm install\r\n\r\n### 0.1.0 (2014-12-28)\r\n* (bluefox) support of read/write files\r\n\r\n### 0.0.5 (2014-12-19)\r\n* (bluefox) support of setObjects command\r\n\r\n### 0.0.4 (2014-12-10)\r\n* (bluefox) support of https sockets\r\n\r\n### 0.0.3 (2014-12-05)\r\n* (bluefox) support of https sockets\r\n\r\n### 0.0.2 (2014-11-24)\r\n* (bluefox) fix error by start\r\n\r\n### 0.0.1 (2014-10-10)\r\n* (bluefox) authentication works\r\n\r\n## Install\r\n\r\n```node iobroker.js add socketio```",
-  "readmeFilename": "README.md",
-  "gitHead": "5620d1f40250719da1a08bfebedecdcf8845c661",
-  "_id": "iobroker.socketio@0.1.3",
-  "_shasum": "9dbac38cbadce13ea2bd8b253e5624a0fff5843d",
-  "_from": "iobroker.socketio@"
+  "readmeFilename": "README.md"
 }

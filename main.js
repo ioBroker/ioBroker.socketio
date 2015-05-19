@@ -39,28 +39,29 @@ var adapter = utils.adapter({
 });
 
 function main() {
-    webServer = initWebServer(adapter.config);
-}
+    if (adapter.config.secure) {
+        // Load certificates
+        adapter.getForeignObject('system.certificates', function (err, obj) {
+            if (err || !obj ||
+                !obj.native.certificates ||
+                !adapter.config.certPublic ||
+                !adapter.config.certPrivate ||
+                !obj.native.certificates[adapter.config.certPublic] ||
+                !obj.native.certificates[adapter.config.certPrivate]
+            ) {
+                adapter.log.error('Cannot enable secure web server, because no certificates found: ' + adapter.config.certPublic + ', ' + adapter.config.certPrivate);
+            } else {
+                adapter.config.certificates = {
+                    key:  obj.native.certificates[adapter.config.certPrivate],
+                    cert: obj.native.certificates[adapter.config.certPublic]
+                };
 
-
-function initWebServerHelper(settings, server) {
-
-    if (settings.secure) {
-        if (!settings.certificates) return;
-        server.server = require('https').createServer(settings.certificates, function (req, res) {
-            res.writeHead(501);
-            res.end('Not Implemented');
-        }).listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
+            }
+            webServer = initWebServer(adapter.config);
+        });
     } else {
-        server.server = require('http').createServer(function (req, res) {
-            res.writeHead(501);
-            res.end('Not Implemented');
-        }).listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
+        webServer = initWebServer(adapter.config);
     }
-
-    settings.crossDomain = true;
-
-    server.io = new IOBrokerSocket(server.server, settings, adapter);
 }
 
 //settings: {
@@ -83,30 +84,13 @@ function initWebServer(settings) {
         var taskCnt = 0;
 
         if (settings.secure) {
+            if (!settings.certificates) {
+                return null;
+            }
+            if (settings.auth) {
 
-            // Load certificates
-            taskCnt++;
-            adapter.getForeignObject('system.certificates', function (err, obj) {
-                if (err || !obj ||
-                    !obj.native.certificates ||
-                    !adapter.config.certPublic ||
-                    !adapter.config.certPrivate ||
-                    !obj.native.certificates[adapter.config.certPublic] ||
-                    !obj.native.certificates[adapter.config.certPrivate]
-                    ) {
-                    adapter.log.error('Cannot enable secure Legacy web server, because no certificates found: ' + adapter.config.certPublic + ', ' + adapter.config.certPrivate);
-                } else {
-                    server.certificates = {
-                        key:  obj.native.certificates[adapter.config.certPrivate],
-                        cert: obj.native.certificates[adapter.config.certPublic]
-                    };
-
-                }
-                taskCnt--;
-                if (!taskCnt) initWebServerHelper(settings, server);
-            });
+            }
         }
-        taskCnt++;
 
         adapter.getPort(settings.port, function (port) {
             if (port != settings.port && !adapter.config.findNextPort) {
@@ -115,8 +99,22 @@ function initWebServer(settings) {
             }
             settings.port = port;
             //server.server.listen(port);
-            taskCnt--;
-            if (!taskCnt) initWebServerHelper(settings, server);
+            if (settings.secure) {
+                if (!settings.certificates) return;
+                server.server = require('https').createServer(settings.certificates, function (req, res) {
+                    res.writeHead(501);
+                    res.end('Not Implemented');
+                }).listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
+            } else {
+                server.server = require('http').createServer(function (req, res) {
+                    res.writeHead(501);
+                    res.end('Not Implemented');
+                }).listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
+            }
+
+            settings.crossDomain = true;
+
+            server.io = new IOBrokerSocket(server.server, settings, adapter);
         });
     } else {
         adapter.log.error('port missing');
