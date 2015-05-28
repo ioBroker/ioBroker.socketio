@@ -113,6 +113,7 @@ function initWebServer(settings) {
             }
 
             settings.crossDomain = true;
+			settings.ttl = settings.ttl || 3600;
 
             server.io = new IOBrokerSocket(server.server, settings, adapter);
         });

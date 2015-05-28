@@ -23,7 +23,8 @@
         "auth":                     false,
         "secure":                   false,
         "bind":                     "0.0.0.0",
-        "cache":                    false
+        "cache":                    false,
+		"ttl":                      3600
     },
     "objects": [
         {
