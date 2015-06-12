@@ -15,6 +15,7 @@
             "de": "socket.io adapter settings",
             "ru": "socket.io adapter settings"
         },
+        "Run as:":          {"de": "Laufen unter Anwender:", "ru": "Запустить от пользователя:"},
         "IP:":              {"de": "IP:",                     "ru": "IP:"},
         "Port:":            {"de": "Port:",                   "ru": "Порт:"},
         "Secure(HTTPS):":   {"de": "Verschlüsselung(HTTPS):", "ru": "Шифрование(HTTPS):"},
@@ -37,6 +38,12 @@
             $('#_certPublic').hide();
             $('#_certPrivate').hide();
         }
+        if ($('#auth').prop('checked')) {
+            $('#defaultUser').val('admin');
+            $('.defaultUser').hide();
+        } else {
+            $('.defaultUser').show();
+        }
     }
     // the function loadSettings has to exist ...
     function load(settings, onChange) {
@@ -49,7 +56,8 @@
             $('#bind.value').val(settings.bind);
         });
 
-        for (var key in settings) {
+        $('.value').each(function () {
+            var key = $(this).attr('id');
             // example: select elements with id=key and class=value and insert value
             if ($('#' + key + '.value').attr('type') == 'checkbox') {
                 $('#' + key + '.value').prop('checked', settings[key]).change(function() {
@@ -62,11 +70,12 @@
                     onChange();
                 });
             }
-        }
+        });
         onChange(false);
 
         fillSelectCertificates('#certPublic',  'public',  settings.certPublic);
         fillSelectCertificates('#certPrivate', 'private', settings.certPrivate);
+        fillUsers('#defaultUser', settings.defaultUser);
 
         $('#auth').change(function () {
             if ($(this).prop('checked')) {
@@ -116,6 +125,7 @@
             <td><select id="certPrivate" class="value"></select></td>
         </tr>
         <tr><td class="translate">Cache:</td><td>         <input  class="value" id="cache"  type="checkbox" /></td></tr>
+        <tr class="defaultUser"><td class="translate">Run as:</td><td><select class="value" id="defaultUser" /></td></tr>
     </table>
 
     <p class="translate">help_tip</p>

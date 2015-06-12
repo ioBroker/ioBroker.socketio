@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "0.3.1",
+        "version":                  "0.4.0",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
         "authors": [
@@ -24,7 +24,8 @@
         "secure":                   false,
         "bind":                     "0.0.0.0",
         "cache":                    false,
-		"ttl":                      3600
+		"ttl":                      3600,
+        "defaultUser":              "admin"
     },
     "objects": [
         {
