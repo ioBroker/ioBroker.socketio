@@ -4,7 +4,7 @@ ioBroker socket.io adapter
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
-### 0.4.2 (2015-07-06)
+### 0.4.3 (2015-07-06)
 * (bluefox) add chmodFile
 
 ### 0.4.1 (2015-06-13)
