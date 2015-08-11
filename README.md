@@ -4,6 +4,9 @@ ioBroker socket.io adapter
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
+### 0.4.5 (2015-08-11)
+* (bluefox) update packets
+
 ### 0.4.4 (2015-07-07)
 * (bluefox) extend writeFile with mode
 
