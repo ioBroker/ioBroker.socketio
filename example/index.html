@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <script type="text/javascript" src="http://localhost:8084/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var socketUrl = "http://localhost:8084"; var socketSession = ""; sysLang="en";
+    </script>
+    <script type="text/javascript" src="conn.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    servConn.namespace   = 'mobile.0';
+    servConn._useStorage = true;
+
+    var states = [];
+    servConn.init(null, {
+        onConnChange: function (isConnected) {
+            if (isConnected) {
+                console.log('connected');
+                servConn.getStates(function (err, _states) {
+                    var count = 0;
+                    for (var id in _states) {
+                        count++;
+                    }
+                    console.log('Received ' + count + ' states.');
+                    states = _states;
+                });
+            } else {
+                console.log('disconnected');
+            }
+        },
+        onRefresh: function () {
+            window.location.reload();
+        },
+        onUpdate: function (id, state) {
+            setTimeout(function () {
+                console.log('NEW VALUE of ' + id + ': ' + JSON.stringify(state));
+                states[id] = state;
+            }, 0);
+        },
+        onError: function (err) {
+            window.alert(_('Cannot execute %s for %s, because of insufficient permissions', err.command, err.arg), _('Insufficient permissions'), 'alert', 600);
+        }
+    });
+</script>
+</body>
