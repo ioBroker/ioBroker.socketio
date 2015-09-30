@@ -16,7 +16,8 @@
         "keywords":                 ["web", "socket.io", "communication"],
 		"enabled":                  true,
         "extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.png",
-        "type":                     "communication"
+        "type":                     "communication",
+        "stopBeforeUpdate":         true
     },
     "native": {
         "port":                     8084,
