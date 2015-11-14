@@ -4,6 +4,9 @@ ioBroker socket.io adapter
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
+### 1.1.0 (2015-11-14)
+* (Smiling_Jack) add getHistory
+
 ### 1.0.0 (2015-09-30)
 * (bluefox) stop adapter before update
 
