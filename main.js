@@ -69,7 +69,6 @@ function main() {
 //    "auth":   false,
 //    "secure": false,
 //    "bind":   "0.0.0.0", // "::"
-//    "cache":  false
 //}
 function initWebServer(settings) {
 
