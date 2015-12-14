@@ -4,7 +4,7 @@ ioBroker socket.io adapter
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
-### 1.2.1 (2015-12-09)
+### 1.2.2 (2015-12-09)
 * (bluefox) remove unused parameter "cache"
 
 ### 1.2.0 (2015-11-15)
