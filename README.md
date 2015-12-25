@@ -4,6 +4,9 @@ ioBroker socket.io adapter
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
+### 1.2.3 (2015-12-24)
+* (bluefox) support of authentication over URL
+
 ### 1.2.2 (2015-12-09)
 * (bluefox) remove unused parameter "cache"
 
