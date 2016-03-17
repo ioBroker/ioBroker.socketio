@@ -2,11 +2,10 @@
 /*jslint node: true */
 "use strict";
 
-var utils          = require(__dirname + '/lib/utils'); // Get common adapter utils
-var IOBrokerSocket = require(__dirname + '/lib/iobrokersocket.js');
+var utils    = require(__dirname + '/lib/utils'); // Get common adapter utils
+var IOSocket = require(__dirname + '/lib/socket.js');
 
 var webServer =  null;
-var subscribes = {};
 
 var adapter = utils.adapter({
     name: 'socketio',
@@ -25,7 +24,7 @@ var adapter = utils.adapter({
     },
     unload: function (callback) {
         try {
-            adapter.log.info("terminating http" + (webServer.settings.secure ? "s" : "") + " server on port " + webServer.settings.port);
+            adapter.log.info('terminating http' + (webServer.settings.secure ? 's' : '') + ' server on port ' + webServer.settings.port);
             webServer.io.close();
 
             callback();
@@ -103,18 +102,18 @@ function initWebServer(settings) {
                 server.server = require('https').createServer(settings.certificates, function (req, res) {
                     res.writeHead(501);
                     res.end('Not Implemented');
-                }).listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
+                }).listen(settings.port, (settings.bind && settings.bind != '0.0.0.0') ? settings.bind : undefined);
             } else {
                 server.server = require('http').createServer(function (req, res) {
                     res.writeHead(501);
                     res.end('Not Implemented');
-                }).listen(settings.port, (settings.bind && settings.bind != "0.0.0.0") ? settings.bind : undefined);
+                }).listen(settings.port, (settings.bind && settings.bind != '0.0.0.0') ? settings.bind : undefined);
             }
 
             settings.crossDomain = true;
 			settings.ttl = settings.ttl || 3600;
 
-            server.io = new IOBrokerSocket(server.server, settings, adapter);
+            server.io = new IOSocket(server.server, settings, adapter);
         });
     } else {
         adapter.log.error('port missing');

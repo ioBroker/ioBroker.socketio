@@ -1,9 +1,18 @@
 ![Logo](admin/socketio.png)
 ioBroker socket.io adapter
 =================
+[![NPM version](http://img.shields.io/npm/v/iobroker.socketio.svg)](https://www.npmjs.com/package/iobroker.socketio)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.socketio.svg)](https://www.npmjs.com/package/iobroker.socketio)
+
+[![NPM](https://nodei.co/npm/iobroker.socketio.png?downloads=true)](https://nodei.co/npm/iobroker.socketio/)
+
+
 This adapter used by some WEB applications and adapters to communicate with ioBroker.
 
 ## Changelog
+### 1.3.0 (2016-03-17)
+* (bluefox) rename files
+
 ### 1.2.3 (2015-12-24)
 * (bluefox) support of authentication over URL
 

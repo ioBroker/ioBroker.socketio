@@ -127,7 +127,7 @@ var servConn = {
     },
     init:             function (connOptions, connCallbacks, objectsRequired) {
         // To start vis as local use one of:
-        // - start vis from directory with name local, e.g. c:/blbla/local/ioBroker.vis/www/index.html
+        // - start vis from directory with name local, e.g. c:/blbla/local/projectName.vis/www/index.html
         // - do not create "_socket/info.js" file in "www" directory
         // - create "_socket/info.js" file with
         //   var socketUrl = "local"; var socketSession = ""; sysLang="en";
