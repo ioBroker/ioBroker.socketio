@@ -90,7 +90,15 @@ module.exports = function (grunt) {
                         src:     [
                             srcDir + 'example/*.*'
                         ],
-                        dest:    srcDir + 'lib'
+                        dest:    srcDir + 'example'
+                    },
+                    {
+                        expand:  true,
+                        flatten: true,
+                        src:     [
+                            srcDir + 'www/*.*'
+                        ],
+                        dest:    srcDir + 'www'
                     }
                 ]
             }
