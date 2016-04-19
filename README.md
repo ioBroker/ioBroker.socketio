@@ -44,14 +44,16 @@ Every state has attribute "ack". It shows the direction of command.
 - If ack=true, it means that device informs about new value. (e.g. light was switched on manually or motion was detected)
  
 **Example**: we have some home automation adapter (HAA) that has one lamp connected under address *haa.0.lamp1*. 
-Lamp can be switched on manually with physical switch or via wifi with he help of HAA. 
-If vis wants to switch the lamp on via wifi it should set the new value with ```{value: true, ack: false}```. 
-When the lamp is switched on it is normally inform HAA about new state and the value should be immediately overwritten with ```{value: true, ack: true}```.
-If the lamp is switched off manually via physical switch it informs HAA about new state with ```{value: false, ack: true}```. 
+- Lamp can be switched on manually with physical switch or via wifi with he help of HAA. 
+- If vis wants to switch the lamp on via wifi it should set the new value with ```{value: true, ack: false}```. 
+- When the lamp is switched on it is normally inform HAA about new state and the value should be immediately overwritten with ```{value: true, ack: true}```.
+- If the lamp is switched off manually via physical switch it informs HAA about new state with ```{value: false, ack: true}```. 
 
 ### Quality
-Every data point has attribute *quality*. 
+Every data point has attribute **q** - *quality*. 
 
+
+## Usage
 It is suggested to use example/conn.js for communication. 
 
 After inclusion of conn.js file the global object **servConn** could be used to establish the communication with socketio adapter.
