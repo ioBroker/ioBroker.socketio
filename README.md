@@ -88,7 +88,7 @@ connCallbacks = {
     onConnChange:   function (isConnected) {}, // optional - called if connection state changed.
     onObjectChange: function (id, obj)     {}, // optional - called if content of some object is changed, new object created or object was deleted (obj = null)
     onUpdate:       function (id, state)   {}, // optional - called if state of some object is changed, new state for object is created or state was deleted (state = null)
-    onError:        function (error)           // optional - called if some error occurs
+    onError:        function (error)       {}  // optional - called if some error occurs
 };
 ```
 
@@ -97,21 +97,21 @@ connCallbacks = {
 
 set new value of some data point.
  
-E.g. ```servConn.setState('adapter.0.myvalue', true)``` (writes ```{val: true, ack: false}``` into *adapter.0.myvalue*.
+E.g. ```servConn.setState('adapter.0.myvalue', true)``` writes ```{val: true, ack: false}``` into *adapter.0.myvalue*.
 
 - **pointId** - is ID of the state, like *adapter.0.myvalue*,
 - **value**   - new value of the state, could be simple value (string, number, boolean) or object like ```{val: newValue, ack: false, q: 0}```. 
-In case if used simple value "ack" will be set to "false".
-- **callback** - ```function (error) {}``` - called when the write of new value into DB performed (not when the device was controlled).  
+In case if used simple value, "ack" will be set to "false".
+- **callback** - ```function (error) {}``` - called when the write of new value into DB is performed (not when the device was controlled).  
 
 
 ### getStates
 - function (IDs, callback)
 
-get states of more than one state. This command normally is called after the connection is established to get actual states of used data points.
+get the states of more than one state. This command normally is called after the connection is established to get the actual states of used data points.
 
-- **IDs** - pattern or array with IDs. Could be omitted to get all states. Patterns could consist wildcards, like: '*.STATE', 'haa.0.*' 
-- **callback** - ```function (error, states) {}``` - states is object like ```{'id1': 'state1', 'id2': 'state2', ...}```. *stateX* are objects with the structure described [above](#state). 
+- **IDs** - pattern or array with IDs. Could be omitted to get all states. Patterns could have wildcards, like: '*.STATE', 'haa.0.*' 
+- **callback** - ```function (error, states) {}``` - *states* is object like ```{'id1': 'state1', 'id2': 'state2', ...}```. *stateX* are objects with the structure described [above](#state). 
 
 ### httpGet
 - function (url, callback)
