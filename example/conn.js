@@ -182,9 +182,9 @@ var servConn = {
             }
 
             this._socket = io.connect(url, {
-                'query': 'key=' + connOptions.socketSession,
-                'reconnection limit': 10000,
-                'max reconnection attempts': Infinity
+                'query':                        'key=' + connOptions.socketSession,
+                'reconnection limit':           10000,
+                'max reconnection attempts':    Infinity
             });
 
             this._socket.on('connect', function () {
@@ -479,7 +479,7 @@ var servConn = {
     getStates:        function (IDs, callback) {
         if (this._type === 'local') {
             return callback(null, []);
-        }else {
+        } else {
 
             if (typeof IDs == 'function') {
                 callback = IDs;
@@ -815,7 +815,7 @@ var servConn = {
         }
     },
     // return time when the objects were synchronized
-    getSyncTime:     function () {
+    getSyncTime:      function () {
         if (this._useStorage && typeof storage !== 'undefined') {
             var timeSync = storage.get('timeSync');
             if (timeSync) return new Date(timeSync);
@@ -853,7 +853,7 @@ var servConn = {
         });
     },
     logError:         function (errorText) {
-        console.log("Error: " + errorText);
+        console.log('Error: ' + errorText);
         if (!this._isConnected) {
             //console.log("No connection!");
             return;
@@ -863,7 +863,7 @@ var servConn = {
             console.log('socket.io not initialized');
             return;
         }
-        this._socket.emit('log', 'error', 'Addon DashUI  ' + errorText);
+        this._socket.emit('log', 'error', this.namespace + ' ' + errorText);
     },
     _queueCmdIfRequired: function (func, args) {
         var that = this;

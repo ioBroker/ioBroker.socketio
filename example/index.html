@@ -3,10 +3,6 @@
 <head>
     <!-- Replace "localhost" with real IP address of controller, if default port changed, correct it too -->
     <script type="text/javascript" src="http://localhost:8084/socket.io/socket.io.js"></script>
-    <script type="text/javascript">
-        // here must be IP address of controller and valid port of socket.io too
-        var socketUrl = "http://localhost:8084"; var socketSession = ""; sysLang="en";
-    </script>
     <script type="text/javascript" src="conn.js"></script>
 </head>
 <body>
@@ -16,7 +12,11 @@
     servConn._useStorage = true;
 
     var states = [];
-    servConn.init(null, {
+    servConn.init({
+        name:          'mobile.0', // optional - default 'vis.0'
+        connLink:      'http://localhost:8084',  // optional URL of the socket.io adapter
+        socketSession: '' // optional - used by authentication
+    }, {
         onConnChange: function (isConnected) {
             if (isConnected) {
                 console.log('connected');
