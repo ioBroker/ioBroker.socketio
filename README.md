@@ -19,8 +19,9 @@ It is useful to read about the [structure of the objects](https://github.com/ioB
 
 ## Brief description of concept
 ### Object
-Object is description of data point or group. Group could content other datapoints in this case it called channel or channels in this case it called device. 
-It is meta information that describes this data point and could content: max/min value, unit, name, default value, type of value, information for adapter for communication (e.g. ip address) and so on.
+Object is description of data point or group. Group could content other datapoints in this case it called channel. If group consists of other channels in this case it called device. 
+
+Object is meta information that describes data point and could content: max/min value, unit, name, default value, type of value, information for adapter for communication (e.g. ip address) and so on.
 
 ### State
 State is actual value of the data point and presented by javascript object: 
