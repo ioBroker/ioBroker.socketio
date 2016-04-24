@@ -278,6 +278,9 @@ deletes file or directory. Directory must be empty to be deleted.
 
 
 ## Changelog
+### 1.4.0 (2016-04-24)
+* (bluefox) encode json files
+
 ### 1.3.0 (2016-03-17)
 * (bluefox) rename files
 
