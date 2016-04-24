@@ -19,8 +19,9 @@ It is useful to read about the [structure of the objects](https://github.com/ioB
 
 ## Brief description of concept
 ### Object
-Object is description of data point or group. Group could content other datapoints in this case it called channel or channels in this case it called device. 
-It is meta information that describes this data point and could content: max/min value, unit, name, default value, type of value, information for adapter for communication (e.g. ip address) and so on.
+Object is description of data point or group. Group could content other datapoints in this case it called channel. If group consists of other channels in this case it called device. 
+
+Object is meta information that describes data point and could content: max/min value, unit, name, default value, type of value, information for adapter for communication (e.g. ip address) and so on.
 
 ### State
 State is actual value of the data point and presented by javascript object: 
@@ -43,14 +44,16 @@ Every state has attribute "ack". It shows the direction of command.
 - If ack=true, it means that device informs about new value. (e.g. light was switched on manually or motion was detected)
  
 **Example**: we have some home automation adapter (HAA) that has one lamp connected under address *haa.0.lamp1*. 
-Lamp can be switched on manually with physical switch or via wifi with he help of HAA. 
-If vis wants to switch the lamp on via wifi it should set the new value with ```{value: true, ack: false}```. 
-When the lamp is switched on it is normally inform HAA about new state and the value should be immediately overwritten with ```{value: true, ack: true}```.
-If the lamp is switched off manually via physical switch it informs HAA about new state with ```{value: false, ack: true}```. 
+- Lamp can be switched on manually with physical switch or via wifi with he help of HAA. 
+- If vis wants to switch the lamp on via wifi it should set the new value with ```{value: true, ack: false}```. 
+- When the lamp is switched on it is normally inform HAA about new state and the value should be immediately overwritten with ```{value: true, ack: true}```.
+- If the lamp is switched off manually via physical switch it informs HAA about new state with ```{value: false, ack: true}```. 
 
 ### Quality
-Every data point has attribute *quality*. 
+Every data point has attribute **q** - *quality*. 
 
+
+## Usage
 It is suggested to use example/conn.js for communication. 
 
 After inclusion of conn.js file the global object **servConn** could be used to establish the communication with socketio adapter.
@@ -85,7 +88,7 @@ connCallbacks = {
     onConnChange:   function (isConnected) {}, // optional - called if connection state changed.
     onObjectChange: function (id, obj)     {}, // optional - called if content of some object is changed, new object created or object was deleted (obj = null)
     onUpdate:       function (id, state)   {}, // optional - called if state of some object is changed, new state for object is created or state was deleted (state = null)
-    onError:        function (error)           // optional - called if some error occurs
+    onError:        function (error)       {}  // optional - called if some error occurs
 };
 ```
 
@@ -94,21 +97,21 @@ connCallbacks = {
 
 set new value of some data point.
  
-E.g. ```servConn.setState('adapter.0.myvalue', true)``` (writes ```{val: true, ack: false}``` into *adapter.0.myvalue*.
+E.g. ```servConn.setState('adapter.0.myvalue', true)``` writes ```{val: true, ack: false}``` into *adapter.0.myvalue*.
 
 - **pointId** - is ID of the state, like *adapter.0.myvalue*,
 - **value**   - new value of the state, could be simple value (string, number, boolean) or object like ```{val: newValue, ack: false, q: 0}```. 
-In case if used simple value "ack" will be set to "false".
-- **callback** - ```function (error) {}``` - called when the write of new value into DB performed (not when the device was controlled).  
+In case if used simple value, "ack" will be set to "false".
+- **callback** - ```function (error) {}``` - called when the write of new value into DB is performed (not when the device was controlled).  
 
 
 ### getStates
 - function (IDs, callback)
 
-get states of more than one state. This command normally is called after the connection is established to get actual states of used data points.
+get the states of more than one state. This command normally is called after the connection is established to get the actual states of used data points.
 
-- **IDs** - pattern or array with IDs. Could be omitted to get all states. Patterns could consist wildcards, like: '*.STATE', 'haa.0.*' 
-- **callback** - ```function (error, states) {}``` - states is object like ```{'id1': 'state1', 'id2': 'state2', ...}```. *stateX* are objects with the structure described [above](#state). 
+- **IDs** - pattern or array with IDs. Could be omitted to get all states. Patterns could have wildcards, like: '*.STATE', 'haa.0.*' 
+- **callback** - ```function (error, states) {}``` - *states* is object like ```{'id1': 'state1', 'id2': 'state2', ...}```. *stateX* are objects with the structure described [above](#state). 
 
 ### httpGet
 - function (url, callback)
