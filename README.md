@@ -279,8 +279,15 @@ deletes file or directory. Directory must be empty to be deleted.
 
 - **callback** - ```function (error) {}```
 
+### getHistory
+- function (instance, options, callback)
+
+- **callback** - ```function (error, data, step, sessionId) {}```
 
 ## Changelog
+### 1.4.1 (2016-05-13)
+* (bluefox) change getHistory function
+
 ### 1.4.0 (2016-04-24)
 * (bluefox) encode json files
 
