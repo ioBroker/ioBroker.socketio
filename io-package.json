@@ -4,8 +4,13 @@
         "version":                  "1.4.1",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
+		"news": {
+            "en":                   "(bluefox) change getHistory function",
+            "de":                   "(bluefox) change getHistory function",
+            "ru":                   "(bluefox) change getHistory function"
+        },
         "authors": [
-            "bluefox <bluefox@ccu.io>"
+            "bluefox <dogafox@gmail.com>"
         ],
         "license":                  "MIT",
         "platform":                 "Javascript/Node.js",
