@@ -1,13 +1,20 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.4.1",
+        "version":                  "1.5.0",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
-            "en":                   "(bluefox) change getHistory function",
-            "de":                   "(bluefox) change getHistory function",
-            "ru":                   "(bluefox) change getHistory function"
+			"1.5.0": {
+				"en":                   "support cloud socket",
+				"de":                   "support cloud socket",
+				"ru":                   "support cloud socket"
+			},
+            "1.4.1": {
+				"en":                   "change getHistory function",
+				"de":                   "change getHistory function",
+				"ru":                   "change getHistory function"
+			}
         },
         "authors": [
             "bluefox <dogafox@gmail.com>"

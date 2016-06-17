@@ -1,10 +1,10 @@
 {
   "name": "iobroker.socketio",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "This adapter allows to communicate different web applications with ioBroker.",
   "author": {
     "name": "bluefox",
-    "email": "bluefox@ccu.io"
+    "email": "dogafox@gmail.com"
   },
   "homepage": "https://github.com/ioBroker/ioBroker.socketio",
   "licenses": [
@@ -22,8 +22,8 @@
     "url": "https://github.com/ioBroker/ioBroker.socketio"
   },
   "dependencies": {
-    "socket.io": "^1.4.5",
-    "request": "^2.69.0",
+    "socket.io": "^1.4.6",
+    "request": "^2.72.0",
 	"cookie-parser": "^1.4.1"
   },
   "devDependencies": {
