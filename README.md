@@ -285,7 +285,10 @@ deletes file or directory. Directory must be empty to be deleted.
 - **callback** - ```function (error, data, step, sessionId) {}```
 
 ## Changelog
-### 1.4.2 (2016-06-17)
+### 1.5.1 (2016-06-28)
+* (bluefox) add sendToHost command
+
+### 1.5.0 (2016-06-17)
 * (bluefox) preparations for cloud
 
 ### 1.4.1 (2016-05-13)

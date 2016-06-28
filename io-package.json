@@ -1,19 +1,24 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.5.0",
+        "version":                  "1.5.1",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+			"1.5.1": {
+				"en":               "add sendToHost command",
+				"de":               "add sendToHost command",
+				"ru":               "add sendToHost command"
+			},
 			"1.5.0": {
-				"en":                   "support cloud socket",
-				"de":                   "support cloud socket",
-				"ru":                   "support cloud socket"
+				"en":               "support cloud socket",
+				"de":               "support cloud socket",
+				"ru":               "support cloud socket"
 			},
             "1.4.1": {
-				"en":                   "change getHistory function",
-				"de":                   "change getHistory function",
-				"ru":                   "change getHistory function"
+				"en":               "change getHistory function",
+				"de":               "change getHistory function",
+				"ru":               "change getHistory function"
 			}
         },
         "authors": [
