@@ -27,16 +27,20 @@
             "ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
         },
         "Public certificate:":    {"en": "Public certificate:",     "de": "Publikzertifikat:",       "ru": "'Public' сертификат:"},
-        "Private certificate:":   {"en": "Private certificate:",    "de": "Privatzertifikat:",       "ru": "'Private' сертификат:"}
+        "Private certificate:":   {"en": "Private certificate:",    "de": "Privatzertifikat:",       "ru": "'Private' сертификат:"},
+        "Chained certificate:":   {"en": "Chained certificate:",    "de": "Kettenzertifikat:",       "ru": "'Chained' сертификат:"}
     };
 
     function showHideSettings() {
         if ($('#secure').prop('checked')) {
             $('#_certPublic').show();
             $('#_certPrivate').show();
+            $('#_certChained').show();
         } else {
             $('#_certPublic').hide();
             $('#_certPrivate').hide();
+            $('#_certChained').hide();
+            $('#auth').prop('checked', false);
         }
         if ($('#auth').prop('checked')) {
             $('#defaultUser').val('admin');
@@ -75,6 +79,7 @@
 
         fillSelectCertificates('#certPublic',  'public',  settings.certPublic);
         fillSelectCertificates('#certPrivate', 'private', settings.certPrivate);
+        fillSelectCertificates('#certChained', 'chained', settings.certChained);
         fillUsers('#defaultUser', settings.defaultUser);
 
         $('#auth').change(function () {
@@ -123,6 +128,10 @@
         <tr id="_certPrivate">
             <td class="translate">Private certificate:</td>
             <td><select id="certPrivate" class="value"></select></td>
+        </tr>
+        <tr id="_certChained">
+            <td class="translate">Chained certificate:</td>
+            <td><select id="certChained" class="value"></select></td>
         </tr>
         <tr class="defaultUser"><td class="translate">Run as:</td><td><select class="value" id="defaultUser" /></td></tr>
     </table>

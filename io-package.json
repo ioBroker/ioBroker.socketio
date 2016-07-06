@@ -1,15 +1,20 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.5.1",
+        "version":                  "1.5.2",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
-			"1.5.1": {
-				"en":               "add sendToHost command",
-				"de":               "add sendToHost command",
-				"ru":               "add sendToHost command"
+			"1.5.2": {
+                "en":               "support of chained certificates",
+                "de":               "support of chained certificates",
+                "ru":               "support of chained certificates"
 			},
+            "1.5.1": {
+                "en":               "add sendToHost command",
+                "de":               "add sendToHost command",
+                "ru":               "add sendToHost command"
+            },
 			"1.5.0": {
 				"en":               "support cloud socket",
 				"de":               "support cloud socket",
@@ -35,7 +40,7 @@
         "extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.png",
         "type":                     "communication",
         "stopBeforeUpdate":         true,
-		"dependencies":             [{"js-controller": ">=0.8.0"}]
+		"dependencies":             [{"js-controller": ">=0.10.1"}]
     },
     "native": {
         "port":                     8084,
@@ -43,6 +48,9 @@
         "secure":                   false,
         "bind":                     "0.0.0.0",
 		"ttl":                      3600,
+        "certPublic":               "",
+        "certPrivate":              "",
+        "certChained":              "",
         "defaultUser":              "admin"
     },
     "objects": [

@@ -285,6 +285,9 @@ deletes file or directory. Directory must be empty to be deleted.
 - **callback** - ```function (error, data, step, sessionId) {}```
 
 ## Changelog
+### 1.5.2 (2016-07-06)
+* (bluefox) support of chained certificates
+
 ### 1.5.1 (2016-06-28)
 * (bluefox) add sendToHost command
 
