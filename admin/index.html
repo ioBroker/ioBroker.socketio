@@ -28,7 +28,8 @@
         },
         "Public certificate:":    {"en": "Public certificate:",     "de": "Publikzertifikat:",       "ru": "'Public' сертификат:"},
         "Private certificate:":   {"en": "Private certificate:",    "de": "Privatzertifikat:",       "ru": "'Private' сертификат:"},
-        "Chained certificate:":   {"en": "Chained certificate:",    "de": "Kettenzertifikat:",       "ru": "'Chained' сертификат:"}
+        "Chained certificate:":   {"en": "Chained certificate:",    "de": "Kettenzertifikat:",       "ru": "'Chained' сертификат:"},
+        "Force Web-Sockets:":     {"en": "Force Web-Sockets:",      "de": "Nur Web-Sockets:",        "ru": "Только Web-Sockets:"}
     };
 
     function showHideSettings() {
@@ -91,6 +92,7 @@
         $('#secure').change(function () {
             showHideSettings();
         });
+
         showHideSettings();
     }
 
@@ -134,6 +136,7 @@
             <td><select id="certChained" class="value"></select></td>
         </tr>
         <tr class="defaultUser"><td class="translate">Run as:</td><td><select class="value" id="defaultUser" /></td></tr>
+        <tr class="socketio"><td class="translate">Force Web-Sockets:</td><td><input type="checkbox" class="value" id="forceWebSockets"/></td></tr>
     </table>
 
     <p class="translate">help_tip</p>

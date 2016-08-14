@@ -1,11 +1,16 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.5.2",
+        "version":                  "1.5.3",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
-			"1.5.2": {
+            "1.5.3": {
+                "en":               "support of force only web sockets transport",
+                "de":               "support of force only web sockets transport",
+                "ru":               "support of force only web sockets transport"
+            },
+            "1.5.2": {
                 "en":               "support of chained certificates",
                 "de":               "support of chained certificates",
                 "ru":               "support of chained certificates"
@@ -51,7 +56,8 @@
         "certPublic":               "",
         "certPrivate":              "",
         "certChained":              "",
-        "defaultUser":              "admin"
+        "defaultUser":              "admin",
+        "forceWebSockets":          false
     },
     "objects": [
         {

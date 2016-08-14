@@ -5,7 +5,7 @@
 var utils    = require(__dirname + '/lib/utils'); // Get common adapter utils
 var IOSocket = require(__dirname + '/lib/socket.js');
 
-var webServer =  null;
+var webServer = null;
 
 var adapter = utils.adapter({
     name: 'socketio',
@@ -96,8 +96,9 @@ function initWebServer(settings) {
                 }).listen(settings.port, (settings.bind && settings.bind != '0.0.0.0') ? settings.bind : undefined);
             }
 
-            settings.crossDomain = true;
-			settings.ttl = settings.ttl || 3600;
+            settings.crossDomain     = true;
+			settings.ttl             = settings.ttl || 3600;
+            settings.forceWebSockets = settings.forceWebSockets || false;
 
             server.io = new IOSocket(server.server, settings, adapter);
         });

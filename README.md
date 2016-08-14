@@ -284,7 +284,14 @@ deletes file or directory. Directory must be empty to be deleted.
 
 - **callback** - ```function (error, data, step, sessionId) {}```
 
+## Tuning Web-Sockets
+On some web-sockets clients there is performance problem with communication. Sometimes this problem is due to fallback of socket.io communication on long polling mechanism.
+You can set option *Force Web-Sockets* to force using only web-sockets transport.
+
 ## Changelog
+### 1.5.3 (2016-08-14)
+* (bluefox) support of force only web sockets transport
+
 ### 1.5.2 (2016-07-06)
 * (bluefox) support of chained certificates
 
