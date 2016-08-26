@@ -289,6 +289,9 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
+### 1.5.4 (2016-08-26)
+* (bluefox) fix error in socket.js
+
 ### 1.5.3 (2016-08-14)
 * (bluefox) support of force only web sockets transport
 

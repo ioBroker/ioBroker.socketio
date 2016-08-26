@@ -1,10 +1,15 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.5.3",
+        "version":                  "1.5.4",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+            "1.5.4": {
+              "en":                 "fix error in socket.js",
+              "de":                 "fix error in socket.js",
+              "ru":                 "fix error in socket.js"
+            },
             "1.5.3": {
                 "en":               "support of force only web sockets transport",
                 "de":               "support of force only web sockets transport",
