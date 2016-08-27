@@ -4,6 +4,7 @@
 
 var utils    = require(__dirname + '/lib/utils'); // Get common adapter utils
 var IOSocket = require(__dirname + '/lib/socket.js');
+var LE       = require(__dirname + '/lib/letsencrypt.js');
 
 var webServer = null;
 
@@ -40,8 +41,9 @@ var adapter = utils.adapter({
 function main() {
     if (adapter.config.secure) {
         // Load certificates
-        adapter.getCertificates(function (err, certificates) {
+        adapter.getCertificates(function (err, certificates, leConfig) {
             adapter.config.certificates = certificates;
+            adapter.config.leConfig     = leConfig;
             webServer = initWebServer(adapter.config);
         });
     } else {
@@ -68,11 +70,10 @@ function initWebServer(settings) {
         var taskCnt = 0;
 
         if (settings.secure) {
-            if (!settings.certificates) {
-                return null;
-            }
-            if (settings.auth) {
+            if (!settings.certificates) return null;
 
+            if (settings.auth) {
+                // todo
             }
         }
 
@@ -82,22 +83,16 @@ function initWebServer(settings) {
                 process.exit(1);
             }
             settings.port = port;
-            //server.server.listen(port);
-            if (settings.secure) {
-                if (!settings.certificates) return;
-                server.server = require('https').createServer(settings.certificates, function (req, res) {
-                    res.writeHead(501);
-                    res.end('Not Implemented');
-                }).listen(settings.port, (settings.bind && settings.bind != '0.0.0.0') ? settings.bind : undefined);
-            } else {
-                server.server = require('http').createServer(function (req, res) {
-                    res.writeHead(501);
-                    res.end('Not Implemented');
-                }).listen(settings.port, (settings.bind && settings.bind != '0.0.0.0') ? settings.bind : undefined);
-            }
+
+            server.server = LE.createServer(function (req, res) {
+                res.writeHead(501);
+                res.end('Not Implemented');
+            }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log);
+
+            server.server.listen(settings.port, (settings.bind && settings.bind !== '0.0.0.0') ? settings.bind : undefined);
 
             settings.crossDomain     = true;
-			settings.ttl             = settings.ttl || 3600;
+            settings.ttl             = settings.ttl || 3600;
             settings.forceWebSockets = settings.forceWebSockets || false;
 
             server.io = new IOSocket(server.server, settings, adapter);

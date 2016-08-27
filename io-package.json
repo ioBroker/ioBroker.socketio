@@ -1,10 +1,15 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.5.4",
+        "version":                  "1.6.0",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+            "1.6.0": {
+                "en":               "support of letsencrypt certificates",
+                "de":               "Unterstützung von letsencrypt Zertifikaten",
+                "ru":               "Поддержка letsencrypt сертификатов"
+            },
             "1.5.4": {
               "en":                 "fix error in socket.js",
               "de":                 "fix error in socket.js",
@@ -62,7 +67,11 @@
         "certPrivate":              "",
         "certChained":              "",
         "defaultUser":              "admin",
-        "forceWebSockets":          false
+        "forceWebSockets":          false,
+
+        "leEnabled":                false,
+        "leUpdate":                 false,
+        "leCheckPort":              80
     },
     "objects": [
         {
