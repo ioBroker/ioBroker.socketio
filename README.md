@@ -289,6 +289,9 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
+### 1.6.1 (2016-08-29)
+* (bluefox) fix error by checking user name
+
 ### 1.6.0 (2016-08-27)
 * (bluefox) support of letsencrypt certificates
 

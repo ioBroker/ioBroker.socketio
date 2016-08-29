@@ -1,10 +1,15 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.6.0",
+        "version":                  "1.6.1",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+			"1.6.1": {
+                "en":               "fix error by checking user name",
+                "de":               "Fehler mit Namensprüfung behoben",
+                "ru":               "Исправлена ошибка при проверке имени"
+            },
             "1.6.0": {
                 "en":               "support of letsencrypt certificates",
                 "de":               "Unterstützung von letsencrypt Zertifikaten",
