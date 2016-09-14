@@ -7,15 +7,19 @@
 </head>
 <body>
 
+<!--
+    Check the browser console!
+-->
+
 <script type="text/javascript">
     servConn.namespace   = 'mobile.0';
-    servConn._useStorage = true;
+    servConn._useStorage = false;
 
     var states = [];
     servConn.init({
-        name:          'mobile.0', // optional - default 'vis.0'
+        name:          'mobile.0',  // optional - default 'vis.0'
         connLink:      'http://localhost:8084',  // optional URL of the socket.io adapter
-        socketSession: '' // optional - used by authentication
+        socketSession: ''           // optional - used by authentication
     }, {
         onConnChange: function (isConnected) {
             if (isConnected) {

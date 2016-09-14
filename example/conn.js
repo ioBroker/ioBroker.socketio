@@ -15,7 +15,7 @@
 /* global storage */
 /* jshint -W097 */// jshint strict:false
 
-"use strict";
+'use strict';
 
 // The idea of servConn is to use this class later in every addon.
 // The addon just must say, what must be loaded (values, objects, indexes) and
@@ -45,14 +45,14 @@ var servConn = {
     _type:              'socket.io', // [SignalR | socket.io | local]
     _timeout:           0,           // 0 - use transport default timeout to detect disconnect
     _reconnectInterval: 10000,       // reconnect interval
-    _subscribes:        [],
+    _reloadInterval:    30,          // if connection was absent longer than 30 seconds
     _cmdData:           null,
     _cmdInstance:       null,
     _isSecure:          false,
     _defaultMode:       0x644,
     _useStorage:        false,
-    _objects:           null,        // used if _useStorage == true
-    _enums:             null,        // used if _useStorage == true
+    _objects:           null,        // used if _useStorage === true
+    _enums:             null,        // used if _useStorage === true
     namespace:          'vis.0',
 
     getType:          function () {
@@ -64,8 +64,14 @@ var servConn = {
     getIsLoginRequired: function () {
         return this._isSecure;
     },
-    getUser:          function () {
+    getUser: function () {
         return this._user;
+    },
+    setReloadTimeout: function (timeout){
+        this._reloadInterval = parseInt(timeout, 10);    
+    },
+    setReconnectInterval: function (interval){
+        this._reconnectInterval = parseInt(interval, 10);
     },
     _checkConnection: function (func, _arguments) {
         if (!this._isConnected) {
@@ -85,9 +91,9 @@ var servConn = {
     _monitor:         function () {
         if (this._timer) return;
         var ts = (new Date()).getTime();
-        if (ts - this._lastTimer > 30000) {
+        if (this._reloadInterval && ts - this._lastTimer > this._reloadInterval * 1000) {
             // It seems, that PC was in a sleep => Reload page to request authentication anew
-            location.reload();
+            window.location.reload();
         } else {
             this._lastTimer = ts;
         }
@@ -121,27 +127,54 @@ var servConn = {
                 that._socket.emit('authEnabled', function (auth, user) {
                     that._user = user;
                     that._connCallbacks.onConnChange(that._isConnected);
+                    if (typeof app !== 'undefined') app.onConnChange(that._isConnected);
                 });
             }, 0);
         }
     },
+    reconnect:        function (connOptions) {
+        var that = this;
+        // reconnect
+        if ((!connOptions.mayReconnect || connOptions.mayReconnect()) && !this._connectInterval) {
+            this._connectInterval = setInterval(function () {
+                console.log('Trying connect...');
+                that._socket.connect();
+                that._countDown = Math.floor(that._reconnectInterval / 1000);
+                if (typeof $ !== 'undefined') {
+                    $('.splash-screen-text').html(that._countDown + '...').css('color', 'red');
+                }
+            }, this._reconnectInterval);
+
+            this._countDown = Math.floor(this._reconnectInterval / 1000);
+            if (typeof $ !== 'undefined') {
+                $('.splash-screen-text').html(this._countDown + '...');
+            }
+
+            this._countInterval = setInterval(function () {
+                that._countDown--;
+                if (typeof $ !== 'undefined') {
+                    $('.splash-screen-text').html(that._countDown + '...');
+                }
+            }, 1000);
+        }
+    },
     init:             function (connOptions, connCallbacks, objectsRequired) {
+        var that = this; // support of old safary
+        // init namespace
+        if (typeof socketNamespace !== 'undefined') this.namespace = socketNamespace;
+
+        connOptions = connOptions || {};
+        if (!connOptions.name) connOptions.name = this.namespace;
+
         // To start vis as local use one of:
-        // - start vis from directory with name local, e.g. c:/blbla/local/projectName.vis/www/index.html
+        // - start vis from directory with name local, e.g. c:/blbla/local/ioBroker.vis/www/index.html
         // - do not create "_socket/info.js" file in "www" directory
         // - create "_socket/info.js" file with
         //   var socketUrl = "local"; var socketSession = ""; sysLang="en";
         //   in this case you can overwrite browser language settings
-        if ((document.URL.split('/local/')[1] || (typeof socketUrl === 'undefined' || socketUrl === 'local'))) {
-            this._type =  'local';
+        if (document.URL.split('/local/')[1] || (typeof socketUrl === 'undefined' && !connOptions.connLink) || (typeof socketUrl !== 'undefined' && socketUrl === 'local')) {
+            this._type = 'local';
         }
-
-        // init namespace
-        if (typeof socketNamespace != 'undefined') this.namespace = socketNamespace;
-
-        connOptions = connOptions || {};
-        var that = this;
-        if (!connOptions.name) connOptions.name = this.namespace;
 
         if (typeof session !== 'undefined') {
             var user = session.get('user');
@@ -159,96 +192,160 @@ var servConn = {
         var connLink = connOptions.connLink || window.localStorage.getItem('connLink');
 
         // Connection data from "/_socket/info.js"
-        if (!connLink && typeof socketUrl != 'undefined') connLink = socketUrl;
-        if (!connOptions.socketSession && typeof socketSession != 'undefined') connOptions.socketSession = socketSession;
+        if (!connLink && typeof socketUrl !== 'undefined') connLink = socketUrl;
+        if (!connOptions.socketSession && typeof socketSession !== 'undefined') connOptions.socketSession = socketSession;
+        if (connOptions.socketForceWebSockets === undefined &&
+            typeof socketForceWebSockets !== 'undefined') {
+            connOptions.socketForceWebSockets = socketForceWebSockets;
+        }
 
         // if no remote data
         if (this._type === 'local') {
             // report connected state
             this._isConnected = true;
             if (this._connCallbacks.onConnChange) this._connCallbacks.onConnChange(this._isConnected);
+            if (typeof app !== 'undefined') app.onConnChange(this._isConnected);
         } else
-        if (typeof io != 'undefined') {
+        if (typeof io !== 'undefined') {
             connOptions.socketSession = connOptions.socketSession || 'nokey';
 
             var url;
             if (connLink) {
                 url = connLink;
-                if (typeof connLink != 'undefined') {
-                    if (connLink[0] == ':') connLink = location.protocol + '://' + location.hostname + connLink;
+                if (typeof connLink !== 'undefined') {
+                    if (connLink[0] === ':') connLink = location.protocol + '://' + location.hostname + connLink;
                 }
             } else {
                 url = location.protocol + '//' + location.host;
             }
 
             this._socket = io.connect(url, {
-                'query':                        'key=' + connOptions.socketSession,
+                query:                          'key=' + connOptions.socketSession,
                 'reconnection limit':           10000,
-                'max reconnection attempts':    Infinity
+                'max reconnection attempts':    Infinity,
+                reconnection:                   false,
+                upgrade:                        !connOptions.socketForceWebSockets,
+                rememberUpgrade:                connOptions.socketForceWebSockets,
+                transports:                     connOptions.socketForceWebSockets ? ['websocket'] : undefined
             });
 
             this._socket.on('connect', function () {
-                this._socket.emit('name', connOptions.name);
-				console.log((new Date()).toISOString() + ' Connected => authenticate');
+                if (that._disconnectedSince) {
+                    var offlineTime = (new Date()).getTime() - that._disconnectedSince;
+                    console.log('was offline for ' + (offlineTime / 1000) + 's');
+
+                    // reload whole page if no connection longer than some period
+                    if (that._reloadInterval && offlineTime > that._reloadInterval * 1000) window.location.reload();
+                    
+                    that._disconnectedSince = null;
+                }
+
+                if (that._connectInterval) {
+                    clearInterval(that._connectInterval);
+                    that._connectInterval = null;
+                }
+                if (that._countInterval) {
+                    clearInterval(that._countInterval);
+                    that._countInterval = null;
+                }
+                var elem = document.getElementById('server-disconnect');
+                if (elem) elem.style.display = 'none';
+
+                that._socket.emit('name', connOptions.name);
+                console.log((new Date()).toISOString() + ' Connected => authenticate');
                 setTimeout(function () {
-                    this._socket.emit('authenticate', function (isOk, isSecure) {
+                    var wait = setTimeout(function() {
+                        console.error('No answer from server')
+                        window.location.reload();
+                    }, 3000);
+
+                    that._socket.emit('authenticate', function (isOk, isSecure) {
+                        clearTimeout(wait);
                         console.log((new Date()).toISOString() + ' Authenticated: ' + isOk);
                         if (isOk) {
-                            this._onAuth(objectsRequired, isSecure);
+                            that._onAuth(objectsRequired, isSecure);
                         } else {
                             console.log('permissionError');
                         }
-                    }.bind(this));
-                }.bind(this), 50);
-            }.bind(this));
+                    });
+                }, 50);
+            });
 
             this._socket.on('reauthenticate', function () {
-                if (this._connCallbacks.onReAuth) {
-                    this._connCallbacks.onConnChange(this._isSecure);
-                } else {
-                    location.reload();
+                if (that._connCallbacks.onConnChange) {
+                    that._connCallbacks.onConnChange(false);
+                    if (typeof app !== 'undefined') app.onConnChange(false);
                 }
-            }.bind(this));
+                console.warn('reauthenticate');
+                window.location.reload();
+            });
+
+            this._socket.on('connect_error', function () {
+                $('.splash-screen-text').css('color', '#002951');
+
+                that.reconnect(connOptions);
+            });
 
             this._socket.on('disconnect', function () {
-                //console.log("socket.io disconnect");
-                this._disconnectedSince = (new Date()).getTime();
+                that._disconnectedSince = (new Date()).getTime();
 
-                this._isConnected = false;
-                if (this._connCallbacks.onConnChange) {
-                    this.disconnectTimeout = setTimeout(function () {
-                        this._connCallbacks.onConnChange(this._isConnected);
-                    }.bind(this), 5000);
+                // called only once when connection lost (and it was here before)
+                that._isConnected = false;
+                if (that._connCallbacks.onConnChange) {
+                    setTimeout(function () {
+                        var elem = document.getElementById('server-disconnect');
+                        if (elem) elem.style.display = '';
+                        that._connCallbacks.onConnChange(that._isConnected);
+                        if (typeof app !== 'undefined') app.onConnChange(that._isConnected);
+                    }, 5000);
+                } else {
+                    var elem = document.getElementById('server-disconnect');
+                    if (elem) elem.style.display = '';
                 }
-            }.bind(this));
+
+                // reconnect
+                that.reconnect(connOptions);
+            });
 
             // after reconnect the "connect" event will be called
             this._socket.on('reconnect', function () {
-                //console.log("socket.io reconnect");
                 var offlineTime = (new Date()).getTime() - that._disconnectedSince;
                 console.log('was offline for ' + (offlineTime / 1000) + 's');
 
-                // TODO does this make sense?
-                //if (offlineTime > 12000) {
-                    //window.location.reload();
-                //}
-                //that._autoReconnect();
-            }.bind(this));
+                // reload whole page if no connection longer than one minute
+                if (that._reloadInterval && offlineTime > that._reloadInterval * 1000) {
+                    window.location.reload();
+                }
+                // anyway "on connect" is called
+            });
 
             this._socket.on('objectChange', function (id, obj) {
-                if (this._connCallbacks.onObjectChange) this._connCallbacks.onObjectChange(id, obj);
-            }.bind(this));
+                // If cache used
+                if (that._useStorage && typeof storage !== 'undefined') {
+                    var objects = that._objects || storage.get('objects');
+                    if (objects) {
+                        if (obj) {
+                            objects[id] = obj;
+                        } else {
+                            if (objects[id]) delete objects[id];
+                        }
+                        storage.set('objects',  objects);
+                    }
+                }
+
+                if (that._connCallbacks.onObjectChange) that._connCallbacks.onObjectChange(id, obj);
+            });
 
             this._socket.on('stateChange', function (id, state) {
-                if (!id || state === null || typeof state != 'object') return;
+                if (!id || state === null || typeof state !== 'object') return;
 
-                if (this._connCallbacks.onCommand && id == that.namespace + '.control.command') {
+                if (that._connCallbacks.onCommand && id === that.namespace + '.control.command') {
                     if (state.ack) return;
 
                     if (state.val &&
-                        typeof state.val == 'string' &&
-                        state.val[0] == '{' &&
-                        state.val[state.val.length - 1] == '}') {
+                        typeof state.val === 'string' &&
+                        state.val[0] === '{' &&
+                        state.val[state.val.length - 1] === '}') {
                         try {
                             state.val = JSON.parse(state.val);
                         } catch (e) {
@@ -258,43 +355,43 @@ var servConn = {
 
                     // if command is an object {instance: 'iii', command: 'cmd', data: 'ddd'}
                     if (state.val && state.val.instance) {
-                        if (this._connCallbacks.onCommand(state.val.instance, state.val.command, state.val.data)) {
+                        if (that._connCallbacks.onCommand(state.val.instance, state.val.command, state.val.data)) {
                             // clear state
-                            this.setState(id, {val: '', ack: true});
+                            that.setState(id, {val: '', ack: true});
                         }
                     } else {
-                        if (this._connCallbacks.onCommand(this._cmdInstance, state.val, this._cmdData)) {
+                        if (that._connCallbacks.onCommand(that._cmdInstance, state.val, that._cmdData)) {
                             // clear state
-                            this.setState(id, {val: '', ack: true});
+                            that.setState(id, {val: '', ack: true});
                         }
                     }
-                } else if (id == that.namespace + '.control.data') {
-                    this._cmdData = state.val;
-                } else if (id == that.namespace + '.control.instance') {
-                    this._cmdInstance = state.val;
-                } else if (this._connCallbacks.onUpdate) {
-                    this._connCallbacks.onUpdate(id, state);
+                } else if (id === that.namespace + '.control.data') {
+                    that._cmdData = state.val;
+                } else if (id === that.namespace + '.control.instance') {
+                    that._cmdInstance = state.val;
+                } else if (that._connCallbacks.onUpdate) {
+                    that._connCallbacks.onUpdate(id, state);
                 }
-            }.bind(this));
+            });
 
             this._socket.on('permissionError', function (err) {
-                if (this._connCallbacks.onError) {
+                if (that._connCallbacks.onError) {
                     /* {
                      command:
                      type:
                      operation:
                      arg:
                      }*/
-                    this._connCallbacks.onError(err);
+                    that._connCallbacks.onError(err);
                 } else {
                     console.log('permissionError');
                 }
-            }.bind(this));
+            });
         }
     },
     logout:           function (callback) {
         if (!this._isConnected) {
-            console.log("No connection!");
+            console.log('No connection!');
             return;
         }
 
@@ -309,7 +406,7 @@ var servConn = {
     },
     _checkAuth:       function (callback) {
         if (!this._isConnected) {
-            console.log("No connection!");
+            console.log('No connection!');
             return;
         }
         //socket.io
@@ -322,7 +419,7 @@ var servConn = {
                 callback(version);
         });
     },
-    readFile:         function (filename, callback) {
+    readFile:         function (filename, callback, isRemote) {
         if (!callback) throw 'No callback set';
 
         if (this._type === 'local') {
@@ -335,87 +432,132 @@ var servConn = {
         } else {
             if (!this._checkConnection('readFile', arguments)) return;
 
-            this._socket.emit('readFile', this.namespace, filename, function (err, data) {
+            if (!isRemote && typeof app !== 'undefined') {
+                app.readLocalFile(filename.replace(/^\/vis\.0\//, ''), callback);
+            } else {
+                var adapter = this.namespace;
+                if (filename[0] === '/') {
+                    var p = filename.split('/');
+                    adapter = p[1];
+                    p.splice(0, 2);
+                    filename = p.join('/');
+                }
+
+                this._socket.emit('readFile', adapter, filename, function (err, data, mimeType) {
+                    setTimeout(function () {
+                        callback(err, data, filename, mimeType);
+                    }, 0);
+                });
+            }
+        }
+    },
+    getMimeType: function (ext) {
+        if (ext.indexOf('.') !== -1) ext = ext.toLowerCase().match(/\.[^.]+$/);
+        var _mimeType;
+        if (ext === '.css') {
+            _mimeType = 'text/css';
+        } else if (ext === '.bmp') {
+            _mimeType = 'image/bmp';
+        } else if (ext === '.png') {
+            _mimeType = 'image/png';
+        } else if (ext === '.jpg') {
+            _mimeType = 'image/jpeg';
+        } else if (ext === '.jpeg') {
+            _mimeType = 'image/jpeg';
+        } else if (ext === '.gif') {
+            _mimeType = 'image/gif';
+        } else if (ext === '.tif') {
+            _mimeType = 'image/tiff';
+        } else if (ext === '.js') {
+            _mimeType = 'application/javascript';
+        } else if (ext === '.html') {
+            _mimeType = 'text/html';
+        } else if (ext === '.htm') {
+            _mimeType = 'text/html';
+        } else if (ext === '.json') {
+            _mimeType = 'application/json';
+        } else if (ext === '.xml') {
+            _mimeType = 'text/xml';
+        } else if (ext === '.svg') {
+            _mimeType = 'image/svg+xml';
+        } else if (ext === '.eot') {
+            _mimeType = 'application/vnd.ms-fontobject';
+        } else if (ext === '.ttf') {
+            _mimeType = 'application/font-sfnt';
+        } else if (ext === '.woff') {
+            _mimeType = 'application/font-woff';
+        } else if (ext === '.wav') {
+            _mimeType = 'audio/wav';
+        } else if (ext === '.mp3') {
+            _mimeType = 'audio/mpeg3';
+        } else {
+            _mimeType = 'text/javascript';
+        }
+        return _mimeType;
+    },
+    readFile64:       function (filename, callback, isRemote) {
+        var that = this;
+        if (!callback) {
+            throw 'No callback set';
+        }
+
+        if (!this._checkConnection('readFile', arguments)) return;
+
+        if (!isRemote && typeof app !== 'undefined') {
+            app.readLocalFile(filename.replace(/^\/vis\.0\//, ''), function (err, data, mimeType) {
                 setTimeout(function () {
-                    callback(err, data);
+                    if (data) {
+                        callback(err, {mime: mimeType || that.getMimeType(filename), data: btoa(data)}, filename);
+                    } else {
+                        callback(err, filename);
+                    }
+                }, 0);
+            });
+        } else {
+            var adapter = this.namespace;
+            if (filename[0] === '/') {
+                var p = filename.split('/');
+                adapter = p[1];
+                p.splice(0, 2);
+                filename = p.join('/');
+            }
+
+            this._socket.emit('readFile64', adapter, filename, function (err, data, mimeType) {
+                setTimeout(function () {
+                    if (data) {
+                        callback(err, {mime: mimeType || that.getMimeType(filename), data: data}, filename);
+                    } else {
+                        callback(err, {mime: mimeType || that.getMimeType(filename)}, filename);
+                    }
                 }, 0);
             });
         }
     },
-    readFile64:       function (filename, callback) {
-        if (!callback) {
-            throw 'No callback set';
-        }
-        this._socket.emit('readFile', this.namespace, filename, function (err, data) {
-            if (data) {
-                var ext = filename.match(/\.[^.]+$/);
-                var _mimeType;
-                if (ext == '.css') {
-                    _mimeType = 'text/css';
-                } else if (ext == '.bmp') {
-                    _mimeType = 'image/bmp';
-                } else if (ext == '.png') {
-                    _mimeType = 'image/png';
-                } else if (ext == '.jpg') {
-                    _mimeType = 'image/jpeg';
-                } else if (ext == '.jpeg') {
-                    _mimeType = 'image/jpeg';
-                } else if (ext == '.gif') {
-                    _mimeType = 'image/gif';
-                } else if (ext == '.tif') {
-                    _mimeType = 'image/tiff';
-                } else if (ext == '.js') {
-                    _mimeType = 'application/javascript';
-                } else if (ext == '.html') {
-                    _mimeType = 'text/html';
-                } else if (ext == '.htm') {
-                    _mimeType = 'text/html';
-                } else if (ext == '.json') {
-                    _mimeType = 'application/json';
-                } else if (ext == '.xml') {
-                    _mimeType = 'text/xml';
-                } else if (ext == '.svg') {
-                    _mimeType = 'image/svg+xml';
-                } else if (ext == '.eot') {
-                    _mimeType = 'application/vnd.ms-fontobject';
-                } else if (ext == '.ttf') {
-                    _mimeType = 'application/font-sfnt';
-                } else if (ext == '.woff') {
-                    _mimeType = 'application/font-woff';
-                } else if (ext == '.wav') {
-                    _mimeType = 'audio/wav';
-                } else if (ext == '.mp3') {
-                    _mimeType = 'audio/mpeg3';
-                } else {
-                    _mimeType = 'text/javascript';
-                }
-
-                callback(err, {mime: _mimeType, data: btoa(data)});
-            } else {
-                callback(err);
-            }
-        });
-    },
     writeFile:        function (filename, data, mode, callback) {
-        if (typeof mode == 'function') {
+        if (typeof mode === 'function') {
             callback = mode;
             mode = null;
         }
-        var that = this;
         if (this._type === 'local') {
             storage.set(filename, JSON.stringify(data));
             if (callback) callback();
         } else {
             if (!this._checkConnection('writeFile', arguments)) return;
 
-            if (typeof data == 'object') data = JSON.stringify(data, null, 2);
+            if (typeof data === 'object') data = JSON.stringify(data, null, 2);
 
-            this._socket.emit('writeFile', this.namespace, filename, data, mode ? {mode: this._defaultMode} : {}, callback);
+            var parts = filename.split('/');
+            var adapter = parts[1];
+            parts.splice(0, 2);
+            if (adapter === 'vis') {
+                this._socket.emit('writeFile', adapter, parts.join('/'), data, mode ? {mode: this._defaultMode} : {}, callback);
+            } else {
+                this._socket.emit('writeFile', this.namespace, filename, data, mode ? {mode: this._defaultMode} : {}, callback);
+            }
         }
     },
     // Write file base 64
     writeFile64:      function (filename, data, callback) {
-        var that = this;
         if (!this._checkConnection('writeFile', arguments)) return;
 
         var parts = filename.split('/');
@@ -477,18 +619,26 @@ var servConn = {
     },
     // callback(err, data)
     getStates:        function (IDs, callback) {
+        if (typeof IDs === 'function') {
+            callback = IDs;
+            IDs = null;
+        }
+
         if (this._type === 'local') {
             return callback(null, []);
         } else {
-
-            if (typeof IDs == 'function') {
-                callback = IDs;
-                IDs = null;
-            }
-
             if (!this._checkConnection('getStates', arguments)) return;
 
+            this.gettingStates = this.gettingStates || 0;
+            this.gettingStates++;
+            if (this.gettingStates > 1) {
+                // fix for slow devices
+                console.log('Trying to get empty list, because the whole list could not be loaded');
+                IDs = [];
+            }
+            var that = this;
             this._socket.emit('getStates', IDs, function (err, data) {
+                that.gettingStates--;
                 if (err || !data) {
                     if (callback) {
                         callback(err || 'Authentication required');
@@ -513,7 +663,9 @@ var servConn = {
                 var children = [];
                 var len      = items[i].length + 1;
                 var name     = items[i] + '.';
-                while (j < items.length && items[j].substring(0, len) == name) children.push(items[j++]);
+                while (j < items.length && items[j].substring(0, len) === name) {
+                    children.push(items[j++]);
+                }
 
                 objects[items[i]].children = children;
             }
@@ -613,17 +765,17 @@ var servConn = {
     getChildren:      function (id, useCache, callback) {
         if (!this._checkConnection('getChildren', arguments)) return;
 
-        if (typeof id == 'function') {
+        if (typeof id === 'function') {
             callback = id;
             id = null;
             useCache = false;
         }
-        if (typeof id == 'boolean') {
+        if (typeof id === 'boolean') {
             callback = useCache;
             useCache = id;
             id = null;
         }
-        if (typeof useCache == 'function') {
+        if (typeof useCache === 'function') {
             callback = useCache;
             useCache = false;
         }
@@ -677,12 +829,12 @@ var servConn = {
                     }
                     var list = [];
 
-                    var count = id.split('.');
+                    var count = id.split('.').length;
 
                     // find direct children
                     for (var _id in data) {
                         var parts = _id.split('.');
-                        if (count + 1 == parts.length) {
+                        if (count + 1 === parts.length) {
                             list.push(_id);
                         }
                     }
@@ -691,28 +843,30 @@ var servConn = {
                     if (this._useStorage && typeof storage !== 'undefined') {
                         var objects = storage.get('objects') || {};
 
-                        for (var _id in data) {
-                            objects[_id] = data[_id];
+                        for (var id_ in data) {
+                            objects[id_] = data[id_];
                         }
                         if (objects[id] && objects[id].common) {
                             objects[id].children = list;
                         }
                         // Store for every element theirs children
                         var items = [];
-                        for (var _id in data) {
-                            items.push(_id);
+                        for (var __id in data) {
+                            items.push(__id);
                         }
                         items.sort();
 
-                        for (var i = 0; i < items.length; i++) {
-                            if (objects[items[i]].common) {
-                                var j = i + 1;
+                        for (var k = 0; k < items.length; k++) {
+                            if (objects[items[k]].common) {
+                                var j = k + 1;
                                 var children = [];
-                                var len  = items[i].length + 1;
-                                var name = items[i] + '.';
-                                while (j < items.length && items[j].substring(0, len) == name) children.push(items[j++]);
+                                var len  = items[k].length + 1;
+                                var name = items[k] + '.';
+                                while (j < items.length && items[j].substring(0, len) === name) {
+                                    children.push(items[j++]);
+                                }
 
-                                objects[items[i]].children = children;
+                                objects[items[k]].children = children;
                             }
                         }
 
@@ -725,17 +879,17 @@ var servConn = {
         }.bind(this));
     },
     getObject:        function (id, useCache, callback) {
-        if (typeof id == 'function') {
+        if (typeof id === 'function') {
             callback = id;
             id = null;
             useCache = false;
         }
-        if (typeof id == 'boolean') {
+        if (typeof id === 'boolean') {
             callback = useCache;
             useCache = id;
             id = null;
         }
-        if (typeof useCache == 'function') {
+        if (typeof useCache === 'function') {
             callback = useCache;
             useCache = false;
         }
@@ -765,17 +919,17 @@ var servConn = {
         }.bind(this));
     },
     getEnums:         function (enumName, useCache, callback) {
-        if (typeof enumName == 'function') {
+        if (typeof enumName === 'function') {
             callback = enumName;
             enumName = null;
             useCache = false;
         }
-        if (typeof enumName == 'boolean') {
+        if (typeof enumName === 'boolean') {
             callback = useCache;
             useCache = enumName;
             enumName = null;
         }
-        if (typeof useCache == 'function') {
+        if (typeof useCache === 'function') {
             callback = useCache;
             useCache = false;
         }
@@ -815,7 +969,7 @@ var servConn = {
         }
     },
     // return time when the objects were synchronized
-    getSyncTime:      function () {
+    getSyncTime:     function () {
         if (this._useStorage && typeof storage !== 'undefined') {
             var timeSync = storage.get('timeSync');
             if (timeSync) return new Date(timeSync);
@@ -824,7 +978,7 @@ var servConn = {
     },
     addObject:        function (objId, obj, callback) {
         if (!this._isConnected) {
-            console.log("No connection!");
+            console.log('No connection!');
             return;
         }
         //socket.io
@@ -840,7 +994,7 @@ var servConn = {
     },
     httpGet:          function (url, callback) {
         if (!this._isConnected) {
-            console.log("No connection!");
+            console.log('No connection!');
             return;
         }
         //socket.io
@@ -853,9 +1007,9 @@ var servConn = {
         });
     },
     logError:         function (errorText) {
-        console.log('Error: ' + errorText);
+        console.log("Error: " + errorText);
         if (!this._isConnected) {
-            //console.log("No connection!");
+            //console.log('No connection!');
             return;
         }
         //socket.io
@@ -863,7 +1017,7 @@ var servConn = {
             console.log('socket.io not initialized');
             return;
         }
-        this._socket.emit('log', 'error', this.namespace + ' ' + errorText);
+        this._socket.emit('log', 'error', 'Addon DashUI  ' + errorText);
     },
     _queueCmdIfRequired: function (func, args) {
         var that = this;
@@ -912,7 +1066,7 @@ var servConn = {
         }
 
         if (!this._isConnected) {
-            console.log("No connection!");
+            console.log('No connection!');
             return;
         }
 
@@ -934,14 +1088,14 @@ var servConn = {
                     return callback(null, objects['system.config'].common);
                 }
             } else if (this._objects && this._objects['system.config']) {
-                return callback(null, objects['system.config'].common);
+                return callback(null, this._objects['system.config'].common);
             }
         }
-
+        var that = this;
         this._socket.emit('getObject', 'system.config', function (err, obj) {
             if (callback && obj && obj.common) {
 
-                if (this._useStorage && typeof storage !== 'undefined') {
+                if (that._useStorage && typeof storage !== 'undefined') {
                     var objects = storage.get('objects') || {};
                     objects['system.config'] = obj;
                     storage.set('objects', objects);
@@ -951,18 +1105,18 @@ var servConn = {
             } else {
                 callback('Cannot read language');
             }
-        }.bind(this));
+        });
     },
-    sendCommand:      function (instance, command, data) {
+    sendCommand:      function (instance, command, data, ack) {
         this.setState(this.namespace + '.control.instance', {val: instance || 'notdefined', ack: true});
         this.setState(this.namespace + '.control.data',     {val: data,    ack: true});
-        this.setState(this.namespace + '.control.command',  {val: command, ack: true});
+        this.setState(this.namespace + '.control.command',  {val: command, ack: ack === undefined ? true : ack});
     },
     _detectViews:     function (projectDir, callback) {
         this.readDir('/' + this.namespace + '/' + projectDir, function (err, dirs) {
             // find vis-views.json
             for (var f = 0; f < dirs.length; f++) {
-                if (dirs[f].file == 'vis-views.json' && (!dirs[f].acl || dirs[f].acl.read)) {
+                if (dirs[f].file === 'vis-views.json' && (!dirs[f].acl || dirs[f].acl.read)) {
                     return callback(err, {name: projectDir, readOnly: (dirs[f].acl && !dirs[f].acl.write), mode: dirs[f].acl ? dirs[f].acl.permissions : 0});
                 }
             }
@@ -970,13 +1124,14 @@ var servConn = {
         });
     },
     readProjects:     function (callback) {
+        var that = this;
         this.readDir('/' + this.namespace, function (err, dirs) {
             var result = [];
             var count = 0;
             for (var d = 0; d < dirs.length; d++) {
                 if (dirs[d].isDir) {
                     count++;
-                    this._detectViews(dirs[d].file, function (subErr, project) {
+                    that._detectViews(dirs[d].file, function (subErr, project) {
                         if (project) result.push(project);
 
                         err = err || subErr;
@@ -984,7 +1139,7 @@ var servConn = {
                     });
                 }
             }
-        }.bind(this));
+        });
     },
     chmodProject:     function (projectDir, mode, callback) {
         //socket.io
@@ -1000,6 +1155,108 @@ var servConn = {
         if (typeof storage !== 'undefined') {
             storage.empty();
         }
+    },
+    getHistory:       function (id, options, callback) {
+        if (!this._checkConnection('getHistory', arguments)) return;
 
+        if (!options) options = {};
+        if (!options.timeout) options.timeout = 2000;
+
+        var timeout = setTimeout(function () {
+            timeout = null;
+            callback('timeout');
+        }, options.timeout);
+        this._socket.emit('getHistory', id, options, function (err, result) {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            callback(err, result);
+        });
+    },
+    getLiveHost:        function (cb) {
+        var that = this;
+        this._socket.emit('getObjectView', 'system', 'host', {startkey: 'system.host.', endkey: 'system.host.\u9999'}, function (err, res) {
+            var _hosts = [];
+            for (var h = 0; h < res.rows.length; h++) {
+                _hosts.push(res.rows[h].id + '.alive');
+            }
+            if (!_hosts.length) {
+                cb('');
+                return;
+            }
+            that.getStates(_hosts, function (err, states) {
+                for (var h in states) {
+                    if (states[h].val) {
+                        cb(h.substring(0, h.length - '.alive'.length));
+                        return;
+                    }
+                }
+                cb('');
+            });
+        });
+    },
+    readDirAsZip:       function (project, useConvert, callback) {
+        if (!callback) {
+            callback = useConvert;
+            useConvert = undefined;
+        }
+        if (!this._isConnected) {
+            console.log('No connection!');
+            return;
+        }
+        //socket.io
+        if (this._socket === null) {
+            console.log('socket.io not initialized');
+            return;
+        }
+        if (project.match(/\/$/)) project = project.substring(0, project.length - 1);
+        var that = this;
+        this.getLiveHost(function (host) {
+            if (!host) {
+                window.alert('No active host found');
+                return;
+            }
+            // to do find active host
+            that._socket.emit('sendToHost', host, 'readDirAsZip', {
+                id: that.namespace,
+                name: project || 'main',
+                options: {
+                    settings: useConvert
+                }
+            }, function (data) {
+                if (data.error) console.error(data.error);
+                if (callback) callback(data.error, data.data);
+            });
+
+        });
+    },
+    writeDirAsZip:       function (project, base64, callback) {
+        if (!this._isConnected) {
+            console.log('No connection!');
+            return;
+        }
+        //socket.io
+        if (this._socket === null) {
+            console.log('socket.io not initialized');
+            return;
+        }
+        if (project.match(/\/$/)) project = project.substring(0, project.length - 1);
+        var that = this;
+        this.getLiveHost(function (host) {
+            if (!host) {
+                window.alert('No active host found');
+                return;
+            }
+            that._socket.emit('sendToHost', host, 'writeDirAsZip', {
+                id:   that.namespace,
+                name: project || 'main',
+                data: base64
+            }, function (data) {
+                if (data.error) console.error(data.error);
+                if (callback) callback(data.error);
+            });
+
+        });
     }
 };
