@@ -1,10 +1,15 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.7.0",
+        "version":                  "1.7.1",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+		    "1.7.1": {
+                "en": 				"Fix authentication for app",
+                "de": 				"Die Authentifizierung mit APP wurde korrigiert",
+                "ru": 				"Аутентификация с app работает снова"
+            },
 		    "1.7.0": {
                 "en": 				"сompatible only with new admin",
                 "de": 				"Nur mit neuem Admin kompatibel",
