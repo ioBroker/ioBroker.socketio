@@ -8,7 +8,7 @@ var LE       = require(utils.controllerDir + '/lib/letsencrypt.js');
 
 var webServer = null;
 
-var adapter = utils.adapter({
+var adapter = new utils.Adapter({
     name: 'socketio',
     install: function (callback) {
         if (typeof callback === 'function') callback();
