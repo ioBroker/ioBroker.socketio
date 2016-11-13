@@ -289,6 +289,9 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
+### 1.7.3 (2016-11-13)
+* (bluefox) support of socket extensions
+
 ### 1.7.2 (2016-11-06)
 * (bluefox) Fix unsubscribe of states
 

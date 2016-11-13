@@ -1,16 +1,21 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.7.2",
+        "version":                  "1.7.3",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+            "1.7.3": {
+                "en": 				"support of socket extensions",
+                "de": 				"Unterstützung von Socketerweiterungen",
+                "ru": 				"Поддержка плагинов для socket"
+            },
             "1.7.2": {
                 "en": 				"Fix unsubscribe of states",
                 "de": 				"Korrigiere unsubscribe von Zuständen",
                 "ru": 				"Исправлено unsubscribe для состояний"
             },
-		    "1.7.1": {
+            "1.7.1": {
                 "en": 				"Fix authentication for app",
                 "de": 				"Die Authentifizierung mit APP wurde korrigiert",
                 "ru": 				"Аутентификация с app работает снова"
