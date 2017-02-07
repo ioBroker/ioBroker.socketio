@@ -39,7 +39,7 @@
         "Let's Encrypt settings": {
             "en": "Let's Encrypt settings",
             "de": "Einstellungen Let's Encrypt",
-            "ru": "Настройкт Let's Encrypt"
+            "ru": "Настройки Let's Encrypt"
         },
         "Use Lets Encrypt certificates:": {
             "en": "Use Let's Encrypt certificates:",
@@ -106,13 +106,13 @@
 
         $('.value').each(function () {
             var key = $(this).attr('id');
-            // example: select elements with id=key and class=value and insert value
-            if ($('#' + key + '.value').attr('type') == 'checkbox') {
-                $('#' + key + '.value').prop('checked', settings[key]).change(function() {
+            var $value = $('#' + key + '.value');
+            if ($value.attr('type') === 'checkbox') {
+                $value.prop('checked', settings[key]).change(function() {
                     onChange();
                 });
             } else {
-                $('#' + key + '.value').val(settings[key]).change(function() {
+                $value.val(settings[key]).change(function() {
                     onChange();
                 }).keyup(function() {
                     onChange();
@@ -143,7 +143,7 @@
         var obj = {};
         $('.value').each(function () {
             var $this = $(this);
-            if ($this.attr('type') == 'checkbox') {
+            if ($this.attr('type') === 'checkbox') {
                 obj[$this.attr('id')] = $this.prop('checked');
             } else {
                 obj[$this.attr('id')] = $this.val();
@@ -188,8 +188,5 @@
         <tr class="le-settings le-sub-settings"><td><label for="leUpdate" class="translate">Use this instance for automatic update:</label></td><td><input  class="value" id="leUpdate" type="checkbox" /></td></tr>
         <tr class="le-settings le-sub-settings le-sub-settings-update"><td><label for="lePort" class="translate">Port to check the domain:</label></td><td><input class="value number" id="lePort" type="number" size="5" maxlength="5" /></td></tr>
     </table>
-
-    <p class="translate">help_tip</p>
-
 </div>
 </html>
