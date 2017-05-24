@@ -289,6 +289,9 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
+### 1.7.5 (2017-05-24)
+* (bluefox) fix error if subscribe is empty
+
 ### 1.7.4 (2017-01-04)
 * (bluefox) fix error with authentication
 
