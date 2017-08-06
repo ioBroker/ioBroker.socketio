@@ -1,10 +1,15 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.7.5",
+        "version":                  "1.8.0",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+            "1.8.0": {
+                "en": 				"Support the access to admin via iobroker.pro",
+                "de": 				"Unterstützung von Zugriff auf admin über iobroker.pro",
+                "ru": 				"Поддержка доступа к admin через iobroker.pro"
+            },
             "1.7.5": {
                 "en": 				"fix error if subscribe is empty",
                 "de": 				"Fehler gefixt, falls subscribe ist leer",
