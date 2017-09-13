@@ -289,6 +289,9 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
+### 1.8.1 (2017-09-13)
+* (bluefox) Fix user access rights for sendToHost
+
 ### 1.8.0 (2017-08-06)
 * (bluefox) Support the access to admin via iobroker.pro
 

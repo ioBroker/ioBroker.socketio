@@ -1,10 +1,15 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.8.0",
+        "version":                  "1.8.1",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+            "1.8.1": {
+                "en": 				"Fix user access rights for sendToHost",
+                "de": 				"Korrigiere die Anwenderrechte für sendToHost",
+                "ru": 				"Исправлены права доступа для sendToHost"
+            },
             "1.8.0": {
                 "en": 				"Support the access to admin via iobroker.pro",
                 "de": 				"Unterstützung von Zugriff auf admin über iobroker.pro",
