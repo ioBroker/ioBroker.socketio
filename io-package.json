@@ -1,10 +1,15 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.8.1",
+        "version":                  "1.8.2",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+            "1.8.2": {
+                "en": 				"Fix cmdExec command",
+                "de": 				"Korrigiere cmdExec Komando",
+                "ru": 				"Исправлена команда cmdExec"
+            },
             "1.8.1": {
                 "en": 				"Fix user access rights for sendToHost",
                 "de": 				"Korrigiere die Anwenderrechte für sendToHost",
