@@ -1,10 +1,15 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.8.2",
+        "version":                  "1.8.3",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+            "1.8.3": {
+                "en": 				"Allow authentication via URL",
+                "de": 				"Erlaube die Authentifizierung via URL",
+                "ru": 				"Разрешена авторизация через URL"
+            },
             "1.8.2": {
                 "en": 				"Fix cmdExec command",
                 "de": 				"Korrigiere cmdExec Komando",
