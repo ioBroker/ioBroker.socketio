@@ -1,10 +1,15 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.8.3",
+        "version":                  "1.8.4",
         "title":                    "socket.io Adapter",
         "desc":                     "This adapter allows to communicate different web applications with ioBroker",
 		"news": {
+            "1.8.4": {
+                "en": 				"Check callback validity",
+                "de": 				"Prüfe ob Callback richtig ist",
+                "ru": 				"Проверка callbacks"
+            },
             "1.8.3": {
                 "en": 				"Allow authentication via URL",
                 "de": 				"Erlaube die Authentifizierung via URL",
