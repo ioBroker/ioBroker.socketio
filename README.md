@@ -289,6 +289,9 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
+### 1.8.5 (2017-10-22)
+* (bluefox) Escape [] in subscriptions
+
 ### 1.8.4 (2017-10-16)
 * (bluefox) Check callback validity
 

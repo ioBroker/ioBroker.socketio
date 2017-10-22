@@ -1,10 +1,19 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.8.4",
+        "version":                  "1.8.5",
         "title":                    "socket.io Adapter",
-        "desc":                     "This adapter allows to communicate different web applications with ioBroker",
+        "desc":                     {
+            "en": "This adapter allows to communicate different web applications with ioBroker",
+            "de": "Dieser Adapter ermöglicht die Kommunikation verschiedener Web-Anwendungen mit ioBroker",
+            "ru": "Этот адаптер позволяет соединяться различным веб-приложениям с ioBroker"
+        },
 		"news": {
+            "1.8.5": {
+                "en": 				"Escape [] in subscriptions",
+                "de": 				"Escape [] in Subscriptions",
+                "ru": 				"Escape [] in subscriptions"
+            },
             "1.8.4": {
                 "en": 				"Check callback validity",
                 "de": 				"Prüfe ob Callback richtig ist",
