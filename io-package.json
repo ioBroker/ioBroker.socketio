@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "1.8.5",
+        "version":                  "1.8.6",
         "title":                    "socket.io Adapter",
         "desc":                     {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -9,6 +9,11 @@
             "ru": "Этот адаптер позволяет соединяться различным веб-приложениям с ioBroker"
         },
 		"news": {
+            "1.8.6": {
+                "en": 				"Tune cloud work",
+                "de": 				"Verbessern die Cloud-Funktionalität",
+                "ru": 				"Улучшения для облака"
+            },
             "1.8.5": {
                 "en": 				"Escape [] in subscriptions",
                 "de": 				"Escape [] in Subscriptions",
