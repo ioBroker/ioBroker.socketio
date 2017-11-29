@@ -289,7 +289,7 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
-### 1.8.6 (2017-10-29)
+### 1.8.7 (2017-11-29)
 * (bluefox) Tune cloud work
 
 ### 1.8.5 (2017-10-22)
