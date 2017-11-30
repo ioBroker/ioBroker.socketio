@@ -284,6 +284,13 @@ deletes file or directory. Directory must be empty to be deleted.
 
 - **callback** - ```function (error, data, step, sessionId) {}```
 
+### requireLog
+- function (isRequire, callback)
+
+activates/deactivates log receiving for this socket.
+
+- **callback** - ```function (error) {}```
+
 ## Tuning Web-Sockets
 On some web-sockets clients there is performance problem with communication. Sometimes this problem is due to fallback of socket.io communication on long polling mechanism.
 You can set option *Force Web-Sockets* to force using only web-sockets transport.

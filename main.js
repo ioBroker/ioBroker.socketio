@@ -2,39 +2,42 @@
 /*jslint node: true */
 'use strict';
 
-var utils    = require(__dirname + '/lib/utils'); // Get common adapter utils
-var IOSocket = require(__dirname + '/lib/socket.js');
-var LE       = require(utils.controllerDir + '/lib/letsencrypt.js');
+var utils     = require(__dirname + '/lib/utils'); // Get common adapter utils
+var IOSocket  = require(__dirname + '/lib/socket.js');
+var LE        = require(utils.controllerDir + '/lib/letsencrypt.js');
 
 var webServer = null;
 
-var adapter = new utils.Adapter({
-    name: 'socketio',
-    install: function (callback) {
-        if (typeof callback === 'function') callback();
-    },
-    objectChange: function (id, obj) {
-        if (webServer && webServer.io) {
-            webServer.io.publishAll('objectChange', id, obj);
-        }
-    },
-    stateChange: function (id, state) {
-        if (webServer && webServer.io) {
-            webServer.io.publishAll('stateChange', id, state);
-        }
-    },
-    unload: function (callback) {
-        try {
-            adapter.log.info('terminating http' + (webServer.settings.secure ? 's' : '') + ' server on port ' + webServer.settings.port);
-            webServer.io.close();
+var adapter   = new utils.Adapter('socketio');
 
-            callback();
-        } catch (e) {
-            callback();
-        }
-    },
-    ready: function () {
-        main();
+adapter.on('objectChange', function (id, obj) {
+    if (webServer && webServer.io) {
+        webServer.io.publishAll('objectChange', id, obj);
+    }
+});
+
+adapter.on('stateChange', function (id, state) {
+    if (webServer && webServer.io) {
+        webServer.io.publishAll('stateChange', id, state);
+    }
+});
+
+adapter.on('unload', function (callback) {
+    try {
+        adapter.log.info('terminating http' + (webServer.settings.secure ? 's' : '') + ' server on port ' + webServer.settings.port);
+        webServer.io.close();
+
+        callback();
+    } catch (e) {
+        callback();
+    }
+});
+
+adapter.on('ready', main);
+
+adpater.on('log', function (obj) {
+if (webServer && webServer.io) {
+        webServer.io.sendLog(obj);
     }
 });
 
