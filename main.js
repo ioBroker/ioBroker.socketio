@@ -35,8 +35,8 @@ adapter.on('unload', function (callback) {
 
 adapter.on('ready', main);
 
-adpater.on('log', function (obj) {
-if (webServer && webServer.io) {
+adapter.on('log', function (obj) {
+    if (webServer && webServer.io) {
         webServer.io.sendLog(obj);
     }
 });
@@ -69,9 +69,9 @@ function initWebServer(settings) {
         settings:  settings
     };
 
-    if (settings.port) {
-        var taskCnt = 0;
+    settings.port = parseInt(settings.port, 10) || 0;
 
+    if (settings.port) {
         if (settings.secure) {
             if (!settings.certificates) return null;
 
@@ -81,7 +81,7 @@ function initWebServer(settings) {
         }
 
         adapter.getPort(settings.port, function (port) {
-            if (port != settings.port && !adapter.config.findNextPort) {
+            if (parseInt(port, 10) !== settings.port && !adapter.config.findNextPort) {
                 adapter.log.error('port ' + settings.port + ' already in use');
                 process.exit(1);
             }

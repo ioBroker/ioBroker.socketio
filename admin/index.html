@@ -1,5 +1,5 @@
 <html>
-
+<head>
 <link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
 <link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
 
@@ -9,6 +9,7 @@
 
 <script type="text/javascript" src="../../js/translate.js"></script>
 <script type="text/javascript" src="../../js/adapter-settings.js"></script>
+<script type="text/javascript" src="words.js"></script>
 
 <style>
     .number {
@@ -16,50 +17,13 @@
     }
 </style>
 <script type="text/javascript">
-    systemDictionary = {
-        "socket.io adapter settings": {
-            "de": "socket.io adapter settings",
-            "ru": "socket.io adapter settings"
-        },
-        "Run as:":          {"de": "Laufen unter Anwender:", "ru": "Запустить от пользователя:"},
-        "IP:":              {"de": "IP:",                     "ru": "IP:"},
-        "Port:":            {"de": "Port:",                   "ru": "Порт:"},
-        "Secure(HTTPS):":   {"de": "Verschlüsselung(HTTPS):", "ru": "Шифрование(HTTPS):"},
-        "Authentication:":  {"de": "Authentifikation:",       "ru": "Аутентификация:"},
-        "Listen on all IPs": {"en": "Listen on all IPs",      "de": "An allen IP Adressen hören", "ru": "Открыть сокет на всех IP адресах"},
-        "help_tip":         {
-            "en": "On save the adapter restarts with new configuration immediately",
-            "de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
-            "ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
-        },
-        "Public certificate:":    {"en": "Public certificate:",     "de": "Publikzertifikat:",       "ru": "'Public' сертификат:"},
-        "Private certificate:":   {"en": "Private certificate:",    "de": "Privatzertifikat:",       "ru": "'Private' сертификат:"},
-        "Chained certificate:":   {"en": "Chained certificate:",    "de": "Kettenzertifikat:",       "ru": "'Chained' сертификат:"},
-        "Force Web-Sockets:":     {"en": "Force Web-Sockets:",      "de": "Nur Web-Sockets:",        "ru": "Только Web-Sockets:"},
-        "Let's Encrypt settings": {
-            "en": "Let's Encrypt settings",
-            "de": "Einstellungen Let's Encrypt",
-            "ru": "Настройки Let's Encrypt"
-        },
-        "Use Lets Encrypt certificates:": {
-            "en": "Use Let's Encrypt certificates:",
-            "de": "Benutzen Let's Encrypt Zertifikate:",
-            "ru": "Использовать сертификаты Let's Encrypt:"
-        },
-        "Use this instance for automatic update:": {
-            "en": "Use this instance for automatic update:",
-            "de": "Benutze diese Instanz für automatische Updates:",
-            "ru": "Обновлять сертификаты в этом драйвере:"
-        },
-        "Port to check the domain:": {
-            "en": "Port to check the domain:",
-            "de": "Port um die Domain zu prüfen:",
-            "ru": "Порт для проверки доменного имени:"
-        }
-    };
+    
 
     function showHideSettings() {
-        if ($('#secure').prop('checked')) {
+        var $secure = $('#secure');
+        var $auth = $('#auth');
+        
+        if ($secure.prop('checked')) {
             $('#_certPublic').show();
             $('#_certPrivate').show();
             $('#_certChained').show();
@@ -80,17 +44,18 @@
             $('#_certPublic').hide();
             $('#_certPrivate').hide();
             $('#_certChained').hide();
-            $('#auth').prop('checked', false);
+            $auth.prop('checked', false);
             $('.le-settings').hide();
         }
-        if ($('#auth').prop('checked')) {
-            $('#secure').prop('checked', true);
+        if ($auth.prop('checked')) {
+            $secure.prop('checked', true);
             $('#defaultUser').val('admin');
             $('.defaultUser').hide();
         } else {
             $('.defaultUser').show();
         }
     }
+    
     // the function loadSettings has to exist ...
     function load(settings, onChange) {
         if (!settings) return;
@@ -157,31 +122,32 @@
         callback(obj);
     }
 </script>
-
+</head>
+<body>
 <!-- you have to put your config page in a div with id adapter-container -->
 <div id="adapter-container">
 
     <table><tr><td><img src="socketio.png"></td><td><h3 class="translate">socket.io adapter settings</h3></td></tr></table>
 
     <table>
-        <tr><td class="translate">IP:</td><td>            <select class="value" id="bind"></select></td></tr>
-        <tr><td class="translate">Port:</td><td>          <input  class="value" id="port" size="5"  maxlength="5"/></td></tr>
-        <tr><td class="translate">Secure(HTTPS):</td><td> <input  class="value" id="secure" type="checkbox" /></td></tr>
-        <tr><td class="translate">Authentication:</td><td><input  class="value" id="auth"   type="checkbox" /></td></tr>
+        <tr><td><label class="translate" for="bind">IP:</label></td><td><select class="value" id="bind"></select></td></tr>
+        <tr><td><label class="translate" for="port">Port:</label></td><td><input  class="value" id="port" size="5"  maxlength="5"/></td></tr>
+        <tr><td><label class="translate" for="secure">Secure(HTTPS):</label></td><td><input  class="value" id="secure" type="checkbox" /></td></tr>
+        <tr><td><label class="translate" for="auth">Authentication:</label></td><td><input  class="value" id="auth"   type="checkbox" /></td></tr>
         <tr id="_certPublic">
-            <td class="translate">Public certificate:</td>
+            <td class="translate"><label class="translate" for="certPublic">Public certificate:</label></td>
             <td><select id="certPublic" class="value"></select></td>
         </tr>
         <tr id="_certPrivate">
-            <td class="translate">Private certificate:</td>
+            <td class="translate"><label class="translate" for="certPrivate">Private certificate:</label></td>
             <td><select id="certPrivate" class="value"></select></td>
         </tr>
         <tr id="_certChained">
-            <td class="translate">Chained certificate:</td>
+            <td class="translate"><label class="translate" for="certChained">Chained certificate:</label></td>
             <td><select id="certChained" class="value"></select></td>
         </tr>
-        <tr class="defaultUser"><td class="translate">Run as:</td><td><select class="value" id="defaultUser" /></td></tr>
-        <tr class="socketio"><td class="translate">Force Web-Sockets:</td><td><input type="checkbox" class="value" id="forceWebSockets"/></td></tr>
+        <tr class="defaultUser"><td class="translate"><label class="translate" for="defaultUser">Run as:</label></td><td><select class="value" id="defaultUser"></select></td></tr>
+        <tr class="socketio"><td class="translate"><label class="translate" for="forceWebSockets">Force Web-Sockets:</label></td><td><input type="checkbox" class="value" id="forceWebSockets"/></td></tr>
         <tr><td colspan="2">&nbsp;</td></tr>
         <tr class="le-settings"><td colspan="2"><h3 class="translate">Let's Encrypt settings</h3></tr>
         <tr class="le-settings"><td><label for="leEnabled" class="translate">Use Lets Encrypt certificates:</label></td><td><input  class="value" id="leEnabled"   type="checkbox" /></td></tr>
@@ -189,4 +155,5 @@
         <tr class="le-settings le-sub-settings le-sub-settings-update"><td><label for="lePort" class="translate">Port to check the domain:</label></td><td><input class="value number" id="lePort" type="number" size="5" maxlength="5" /></td></tr>
     </table>
 </div>
+</body>
 </html>
