@@ -45,11 +45,11 @@
         }
         if ($auth.prop('checked')) {
             $secure.prop('checked', true);
-            $('.col-defaultUser').val('admin');
-            $('.defaultUser').hide();
+            $('#defaultUser').val('admin');
+            $('.col-defaultUser').hide();
             $('.col-ttl').show();
         } else {
-            $('.defaultUser').show();
+            $('.col-defaultUser').show();
             $('.col-ttl').hide();
         }
     }
