@@ -1,6 +1,7 @@
 ![Logo](admin/socketio.png)
 # ioBroker socket.io adapter
 =================
+
 [![NPM version](http://img.shields.io/npm/v/iobroker.socketio.svg)](https://www.npmjs.com/package/iobroker.socketio)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.socketio.svg)](https://www.npmjs.com/package/iobroker.socketio)
 
