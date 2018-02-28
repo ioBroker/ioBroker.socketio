@@ -1,5 +1,5 @@
 ![Logo](admin/socketio.png)
-# ioBroker socket.io adapter
+# ioBroker socket.io
 =================
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.socketio.svg)](https://www.npmjs.com/package/iobroker.socketio)
@@ -297,6 +297,9 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
+### 2.0.0 (2018-02-28)
+* (bluefox) Dropped support of old browsers. Please do not update if you have iPad 1 and so on.
+
 ### 1.9.0 (2018-01-14)
 * (bluefox) Ready for admin3
 
