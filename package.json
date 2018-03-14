@@ -22,7 +22,7 @@
     "url": "https://github.com/ioBroker/ioBroker.socketio"
   },
   "dependencies": {
-    "socket.io": "^2.0.4",
+    "socket.io": "^1.5.1",
     "request": "^2.83.0",
     "cookie-parser": "^1.4.3"
   },
