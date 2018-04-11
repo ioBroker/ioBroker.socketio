@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "2.0.0",
+        "version":                  "2.0.1",
         "title":                    "socket.io",
         "desc":                     {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -15,7 +15,7 @@
             "pl": "Ten adapter umożliwia komunikację z różnymi aplikacjami WWW za pomocą ioBroker"
         },
 		"news": {
-            "2.0.0": {
+            "2.0.1": {
                 "en": "The support of the old browsers was dropped, e.g. iPad 1",
                 "de": "Die Unterstützung der alten Browser abgebrochen, z.B. iPad 1",
                 "ru": "Поддержка старых браузеров была прекращена, например. iPad 1",
