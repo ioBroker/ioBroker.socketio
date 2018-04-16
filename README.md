@@ -297,7 +297,7 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
-### 2.0.0 (2018-02-28)
+### 2.0.1 (2018-02-28)
 * (bluefox) Dropped support of old browsers. Please do not update if you have iPad 1 and so on.
 
 ### 1.9.0 (2018-01-14)
