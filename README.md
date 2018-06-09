@@ -292,11 +292,24 @@ activates/deactivates log receiving for this socket.
 
 - **callback** - ```function (error) {}```
 
+### authEnabled
+- function ()
+
+reads if the authentication is enabled and which user is logged in
+
+- **callback** - ```function (authEnabled, currentUser) {}```
+
+If authentication is enabled, so current logged in user will be returned, if auth is disabled, so the default user "running as" will be returned.
+
 ## Tuning Web-Sockets
 On some web-sockets clients there is performance problem with communication. Sometimes this problem is due to fallback of socket.io communication on long polling mechanism.
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
+### 2.1.1 (2018-06-09)
+* (bluefox) Used socket.io Version 1.7.2
+* (bluefox) Fix authentication problem
+
 ### 2.1.0 (2018-05-04)
 * (bluefox) Used socket.io Version 1.7.4
 
@@ -457,6 +470,8 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 ### 0.0.1 (2014-10-10)
 * (bluefox) authentication works
 
-## Install
+## License
 
-```node iobroker.js add socketio```
+The MIT License (MIT)
+
+Copyright (c) 2014-2018 bluefox <dogafox@gmail.com>
