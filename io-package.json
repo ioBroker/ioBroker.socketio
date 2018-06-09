@@ -16,15 +16,15 @@
         },
 		"news": {
             "2.1.1": {
-                "en": "Used socket.io Version 1.7.5\nAuthentication porblem fixed",
-                "de": "Gebrauchte socket.io Version 1.7.5\nAuthentifizierungsfehler behoben",
-                "ru": "Используемая версия socket.io 1.7.5\nФиксированная аутентификация",
-                "pt": "Usado socket.io versão 1.7.5\nAutenticação porble fixo",
-                "nl": "Gebruikte socket.io versie 1.7.5\nAuthentificatie porblem vastgesteld",
-                "fr": "Version socket.io utilisée 1.7.5\nPorblem d'authentification fixé",
-                "it": "Usato socket.io Versione 1.7.5\nIl problema è stato risolto con l'autenticazione",
-                "es": "Utiliza socket.io versión 1.7.5\nAutenticación porblem fija",
-                "pl": "Użyty socket.io Wersja 1.7.5\nNaprawiono porblem uwierzytelniania"
+                "en": "Used socket.io Version 1.7.5\nAuthentication problem was fixed",
+                "de": "Gebrauchte socket.io Version 1.7.5\nAuthentifizierungsproblem wurde behoben",
+                "ru": "Используемая версия socket.io 1.7.5\nИсправлена ​​проблема аутентификации",
+                "pt": "Usado socket.io versão 1.7.5\nProblema de autenticação foi corrigido",
+                "nl": "Gebruikte socket.io versie 1.7.5\nVerificatieprobleem is opgelost",
+                "fr": "Version socket.io utilisée 1.7.5\nLe problème d'authentification a été corrigé",
+                "it": "Usato socket.io Versione 1.7.5\nIl problema di autenticazione è stato risolto",
+                "es": "Utiliza socket.io versión 1.7.5\nSe corrigió el problema de autenticación",
+                "pl": "Użyty socket.io Wersja 1.7.5\nNaprawiono problem z uwierzytelnianiem"
             },
             "2.1.0": {
                 "en": "Used socket.io Version 1.7.4",
