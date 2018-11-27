@@ -170,6 +170,7 @@
         "type":                     "communication",
         "stopBeforeUpdate":         true,
         "materialize":              true,
+        "compact":                  true,
 		"dependencies":             [{"js-controller": ">=0.12.0"}]
     },
     "native": {
