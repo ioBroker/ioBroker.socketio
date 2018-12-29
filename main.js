@@ -73,6 +73,8 @@ function startAdapter(options) {
             webServer.io.sendLog(obj);
         }
     });
+
+    return adapter;
 }
 
 function main() {
