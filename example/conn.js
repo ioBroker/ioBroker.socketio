@@ -617,6 +617,14 @@ var servConn = {
         }
         this._socket.emit('setState', pointId, value, callback);
     },
+    sendTo:         function (instance, command, payload, callback) {
+        //socket.io
+        if (this._socket === null) {
+            //console.log('socket.io not initialized');
+            return;
+        }
+        this._socket.emit('sendTo', instance, command, payload, callback);
+    },
     // callback(err, data)
     getStates:        function (IDs, callback) {
         if (typeof IDs === 'function') {
