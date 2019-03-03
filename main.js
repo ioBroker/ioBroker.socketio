@@ -3,7 +3,7 @@
 'use strict';
 
 const adapterName = require('./package.json').name.split('.').pop();
-const utils       = require('./lib/utils'); // Get common adapter utils
+const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 const IOSocket    = require('./lib/socket.js');
 const LE          = require(utils.controllerDir + '/lib/letsencrypt.js');
 
