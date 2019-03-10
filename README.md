@@ -2,7 +2,7 @@
 # ioBroker socket.io
 =================
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.socketio.svg)](https://www.npmjs.com/package/iobroker.socketio)
+![Number of Installations](http://iobroker.live/badges/socketio-installed.svg) ![Number of Installations](http://iobroker.live/badges/socketio-stable.svg) [![NPM version](http://img.shields.io/npm/v/iobroker.socketio.svg)](https://www.npmjs.com/package/iobroker.socketio)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.socketio.svg)](https://www.npmjs.com/package/iobroker.socketio)
 
 [![NPM](https://nodei.co/npm/iobroker.socketio.png?downloads=true)](https://nodei.co/npm/iobroker.socketio/)
