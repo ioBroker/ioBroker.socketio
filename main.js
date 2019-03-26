@@ -3,7 +3,7 @@
 'use strict';
 
 const adapterName = require('./package.json').name.split('.').pop();
-const utils       = require('./lib/utils'); // Get common adapter utils
+const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 const IOSocket    = require('./lib/socket.js');
 const LE          = require(utils.controllerDir + '/lib/letsencrypt.js');
 
@@ -151,7 +151,7 @@ function initWebServer(settings) {
 }
 
 // If started as allInOne mode => return function to create instance
-if (typeof module !== undefined && module.parent) {
+if (module.parent) {
     module.exports = startAdapter;
 } else {
     // or start the instance directly
