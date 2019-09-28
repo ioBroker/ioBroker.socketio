@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "2.1.1",
+        "version":                  "2.1.2",
         "title":                    "socket.io",
         "desc":                     {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -15,6 +15,18 @@
             "pl": "Ten adapter umożliwia komunikację z różnymi aplikacjami WWW za pomocą ioBroker"
         },
 		"news": {
+            "2.1.2": {
+                "en": "optimize shutdown for compact mode",
+                "de": "Optimierung der Abschaltung für den Kompaktmodus",
+                "ru": "оптимизировать выключение для компактного режима",
+                "pt": "otimizar o desligamento no modo compacto",
+                "nl": "optimalisatie afsluiten voor compacte modus",
+                "fr": "optimiser l'arrêt pour le mode compact",
+                "it": "ottimizzare lo spegnimento per la modalità compatta",
+                "es": "optimizar el apagado para el modo compacto",
+                "pl": "zoptymalizuj zamknięcie dla trybu kompaktowego",
+                "zh-cn": "优化关机模式"
+            },
             "2.1.1": {
                 "en": "Used socket.io Version 1.7.5\nAuthentication problem was fixed",
                 "de": "Gebrauchte socket.io Version 1.7.5\nAuthentifizierungsproblem wurde behoben",
@@ -171,7 +183,8 @@
         "stopBeforeUpdate":         true,
         "materialize":              true,
         "compact":                  true,
-		"dependencies":             [{"js-controller": ">=0.12.0"}]
+        "stopTimeout":              5000,
+        "dependencies":             [{"js-controller": ">=0.12.0"}]
     },
     "native": {
         "port":                     8084,

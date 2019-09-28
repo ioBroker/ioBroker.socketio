@@ -35,6 +35,7 @@ function startAdapter(options) {
         try {
             adapter.log.info('terminating http' + (webServer.settings.secure ? 's' : '') + ' server on port ' + webServer.settings.port);
             webServer.io.close();
+            webServer.server.close();
 
             callback();
         } catch (e) {
