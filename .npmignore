@@ -7,3 +7,4 @@ appveyor.yml
 admin/i18n
 package-lock.json
 iob_npm.done
+.idea
