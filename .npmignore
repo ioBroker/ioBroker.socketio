@@ -8,3 +8,5 @@ admin/i18n
 package-lock.json
 iob_npm.done
 .idea
+.github
+node_modules
