@@ -1,45 +1,45 @@
 {
-  "name": "iobroker.socketio",
-  "version": "2.1.2",
-  "description": "This adapter allows to communicate different web applications with ioBroker.",
-  "author": {
-    "name": "bluefox",
-    "email": "dogafox@gmail.com"
-  },
-  "homepage": "https://github.com/ioBroker/ioBroker.socketio",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/ioBroker/ioBroker.socketio/blob/master/LICENSE"
-    }
-  ],
-  "keywords": [
-    "ioBroker",
-    "web"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ioBroker/ioBroker.socketio"
-  },
-  "dependencies": {
-    "socket.io": "1.7.2",
-    "request": "^2.87.0",
-    "cookie-parser": "^1.4.3",
-    "express-session": "^1.15.6",
-    "@iobroker/adapter-core": "^1.0.3"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "mocha": "^6.0.2",
-    "chai": "^4.1.2"
-  },
-  "bugs": {
-    "url": "https://github.com/ioBroker/ioBroker.socketio/issues"
-  },
-  "main": "main.js",
-  "scripts": {
-    "test": "node node_modules/mocha/bin/mocha --exit"
-  },
-  "license": "MIT",
-  "readmeFilename": "README.md"
+    "name": "iobroker.socketio",
+    "version": "3.0.0",
+    "description": "This adapter allows to communicate different web applications with ioBroker.",
+    "author": {
+        "name": "bluefox",
+        "email": "dogafox@gmail.com"
+    },
+    "homepage": "https://github.com/ioBroker/ioBroker.socketio",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/ioBroker/ioBroker.socketio/blob/master/LICENSE"
+        }
+    ],
+    "keywords": [
+        "ioBroker",
+        "web"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ioBroker/ioBroker.socketio"
+    },
+    "dependencies": {
+        "socket.io": "^2.3.0",
+        "request": "^2.88.0",
+        "cookie-parser": "^1.4.4",
+        "express-session": "^1.17.0",
+        "@iobroker/adapter-core": "^2.2.1"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "mocha": "^7.0.1",
+        "chai": "^4.2.0"
+    },
+    "bugs": {
+        "url": "https://github.com/ioBroker/ioBroker.socketio/issues"
+    },
+    "main": "main.js",
+    "scripts": {
+        "test": "node node_modules/mocha/bin/mocha --exit"
+    },
+    "license": "MIT",
+    "readmeFilename": "README.md"
 }
