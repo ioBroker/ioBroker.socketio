@@ -1,6 +1,6 @@
 {
     "name": "iobroker.socketio",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "description": "This adapter allows to communicate different web applications with ioBroker.",
     "author": {
         "name": "bluefox",
@@ -23,14 +23,14 @@
     },
     "dependencies": {
         "socket.io": "^2.3.0",
-        "request": "^2.88.0",
+        "request": "^2.88.2",
         "cookie-parser": "^1.4.4",
         "express-session": "^1.17.0",
         "@iobroker/adapter-core": "^2.2.1"
     },
     "devDependencies": {
         "gulp": "^4.0.2",
-        "mocha": "^7.0.1",
+        "mocha": "^7.1.0",
         "chai": "^4.2.0"
     },
     "bugs": {

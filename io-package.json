@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "socketio",
-        "version":                  "3.0.1",
+        "version":                  "3.0.2",
         "title":                    "socket.io",
         "desc":                     {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -12,9 +12,22 @@
             "fr": "Cet adaptateur permet de communiquer différentes applications web avec ioBroker",
             "it": "Questo adattatore consente di comunicare diverse applicazioni Web con ioBroker",
             "es": "Este adaptador permite comunicar diferentes aplicaciones web con ioBroker",
-            "pl": "Ten adapter umożliwia komunikację z różnymi aplikacjami WWW za pomocą ioBroker"
+            "pl": "Ten adapter umożliwia komunikację z różnymi aplikacjami WWW za pomocą ioBroker",
+            "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
 		"news": {
+            "3.0.2": {
+                "en": "Unload of adapter was corrected",
+                "de": "Das Entladen des Adapters wurde korrigiert",
+                "ru": "Выгрузка адаптера была исправлена",
+                "pt": "A descarga do adaptador foi corrigida",
+                "nl": "Verwijderen van adapter is gecorrigeerd",
+                "fr": "Le déchargement de l'adaptateur a été corrigé",
+                "it": "Lo scarico dell'adattatore è stato corretto",
+                "es": "Se corrigió la descarga del adaptador",
+                "pl": "Usunięto rozładowanie adaptera",
+                "zh-cn": "适配器卸载已更正"
+            },
             "3.0.1": {
                 "en": "workaround for a socket.io bug added",
                 "de": "Problemumgehung für einen socket.io-Fehler hinzugefügt",
@@ -62,28 +75,6 @@
                 "es": "Utiliza socket.io versión 1.7.5\nSe corrigió el problema de autenticación",
                 "pl": "Użyty socket.io Wersja 1.7.5\nNaprawiono problem z uwierzytelnianiem"
             },
-            "2.1.0": {
-                "en": "Used socket.io Version 1.7.4",
-                "de": "Gebrauchte socket.io Version 1.7.4",
-                "ru": "Используемая версия socket.io 1.7.4",
-                "pt": "Usado socket.io Versão 1.7.4",
-                "nl": "Gebruikte socket.io versie 1.7.4",
-                "fr": "Version socket.io utilisée 1.7.4",
-                "it": "Usato socket.io Versione 1.7.4",
-                "es": "Utiliza socket.io versión 1.7.4",
-                "pl": "Używane socket.io Wersja 1.7.4"
-            },
-            "2.0.1": {
-                "en": "The support of the old browsers was dropped, e.g. iPad 1",
-                "de": "Die Unterstützung der alten Browser abgebrochen, z.B. iPad 1",
-                "ru": "Поддержка старых браузеров была прекращена, например. iPad 1",
-                "pt": "O suporte dos navegadores antigos foi descartado, e. iPad 1",
-                "nl": "De ondersteuning van de oude browsers is weggevallen, b.v. iPad 1",
-                "fr": "Le support des anciens navigateurs a été supprimé, par ex. iPad 1",
-                "it": "Il supporto dei vecchi browser è stato eliminato, ad es. iPad 1",
-                "es": "El soporte de los navegadores antiguos se eliminó, p. iPad 1",
-                "pl": "Obsługa starych przeglądarek została usunięta, np. iPad 1"
-            },
             "1.9.0": {
                 "en": "Ready for Admin3",
                 "de": "Bereit für Admin3",
@@ -94,101 +85,6 @@
                 "it": "Pronto per Admin3",
                 "es": "Listo para Admin3",
                 "pl": "Gotowy na administratora3"
-            },
-            "1.8.7": {
-                "en": 				"Tune cloud work",
-                "de": 				"Verbessern die Cloud-Funktionalität",
-                "ru": 				"Улучшения для облака"
-            },
-            "1.8.5": {
-                "en": 				"Escape [] in subscriptions",
-                "de": 				"Escape [] in Subscriptions",
-                "ru": 				"Escape [] in subscriptions"
-            },
-            "1.8.4": {
-                "en": 				"Check callback validity",
-                "de": 				"Prüfe ob Callback richtig ist",
-                "ru": 				"Проверка callbacks"
-            },
-            "1.8.3": {
-                "en": 				"Allow authentication via URL",
-                "de": 				"Erlaube die Authentifizierung via URL",
-                "ru": 				"Разрешена авторизация через URL"
-            },
-            "1.8.2": {
-                "en": 				"Fix cmdExec command",
-                "de": 				"Korrigiere cmdExec Komando",
-                "ru": 				"Исправлена команда cmdExec"
-            },
-            "1.8.1": {
-                "en": 				"Fix user access rights for sendToHost",
-                "de": 				"Korrigiere die Anwenderrechte für sendToHost",
-                "ru": 				"Исправлены права доступа для sendToHost"
-            },
-            "1.8.0": {
-                "en": 				"Support the access to admin via iobroker.pro",
-                "de": 				"Unterstützung von Zugriff auf admin über iobroker.pro",
-                "ru": 				"Поддержка доступа к admin через iobroker.pro"
-            },
-            "1.7.5": {
-                "en": 				"fix error if subscribe is empty",
-                "de": 				"Fehler gefixt, falls subscribe ist leer",
-                "ru": 				"Исправлена ошибка, если subscribe пуст"
-            },
-            "1.7.4": {
-                "en": 				"fix error with authentication",
-                "de": 				"Korrigiere Authentifizierung",
-                "ru": 				"Исправлена аутентификация"
-            },
-            "1.7.3": {
-                "en": 				"support of socket extensions",
-                "de": 				"Unterstützung von Socketerweiterungen",
-                "ru": 				"Поддержка плагинов для socket"
-            },
-            "1.7.2": {
-                "en": 				"Fix unsubscribe of states",
-                "de": 				"Korrigiere unsubscribe von Zuständen",
-                "ru": 				"Исправлено unsubscribe для состояний"
-            },
-            "1.7.1": {
-                "en": 				"Fix authentication for app",
-                "de": 				"Die Authentifizierung mit APP wurde korrigiert",
-                "ru": 				"Аутентификация с app работает снова"
-            },
-		    "1.7.0": {
-                "en": 				"сompatible only with new admin",
-                "de": 				"Nur mit neuem Admin kompatibel",
-                "ru": 				"Совместимо только с новым админ-драйвером"
-            },
-			"1.6.1": {
-                "en":               "fix error by checking user name",
-                "de":               "Fehler mit Namensprüfung behoben",
-                "ru":               "Исправлена ошибка при проверке имени"
-            },
-            "1.6.0": {
-                "en":               "support of letsencrypt certificates",
-                "de":               "Unterstützung von letsencrypt Zertifikaten",
-                "ru":               "Поддержка letsencrypt сертификатов"
-            },
-            "1.5.4": {
-              "en":                 "fix error in socket.js",
-              "de":                 "fix error in socket.js",
-              "ru":                 "fix error in socket.js"
-            },
-            "1.5.3": {
-                "en":               "support of force only web sockets transport",
-                "de":               "support of force only web sockets transport",
-                "ru":               "support of force only web sockets transport"
-            },
-            "1.5.2": {
-                "en":               "support of chained certificates",
-                "de":               "support of chained certificates",
-                "ru":               "support of chained certificates"
-			},
-            "1.5.1": {
-                "en":               "add sendToHost command",
-                "de":               "add sendToHost command",
-                "ru":               "add sendToHost command"
             }
         },
         "authors": [
