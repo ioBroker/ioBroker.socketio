@@ -1,9 +1,9 @@
 {
     "common": {
-        "name":                     "socketio",
-        "version":                  "3.0.3",
-        "title":                    "socket.io",
-        "desc":                     {
+        "name": "socketio",
+        "version": "3.0.4",
+        "title": "socket.io",
+        "desc": {
             "en": "This adapter allows to communicate different web applications with ioBroker",
             "de": "Dieser Adapter ermöglicht die Kommunikation verschiedener Web-Anwendungen mit ioBroker",
             "ru": "Этот адаптер позволяет соединяться различным веб-приложениям с ioBroker",
@@ -15,7 +15,19 @@
             "pl": "Ten adapter umożliwia komunikację z różnymi aplikacjami WWW za pomocą ioBroker",
             "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
-		"news": {
+        "news": {
+            "3.0.4": {
+                "en": "potential crash case fixed",
+                "de": "Möglicher Crash-Fall behoben",
+                "ru": "случай возможного сбоя исправлен",
+                "pt": "possível caso de falha corrigido",
+                "nl": "mogelijke crash case opgelost",
+                "fr": "cas de crash potentiel corrigé",
+                "it": "potenziale caso di crash risolto",
+                "es": "caso de bloqueo potencial solucionado",
+                "pl": "naprawiono potencjalną awarię",
+                "zh-cn": "修复潜在的崩溃案例"
+            },
             "3.0.3": {
                 "en": " js-controller 3.0 warnings prevented and added Sentry error reporting with js-controller 3.0",
                 "de": " Warnungen zu js-controller 3.0 wurden verhindert und Sentry-Fehlerberichte mit js-controller 3.0 hinzugefügt",
@@ -102,21 +114,25 @@
         "authors": [
             "bluefox <dogafox@gmail.com>"
         ],
-        "license":                  "MIT",
-        "platform":                 "Javascript/Node.js",
-        "mode":                     "daemon",
-        "loglevel":                 "info",
-        "readme":                   "https://github.com/ioBroker/ioBroker.socketio/blob/master/README.md",
-        "icon":                     "socketio.png",
-        "keywords":                 ["web", "socket.io", "communication"],
-		"enabled":                  true,
-        "extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.png",
-        "type":                     "communication",
-        "stopBeforeUpdate":         true,
-        "materialize":              true,
-        "compact":                  true,
-        "stopTimeout":              5000,
-        "dependencies":             [
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "mode": "daemon",
+        "loglevel": "info",
+        "readme": "https://github.com/ioBroker/ioBroker.socketio/blob/master/README.md",
+        "icon": "socketio.png",
+        "keywords": [
+            "web",
+            "socket.io",
+            "communication"
+        ],
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.png",
+        "type": "communication",
+        "stopBeforeUpdate": true,
+        "materialize": true,
+        "compact": true,
+        "stopTimeout": 5000,
+        "dependencies": [
             {
                 "js-controller": ">=2.0.0"
             }
@@ -128,20 +144,19 @@
         }
     },
     "native": {
-        "port":                     8084,
-        "auth":                     false,
-        "secure":                   false,
-        "bind":                     "0.0.0.0",
-		"ttl":                      3600,
-        "certPublic":               "",
-        "certPrivate":              "",
-        "certChained":              "",
-        "defaultUser":              "admin",
-        "forceWebSockets":          false,
-
-        "leEnabled":                false,
-        "leUpdate":                 false,
-        "leCheckPort":              80
+        "port": 8084,
+        "auth": false,
+        "secure": false,
+        "bind": "0.0.0.0",
+        "ttl": 3600,
+        "certPublic": "",
+        "certPrivate": "",
+        "certChained": "",
+        "defaultUser": "admin",
+        "forceWebSockets": false,
+        "leEnabled": false,
+        "leUpdate": false,
+        "leCheckPort": 80
     },
     "objects": [
         {
@@ -150,9 +165,9 @@
             "common": {
                 "name": "Info about connected socket clients",
                 "type": "string",
-                "read":  true,
+                "read": true,
                 "write": false,
-				"role":  "text"
+                "role": "text"
             }
         }
     ]
