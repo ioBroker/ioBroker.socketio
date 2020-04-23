@@ -307,6 +307,8 @@ On some web-sockets clients there is performance problem with communication. Som
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 ## Changelog
+### 3.0.5 (2020-04-23)
+* (bluefox) Caught the web server errors
 
 ### 3.0.4 (2020-04-23)
 * fix crash reason when server closes (Sentry IOBROKER-SOCKETIO-2/3/4/5)

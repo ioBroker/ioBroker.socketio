@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "socketio",
-        "version": "3.0.4",
+        "version": "3.0.5",
         "title": "socket.io",
         "desc": {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -16,6 +16,18 @@
             "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
         "news": {
+            "3.0.5": {
+                "en": "Caught the web server errors",
+                "de": "Fehler beim Webserver",
+                "ru": "Поймали ошибки веб-сервера",
+                "pt": "Detectou os erros do servidor web",
+                "nl": "Betrapte de webserverfouten",
+                "fr": "Pris les erreurs du serveur Web",
+                "it": "Catturati gli errori del web server",
+                "es": "Atrapado los errores del servidor web",
+                "pl": "Wyłapał błędy serwera WWW",
+                "zh-cn": "捕获了Web服务器错误"
+            },
             "3.0.4": {
                 "en": "potential crash case fixed",
                 "de": "Möglicher Crash-Fall behoben",

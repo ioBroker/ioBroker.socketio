@@ -1,9 +1,10 @@
-/* jshint -W097 */// jshint strict:false
-/*jslint node: true */
+/* jshint -W097 */
+/* jshint strict: false */
+/* jslint node: true */
 'use strict';
 
 const adapterName = require('./package.json').name.split('.').pop();
-const utils = require('@iobroker/adapter-core'); // Get common adapter utils
+const utils       = require('@iobroker/adapter-core'); // Get common adapter utils
 const IOSocket    = require('./lib/socket.js');
 const LE          = require(utils.controllerDir + '/lib/letsencrypt.js');
 
@@ -66,14 +67,10 @@ function startAdapter(options) {
         } else {
             main();
         }
-
     });
 
-    adapter.on('log', obj => {
-        if (webServer && webServer.io) {
-            webServer.io.sendLog(obj);
-        }
-    });
+    adapter.on('log', obj =>
+        webServer && webServer.io && webServer.io.sendLog(obj));
 
     return adapter;
 }
@@ -81,7 +78,7 @@ function startAdapter(options) {
 function main() {
     if (adapter.config.secure) {
         // Load certificates
-        adapter.getCertificates(function (err, certificates, leConfig) {
+        adapter.getCertificates((err, certificates, leConfig) => {
             adapter.config.certificates = certificates;
             adapter.config.leConfig     = leConfig;
             webServer = initWebServer(adapter.config);
@@ -109,8 +106,8 @@ function initWebServer(settings) {
     settings.port = parseInt(settings.port, 10) || 0;
 
     if (settings.port) {
-        if (settings.secure) {
-            if (!settings.certificates) return null;
+        if (settings.secure && !settings.certificates) {
+            return null;
         }
         if (settings.auth) {
             const session =          require('express-session');
@@ -126,8 +123,9 @@ function initWebServer(settings) {
         adapter.getPort(settings.port, port => {
             if (parseInt(port, 10) !== settings.port && !adapter.config.findNextPort) {
                 adapter.log.error('port ' + settings.port + ' already in use');
-                process.exit(1);
+                return adapter.terminate ? adapter.terminate(1) : process.exit(1);
             }
+
             settings.port = port;
 
             server.server = LE.createServer((req, res) => {
@@ -135,7 +133,30 @@ function initWebServer(settings) {
                 res.end('Not Implemented');
             }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log);
 
-            server.server.listen(settings.port, (settings.bind && settings.bind !== '0.0.0.0') ? settings.bind : undefined);
+            try {
+                server.server.on('error', e => {
+                    if (e.toString().includes('EACCES') && port <= 1024) {
+                        adapter.log.error(`node.js process has no rights to start server on the port ${port}.\n` +
+                            `Do you know that on linux you need special permissions for ports under 1024?\n` +
+                            `You can call in shell following scrip to allow it for node.js: "iobroker fix"`
+                        );
+                    } else {
+                        adapter.log.error(`Cannot start server on ${settings.bind || '0.0.0.0'}:${port}: ${e}`);
+                    }
+                });
+
+                // Start the web server
+                server.server.listen(settings.port, (!settings.bind || settings.bind === '0.0.0.0') ? undefined : settings.bind || undefined);
+            } catch (e) {
+                if (e.toString().includes('EACCES') && port <= 1024) {
+                    return adapter.log.error(`node.js process has no rights to start server on the port ${port}.\n` +
+                        `Do you know that on linux you need special permissions for ports under 1024?\n` +
+                        `You can call in shell following scrip to allow it for node.js: "iobroker fix"`
+                    );
+                } else {
+                    return adapter.log.error(`Cannot start server on ${settings.bind || '0.0.0.0'}:${port}: ${e}`);
+                }
+            }
 
             settings.crossDomain     = true;
             settings.ttl             = settings.ttl || 3600;
@@ -145,7 +166,7 @@ function initWebServer(settings) {
         });
     } else {
         adapter.log.error('port missing');
-        process.exit(1);
+        adapter.terminate ? adapter.terminate(1) : process.exit(1);
     }
 
     return server;
