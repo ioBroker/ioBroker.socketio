@@ -123,15 +123,21 @@ function initWebServer(settings) {
         adapter.getPort(settings.port, port => {
             if (parseInt(port, 10) !== settings.port && !adapter.config.findNextPort) {
                 adapter.log.error('port ' + settings.port + ' already in use');
-                return adapter.terminate ? adapter.terminate(1) : process.exit(1);
+                return adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
             }
 
             settings.port = port;
 
-            server.server = LE.createServer((req, res) => {
-                res.writeHead(501);
-                res.end('Not Implemented');
-            }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log);
+            try {
+                server.server = LE.createServer((req, res) => {
+                    res.writeHead(501);
+                    res.end('Not Implemented');
+                }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log);
+            } catch (err) {
+                adapter.log.error(`Cannot create webserver: ${err}`);
+                adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                return;
+            }
 
             let serverListening = false;
             server.server.on('error', e => {
@@ -144,7 +150,7 @@ function initWebServer(settings) {
                     adapter.log.error(`Cannot start server on ${settings.bind || '0.0.0.0'}:${port}: ${e}`);
                 }
                 if (!serverListening) {
-                    adapter.terminate ? adapter.terminate(1) : process.exit(1);
+                    adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                 }
             });
 
@@ -161,7 +167,7 @@ function initWebServer(settings) {
         });
     } else {
         adapter.log.error('port missing');
-        adapter.terminate ? adapter.terminate(1) : process.exit(1);
+        adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
     }
 
     return server;
