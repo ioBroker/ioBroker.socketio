@@ -308,6 +308,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 
 ## Changelog
 
+### 3.0.9 (2020-06-11)
+* (Apollon77) optimize error handling on webserver initialization again
+
 ### 3.0.8 (2020-06-10)
 * (Apollon77) Make sure adapter does not crash if getHttp is called with an invalid URL (Sentry IOBROKER-WEB-R)
 

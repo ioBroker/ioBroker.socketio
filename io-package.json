@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "socketio",
-        "version": "3.0.8",
+        "version": "3.0.9",
         "title": "socket.io",
         "desc": {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -16,6 +16,18 @@
             "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
         "news": {
+            "3.0.9": {
+                "en": "optimize error handling on webserver initialization again",
+                "de": "Optimieren Sie die Fehlerbehandlung bei der Webserver-Initialisierung erneut",
+                "ru": "снова оптимизировать обработку ошибок при инициализации веб-сервера",
+                "pt": "otimizar o tratamento de erros na inicialização do servidor da web novamente",
+                "nl": "Optimaliseer de foutafhandeling bij het opnieuw initialiseren van de webserver",
+                "fr": "optimiser à nouveau la gestion des erreurs lors de l'initialisation du serveur Web",
+                "it": "ottimizzare nuovamente la gestione degli errori sull'inizializzazione del server web",
+                "es": "optimizar el manejo de errores en la inicialización del servidor web nuevamente",
+                "pl": "ponownie zoptymalizuj obsługę błędów przy inicjalizacji serwera WWW",
+                "zh-cn": "再次优化Web服务器初始化上的错误处理"
+            },
             "3.0.8": {
                 "en": "Make sure adapter does not crash if getHttp is called with an invalid URL (Sentry IOBROKER-WEB-R)",
                 "de": "Stellen Sie sicher, dass der Adapter nicht abstürzt, wenn getHttp mit einer ungültigen URL aufgerufen wird (Sentry IOBROKER-WEB-R).",
