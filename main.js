@@ -138,6 +138,11 @@ function initWebServer(settings) {
                 adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                 return;
             }
+            if (!server.server) {
+                adapter.log.error(`Cannot create webserver`);
+                adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                return;
+            }
 
             let serverListening = false;
             server.server.on('error', e => {
