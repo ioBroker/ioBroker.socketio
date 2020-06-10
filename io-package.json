@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "socketio",
-        "version": "3.0.7",
+        "version": "3.0.8",
         "title": "socket.io",
         "desc": {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -16,6 +16,18 @@
             "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
         "news": {
+            "3.0.8": {
+                "en": "Make sure adapter does not crash if getHttp is called with an invalid URL (Sentry IOBROKER-WEB-R)",
+                "de": "Stellen Sie sicher, dass der Adapter nicht abstürzt, wenn getHttp mit einer ungültigen URL aufgerufen wird (Sentry IOBROKER-WEB-R).",
+                "ru": "Убедитесь, что адаптер не падает, если getHttp вызывается с неверным URL (Sentry IOBROKER-WEB-R)",
+                "pt": "Verifique se o adaptador não trava se getHttp for chamado com um URL inválido (Sentry IOBROKER-WEB-R)",
+                "nl": "Zorg ervoor dat de adapter niet crasht als getHttp wordt aangeroepen met een ongeldige URL (Sentry IOBROKER-WEB-R)",
+                "fr": "Assurez-vous que l'adaptateur ne se bloque pas si getHttp est appelé avec une URL non valide (Sentry IOBROKER-WEB-R)",
+                "it": "Assicurarsi che l'adattatore non si arresti in modo anomalo se getHttp viene chiamato con un URL non valido (Sentry IOBROKER-WEB-R)",
+                "es": "Asegúrese de que el adaptador no se bloquee si se llama a getHttp con una URL no válida (Sentry IOBROKER-WEB-R)",
+                "pl": "Upewnij się, że adapter nie ulega awarii, jeśli wywoływany jest getHttp z nieprawidłowym adresem URL (Sentry IOBROKER-WEB-R)",
+                "zh-cn": "如果使用无效的URL调用getHttp，请确保适配器不会崩溃（Sentry IOBROKER-WEB-R）"
+            },
             "3.0.7": {
                 "en": "webserver initialization optimized again to prevent errors with invalid certificates",
                 "de": "Die Webserver-Initialisierung wurde erneut optimiert, um Fehler mit ungültigen Zertifikaten zu vermeiden",
