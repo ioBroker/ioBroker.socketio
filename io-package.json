@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "socketio",
-        "version": "3.0.9",
+        "version": "3.0.10",
         "title": "socket.io",
         "desc": {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -16,6 +16,18 @@
             "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
         "news": {
+            "3.0.10": {
+                "en": "Error catched when trying to write an empty base64 value into a file (Sentry )",
+                "de": "Fehler beim Versuch, einen leeren base64-Wert in eine Datei zu schreiben (Sentry)",
+                "ru": "Ошибка при попытке записать пустое значение base64 в файл (Sentry)",
+                "pt": "Erro detectado ao tentar gravar um valor base64 vazio em um arquivo (Sentry)",
+                "nl": "Fout opgevangen bij het schrijven van een lege base64-waarde in een bestand (Sentry)",
+                "fr": "Erreur détectée lors de la tentative d'écriture d'une valeur base64 vide dans un fichier (Sentry)",
+                "it": "Errore rilevato durante il tentativo di scrivere un valore base64 vuoto in un file (Sentry)",
+                "es": "Se detectó un error al intentar escribir un valor base64 vacío en un archivo (Centinela)",
+                "pl": "Wystąpił błąd podczas próby zapisania pustej wartości base64 w pliku (Sentry)",
+                "zh-cn": "尝试将空的base64值写入文件时捕获错误（Sentry）"
+            },
             "3.0.9": {
                 "en": "optimize error handling on webserver initialization again",
                 "de": "Optimieren Sie die Fehlerbehandlung bei der Webserver-Initialisierung erneut",
