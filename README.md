@@ -308,6 +308,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 
 ## Changelog
 
+### __WORK IN PROGRESS__
+* (Apollon77) Error catched when trying to write an empty base64 value into a file (Sentry )
+
 ### 3.0.9 (2020-06-11)
 * (Apollon77) optimize error handling on webserver initialization again
 
