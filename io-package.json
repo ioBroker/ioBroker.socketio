@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "socketio",
-        "version": "3.0.10",
+        "version": "3.0.11",
         "title": "socket.io",
         "desc": {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -16,6 +16,18 @@
             "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
         "news": {
+            "3.0.11": {
+                "en": "make sure web adapter gets restarted on socketio adapter upgrade",
+                "de": "Stellen Sie sicher, dass der Webadapter beim Upgrade des Socketio-Adapters neu gestartet wird",
+                "ru": "убедитесь, что веб-адаптер перезапускается при обновлении socketio",
+                "pt": "verifique se o adaptador da web foi reiniciado na atualização do adaptador socketio",
+                "nl": "zorg ervoor dat de webadapter opnieuw wordt gestart bij een upgrade van de socketio-adapter",
+                "fr": "assurez-vous que l'adaptateur Web est redémarré lors de la mise à niveau de l'adaptateur socketio",
+                "it": "assicurarsi che l'adattatore Web venga riavviato durante l'aggiornamento dell'adattatore socketio",
+                "es": "asegúrese de que el adaptador web se reinicie al actualizar el adaptador socketio",
+                "pl": "upewnij się, że karta sieciowa zostanie ponownie uruchomiona podczas aktualizacji karty Socketio",
+                "zh-cn": "确保在socketio适配器升级时重新启动Web适配器"
+            },
             "3.0.10": {
                 "en": "Error catched when trying to write an empty base64 value into a file (Sentry )",
                 "de": "Fehler beim Versuch, einen leeren base64-Wert in eine Datei zu schreiben (Sentry)",
@@ -208,6 +220,9 @@
             {
                 "js-controller": ">=2.0.0"
             }
+        ],
+        "restartAdapters": [
+            "web"
         ],
         "plugins": {
             "sentry": {

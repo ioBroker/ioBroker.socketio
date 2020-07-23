@@ -308,6 +308,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 
 ## Changelog
 
+### 3.0.11 (2020-07-23)
+* (Apollon77) make sure web adapter gets restarted on socketio adapter upgrade
+
 ### 3.0.10 (2020-07-16)
 * (Apollon77) Error catched when trying to write an empty base64 value into a file (Sentry )
 
