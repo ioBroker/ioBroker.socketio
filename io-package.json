@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "socketio",
-        "version": "3.0.11",
+        "version": "3.0.12",
         "title": "socket.io",
         "desc": {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -16,6 +16,18 @@
             "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
         "news": {
+            "3.0.12": {
+                "en": "socket.io pingTimeout and pinInterval increased to prevent too fast reconnections and bigger visualizations",
+                "de": "socket.io pingTimeout und pinInterval wurden erhöht, um zu schnelle Wiederverbindungen und größere Visualisierungen zu verhindern",
+                "ru": "socket.io pingTimeout и pinInterval увеличены, чтобы предотвратить слишком быстрое переподключение и большую визуализацию",
+                "pt": "socket.io pingTimeout e pinInterval aumentados para evitar reconexões muito rápidas e visualizações maiores",
+                "nl": "socket.io pingTimeout en pinInterval verhoogd om te snelle herverbindingen en grotere visualisaties te voorkomen",
+                "fr": "socket.io pingTimeout et pinInterval augmentés pour éviter des reconnexions trop rapides et des visualisations plus importantes",
+                "it": "socket.io pingTimeout e pinInterval aumentati per impedire riconnessioni troppo veloci e visualizzazioni più grandi",
+                "es": "socket.io pingTimeout y pinInterval aumentaron para evitar reconexiones demasiado rápidas y visualizaciones más grandes",
+                "pl": "socket.io pingTimeout i pinInterval zostały zwiększone, aby zapobiec zbyt szybkim ponownym połączeniom i większym wizualizacjom",
+                "zh-cn": "增加了socket.io pingTimeout和pinInterval，以防止重新连接速度过快和较大的可视化效果"
+            },
             "3.0.11": {
                 "en": "make sure web adapter gets restarted on socketio adapter upgrade",
                 "de": "Stellen Sie sicher, dass der Webadapter beim Upgrade des Socketio-Adapters neu gestartet wird",
