@@ -308,6 +308,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 
 ## Changelog
 
+### __WORK IN PROGRESS__
+* (Apollon77) socket.io pingTimeout and pinInterval increased to prevent too fast reconnections and bigger visualizations
+
 ### 3.0.11 (2020-07-23)
 * (Apollon77) make sure web adapter gets restarted on socketio adapter upgrade
 
