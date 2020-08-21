@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "socketio",
-        "version": "3.0.12",
+        "version": "3.0.13",
         "title": "socket.io",
         "desc": {
             "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -16,6 +16,18 @@
             "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
         "news": {
+            "3.0.13": {
+                "en": "Added getAdapterName method",
+                "de": "GetAdapterName-Methode hinzugefügt",
+                "ru": "Добавлен метод getAdapterName",
+                "pt": "Método getAdapterName adicionado",
+                "nl": "GetAdapterName-methode toegevoegd",
+                "fr": "Ajout de la méthode getAdapterName",
+                "it": "Aggiunto metodo getAdapterName",
+                "es": "Se agregó el método getAdapterName",
+                "pl": "Dodano metodę getAdapterName",
+                "zh-cn": "添加了getAdapterName方法"
+            },
             "3.0.12": {
                 "en": "socket.io pingTimeout and pinInterval increased to prevent too fast reconnections and bigger visualizations",
                 "de": "socket.io pingTimeout und pinInterval wurden erhöht, um zu schnelle Wiederverbindungen und größere Visualisierungen zu verhindern",

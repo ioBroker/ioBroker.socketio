@@ -312,7 +312,7 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
-### __WORK IN PROGRESS__
+### 3.0.13 (2020-08-21)
 * (bluefox) Added getAdapterName method
 
 ### 3.0.12 (2020-07-27)
