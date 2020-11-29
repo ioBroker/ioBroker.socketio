@@ -281,7 +281,9 @@ var servConn = {
             });
 
             this._socket.on('connect_error', function () {
-                $('.splash-screen-text').css('color', '#002951');
+                if (typeof $ !== 'undefined') {
+                    $('.splash-screen-text').css('color', '#002951');
+                }
 
                 that.reconnect(connOptions);
             });
