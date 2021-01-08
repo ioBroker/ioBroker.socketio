@@ -129,10 +129,17 @@ function initWebServer(settings) {
             settings.port = port;
 
             try {
-                server.server = await LE.createServerAsync((req, res) => {
-                    res.writeHead(501);
-                    res.end('Not Implemented');
-                }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log, adapter);
+                if (typeof LE.createServerAsync === 'function')
+                    server.server = await LE.createServerAsync((req, res) => {
+                        res.writeHead(501);
+                        res.end('Not Implemented');
+                    }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log, adapter);
+                else {
+                    server.server = LE.createServer((req, res) => {
+                        res.writeHead(501);
+                        res.end('Not Implemented');
+                    }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log);
+                }
             } catch (err) {
                 adapter.log.error(`Cannot create webserver: ${err}`);
                 adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
