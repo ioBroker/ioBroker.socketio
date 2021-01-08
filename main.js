@@ -129,7 +129,7 @@ function initWebServer(settings) {
             settings.port = port;
 
             try {
-                server.server = await LE.createServer((req, res) => {
+                server.server = await LE.createServerAsync((req, res) => {
                     res.writeHead(501);
                     res.end('Not Implemented');
                 }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log, adapter);
