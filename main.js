@@ -120,7 +120,7 @@ function initWebServer(settings) {
             settings.forceWebSockets  = settings.forceWebSockets || false;
         }
 
-        adapter.getPort(settings.port, port => {
+        adapter.getPort(settings.port, async port => {
             if (parseInt(port, 10) !== settings.port && !adapter.config.findNextPort) {
                 adapter.log.error('port ' + settings.port + ' already in use');
                 return adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
@@ -129,10 +129,10 @@ function initWebServer(settings) {
             settings.port = port;
 
             try {
-                server.server = LE.createServer((req, res) => {
+                server.server = await LE.createServer((req, res) => {
                     res.writeHead(501);
                     res.end('Not Implemented');
-                }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log);
+                }, settings, adapter.config.certificates, adapter.config.leConfig, adapter.log, adapter);
             } catch (err) {
                 adapter.log.error(`Cannot create webserver: ${err}`);
                 adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
