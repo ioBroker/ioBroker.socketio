@@ -312,7 +312,7 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
-### 3.1.1 (2021-01-08)
+### __WORK IN PROGRESS__
 * (bluefox) Support of new Let's Encrypt (only with js-controller 3.2.x)
 
 ### 3.0.13 (2020-08-21)
