@@ -293,7 +293,7 @@
         "leUpdate": false,
         "leCheckPort": 80
     },
-    "objects": [
+    "instanceObjects": [
         {
             "_id": "connected",
             "type": "state",
