@@ -313,6 +313,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 
 ## Changelog
 
+### __WORK IN PROGRESS__
+* (Apollon77) Define instanceObject "connected" to prevent warning with js-controller 3.2
+
 ### 3.1.3 (2021-01-12)
 * (Apollon77) fix socketio dependency
 
