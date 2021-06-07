@@ -19,7 +19,7 @@
     "socket.io": "^2.4.1",
     "request": "^2.88.2",
     "cookie-parser": "^1.4.5",
-    "express-session": "^1.17.1",
+    "express-session": "^1.17.2",
     "@iobroker/adapter-core": "^2.5.0"
   },
   "devDependencies": {
