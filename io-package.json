@@ -3,6 +3,9 @@
         "name": "socketio",
         "version": "3.1.4",
         "title": "socket.io",
+        "titleLang": {
+            "en": "socket.io"
+        },
         "desc": {
             "en": "This adapter allows to communicate different web applications with ioBroker",
             "de": "Dieser Adapter ermöglicht die Kommunikation verschiedener Web-Anwendungen mit ioBroker",
