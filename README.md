@@ -540,4 +540,4 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2020 bluefox <dogafox@gmail.com>
+Copyright (c) 2014-2021 bluefox <dogafox@gmail.com>
