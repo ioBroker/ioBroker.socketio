@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "socketio",
-        "version": "3.1.4",
+        "version": "3.1.5",
         "title": "socket.io",
         "titleLang": {
             "en": "socket.io"
@@ -19,6 +19,18 @@
             "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
         },
         "news": {
+            "3.1.5": {
+                "en": "make error logging on failed authentication more specific\n\"request\" was repalced by \"axios\"",
+                "de": "Fehlerprotokollierung bei fehlgeschlagener Authentifizierung genauer machen\n\"request\" wurde durch \"axios\" ersetzt",
+                "ru": "сделать регистрацию ошибок при неудачной аутентификации более конкретной\n\"запрос\" был заменен на \"аксиомы\"",
+                "pt": "tornar mais específico o log de erros na autenticação com falha\n\"pedido\" foi repetido por \"axios\"",
+                "nl": "maak foutregistratie bij mislukte authenticatie specifieker\n\"verzoek\" is vervangen door \"axios\"",
+                "fr": "rendre plus spécifique l'erreur de connexion lors de l'échec de l'authentification\n\"demande\" a été remplacée par \"axios\"",
+                "it": "rendere più specifica la registrazione degli errori in caso di autenticazione non riuscita\n\"richiesta\" è stato sostituito da \"axios\"",
+                "es": "hacer que el registro de errores en la autenticación fallida sea más específico\n\"solicitud\" fue reemplazada por \"axios\"",
+                "pl": "uszczegółowić błąd logowania przy nieudanej autoryzacji\n„request” został zastąpiony przez „axios”",
+                "zh-cn": "使错误登录失败的身份验证更具体\n“请求”被“axios”取代"
+            },
             "3.1.4": {
                 "en": "Define instanceObject \"connected\" to prevent warning with js-controller 3.2",
                 "de": "Definieren Sie instanceObject \"verbunden\", um eine Warnung mit js-controller 3.2 zu vermeiden",
@@ -245,17 +257,6 @@
                 "it": "Usato socket.io Versione 1.7.5\nIl problema di autenticazione è stato risolto",
                 "es": "Utiliza socket.io versión 1.7.5\nSe corrigió el problema de autenticación",
                 "pl": "Użyty socket.io Wersja 1.7.5\nNaprawiono problem z uwierzytelnianiem"
-            },
-            "1.9.0": {
-                "en": "Ready for Admin3",
-                "de": "Bereit für Admin3",
-                "ru": "Готово для администратора3",
-                "pt": "Pronto para Admin3",
-                "nl": "Klaar voor Admin3",
-                "fr": "Prêt pour Admin3",
-                "it": "Pronto per Admin3",
-                "es": "Listo para Admin3",
-                "pl": "Gotowy na administratora3"
             }
         },
         "authors": [

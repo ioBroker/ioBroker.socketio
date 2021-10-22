@@ -313,7 +313,7 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 
 ## Changelog
 
-### __WORK IN PROGRESS__
+### 3.1.5 (2021-10-22)
 * (foxriver76) make error logging on failed authentication more specific
 * (foxriver76) "request" was repalced by "axios" 
 
