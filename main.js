@@ -167,9 +167,8 @@ function initWebServer(settings) {
             });
 
             // Start the web server
-            server.server.listen(settings.port, (!settings.bind || settings.bind === '0.0.0.0') ? undefined : settings.bind || undefined, () => {
-                serverListening = true;
-            });
+            server.server.listen(settings.port, (!settings.bind || settings.bind === '0.0.0.0') ? undefined : settings.bind || undefined, () =>
+                serverListening = true);
 
             settings.crossDomain     = true;
             settings.ttl             = settings.ttl || 3600;
