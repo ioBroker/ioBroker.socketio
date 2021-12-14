@@ -18,7 +18,7 @@
   "dependencies": {
     "socket.io": "^2.4.1",
     "axios": "^0.24.0",
-    "cookie-parser": "^1.4.5",
+    "cookie-parser": "^1.4.6",
     "express-session": "^1.17.2",
     "@iobroker/adapter-core": "^2.5.1"
   },
