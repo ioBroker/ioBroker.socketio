@@ -18,6 +18,8 @@
   "dependencies": {
     "axios": "^0.25.0",
     "cookie-parser": "^1.4.6",
+    "passport": "^0.5.2",
+    "passport.socketio": "^3.7.0",
     "express-session": "^1.17.2",
     "@iobroker/adapter-core": "^2.5.1",
     "ws": "^8.4.2"

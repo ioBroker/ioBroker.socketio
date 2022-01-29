@@ -310,6 +310,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### __WORK IN PROGRESS__
+* (bluefox) Fixed authentication
+
 ### 4.0.0 (2022-01-29)
 * (bluefox) Remove socket-io and use only web sockets
 
