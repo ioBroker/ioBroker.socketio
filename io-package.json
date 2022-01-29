@@ -1,335 +1,180 @@
 {
-    "common": {
-        "name": "socketio",
-        "version": "3.1.5",
-        "title": "socket.io",
-        "titleLang": {
-            "en": "socket.io"
-        },
-        "desc": {
-            "en": "This adapter allows to communicate different web applications with ioBroker",
-            "de": "Dieser Adapter ermöglicht die Kommunikation verschiedener Web-Anwendungen mit ioBroker",
-            "ru": "Этот адаптер позволяет соединяться различным веб-приложениям с ioBroker",
-            "pt": "Este adaptador permite comunicar diferentes aplicativos da web com ioBroker",
-            "nl": "Met deze adapter kunt u verschillende webtoepassingen communiceren met ioBroker",
-            "fr": "Cet adaptateur permet de communiquer différentes applications web avec ioBroker",
-            "it": "Questo adattatore consente di comunicare diverse applicazioni Web con ioBroker",
-            "es": "Este adaptador permite comunicar diferentes aplicaciones web con ioBroker",
-            "pl": "Ten adapter umożliwia komunikację z różnymi aplikacjami WWW za pomocą ioBroker",
-            "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
-        },
-        "news": {
-            "3.1.5": {
-                "en": "make error logging on failed authentication more specific\n\"request\" was repalced by \"axios\"",
-                "de": "Fehlerprotokollierung bei fehlgeschlagener Authentifizierung genauer machen\n\"request\" wurde durch \"axios\" ersetzt",
-                "ru": "сделать регистрацию ошибок при неудачной аутентификации более конкретной\n\"запрос\" был заменен на \"аксиомы\"",
-                "pt": "tornar mais específico o log de erros na autenticação com falha\n\"pedido\" foi repetido por \"axios\"",
-                "nl": "maak foutregistratie bij mislukte authenticatie specifieker\n\"verzoek\" is vervangen door \"axios\"",
-                "fr": "rendre plus spécifique l'erreur de connexion lors de l'échec de l'authentification\n\"demande\" a été remplacée par \"axios\"",
-                "it": "rendere più specifica la registrazione degli errori in caso di autenticazione non riuscita\n\"richiesta\" è stato sostituito da \"axios\"",
-                "es": "hacer que el registro de errores en la autenticación fallida sea más específico\n\"solicitud\" fue reemplazada por \"axios\"",
-                "pl": "uszczegółowić błąd logowania przy nieudanej autoryzacji\n„request” został zastąpiony przez „axios”",
-                "zh-cn": "使错误登录失败的身份验证更具体\n“请求”被“axios”取代"
-            },
-            "3.1.4": {
-                "en": "Define instanceObject \"connected\" to prevent warning with js-controller 3.2",
-                "de": "Definieren Sie instanceObject \"verbunden\", um eine Warnung mit js-controller 3.2 zu vermeiden",
-                "ru": "Определите instanceObject \"connected\", чтобы предотвратить предупреждение с помощью js-controller 3.2",
-                "pt": "Defina instanceObject \"conectado\" para evitar aviso com js-controller 3.2",
-                "nl": "Definieer instanceObject \"connected\" om waarschuwing te voorkomen met js-controller 3.2",
-                "fr": "Définissez instanceObject \"connecté\" pour éviter l'avertissement avec js-controller 3.2",
-                "it": "Definire instanceObject \"connesso\" per evitare avvisi con js-controller 3.2",
-                "es": "Defina instanceObject \"conectado\" para evitar advertencias con js-controller 3.2",
-                "pl": "Zdefiniuj obiekt instanceObject „połączony”, aby zapobiec ostrzeżeniu za pomocą kontrolera js 3.2",
-                "zh-cn": "定义instanceObject“ connected”以防止使用js-controller 3.2发出警告"
-            },
-            "3.1.3": {
-                "en": "fix socketio dependency",
-                "de": "Behebung der Socketio-Abhängigkeit",
-                "ru": "исправить зависимость socketio",
-                "pt": "consertar dependência de socketio",
-                "nl": "fix socketio-afhankelijkheid",
-                "fr": "correction de la dépendance socketio",
-                "it": "correggere la dipendenza da socketio",
-                "es": "arreglar la dependencia de socketio",
-                "pl": "naprawić zależność od gniazda",
-                "zh-cn": "修复套接字依赖"
-            },
-            "3.1.2": {
-                "en": "Support of new Let's Encrypt (only with js-controller 3.2.x)",
-                "de": "Unterstützung des neuen Let's Encrypt (nur mit js-controller 3.2.x)",
-                "ru": "Поддержка нового Let's Encrypt (только с js-controller 3.2.x)",
-                "pt": "Suporte do novo Let's Encrypt (apenas com js-controller 3.2.x)",
-                "nl": "Ondersteuning van nieuwe Let's Encrypt (alleen met js-controller 3.2.x)",
-                "fr": "Prise en charge du nouveau Let's Encrypt (uniquement avec js-controller 3.2.x)",
-                "it": "Supporto del nuovo Let's Encrypt (solo con js-controller 3.2.x)",
-                "es": "Soporte del nuevo Let's Encrypt (solo con js-controller 3.2.x)",
-                "pl": "Obsługa nowego Let's Encrypt (tylko z js-controller 3.2.x)",
-                "zh-cn": "支持新的Let's Encrypt（仅适用于js-controller 3.2.x）"
-            },
-            "3.0.13": {
-                "en": "Added getAdapterName method",
-                "de": "GetAdapterName-Methode hinzugefügt",
-                "ru": "Добавлен метод getAdapterName",
-                "pt": "Método getAdapterName adicionado",
-                "nl": "GetAdapterName-methode toegevoegd",
-                "fr": "Ajout de la méthode getAdapterName",
-                "it": "Aggiunto metodo getAdapterName",
-                "es": "Se agregó el método getAdapterName",
-                "pl": "Dodano metodę getAdapterName",
-                "zh-cn": "添加了getAdapterName方法"
-            },
-            "3.0.12": {
-                "en": "socket.io pingTimeout and pinInterval increased to prevent too fast reconnections and bigger visualizations",
-                "de": "socket.io pingTimeout und pinInterval wurden erhöht, um zu schnelle Wiederverbindungen und größere Visualisierungen zu verhindern",
-                "ru": "socket.io pingTimeout и pinInterval увеличены, чтобы предотвратить слишком быстрое переподключение и большую визуализацию",
-                "pt": "socket.io pingTimeout e pinInterval aumentados para evitar reconexões muito rápidas e visualizações maiores",
-                "nl": "socket.io pingTimeout en pinInterval verhoogd om te snelle herverbindingen en grotere visualisaties te voorkomen",
-                "fr": "socket.io pingTimeout et pinInterval augmentés pour éviter des reconnexions trop rapides et des visualisations plus importantes",
-                "it": "socket.io pingTimeout e pinInterval aumentati per impedire riconnessioni troppo veloci e visualizzazioni più grandi",
-                "es": "socket.io pingTimeout y pinInterval aumentaron para evitar reconexiones demasiado rápidas y visualizaciones más grandes",
-                "pl": "socket.io pingTimeout i pinInterval zostały zwiększone, aby zapobiec zbyt szybkim ponownym połączeniom i większym wizualizacjom",
-                "zh-cn": "增加了socket.io pingTimeout和pinInterval，以防止重新连接速度过快和较大的可视化效果"
-            },
-            "3.0.11": {
-                "en": "make sure web adapter gets restarted on socketio adapter upgrade",
-                "de": "Stellen Sie sicher, dass der Webadapter beim Upgrade des Socketio-Adapters neu gestartet wird",
-                "ru": "убедитесь, что веб-адаптер перезапускается при обновлении socketio",
-                "pt": "verifique se o adaptador da web foi reiniciado na atualização do adaptador socketio",
-                "nl": "zorg ervoor dat de webadapter opnieuw wordt gestart bij een upgrade van de socketio-adapter",
-                "fr": "assurez-vous que l'adaptateur Web est redémarré lors de la mise à niveau de l'adaptateur socketio",
-                "it": "assicurarsi che l'adattatore Web venga riavviato durante l'aggiornamento dell'adattatore socketio",
-                "es": "asegúrese de que el adaptador web se reinicie al actualizar el adaptador socketio",
-                "pl": "upewnij się, że karta sieciowa zostanie ponownie uruchomiona podczas aktualizacji karty Socketio",
-                "zh-cn": "确保在socketio适配器升级时重新启动Web适配器"
-            },
-            "3.0.10": {
-                "en": "Error catched when trying to write an empty base64 value into a file (Sentry )",
-                "de": "Fehler beim Versuch, einen leeren base64-Wert in eine Datei zu schreiben (Sentry)",
-                "ru": "Ошибка при попытке записать пустое значение base64 в файл (Sentry)",
-                "pt": "Erro detectado ao tentar gravar um valor base64 vazio em um arquivo (Sentry)",
-                "nl": "Fout opgevangen bij het schrijven van een lege base64-waarde in een bestand (Sentry)",
-                "fr": "Erreur détectée lors de la tentative d'écriture d'une valeur base64 vide dans un fichier (Sentry)",
-                "it": "Errore rilevato durante il tentativo di scrivere un valore base64 vuoto in un file (Sentry)",
-                "es": "Se detectó un error al intentar escribir un valor base64 vacío en un archivo (Centinela)",
-                "pl": "Wystąpił błąd podczas próby zapisania pustej wartości base64 w pliku (Sentry)",
-                "zh-cn": "尝试将空的base64值写入文件时捕获错误（Sentry）"
-            },
-            "3.0.9": {
-                "en": "optimize error handling on webserver initialization again",
-                "de": "Optimieren Sie die Fehlerbehandlung bei der Webserver-Initialisierung erneut",
-                "ru": "снова оптимизировать обработку ошибок при инициализации веб-сервера",
-                "pt": "otimizar o tratamento de erros na inicialização do servidor da web novamente",
-                "nl": "Optimaliseer de foutafhandeling bij het opnieuw initialiseren van de webserver",
-                "fr": "optimiser à nouveau la gestion des erreurs lors de l'initialisation du serveur Web",
-                "it": "ottimizzare nuovamente la gestione degli errori sull'inizializzazione del server web",
-                "es": "optimizar el manejo de errores en la inicialización del servidor web nuevamente",
-                "pl": "ponownie zoptymalizuj obsługę błędów przy inicjalizacji serwera WWW",
-                "zh-cn": "再次优化Web服务器初始化上的错误处理"
-            },
-            "3.0.8": {
-                "en": "Make sure adapter does not crash if getHttp is called with an invalid URL (Sentry IOBROKER-WEB-R)",
-                "de": "Stellen Sie sicher, dass der Adapter nicht abstürzt, wenn getHttp mit einer ungültigen URL aufgerufen wird (Sentry IOBROKER-WEB-R).",
-                "ru": "Убедитесь, что адаптер не падает, если getHttp вызывается с неверным URL (Sentry IOBROKER-WEB-R)",
-                "pt": "Verifique se o adaptador não trava se getHttp for chamado com um URL inválido (Sentry IOBROKER-WEB-R)",
-                "nl": "Zorg ervoor dat de adapter niet crasht als getHttp wordt aangeroepen met een ongeldige URL (Sentry IOBROKER-WEB-R)",
-                "fr": "Assurez-vous que l'adaptateur ne se bloque pas si getHttp est appelé avec une URL non valide (Sentry IOBROKER-WEB-R)",
-                "it": "Assicurarsi che l'adattatore non si arresti in modo anomalo se getHttp viene chiamato con un URL non valido (Sentry IOBROKER-WEB-R)",
-                "es": "Asegúrese de que el adaptador no se bloquee si se llama a getHttp con una URL no válida (Sentry IOBROKER-WEB-R)",
-                "pl": "Upewnij się, że adapter nie ulega awarii, jeśli wywoływany jest getHttp z nieprawidłowym adresem URL (Sentry IOBROKER-WEB-R)",
-                "zh-cn": "如果使用无效的URL调用getHttp，请确保适配器不会崩溃（Sentry IOBROKER-WEB-R）"
-            },
-            "3.0.7": {
-                "en": "webserver initialization optimized again to prevent errors with invalid certificates",
-                "de": "Die Webserver-Initialisierung wurde erneut optimiert, um Fehler mit ungültigen Zertifikaten zu vermeiden",
-                "ru": "Инициализация веб-сервера снова оптимизирована для предотвращения ошибок с недействительными сертификатами",
-                "pt": "inicialização do servidor da web otimizada novamente para evitar erros com certificados inválidos",
-                "nl": "de initialisatie van de webserver is opnieuw geoptimaliseerd om fouten met ongeldige certificaten te voorkomen",
-                "fr": "initialisation du serveur Web optimisée à nouveau pour éviter les erreurs avec des certificats invalides",
-                "it": "inizializzazione del server web nuovamente ottimizzata per prevenire errori con certificati non validi",
-                "es": "La inicialización del servidor web se optimizó nuevamente para evitar errores con certificados no válidos",
-                "pl": "inicjalizacja serwera WWW została ponownie zoptymalizowana, aby zapobiec błędom z nieprawidłowymi certyfikatami",
-                "zh-cn": "再次优化了Web服务器的初始化，以防止证书无效而出错"
-            },
-            "3.0.6": {
-                "en": "errors on webserver initialization are handled properly",
-                "de": "Fehler bei der Webserver-Initialisierung werden ordnungsgemäß behandelt",
-                "ru": "ошибки при инициализации веб-сервера обрабатываются правильно",
-                "pt": "erros na inicialização do servidor da web são tratados adequadamente",
-                "nl": "fouten bij het initialiseren van de webserver worden correct afgehandeld",
-                "fr": "les erreurs lors de l'initialisation du serveur Web sont gérées correctement",
-                "it": "gli errori sull'inizializzazione del server web sono gestiti correttamente",
-                "es": "los errores en la inicialización del servidor web se manejan correctamente",
-                "pl": "błędy przy inicjalizacji serwera są obsługiwane poprawnie",
-                "zh-cn": "网站服务器初始化错误得到正确处理"
-            },
-            "3.0.5": {
-                "en": "Caught the web server errors",
-                "de": "Fehler beim Webserver",
-                "ru": "Поймали ошибки веб-сервера",
-                "pt": "Detectou os erros do servidor web",
-                "nl": "Betrapte de webserverfouten",
-                "fr": "Pris les erreurs du serveur Web",
-                "it": "Catturati gli errori del web server",
-                "es": "Atrapado los errores del servidor web",
-                "pl": "Wyłapał błędy serwera WWW",
-                "zh-cn": "捕获了Web服务器错误"
-            },
-            "3.0.4": {
-                "en": "potential crash case fixed",
-                "de": "Möglicher Crash-Fall behoben",
-                "ru": "случай возможного сбоя исправлен",
-                "pt": "possível caso de falha corrigido",
-                "nl": "mogelijke crash case opgelost",
-                "fr": "cas de crash potentiel corrigé",
-                "it": "potenziale caso di crash risolto",
-                "es": "caso de bloqueo potencial solucionado",
-                "pl": "naprawiono potencjalną awarię",
-                "zh-cn": "修复潜在的崩溃案例"
-            },
-            "3.0.3": {
-                "en": " js-controller 3.0 warnings prevented and added Sentry error reporting with js-controller 3.0",
-                "de": " Warnungen zu js-controller 3.0 wurden verhindert und Sentry-Fehlerberichte mit js-controller 3.0 hinzugefügt",
-                "ru": " Предупреждения js-controller 3.0 предотвращены и добавлены отчеты об ошибках Sentry с помощью js-controller 3.0",
-                "pt": " Avisos do js-controller 3.0 impedidos e adicionados relatórios de erros do Sentry com o js-controller 3.0",
-                "nl": " js-controller 3.0-waarschuwingen voorkomen en toegevoegd Sentry-foutrapportage met js-controller 3.0",
-                "fr": " avertissements js-controller 3.0 empêchés et ajout de rapports d'erreurs Sentry avec js-controller 3.0",
-                "it": " Gli avvisi di js-controller 3.0 hanno impedito e aggiunto la segnalazione degli errori di Sentry con js-controller 3.0",
-                "es": " Las advertencias de js-controller 3.0 impidieron y agregaron informes de errores de Sentry con js-controller 3.0",
-                "pl": " Zapobiegano ostrzeżeniom js-controller 3.0 i dodano raportowanie błędów Sentry w js-controller 3.0",
-                "zh-cn": " 防止js-controller 3.0警告并使用js-controller 3.0添加了Sentry错误报告"
-            },
-            "3.0.2": {
-                "en": "Unload of adapter was corrected",
-                "de": "Das Entladen des Adapters wurde korrigiert",
-                "ru": "Выгрузка адаптера была исправлена",
-                "pt": "A descarga do adaptador foi corrigida",
-                "nl": "Verwijderen van adapter is gecorrigeerd",
-                "fr": "Le déchargement de l'adaptateur a été corrigé",
-                "it": "Lo scarico dell'adattatore è stato corretto",
-                "es": "Se corrigió la descarga del adaptador",
-                "pl": "Usunięto rozładowanie adaptera",
-                "zh-cn": "适配器卸载已更正"
-            },
-            "3.0.1": {
-                "en": "workaround for a socket.io bug added",
-                "de": "Problemumgehung für einen socket.io-Fehler hinzugefügt",
-                "ru": "добавлено обходное решение для ошибки socket.io",
-                "pt": "solução alternativa para um bug socket.io adicionado",
-                "nl": "tijdelijke oplossing voor een socket.io-bug toegevoegd",
-                "fr": "solution de contournement pour un bug socket.io ajouté",
-                "it": "soluzione alternativa per un bug socket.io aggiunto",
-                "es": "solución alternativa para un error socket.io agregado",
-                "pl": "dodano obejście błędu socket.io",
-                "zh-cn": "解决了socket.io错误的解决方法"
-            },
-            "3.0.0": {
-                "en": "socket.io upgraded to latest version. Attention: This might break older devices like iPad 1/2!!",
-                "de": "socket.io wurde auf die neueste Version aktualisiert. Achtung: Dies unterstützt ältere Geräte wie das iPad 1/2 nicht mehr !!",
-                "ru": "socket.io обновлен до последней версии. Внимание: это может сломать старые устройства, такие как iPad 1/2!",
-                "pt": "socket.io atualizado para a versão mais recente. Atenção: Isso pode quebrar dispositivos mais antigos como o iPad 1/2 !!",
-                "nl": "socket.io opgewaardeerd naar de nieuwste versie. Let op: dit kan oudere apparaten zoals iPad 1/2 kapot maken !!",
-                "fr": "socket.io mis à niveau vers la dernière version. Attention: cela pourrait casser des appareils plus anciens comme l'iPad 1/2 !!",
-                "it": "socket.io aggiornato all'ultima versione. Attenzione: questo potrebbe rompere i dispositivi più vecchi come iPad 1/2 !!",
-                "es": "socket.io actualizado a la última versión. Atención: ¡Esto podría romper dispositivos más antiguos como iPad 1/2!",
-                "pl": "socket.io zaktualizowane do najnowszej wersji. Uwaga: może to uszkodzić starsze urządzenia, takie jak iPad 1/2 !!",
-                "zh-cn": "socket.io已升级到最新版本。注意：这可能会损坏旧设备，例如iPad 1/2！"
-            },
-            "2.1.2": {
-                "en": "optimize shutdown for compact mode",
-                "de": "Optimierung der Abschaltung für den Kompaktmodus",
-                "ru": "оптимизировать выключение для компактного режима",
-                "pt": "otimizar o desligamento no modo compacto",
-                "nl": "optimalisatie afsluiten voor compacte modus",
-                "fr": "optimiser l'arrêt pour le mode compact",
-                "it": "ottimizzare lo spegnimento per la modalità compatta",
-                "es": "optimizar el apagado para el modo compacto",
-                "pl": "zoptymalizuj zamknięcie dla trybu kompaktowego",
-                "zh-cn": "优化关机模式"
-            },
-            "2.1.1": {
-                "en": "Used socket.io Version 1.7.5\nAuthentication problem was fixed",
-                "de": "Gebrauchte socket.io Version 1.7.5\nAuthentifizierungsproblem wurde behoben",
-                "ru": "Используемая версия socket.io 1.7.5\nИсправлена ​​проблема аутентификации",
-                "pt": "Usado socket.io versão 1.7.5\nProblema de autenticação foi corrigido",
-                "nl": "Gebruikte socket.io versie 1.7.5\nVerificatieprobleem is opgelost",
-                "fr": "Version socket.io utilisée 1.7.5\nLe problème d'authentification a été corrigé",
-                "it": "Usato socket.io Versione 1.7.5\nIl problema di autenticazione è stato risolto",
-                "es": "Utiliza socket.io versión 1.7.5\nSe corrigió el problema de autenticación",
-                "pl": "Użyty socket.io Wersja 1.7.5\nNaprawiono problem z uwierzytelnianiem"
-            }
-        },
-        "authors": [
-            "bluefox <dogafox@gmail.com>"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "mode": "daemon",
-        "loglevel": "info",
-        "readme": "https://github.com/ioBroker/ioBroker.socketio/blob/master/README.md",
-        "icon": "socketio.png",
-        "keywords": [
-            "web",
-            "socket.io",
-            "communication"
-        ],
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.png",
-        "type": "communication",
-        "stopBeforeUpdate": true,
-        "materialize": true,
-        "compact": true,
-        "stopTimeout": 5000,
-        "dependencies": [
-            {
-                "js-controller": ">=2.0.0"
-            }
-        ],
-        "restartAdapters": [
-            "web"
-        ],
-        "plugins": {
-            "sentry": {
-                "dsn": "https://c420b84a0da648bb8f2374541aa92888@sentry.iobroker.net/17"
-            }
-        }
+  "common": {
+    "name": "socketio",
+    "version": "4.0.0",
+    "title": "socket.io",
+    "titleLang": {
+      "en": "socket.io"
     },
-    "native": {
-        "port": 8084,
-        "auth": false,
-        "secure": false,
-        "bind": "0.0.0.0",
-        "ttl": 3600,
-        "certPublic": "",
-        "certPrivate": "",
-        "certChained": "",
-        "defaultUser": "admin",
-        "forceWebSockets": false,
-        "leEnabled": false,
-        "leUpdate": false,
-        "leCheckPort": 80
+    "desc": {
+      "en": "This adapter allows to communicate different web applications with ioBroker",
+      "de": "Dieser Adapter ermöglicht die Kommunikation verschiedener Web-Anwendungen mit ioBroker",
+      "ru": "Этот адаптер позволяет соединяться различным веб-приложениям с ioBroker",
+      "pt": "Este adaptador permite comunicar diferentes aplicativos da web com ioBroker",
+      "nl": "Met deze adapter kunt u verschillende webtoepassingen communiceren met ioBroker",
+      "fr": "Cet adaptateur permet de communiquer différentes applications web avec ioBroker",
+      "it": "Questo adattatore consente di comunicare diverse applicazioni Web con ioBroker",
+      "es": "Este adaptador permite comunicar diferentes aplicaciones web con ioBroker",
+      "pl": "Ten adapter umożliwia komunikację z różnymi aplikacjami WWW za pomocą ioBroker",
+      "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Info about connected socket clients",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {}
-        }
-    ]
+    "news": {
+      "4.0.0": {
+        "en": "Remove socket-io and use only web sockets",
+        "de": "Socket-io entfernen und nur Web-Sockets verwenden",
+        "ru": "Удалите socket-io и используйте только веб-сокеты",
+        "pt": "Remova o socket-io e use apenas web sockets",
+        "nl": "Verwijder socket-io en gebruik alleen websockets",
+        "fr": "Supprimer socket-io et utiliser uniquement des sockets Web",
+        "it": "Rimuovere socket-io e utilizzare solo socket web",
+        "es": "Elimine socket-io y use solo sockets web",
+        "pl": "Usuń socket-io i używaj tylko gniazd sieciowych",
+        "zh-cn": "删除 socket-io 并仅使用 Web 套接字"
+      },
+      "3.1.5": {
+        "en": "make error logging on failed authentication more specific\n\"request\" was repalced by \"axios\"",
+        "de": "Fehlerprotokollierung bei fehlgeschlagener Authentifizierung genauer machen\n\"request\" wurde durch \"axios\" ersetzt",
+        "ru": "сделать регистрацию ошибок при неудачной аутентификации более конкретной\n\"запрос\" был заменен на \"аксиомы\"",
+        "pt": "tornar mais específico o log de erros na autenticação com falha\n\"pedido\" foi repetido por \"axios\"",
+        "nl": "maak foutregistratie bij mislukte authenticatie specifieker\n\"verzoek\" is vervangen door \"axios\"",
+        "fr": "rendre plus spécifique l'erreur de connexion lors de l'échec de l'authentification\n\"demande\" a été remplacée par \"axios\"",
+        "it": "rendere più specifica la registrazione degli errori in caso di autenticazione non riuscita\n\"richiesta\" è stato sostituito da \"axios\"",
+        "es": "hacer que el registro de errores en la autenticación fallida sea más específico\n\"solicitud\" fue reemplazada por \"axios\"",
+        "pl": "uszczegółowić błąd logowania przy nieudanej autoryzacji\n„request” został zastąpiony przez „axios”",
+        "zh-cn": "使错误登录失败的身份验证更具体\n“请求”被“axios”取代"
+      },
+      "3.1.4": {
+        "en": "Define instanceObject \"connected\" to prevent warning with js-controller 3.2",
+        "de": "Definieren Sie instanceObject \"verbunden\", um eine Warnung mit js-controller 3.2 zu vermeiden",
+        "ru": "Определите instanceObject \"connected\", чтобы предотвратить предупреждение с помощью js-controller 3.2",
+        "pt": "Defina instanceObject \"conectado\" para evitar aviso com js-controller 3.2",
+        "nl": "Definieer instanceObject \"connected\" om waarschuwing te voorkomen met js-controller 3.2",
+        "fr": "Définissez instanceObject \"connecté\" pour éviter l'avertissement avec js-controller 3.2",
+        "it": "Definire instanceObject \"connesso\" per evitare avvisi con js-controller 3.2",
+        "es": "Defina instanceObject \"conectado\" para evitar advertencias con js-controller 3.2",
+        "pl": "Zdefiniuj obiekt instanceObject „połączony”, aby zapobiec ostrzeżeniu za pomocą kontrolera js 3.2",
+        "zh-cn": "定义instanceObject“ connected”以防止使用js-controller 3.2发出警告"
+      },
+      "3.1.3": {
+        "en": "fix socketio dependency",
+        "de": "Behebung der Socketio-Abhängigkeit",
+        "ru": "исправить зависимость socketio",
+        "pt": "consertar dependência de socketio",
+        "nl": "fix socketio-afhankelijkheid",
+        "fr": "correction de la dépendance socketio",
+        "it": "correggere la dipendenza da socketio",
+        "es": "arreglar la dependencia de socketio",
+        "pl": "naprawić zależność od gniazda",
+        "zh-cn": "修复套接字依赖"
+      },
+      "3.1.2": {
+        "en": "Support of new Let's Encrypt (only with js-controller 3.2.x)",
+        "de": "Unterstützung des neuen Let's Encrypt (nur mit js-controller 3.2.x)",
+        "ru": "Поддержка нового Let's Encrypt (только с js-controller 3.2.x)",
+        "pt": "Suporte do novo Let's Encrypt (apenas com js-controller 3.2.x)",
+        "nl": "Ondersteuning van nieuwe Let's Encrypt (alleen met js-controller 3.2.x)",
+        "fr": "Prise en charge du nouveau Let's Encrypt (uniquement avec js-controller 3.2.x)",
+        "it": "Supporto del nuovo Let's Encrypt (solo con js-controller 3.2.x)",
+        "es": "Soporte del nuevo Let's Encrypt (solo con js-controller 3.2.x)",
+        "pl": "Obsługa nowego Let's Encrypt (tylko z js-controller 3.2.x)",
+        "zh-cn": "支持新的Let's Encrypt（仅适用于js-controller 3.2.x）"
+      },
+      "3.0.13": {
+        "en": "Added getAdapterName method",
+        "de": "GetAdapterName-Methode hinzugefügt",
+        "ru": "Добавлен метод getAdapterName",
+        "pt": "Método getAdapterName adicionado",
+        "nl": "GetAdapterName-methode toegevoegd",
+        "fr": "Ajout de la méthode getAdapterName",
+        "it": "Aggiunto metodo getAdapterName",
+        "es": "Se agregó el método getAdapterName",
+        "pl": "Dodano metodę getAdapterName",
+        "zh-cn": "添加了getAdapterName方法"
+      },
+      "3.0.12": {
+        "en": "socket.io pingTimeout and pinInterval increased to prevent too fast reconnections and bigger visualizations",
+        "de": "socket.io pingTimeout und pinInterval wurden erhöht, um zu schnelle Wiederverbindungen und größere Visualisierungen zu verhindern",
+        "ru": "socket.io pingTimeout и pinInterval увеличены, чтобы предотвратить слишком быстрое переподключение и большую визуализацию",
+        "pt": "socket.io pingTimeout e pinInterval aumentados para evitar reconexões muito rápidas e visualizações maiores",
+        "nl": "socket.io pingTimeout en pinInterval verhoogd om te snelle herverbindingen en grotere visualisaties te voorkomen",
+        "fr": "socket.io pingTimeout et pinInterval augmentés pour éviter des reconnexions trop rapides et des visualisations plus importantes",
+        "it": "socket.io pingTimeout e pinInterval aumentati per impedire riconnessioni troppo veloci e visualizzazioni più grandi",
+        "es": "socket.io pingTimeout y pinInterval aumentaron para evitar reconexiones demasiado rápidas y visualizaciones más grandes",
+        "pl": "socket.io pingTimeout i pinInterval zostały zwiększone, aby zapobiec zbyt szybkim ponownym połączeniom i większym wizualizacjom",
+        "zh-cn": "增加了socket.io pingTimeout和pinInterval，以防止重新连接速度过快和较大的可视化效果"
+      }
+    },
+    "authors": [
+      "bluefox <dogafox@gmail.com>"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "mode": "daemon",
+    "loglevel": "info",
+    "readme": "https://github.com/ioBroker/ioBroker.socketio/blob/master/README.md",
+    "icon": "socketio.png",
+    "keywords": [
+      "web",
+      "socket.io",
+      "communication"
+    ],
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.png",
+    "type": "communication",
+    "stopBeforeUpdate": true,
+    "materialize": true,
+    "compact": true,
+    "stopTimeout": 5000,
+    "dependencies": [
+      {
+        "js-controller": ">=2.0.0"
+      }
+    ],
+    "restartAdapters": [
+      "web"
+    ],
+    "plugins": {
+      "sentry": {
+        "dsn": "https://c420b84a0da648bb8f2374541aa92888@sentry.iobroker.net/17"
+      }
+    }
+  },
+  "native": {
+    "port": 8084,
+    "auth": false,
+    "secure": false,
+    "bind": "0.0.0.0",
+    "ttl": 3600,
+    "certPublic": "",
+    "certPrivate": "",
+    "certChained": "",
+    "defaultUser": "admin",
+    "forceWebSockets": false,
+    "leEnabled": false,
+    "leUpdate": false,
+    "leCheckPort": 80
+  },
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "Info about connected socket clients",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    }
+  ]
 }

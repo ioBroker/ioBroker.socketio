@@ -310,12 +310,12 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
-### __WORK IN PROGRESS__
+### 4.0.0 (2022-01-29)
 * (bluefox) Remove socket-io and use only web sockets
 
 ### 3.1.5 (2021-10-22)
 * (foxriver76) make error logging on failed authentication more specific
-* (foxriver76) "request" was replaced by "axios" 
+* (foxriver76) "request" was replaced by "axios"
 
 ### 3.1.4 (2021-01-13)
 * (Apollon77) Define instanceObject "connected" to prevent warning with js-controller 3.2
@@ -345,7 +345,7 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 * (Apollon77) Make sure adapter does not crash if getHttp is called with an invalid URL (Sentry IOBROKER-WEB-R)
 
 ### 3.0.7 (2020-05-04)
-* (Apollon77) webserver initialization optimized again to prevent errors with invalid certificates 
+* (Apollon77) webserver initialization optimized again to prevent errors with invalid certificates
 
 ### 3.0.6 (2020-04-30)
 * (bluefox) errors on webserver initialization are handled properly
