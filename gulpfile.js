@@ -154,7 +154,7 @@ function words2languages(src) {
                 fs.mkdirSync(src + 'i18n/' + l);
             }
 
-            fs.writeFileSync(src + 'i18n/' + l + '/translations.json', lang2data(obj));
+            fs.writeFileSync(`${src}i18n/${l}/translations.json`, lang2data(obj));
         }
     } else {
         console.error('Cannot read or parse ' + fileName);
@@ -392,7 +392,7 @@ gulp.task('updateReadme', done => {
                 news += '* ' + iopackage.common.news[pkg.version].en;
             }
 
-            fs.writeFileSync('README.md', readmeStart + '### ' + version + ' (' + date + ')\n' + (news ? news + '\n\n' : '\n') + readmeEnd);
+            fs.writeFileSync('README.md', `${readmeStart}### ${version} (${date})\n${news ? news + '\n\n' : '\n'}${readmeEnd}`);
         }
     }
     done();
