@@ -311,6 +311,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### __WORK IN PROGRESS__
+* (bluefox) Removed "force web sockets" option
+
 ### 4.0.1 (2022-01-29)
 * (bluefox) Fixed authentication
 
