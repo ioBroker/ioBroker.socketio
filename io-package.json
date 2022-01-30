@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "4.0.2": {
+        "en": "Removed \"force web sockets\" option",
+        "de": "Die Option „Web-Sockets erzwingen“ wurde entfernt",
+        "ru": "Удалена опция «форсировать веб-сокеты».",
+        "pt": "Removida a opção \"forçar soquetes da web\"",
+        "nl": "Optie \"force web sockets\" verwijderd",
+        "fr": "Suppression de l'option \"forcer les sockets Web\"",
+        "it": "Rimossa l'opzione \"forza prese web\".",
+        "es": "Se eliminó la opción \"forzar sockets web\"",
+        "pl": "Usunięto opcję „wymuszenie gniazd sieciowych”",
+        "zh-cn": "删除了“强制 Web 套接字”选项"
+      },
       "4.0.1": {
         "en": "Fixed authentication",
         "de": "Feste Authentifizierung",
@@ -90,18 +102,6 @@
         "es": "Soporte del nuevo Let's Encrypt (solo con js-controller 3.2.x)",
         "pl": "Obsługa nowego Let's Encrypt (tylko z js-controller 3.2.x)",
         "zh-cn": "支持新的Let's Encrypt（仅适用于js-controller 3.2.x）"
-      },
-      "3.0.13": {
-        "en": "Added getAdapterName method",
-        "de": "GetAdapterName-Methode hinzugefügt",
-        "ru": "Добавлен метод getAdapterName",
-        "pt": "Método getAdapterName adicionado",
-        "nl": "GetAdapterName-methode toegevoegd",
-        "fr": "Ajout de la méthode getAdapterName",
-        "it": "Aggiunto metodo getAdapterName",
-        "es": "Se agregó el método getAdapterName",
-        "pl": "Dodano metodę getAdapterName",
-        "zh-cn": "添加了getAdapterName方法"
       }
     },
     "authors": [
