@@ -311,6 +311,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### __WORK IN PROGRESS__
+* (bluefox) Removed the deprecated "passport.socketio" packet
+
 ### 4.0.2 (2022-01-30)
 * (bluefox) Removed "force web sockets" option
 
