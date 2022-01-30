@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "4.0.3": {
+        "en": "Removed the deprecated \"passport.socketio\" packet",
+        "de": "Das veraltete „passport.socketio“-Paket wurde entfernt",
+        "ru": "Удален устаревший пакет «passport.socketio».",
+        "pt": "Removido o pacote \"passport.socketio\" obsoleto",
+        "nl": "Het verouderde pakket \"passport.socketio\" verwijderd",
+        "fr": "Suppression du paquet \"passport.socketio\" obsolète",
+        "it": "Rimosso il deprecato pacchetto \"passport.socketio\".",
+        "es": "Se eliminó el paquete obsoleto \"passport.socketio\"",
+        "pl": "Usunięto przestarzały pakiet „passport.socketio”",
+        "zh-cn": "删除了已弃用的“passport.socketio”数据包"
+      },
       "4.0.2": {
         "en": "Removed \"force web sockets\" option",
         "de": "Die Option „Web-Sockets erzwingen“ wurde entfernt",
@@ -90,18 +102,6 @@
         "es": "arreglar la dependencia de socketio",
         "pl": "naprawić zależność od gniazda",
         "zh-cn": "修复套接字依赖"
-      },
-      "3.1.2": {
-        "en": "Support of new Let's Encrypt (only with js-controller 3.2.x)",
-        "de": "Unterstützung des neuen Let's Encrypt (nur mit js-controller 3.2.x)",
-        "ru": "Поддержка нового Let's Encrypt (только с js-controller 3.2.x)",
-        "pt": "Suporte do novo Let's Encrypt (apenas com js-controller 3.2.x)",
-        "nl": "Ondersteuning van nieuwe Let's Encrypt (alleen met js-controller 3.2.x)",
-        "fr": "Prise en charge du nouveau Let's Encrypt (uniquement avec js-controller 3.2.x)",
-        "it": "Supporto del nuovo Let's Encrypt (solo con js-controller 3.2.x)",
-        "es": "Soporte del nuevo Let's Encrypt (solo con js-controller 3.2.x)",
-        "pl": "Obsługa nowego Let's Encrypt (tylko z js-controller 3.2.x)",
-        "zh-cn": "支持新的Let's Encrypt（仅适用于js-controller 3.2.x）"
       }
     },
     "authors": [
