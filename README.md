@@ -6,10 +6,11 @@
 
 [![NPM](https://nodei.co/npm/iobroker.socketio.png?downloads=true)](https://nodei.co/npm/iobroker.socketio/)
 
+This adapter used by WEB applications and adapters to communicate with ioBroker using websockets and the socket.io protocol.
 
-This adapter used by some WEB applications and adapters to communicate with ioBroker using socket.io protocol.
+**Important Note: Since v4.0 of this adapter pure Websockets are used exclusively! Socket.io is no longer implemented by the socket.io library, but simulated via pure WebSockets!**
 
-Users can use this adapter to connect their products to ioBroker via web sockets. Actually this adapter is used by Flot, Rickshaw, Vis and mobile to extract data from ioBroker.
+Users can use this adapter to connect their products to ioBroker via web sockets. Actually this adapter is e.g. used by Flot, Rickshaw, Vis and mobile to extract data from ioBroker.
 
 You can find in the example [directory](https://github.com/ioBroker/ioBroker.socketio/tree/master/example) simple application that uses this interface to show some data.
 
