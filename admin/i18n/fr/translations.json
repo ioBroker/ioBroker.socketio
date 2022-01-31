@@ -1,0 +1,20 @@
+{
+  "Run as": "Courir comme",
+  "IP": "IP",
+  "Port": "Port",
+  "Secure(HTTPS)": "Sécurisé (HTTPS)",
+  "Authentication": "Authentification",
+  "Listen on all IPs": "Écoutez sur toutes les adresses IP",
+  "help_tip": "Sur enregistrer l'adaptateur redémarre avec la nouvelle configuration immédiatement",
+  "Public certificate": "Certificat public",
+  "Private certificate": "Certificat privé",
+  "Chained certificate": "Certificat chaîné",
+  "Let's Encrypt settings": "Cryptons les paramètres",
+  "Use Lets Encrypt certificates": "Utiliser les certificats Let's Encrypt",
+  "Use this instance for automatic update": "Utilisez cette instance pour la mise à jour automatique",
+  "Port to check the domain": "Port pour vérifier le domaine",
+  "Let's Encrypt SSL": "Let's Encrypt SSL",
+  "Read about Let's Encrypt certificates": "En savoir plus sur les certificats Let's Encrypt",
+  "Undo": "annuler",
+  "Force Web-Sockets": "Forcer les Web-Sockets"
+}

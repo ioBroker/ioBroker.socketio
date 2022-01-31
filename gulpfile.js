@@ -143,7 +143,9 @@ function words2languages(src) {
             fs.mkdirSync(src + 'i18n/');
         }
         for (const l in langs) {
-            if (!langs.hasOwnProperty(l)) continue;
+            if (!langs.hasOwnProperty(l)) {
+                continue;
+            }
             const keys = Object.keys(langs[l]);
             //keys.sort();
             const obj = {};
@@ -182,7 +184,9 @@ function words2languagesFlat(src) {
         const keys = Object.keys(langs.en);
         //keys.sort();
         for (const l in langs) {
-            if (!langs.hasOwnProperty(l)) continue;
+            if (!langs.hasOwnProperty(l)) {
+                continue;
+            }
             const obj = {};
             for (let k = 0; k < keys.length; k++) {
                 obj[keys[k]] = langs[l][keys[k]];
@@ -398,4 +402,16 @@ gulp.task('updateReadme', done => {
     done();
 });
 
-gulp.task('default', gulp.series('updatePackages', 'updateReadme'));
+gulp.task('copySocketIo', done => {
+    let socket = require.resolve('socket.io-client').replace(/\\/g, '/');
+    // node_modules/socket.io-client/build/cjs/index.js
+    const parts = socket.split('/');
+    parts.pop();
+    parts.pop();
+    parts.push('dist');
+    parts.push('socket.io.js');
+    fs.writeFileSync(__dirname + '/lib/socket.io.js', fs.readFileSync(parts.join('/')));
+    done();
+});
+
+gulp.task('default', gulp.series('copySocketIo'));

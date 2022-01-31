@@ -1,0 +1,20 @@
+{
+  "Run as": "Rennen als",
+  "IP": "IK P",
+  "Port": "Haven",
+  "Secure(HTTPS)": "Secure (HTTPS)",
+  "Authentication": "authenticatie",
+  "Listen on all IPs": "Luister op alle IP's",
+  "help_tip": "Bij opslaan wordt de adapter onmiddellijk opnieuw opgestart met een nieuwe configuratie",
+  "Public certificate": "Openbaar certificaat",
+  "Private certificate": "Privé certificaat",
+  "Chained certificate": "Geketend certificaat",
+  "Let's Encrypt settings": "Laten we de instellingen versleutelen",
+  "Use Lets Encrypt certificates": "Gebruik Let's Encrypt-certificaten",
+  "Use this instance for automatic update": "Gebruik deze instantie voor automatische update",
+  "Port to check the domain": "Poort om het domein te controleren",
+  "Let's Encrypt SSL": "Let's Encrypt SSL",
+  "Read about Let's Encrypt certificates": "Lees over Let's Encrypt-certificaten",
+  "Undo": "ongedaan maken",
+  "Force Web-Sockets": "Forceer web-sockets"
+}

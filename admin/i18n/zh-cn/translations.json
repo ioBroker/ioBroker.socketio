@@ -1,0 +1,20 @@
+{
+  "Run as": "运行方式",
+  "IP": "知识产权",
+  "Port": "港口",
+  "Secure(HTTPS)": "安全（HTTPS）",
+  "Authentication": "验证",
+  "Listen on all IPs": "监听所有 IP",
+  "help_tip": "保存后适配器立即使用新配置重新启动",
+  "Public certificate": "公共证书",
+  "Private certificate": "私人证书",
+  "Chained certificate": "链式证书",
+  "Let's Encrypt settings": "让我们加密设置",
+  "Use Lets Encrypt certificates": "使用 Let's Encrypt 证书",
+  "Use this instance for automatic update": "使用此实例进行自动更新",
+  "Port to check the domain": "检查域的端口",
+  "Let's Encrypt SSL": "Let's Encrypt SSL",
+  "Read about Let's Encrypt certificates": "阅读 Let's Encrypt 证书",
+  "Undo": "撤消",
+  "Force Web-Sockets": "强制 Web 套接字"
+}

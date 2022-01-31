@@ -1,0 +1,20 @@
+{
+  "Run as": "Запустить от пользователя",
+  "IP": "IP",
+  "Port": "Порт",
+  "Secure(HTTPS)": "Шифрование(HTTPS)",
+  "Authentication": "Аутентификация",
+  "Listen on all IPs": "Открыть сокет на всех IP адресах",
+  "help_tip": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями",
+  "Public certificate": "'Public' сертификат",
+  "Private certificate": "'Private' сертификат",
+  "Chained certificate": "'Chained' сертификат",
+  "Let's Encrypt settings": "Настройки Let's Encrypt",
+  "Use Lets Encrypt certificates": "Использовать сертификаты Let's Encrypt",
+  "Use this instance for automatic update": "Обновлять сертификаты в этом драйвере",
+  "Port to check the domain": "Порт для проверки доменного имени",
+  "Let's Encrypt SSL": "Let's Encrypt SSL",
+  "Read about Let's Encrypt certificates": "Читать о сертификатах Let's Encrypt",
+  "Undo": "Отменить",
+  "Force Web-Sockets": "Использовать только веб-сокеты"
+}

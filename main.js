@@ -95,7 +95,6 @@ function main() {
 //    "bind":   "0.0.0.0", // "::"
 //}
 function initWebServer(settings) {
-
     const server = {
         app:       null,
         server:    null,
