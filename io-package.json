@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "4.0.3",
+    "version": "4.1.0",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "4.1.0": {
+        "en": "Update socket.io library to 2.4.1\nUsed json config for settings",
+        "de": "Aktualisieren Sie die socket.io-Bibliothek auf 2.4.1\nVerwendete JSON-Konfiguration für Einstellungen",
+        "ru": "Обновите библиотеку socket.io до версии 2.4.1.\nИспользовал конфиг json для настроек",
+        "pt": "Atualize a biblioteca socket.io para 2.4.1\nConfiguração json usada para configurações",
+        "nl": "Update socket.io-bibliotheek naar 2.4.1\nGebruikte json-configuratie voor instellingen",
+        "fr": "Mettre à jour la bibliothèque socket.io vers 2.4.1\nJson config utilisé pour les paramètres",
+        "it": "Aggiorna la libreria socket.io a 2.4.1\nConfigurazione json usata per le impostazioni",
+        "es": "Actualice la biblioteca socket.io a 2.4.1\nConfiguración json utilizada para la configuración",
+        "pl": "Zaktualizuj bibliotekę socket.io do wersji 2.4.1\nUżywana konfiguracja json do ustawień",
+        "zh-cn": "将 socket.io 库更新到 2.4.1\n使用 json 配置进行设置"
+      },
       "4.0.3": {
         "en": "Removed the deprecated \"passport.socketio\" packet",
         "de": "Das veraltete „passport.socketio“-Paket wurde entfernt",
@@ -90,18 +102,6 @@
         "es": "Defina instanceObject \"conectado\" para evitar advertencias con js-controller 3.2",
         "pl": "Zdefiniuj obiekt instanceObject „połączony”, aby zapobiec ostrzeżeniu za pomocą kontrolera js 3.2",
         "zh-cn": "定义instanceObject“ connected”以防止使用js-controller 3.2发出警告"
-      },
-      "3.1.3": {
-        "en": "fix socketio dependency",
-        "de": "Behebung der Socketio-Abhängigkeit",
-        "ru": "исправить зависимость socketio",
-        "pt": "consertar dependência de socketio",
-        "nl": "fix socketio-afhankelijkheid",
-        "fr": "correction de la dépendance socketio",
-        "it": "correggere la dipendenza da socketio",
-        "es": "arreglar la dependencia de socketio",
-        "pl": "naprawić zależność od gniazda",
-        "zh-cn": "修复套接字依赖"
       }
     },
     "authors": [
