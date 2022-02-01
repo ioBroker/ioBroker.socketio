@@ -21,7 +21,7 @@
     "cookie-parser": "^1.4.6",
     "express-session": "^1.17.2",
     "passport": "^0.5.2",
-    "socket.io": "^2.4.1"
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^3.5.0",
