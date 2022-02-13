@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "4.1.1",
+    "version": "4.1.2",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "4.1.2": {
+        "en": "Corrected the connection indication",
+        "de": "Verbindungsanzeige korrigiert",
+        "ru": "Исправлена индикация подключения",
+        "pt": "Corrigida a indicação de conexão",
+        "nl": "De verbindingsindicatie gecorrigeerd",
+        "fr": "Correction de l'indication de connexion",
+        "it": "Corretta l'indicazione di connessione",
+        "es": "Se corrigió la indicación de conexión.",
+        "pl": "Poprawiono wskazanie połączenia",
+        "zh-cn": "更正了连接指示"
+      },
       "4.1.1": {
         "en": "Corrected the connection indication",
         "de": "Verbindungsanzeige korrigiert",
@@ -90,18 +102,6 @@
         "es": "Elimine socket-io y use solo sockets web",
         "pl": "Usuń socket-io i używaj tylko gniazd sieciowych",
         "zh-cn": "删除 socket-io 并仅使用 Web 套接字"
-      },
-      "3.1.5": {
-        "en": "make error logging on failed authentication more specific\n\"request\" was repalced by \"axios\"",
-        "de": "Fehlerprotokollierung bei fehlgeschlagener Authentifizierung genauer machen\n\"request\" wurde durch \"axios\" ersetzt",
-        "ru": "сделать регистрацию ошибок при неудачной аутентификации более конкретной\n\"запрос\" был заменен на \"аксиомы\"",
-        "pt": "tornar mais específico o log de erros na autenticação com falha\n\"pedido\" foi repetido por \"axios\"",
-        "nl": "maak foutregistratie bij mislukte authenticatie specifieker\n\"verzoek\" is vervangen door \"axios\"",
-        "fr": "rendre plus spécifique l'erreur de connexion lors de l'échec de l'authentification\n\"demande\" a été remplacée par \"axios\"",
-        "it": "rendere più specifica la registrazione degli errori in caso di autenticazione non riuscita\n\"richiesta\" è stato sostituito da \"axios\"",
-        "es": "hacer que el registro de errores en la autenticación fallida sea más específico\n\"solicitud\" fue reemplazada por \"axios\"",
-        "pl": "uszczegółowić błąd logowania przy nieudanej autoryzacji\n„request” został zastąpiony przez „axios”",
-        "zh-cn": "使错误登录失败的身份验证更具体\n“请求”被“axios”取代"
       }
     },
     "authors": [
