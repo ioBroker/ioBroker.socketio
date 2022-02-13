@@ -124,6 +124,8 @@
     "stopBeforeUpdate": true,
     "compact": true,
     "stopTimeout": 5000,
+    "connectionType": "local",
+    "dataSource": "push",
     "adminUI": {
       "config": "json"
     },
