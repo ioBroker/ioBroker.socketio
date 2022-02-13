@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.5.1",
-    "axios": "^0.25.0",
+    "axios": "^0.26.0",
     "cookie-parser": "^1.4.6",
     "express-session": "^1.17.2",
     "passport": "^0.5.2",

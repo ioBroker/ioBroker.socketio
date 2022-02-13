@@ -34,6 +34,8 @@ function startAdapter(options) {
 
     adapter.on('unload', callback => {
         try {
+            adapter.setState && adapter.setState('indicator.connected', '', true);
+            adapter.setState && adapter.setState('indicator.connection', false, true);
             adapter.log.info(`terminating http${webServer.settings.secure ? 's' : ''} server on port ${webServer.settings.port}`);
             webServer.io.close();
             webServer.server.close();
@@ -166,8 +168,10 @@ function initWebServer(settings) {
             });
 
             // Start the web server
-            server.server.listen(settings.port, (!settings.bind || settings.bind === '0.0.0.0') ? undefined : settings.bind || undefined, () =>
-                serverListening = true);
+            server.server.listen(settings.port, (!settings.bind || settings.bind === '0.0.0.0') ? undefined : settings.bind || undefined, () => {
+                adapter.setState('indicator.connection', true, true);
+                serverListening = true
+            });
 
             settings.crossDomain     = true;
             settings.ttl             = settings.ttl || 3600;
