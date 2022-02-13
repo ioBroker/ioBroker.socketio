@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "4.1.0",
+    "version": "4.1.1",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "4.1.1": {
+        "en": "Corrected the connection indication",
+        "de": "Verbindungsanzeige korrigiert",
+        "ru": "Исправлена индикация подключения",
+        "pt": "Corrigida a indicação de conexão",
+        "nl": "De verbindingsindicatie gecorrigeerd",
+        "fr": "Correction de l'indication de connexion",
+        "it": "Corretta l'indicazione di connessione",
+        "es": "Se corrigió la indicación de conexión.",
+        "pl": "Poprawiono wskazanie połączenia",
+        "zh-cn": "更正了连接指示"
+      },
       "4.1.0": {
         "en": "Update socket.io library to 2.4.1\nUsed json config for settings",
         "de": "Aktualisieren Sie die socket.io-Bibliothek auf 2.4.1\nVerwendete JSON-Konfiguration für Einstellungen",
@@ -90,18 +102,6 @@
         "es": "hacer que el registro de errores en la autenticación fallida sea más específico\n\"solicitud\" fue reemplazada por \"axios\"",
         "pl": "uszczegółowić błąd logowania przy nieudanej autoryzacji\n„request” został zastąpiony przez „axios”",
         "zh-cn": "使错误登录失败的身份验证更具体\n“请求”被“axios”取代"
-      },
-      "3.1.4": {
-        "en": "Define instanceObject \"connected\" to prevent warning with js-controller 3.2",
-        "de": "Definieren Sie instanceObject \"verbunden\", um eine Warnung mit js-controller 3.2 zu vermeiden",
-        "ru": "Определите instanceObject \"connected\", чтобы предотвратить предупреждение с помощью js-controller 3.2",
-        "pt": "Defina instanceObject \"conectado\" para evitar aviso com js-controller 3.2",
-        "nl": "Definieer instanceObject \"connected\" om waarschuwing te voorkomen met js-controller 3.2",
-        "fr": "Définissez instanceObject \"connecté\" pour éviter l'avertissement avec js-controller 3.2",
-        "it": "Definire instanceObject \"connesso\" per evitare avvisi con js-controller 3.2",
-        "es": "Defina instanceObject \"conectado\" para evitar advertencias con js-controller 3.2",
-        "pl": "Zdefiniuj obiekt instanceObject „połączony”, aby zapobiec ostrzeżeniu za pomocą kontrolera js 3.2",
-        "zh-cn": "定义instanceObject“ connected”以防止使用js-controller 3.2发出警告"
       }
     },
     "authors": [
