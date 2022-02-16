@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "4.1.2",
+    "version": "4.1.3",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "4.1.3": {
+        "en": "Added `unlink` and `rename` to web functions",
+        "de": "„Unlink“ und „Rename“ zu den Webfunktionen hinzugefügt",
+        "ru": "Добавлены «отвязать» и «переименовать» в веб-функции.",
+        "pt": "Adicionado `unlink` e `rename` para funções da web",
+        "nl": "`unlink` en `rename` toegevoegd aan webfuncties",
+        "fr": "Ajout de `unlink` et `rename` aux fonctions Web",
+        "it": "Aggiunti \"scollega\" e \"rinomina\" alle funzioni web",
+        "es": "Se agregó `unlink` y `rename` a las funciones web",
+        "pl": "Dodano `odłącz` i `zmień nazwę` do funkcji sieciowych",
+        "zh-cn": "为 Web 函数添加了“取消链接”和“重命名”"
+      },
       "4.1.2": {
         "en": "Corrected the connection indication",
         "de": "Verbindungsanzeige korrigiert",
@@ -90,18 +102,6 @@
         "es": "Autenticación fija",
         "pl": "Naprawiono uwierzytelnianie",
         "zh-cn": "固定身份验证"
-      },
-      "4.0.0": {
-        "en": "Remove socket-io and use only web sockets",
-        "de": "Socket-io entfernen und nur Web-Sockets verwenden",
-        "ru": "Удалите socket-io и используйте только веб-сокеты",
-        "pt": "Remova o socket-io e use apenas web sockets",
-        "nl": "Verwijder socket-io en gebruik alleen websockets",
-        "fr": "Supprimer socket-io et utiliser uniquement des sockets Web",
-        "it": "Rimuovere socket-io e utilizzare solo socket web",
-        "es": "Elimine socket-io y use solo sockets web",
-        "pl": "Usuń socket-io i używaj tylko gniazd sieciowych",
-        "zh-cn": "删除 socket-io 并仅使用 Web 套接字"
       }
     },
     "authors": [

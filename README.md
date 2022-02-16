@@ -311,7 +311,7 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
-### __WORK IN PROGRESS__
+### 4.1.3 (2022-02-16)
 * (bluefox) Added `unlink` and `rename` to web functions
 
 ### 4.1.2 (2022-02-13)
