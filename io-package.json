@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "4.1.4",
+    "version": "4.1.5",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "4.1.5": {
+        "en": "make sure patterns are handled as strings on subscribe/unsubscribe\nwhen getHistory is called with instance as string correct the data into an object",
+        "de": "Stellen Sie sicher, dass Muster beim Abonnieren/Abmelden als Zeichenfolgen behandelt werden\nWenn getHistory mit einer Instanz als Zeichenfolge aufgerufen wird, korrigieren Sie die Daten in ein Objekt",
+        "ru": "убедитесь, что шаблоны обрабатываются как строки при подписке/отмене подписки\nкогда getHistory вызывается с экземпляром в виде строки, исправьте данные в объект",
+        "pt": "certifique-se de que os padrões sejam tratados como strings em assinar/cancelar assinatura\nquando getHistory é chamado com instância como string, corrija os dados em um objeto",
+        "nl": "zorg ervoor dat patronen worden behandeld als tekenreeksen bij aanmelden/afmelden\nwanneer getHistory wordt aangeroepen met instantie als string, corrigeer dan de gegevens in een object",
+        "fr": "assurez-vous que les modèles sont traités comme des chaînes lors de l'abonnement/du désabonnement\nlorsque getHistory est appelé avec une instance en tant que chaîne, corrigez les données dans un objet",
+        "it": "assicurati che i modelli siano gestiti come stringhe su iscriviti/annulla iscrizione\nquando getHistory viene chiamato con instance as string corregge i dati in un oggetto",
+        "es": "asegúrese de que los patrones se manejen como cadenas en suscribirse/cancelar suscripción\ncuando se llama a getHistory con una instancia como cadena, corrija los datos en un objeto",
+        "pl": "upewnij się, że wzorce są obsługiwane jako ciągi podczas subskrypcji/anulowania subskrypcji\ngdy getHistory jest wywoływane z instancją jako ciągiem, popraw dane do obiektu",
+        "zh-cn": "确保模式在订阅/取消订阅时作为字符串处理\n当使用实例作为字符串调用 getHistory 时，将数据更正为对象"
+      },
       "4.1.4": {
         "en": "Added `unlink` and `rename` to web functions",
         "de": "„Unlink“ und „Rename“ zu den Webfunktionen hinzugefügt",
@@ -90,18 +102,6 @@
         "es": "Se eliminó el paquete obsoleto \"passport.socketio\"",
         "pl": "Usunięto przestarzały pakiet „passport.socketio”",
         "zh-cn": "删除了已弃用的“passport.socketio”数据包"
-      },
-      "4.0.2": {
-        "en": "Removed \"force web sockets\" option",
-        "de": "Die Option „Web-Sockets erzwingen“ wurde entfernt",
-        "ru": "Удалена опция «форсировать веб-сокеты».",
-        "pt": "Removida a opção \"forçar soquetes da web\"",
-        "nl": "Optie \"force web sockets\" verwijderd",
-        "fr": "Suppression de l'option \"forcer les sockets Web\"",
-        "it": "Rimossa l'opzione \"forza prese web\".",
-        "es": "Se eliminó la opción \"forzar sockets web\"",
-        "pl": "Usunięto opcję „wymuszenie gniazd sieciowych”",
-        "zh-cn": "删除了“强制 Web 套接字”选项"
       }
     },
     "authors": [

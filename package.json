@@ -1,6 +1,6 @@
 {
   "name": "iobroker.socketio",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "description": "This adapter allows to communicate different web applications with ioBroker.",
   "author": {
     "name": "bluefox",
