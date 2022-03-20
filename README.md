@@ -307,12 +307,12 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 
 <!--
 	Placeholder for the next version (at the beginning of the line):
-	### __WORK IN PROGRESS__
+	### **WORK IN PROGRESS**
 -->
 
 ## Changelog
 
-### __WORK IN PROGRESS__
+### **WORK IN PROGRESS**
 * (Apollon77) make sure patterns are handled as strings on subscribe/unsubscribe
 * (Apollon77) when getHistory is called with instance as string correct the data into an object
 
