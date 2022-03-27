@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "4.1.5",
+    "version": "4.2.0",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "4.2.0": {
+        "en": "Added `log` socket command",
+        "de": "`log`-Socket-Befehl hinzugefügt",
+        "ru": "Добавлена команда сокета `log`",
+        "pt": "Adicionado comando de socket `log`",
+        "nl": "`log` socket-opdracht toegevoegd",
+        "fr": "Ajout de la commande socket `log`",
+        "it": "Aggiunto il comando socket `log`",
+        "es": "Se agregó el comando de socket `log`",
+        "pl": "Dodano polecenie `log` socket",
+        "zh-cn": "添加了 `log` 套接字命令"
+      },
       "4.1.5": {
         "en": "make sure patterns are handled as strings on subscribe/unsubscribe\nwhen getHistory is called with instance as string correct the data into an object",
         "de": "Stellen Sie sicher, dass Muster beim Abonnieren/Abmelden als Zeichenfolgen behandelt werden\nWenn getHistory mit einer Instanz als Zeichenfolge aufgerufen wird, korrigieren Sie die Daten in ein Objekt",
@@ -90,18 +102,6 @@
         "es": "Actualice la biblioteca socket.io a 2.4.1\nConfiguración json utilizada para la configuración",
         "pl": "Zaktualizuj bibliotekę socket.io do wersji 2.4.1\nUżywana konfiguracja json do ustawień",
         "zh-cn": "将 socket.io 库更新到 2.4.1\n使用 json 配置进行设置"
-      },
-      "4.0.3": {
-        "en": "Removed the deprecated \"passport.socketio\" packet",
-        "de": "Das veraltete „passport.socketio“-Paket wurde entfernt",
-        "ru": "Удален устаревший пакет «passport.socketio».",
-        "pt": "Removido o pacote \"passport.socketio\" obsoleto",
-        "nl": "Het verouderde pakket \"passport.socketio\" verwijderd",
-        "fr": "Suppression du paquet \"passport.socketio\" obsolète",
-        "it": "Rimosso il deprecato pacchetto \"passport.socketio\".",
-        "es": "Se eliminó el paquete obsoleto \"passport.socketio\"",
-        "pl": "Usunięto przestarzały pakiet „passport.socketio”",
-        "zh-cn": "删除了已弃用的“passport.socketio”数据包"
       }
     },
     "authors": [
