@@ -311,6 +311,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Added `log` socket command
+
 ### 4.1.5 (2022-03-20)
 * (Apollon77) make sure patterns are handled as strings on subscribe/unsubscribe
 * (Apollon77) when getHistory is called with instance as string correct the data into an object
