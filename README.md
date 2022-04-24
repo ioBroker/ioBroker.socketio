@@ -104,7 +104,7 @@ E.g. ```servConn.setState('adapter.0.myvalue', true)``` writes ```{val: true, ac
 - `pointId` - is ID of the state, like `adapter.0.myvalue`,
 - `value`   - new value of the state, could be simple value (string, number, boolean) or object like ```{val: newValue, ack: false, q: 0}```. 
 In case if used simple value, "ack" will be set to "false".
-- `callback` - ```function (error) {}``` - called when the write of new value into DB is performed (not when the device was controlled).  
+- `callback` - ```function (error) {}``` - called when the writing of new value into DB is performed (not when the device was controlled).  
 
 ### getStates
 - function (IDs, callback)
