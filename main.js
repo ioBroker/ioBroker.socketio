@@ -111,12 +111,16 @@ function initWebServer(settings) {
         if (settings.secure && !settings.certificates) {
             return null;
         }
+
+        settings.crossDomain     = true;
+        settings.ttl             = settings.ttl || 3600;
+        settings.forceWebSockets = settings.forceWebSockets || false;
+
         if (settings.auth) {
             const session =          require('express-session');
             const AdapterStore =     require(utils.controllerDir + '/lib/session.js')(session, settings.ttl);
             // Authentication checked by server itself
             store = new AdapterStore({adapter});
-            settings.ttl              = settings.ttl || 3600;
             settings.forceWebSockets  = settings.forceWebSockets || false;
         }
 
@@ -171,10 +175,6 @@ function initWebServer(settings) {
                 adapter.setState('info.connection', true, true);
                 serverListening = true
             });
-
-            settings.crossDomain     = true;
-            settings.ttl             = settings.ttl || 3600;
-            settings.forceWebSockets = settings.forceWebSockets || false;
 
             server.io = new SocketIO(settings, adapter);
             server.io.start(server.server, socketio, {store, secret}, {

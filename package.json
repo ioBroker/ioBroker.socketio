@@ -17,10 +17,8 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.6.0",
-    "axios": "^0.26.1",
-    "cookie-parser": "^1.4.6",
+    "@iobroker/socket-classes": "^0.1.4",
     "express-session": "^1.17.2",
-    "passport": "^0.5.2",
     "socket.io": "^2.4.1"
   },
   "devDependencies": {

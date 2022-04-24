@@ -302,7 +302,7 @@ reads if the authentication is enabled and which user is logged in
 If authentication is enabled, so current logged-in user will be returned, if auth is disabled, so the default user "running as" will be returned.
 
 ## Tuning Web-Sockets
-On some web-sockets clients there is performance problem with communication. Sometimes this problem is due to fallback of socket.io communication on long polling mechanism.
+On some web-sockets clients there is performance problem with communication. Sometimes this issue is due to fallback of socket.io communication on long polling mechanism.
 You can set option *Force Web-Sockets* to force using only web-sockets transport.
 
 <!--
@@ -311,6 +311,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Used common sockets (could be buggy)
+
 ### 4.2.0 (2022-03-27)
 * (bluefox) Added `log` socket command
 
