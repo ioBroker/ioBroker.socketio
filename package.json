@@ -22,7 +22,7 @@
     "socket.io": "^2.4.1"
   },
   "devDependencies": {
-    "@alcalzone/release-script": "^3.5.6",
+    "@alcalzone/release-script": "^3.5.8",
     "@alcalzone/release-script-plugin-iobroker": "^3.5.7",
     "@alcalzone/release-script-plugin-license": "^3.5.3",
     "socket.io-client": "^2.4.0",
