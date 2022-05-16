@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "4.2.0",
+    "version": "5.0.0",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "5.0.0": {
+        "en": "Used common sockets (could be buggy)",
+        "de": "Gebrauchte gemeinsame Steckdosen (könnte fehlerhaft sein)",
+        "ru": "Использовались обычные розетки (могут глючить)",
+        "pt": "Soquetes comuns usados (podem estar com bugs)",
+        "nl": "Gebruikte gemeenschappelijke stopcontacten (kan buggy zijn)",
+        "fr": "Prises communes utilisées (pourraient être boguées)",
+        "it": "Prese comuni usate (potrebbero essere difettose)",
+        "es": "Enchufes comunes usados (podrían tener errores)",
+        "pl": "Używane wspólne gniazda (mogą być wadliwe)",
+        "zh-cn": "使用过的普通插座（可能有问题）"
+      },
       "4.2.0": {
         "en": "Added `log` socket command",
         "de": "`log`-Socket-Befehl hinzugefügt",
@@ -90,18 +102,6 @@
         "es": "Se corrigió la indicación de conexión.",
         "pl": "Poprawiono wskazanie połączenia",
         "zh-cn": "更正了连接指示"
-      },
-      "4.1.0": {
-        "en": "Update socket.io library to 2.4.1\nUsed json config for settings",
-        "de": "Aktualisieren Sie die socket.io-Bibliothek auf 2.4.1\nVerwendete JSON-Konfiguration für Einstellungen",
-        "ru": "Обновите библиотеку socket.io до версии 2.4.1.\nИспользовал конфиг json для настроек",
-        "pt": "Atualize a biblioteca socket.io para 2.4.1\nConfiguração json usada para configurações",
-        "nl": "Update socket.io-bibliotheek naar 2.4.1\nGebruikte json-configuratie voor instellingen",
-        "fr": "Mettre à jour la bibliothèque socket.io vers 2.4.1\nJson config utilisé pour les paramètres",
-        "it": "Aggiorna la libreria socket.io a 2.4.1\nConfigurazione json usata per le impostazioni",
-        "es": "Actualice la biblioteca socket.io a 2.4.1\nConfiguración json utilizada para la configuración",
-        "pl": "Zaktualizuj bibliotekę socket.io do wersji 2.4.1\nUżywana konfiguracja json do ustawień",
-        "zh-cn": "将 socket.io 库更新到 2.4.1\n使用 json 配置进行设置"
       }
     },
     "authors": [
