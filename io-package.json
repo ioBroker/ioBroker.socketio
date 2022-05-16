@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "5.0.1": {
+        "en": "Used common sockets (could be buggy)",
+        "de": "Gebrauchte gemeinsame Steckdosen (könnte fehlerhaft sein)",
+        "ru": "Использовались обычные розетки (могут глючить)",
+        "pt": "Soquetes comuns usados (podem estar com bugs)",
+        "nl": "Gebruikte gemeenschappelijke stopcontacten (kan buggy zijn)",
+        "fr": "Prises communes utilisées (pourraient être boguées)",
+        "it": "Prese comuni usate (potrebbero essere difettose)",
+        "es": "Enchufes comunes usados (podrían tener errores)",
+        "pl": "Używane wspólne gniazda (mogą być wadliwe)",
+        "zh-cn": "使用过的普通插座（可能有问题）"
+      },
       "4.2.0": {
         "en": "Added `log` socket command",
         "de": "`log`-Socket-Befehl hinzugefügt",
