@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "5.0.2": {
+        "en": "Hide warn messages",
+        "de": "Warnmeldungen ausblenden",
+        "ru": "Скрыть предупреждающие сообщения",
+        "pt": "Ocultar mensagens de aviso",
+        "nl": "Waarschuwingsberichten verbergen",
+        "fr": "Masquer les messages d'avertissement",
+        "it": "Nascondi i messaggi di avviso",
+        "es": "Ocultar mensajes de advertencia",
+        "pl": "Ukryj ostrzeżenia",
+        "zh-cn": "隐藏警告消息"
+      },
       "5.0.1": {
         "en": "Used common sockets (could be buggy)",
         "de": "Gebrauchte gemeinsame Steckdosen (könnte fehlerhaft sein)",
@@ -80,18 +92,6 @@
         "zh-cn": "为 Web 函数添加了“取消链接”和“重命名”"
       },
       "4.1.2": {
-        "en": "Corrected the connection indication",
-        "de": "Verbindungsanzeige korrigiert",
-        "ru": "Исправлена индикация подключения",
-        "pt": "Corrigida a indicação de conexão",
-        "nl": "De verbindingsindicatie gecorrigeerd",
-        "fr": "Correction de l'indication de connexion",
-        "it": "Corretta l'indicazione di connessione",
-        "es": "Se corrigió la indicación de conexión.",
-        "pl": "Poprawiono wskazanie połączenia",
-        "zh-cn": "更正了连接指示"
-      },
-      "4.1.1": {
         "en": "Corrected the connection indication",
         "de": "Verbindungsanzeige korrigiert",
         "ru": "Исправлена индикация подключения",
