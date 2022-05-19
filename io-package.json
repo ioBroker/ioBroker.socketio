@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.0.0",
+    "version": "6.0.1",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.0.1": {
+        "en": "Update to socket.io@4.x",
+        "de": "Aktualisieren Sie auf socket.io@4.x",
+        "ru": "Обновление до socket.io@4.x",
+        "pt": "Atualize para socket.io@4.x",
+        "nl": "Update naar socket.io@4.x",
+        "fr": "Mise à jour vers socket.io@4.x",
+        "it": "Aggiorna a socket.io@4.x",
+        "es": "Actualizar a socket.io@4.x",
+        "pl": "Zaktualizuj do socket.io@4.x",
+        "zh-cn": "更新到 socket.io@4.x"
+      },
       "5.0.2": {
         "en": "Hide warn messages",
         "de": "Warnmeldungen ausblenden",
