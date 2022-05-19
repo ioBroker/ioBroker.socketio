@@ -408,8 +408,9 @@ gulp.task('copySocketIo', done => {
     const parts = socket.split('/');
     parts.pop();
     parts.pop();
+    parts.pop();
     parts.push('dist');
-    parts.push('socket.io.js');
+    parts.push('socket.io.min.js');
     fs.writeFileSync(__dirname + '/lib/socket.io.js', fs.readFileSync(parts.join('/')));
     done();
 });
