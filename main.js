@@ -177,10 +177,16 @@ function initWebServer(settings) {
             });
 
             server.io = new SocketIO(settings, adapter);
-            server.io.start(server.server, socketio, {store, secret}, {
+            const socketOptions = {
                 pingInterval: 120000,
-                pingTimeout: 30000
-            });
+                pingTimeout: 30000,
+                cors: {
+                    origin: '*',
+                    allowedHeaders: ['*'],
+                    credentials: true
+                }
+            };
+            server.io.start(server.server, socketio, {store, secret}, socketOptions);
         });
     } else {
         adapter.log.error('port missing');
