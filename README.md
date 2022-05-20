@@ -311,6 +311,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Added compatibility with socket.io@2.x
+
 ### 6.0.1 (2022-05-19)
 * (bluefox) Update to socket.io@4.x
 

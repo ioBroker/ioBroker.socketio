@@ -16,5 +16,7 @@
   "Let's Encrypt SSL": "Let's Encrypt SSL",
   "Read about Let's Encrypt certificates": "Читать о сертификатах Let's Encrypt",
   "Undo": "Отменить",
-  "Force Web-Sockets": "Использовать только веб-сокеты"
+  "Force Web-Sockets": "Использовать только веб-сокеты",
+  "Compatibility mode with socket.io@2.x": "Режим совместимости с socket.io@2.x",
+  "e.g. for Jarvis": "например для Jarvis"
 }

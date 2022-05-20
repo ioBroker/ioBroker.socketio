@@ -16,5 +16,7 @@
   "Let's Encrypt SSL": "Let's Encrypt SSL",
   "Read about Let's Encrypt certificates": "Read about Let's Encrypt certificates",
   "Undo": "Undo",
-  "Force Web-Sockets": "Force Web-Sockets"
+  "Force Web-Sockets": "Force Web-Sockets",
+  "Compatibility mode with socket.io@2.x": "Compatibility mode with socket.io@2.x",
+  "e.g. for Jarvis": "e.g. for Jarvis"
 }

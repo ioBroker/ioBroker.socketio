@@ -161,7 +161,8 @@
     "forceWebSockets": false,
     "leEnabled": false,
     "leUpdate": false,
-    "leCheckPort": 80
+    "leCheckPort": 80,
+    "compatibilityV2": true
   },
   "instanceObjects": [
     {

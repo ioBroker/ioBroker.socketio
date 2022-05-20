@@ -16,5 +16,7 @@
   "Let's Encrypt SSL": "Let's Encrypt SSL",
   "Read about Let's Encrypt certificates": "阅读 Let's Encrypt 证书",
   "Undo": "撤消",
-  "Force Web-Sockets": "强制 Web 套接字"
+  "Force Web-Sockets": "强制 Web 套接字",
+  "Compatibility mode with socket.io@2.x": "与 socket.io@2.x 的兼容模式",
+  "e.g. for Jarvis": "例如贾维斯"
 }
