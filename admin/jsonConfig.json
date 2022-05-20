@@ -105,6 +105,7 @@
           "lg": 2
         },
         "compatibilityV2": {
+          "hidden": "true",
           "type": "checkbox",
           "label": "Compatibility mode with socket.io@2.x",
           "help": "e.g. for Jarvis",

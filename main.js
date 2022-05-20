@@ -180,12 +180,13 @@ function initWebServer(settings) {
             const socketOptions = {
                 pingInterval: 120000,
                 pingTimeout: 30000,
-                cors: {
-                    origin: '*',
+                cors: { // for socket.4.x
+                    origin: `*`,
                     allowedHeaders: ['*'],
                     credentials: true
-                }
+                },
             };
+
             server.io.start(server.server, socketio, {store, secret}, socketOptions);
         });
     } else {
