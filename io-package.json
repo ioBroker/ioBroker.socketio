@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.0.2",
+    "version": "6.1.0",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.1.0": {
+        "en": "Reverted socket.io to V2",
+        "de": "Socket.io auf V2 zurückgesetzt",
+        "ru": "Восстановлен socket.io до V2",
+        "pt": "Socket.io revertido para V2",
+        "nl": "Socket.io teruggezet naar V2",
+        "fr": "Retour de socket.io en V2",
+        "it": "Socket.io ripristinato a V2",
+        "es": "Socket.io revertido a V2",
+        "pl": "Przywrócono socket.io do V2",
+        "zh-cn": "将 socket.io 恢复到 V2"
+      },
       "6.0.2": {
         "en": "Added compatibility with socket.io@2.x",
         "de": "Kompatibilität mit socket.io@2.x hinzugefügt",
@@ -90,18 +102,6 @@
         "es": "asegúrese de que los patrones se manejen como cadenas en suscribirse/cancelar suscripción\ncuando se llama a getHistory con una instancia como cadena, corrija los datos en un objeto",
         "pl": "upewnij się, że wzorce są obsługiwane jako ciągi podczas subskrypcji/anulowania subskrypcji\ngdy getHistory jest wywoływane z instancją jako ciągiem, popraw dane do obiektu",
         "zh-cn": "确保模式在订阅/取消订阅时作为字符串处理\n当使用实例作为字符串调用 getHistory 时，将数据更正为对象"
-      },
-      "4.1.4": {
-        "en": "Added `unlink` and `rename` to web functions",
-        "de": "„Unlink“ und „Rename“ zu den Webfunktionen hinzugefügt",
-        "ru": "Добавлены «отвязать» и «переименовать» в веб-функции.",
-        "pt": "Adicionado `unlink` e `rename` para funções da web",
-        "nl": "`unlink` en `rename` toegevoegd aan webfuncties",
-        "fr": "Ajout de `unlink` et `rename` aux fonctions Web",
-        "it": "Aggiunti \"scollega\" e \"rinomina\" alle funzioni web",
-        "es": "Se agregó `unlink` y `rename` a las funciones web",
-        "pl": "Dodano `odłącz` i `zmień nazwę` do funkcji sieciowych",
-        "zh-cn": "为 Web 函数添加了“取消链接”和“重命名”"
       }
     },
     "authors": [
