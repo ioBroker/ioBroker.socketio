@@ -19,18 +19,6 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
-      "6.1.2": {
-        "en": "Corrected \"force web-sockets\" mode",
-        "de": "Der Modus \"Web-Sockets erzwingen\" wurde korrigiert",
-        "ru": "Исправлен режим \"форсировать веб-сокеты\"",
-        "pt": "Corrigido o modo \"forçar web-sockets\"",
-        "nl": "Gecorrigeerde \"force web-sockets\"-modus",
-        "fr": "Correction du mode \"force web-sockets\"",
-        "it": "Corretta la modalità \"force web-socket\".",
-        "es": "Modo \"forzar web-sockets\" corregido",
-        "pl": "Poprawiony tryb „wymuszania gniazd sieciowych”",
-        "zh-cn": "更正了“强制网络套接字”模式"
-      },
       "6.1.1": {
         "en": "Reverted socket.io to V2",
         "de": "Socket.io auf V2 zurückgesetzt",
