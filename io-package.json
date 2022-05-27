@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.1.3",
+    "version": "6.1.4",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.1.4": {
+        "en": "FIx crash cases reported by Sentry",
+        "de": "Behebung von Absturzfällen, die von Sentry gemeldet wurden",
+        "ru": "Исправить случаи сбоев, о которых сообщил Sentry",
+        "pt": "Corrigir casos de travamento relatados pelo Sentinela",
+        "nl": "Herstel crashgevallen gemeld door Sentry",
+        "fr": "Correction des cas de plantage signalés par Sentry",
+        "it": "Risolvi i casi di crash segnalati da Sentry",
+        "es": "Solucionar casos de fallas informados por Sentry",
+        "pl": "Napraw przypadki awarii zgłoszone przez Sentry",
+        "zh-cn": "修复 Sentry 报告的崩溃案例"
+      },
       "6.1.3": {
         "en": "Corrected \"force web-sockets\" mode",
         "de": "Der Modus \"Web-Sockets erzwingen\" wurde korrigiert",

@@ -311,8 +311,7 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
-
-### __WORK IN PROGRESS__
+### 6.1.4 (2022-05-27)
 * (Apollon77) FIx crash cases reported by Sentry
 
 ### 6.1.3 (2022-05-20)
