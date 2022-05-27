@@ -311,6 +311,10 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+
+### __WORK IN PROGRESS__
+* (Apollon77) FIx crash cases reported by Sentry
+
 ### 6.1.3 (2022-05-20)
 * (bluefox) Corrected "force web-sockets" mode
 
