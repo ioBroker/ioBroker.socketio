@@ -311,6 +311,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Do not show requireLog message
+
 ### 6.1.4 (2022-05-27)
 * (Apollon77) FIx crash cases reported by Sentry
 
