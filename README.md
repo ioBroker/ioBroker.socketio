@@ -311,7 +311,7 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 6.1.5 (2022-06-09)
 * (bluefox) Do not show requireLog message
 
 ### 6.1.4 (2022-05-27)
