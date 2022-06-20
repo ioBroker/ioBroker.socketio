@@ -18,5 +18,6 @@
   "Undo": "ongedaan maken",
   "Force Web-Sockets": "Forceer web-sockets",
   "Compatibility mode with socket.io@2.x": "Compatibiliteitsmodus met socket.io@2.x",
-  "e.g. for Jarvis": "bijv. voor Jarvis"
+  "e.g. for Jarvis": "bijv. voor Jarvis",
+  "Language for only this instance": "Taal voor alleen deze instantie"
 }

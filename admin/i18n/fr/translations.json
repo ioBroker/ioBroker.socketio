@@ -18,5 +18,6 @@
   "Undo": "annuler",
   "Force Web-Sockets": "Forcer les Web-Sockets",
   "Compatibility mode with socket.io@2.x": "Mode de compatibilité avec socket.io@2.x",
-  "e.g. for Jarvis": "par exemple. pour Jarvis"
+  "e.g. for Jarvis": "par exemple. pour Jarvis",
+  "Language for only this instance": "Langue pour cette instance uniquement"
 }

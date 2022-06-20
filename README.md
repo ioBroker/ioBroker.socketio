@@ -311,6 +311,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Allowed to overload the system language
+
 ### 6.1.6 (2022-06-20)
 * (bluefox) Allowed to run socket.io behind proxy
 

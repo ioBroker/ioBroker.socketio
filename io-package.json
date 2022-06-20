@@ -162,7 +162,8 @@
     "leEnabled": false,
     "leUpdate": false,
     "leCheckPort": 80,
-    "compatibilityV2": true
+    "compatibilityV2": true,
+    "language": ""
   },
   "instanceObjects": [
     {

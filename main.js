@@ -98,10 +98,10 @@ function main() {
 //}
 function initWebServer(settings) {
     const server = {
-        app:       null,
-        server:    null,
-        io:        null,
-        settings:  settings
+        app:    null,
+        server: null,
+        io:     null,
+        settings,
     };
     let store = null;
 

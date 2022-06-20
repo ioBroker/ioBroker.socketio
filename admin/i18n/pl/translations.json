@@ -18,5 +18,6 @@
   "Undo": "Cofnij",
   "Force Web-Sockets": "Wymuś gniazda sieciowe",
   "Compatibility mode with socket.io@2.x": "Tryb zgodności z socket.io@2.x",
-  "e.g. for Jarvis": "np. dla Jarvisa"
+  "e.g. for Jarvis": "np. dla Jarvisa",
+  "Language for only this instance": "Język tylko dla tej instancji"
 }
