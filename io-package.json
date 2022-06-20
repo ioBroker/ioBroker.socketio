@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.1.6",
+    "version": "6.1.7",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.1.7": {
+        "en": "Allowed to overload the system language",
+        "de": "Erlaubt, die Systemsprache zu überlasten",
+        "ru": "Разрешено перегрузить язык системы",
+        "pt": "Permitido sobrecarregar a linguagem do sistema",
+        "nl": "Genoemd om de systeemtaal te overbelasten",
+        "fr": "Permet de surcharger la langue du système",
+        "it": "Consentito di sovraccaricare la lingua di sistema",
+        "es": "Permitido sobrecargar el lenguaje del sistema",
+        "pl": "Wszystko to było przeciążenie języka systemowego",
+        "zh-cn": "允许使用系统语文"
+      },
       "6.1.6": {
         "en": "Allowed to run socket.io behind proxy",
         "de": "Erlaubt, Steckdose zu laufen. io hinter dem Proxy",
@@ -90,18 +102,6 @@
         "es": "Ocultar mensajes de advertencia",
         "pl": "Ukryj ostrzeżenia",
         "zh-cn": "隐藏警告消息"
-      },
-      "5.0.1": {
-        "en": "Used common sockets (could be buggy)",
-        "de": "Gebrauchte gemeinsame Steckdosen (könnte fehlerhaft sein)",
-        "ru": "Использовались обычные розетки (могут глючить)",
-        "pt": "Soquetes comuns usados (podem estar com bugs)",
-        "nl": "Gebruikte gemeenschappelijke stopcontacten (kan buggy zijn)",
-        "fr": "Prises communes utilisées (pourraient être boguées)",
-        "it": "Prese comuni usate (potrebbero essere difettose)",
-        "es": "Enchufes comunes usados (podrían tener errores)",
-        "pl": "Używane wspólne gniazda (mogą być wadliwe)",
-        "zh-cn": "使用过的普通插座（可能有问题）"
       }
     },
     "authors": [
