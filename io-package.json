@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.1.5",
+    "version": "6.1.6",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.1.6": {
+        "en": "Allowed to run socket.io behind proxy",
+        "de": "Erlaubt, Steckdose zu laufen. io hinter dem Proxy",
+        "ru": "Разрешено запустить розетку. io за прокси",
+        "pt": "Permitido para executar o soquete. io atrás do proxy",
+        "nl": "Toegestaan om socket te runnen. io achter proxy",
+        "fr": "Permet de lancer la socket. io derrière proxy",
+        "it": "Permesso di eseguire la presa. io dietro proxy",
+        "es": "Permitido correr enchufe. io detrás del proxy",
+        "pl": "Wszystko to jest możliwe do uruchomienia gniazda. i tak dalej, za sprawą",
+        "zh-cn": "可以管理手头。 导 言"
+      },
       "6.1.5": {
         "en": "Do not show requireLog message",
         "de": "Nicht zeigen Log-Nachricht",
@@ -90,18 +102,6 @@
         "es": "Enchufes comunes usados (podrían tener errores)",
         "pl": "Używane wspólne gniazda (mogą być wadliwe)",
         "zh-cn": "使用过的普通插座（可能有问题）"
-      },
-      "4.2.0": {
-        "en": "Added `log` socket command",
-        "de": "`log`-Socket-Befehl hinzugefügt",
-        "ru": "Добавлена команда сокета `log`",
-        "pt": "Adicionado comando de socket `log`",
-        "nl": "`log` socket-opdracht toegevoegd",
-        "fr": "Ajout de la commande socket `log`",
-        "it": "Aggiunto il comando socket `log`",
-        "es": "Se agregó el comando de socket `log`",
-        "pl": "Dodano polecenie `log` socket",
-        "zh-cn": "添加了 `log` 套接字命令"
       }
     },
     "authors": [
