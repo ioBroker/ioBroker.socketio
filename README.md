@@ -311,11 +311,14 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Allowed to run socket.io behind proxy
+
 ### 6.1.5 (2022-06-09)
 * (bluefox) Do not show requireLog message
 
 ### 6.1.4 (2022-05-27)
-* (Apollon77) FIx crash cases reported by Sentry
+* (Apollon77) Fixed crash cases reported by Sentry
 
 ### 6.1.3 (2022-05-20)
 * (bluefox) Corrected "force web-sockets" mode
