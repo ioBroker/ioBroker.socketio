@@ -311,7 +311,7 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 6.1.8 (2022-07-08)
 * (bluefox) Corrected getAdapterInstances method
 
 ### 6.1.7 (2022-06-20)

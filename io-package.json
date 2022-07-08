@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.1.7",
+    "version": "6.1.8",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.1.8": {
+        "en": "Corrected getAdapterInstances method",
+        "de": "Korrigierte getAdapterInstances Methode",
+        "ru": "Правильный метод getAdapterInstances",
+        "pt": "Método correto getAdapterInstâncias",
+        "nl": "Vertaling:",
+        "fr": "Méthode d'admission corrigée",
+        "it": "Corretto getAdapterInstances metodo",
+        "es": "Método corregido getAdapterInstances",
+        "pl": "Poprawiona metoda gotowania AdapterInstance",
+        "zh-cn": "改用阿达佩特文法"
+      },
       "6.1.7": {
         "en": "Allowed to overload the system language",
         "de": "Erlaubt, die Systemsprache zu überlasten",
@@ -90,18 +102,6 @@
         "es": "Socket.io revertido a V2",
         "pl": "Przywrócono socket.io do V2",
         "zh-cn": "将 socket.io 恢复到 V2"
-      },
-      "5.0.2": {
-        "en": "Hide warn messages",
-        "de": "Warnmeldungen ausblenden",
-        "ru": "Скрыть предупреждающие сообщения",
-        "pt": "Ocultar mensagens de aviso",
-        "nl": "Waarschuwingsberichten verbergen",
-        "fr": "Masquer les messages d'avertissement",
-        "it": "Nascondi i messaggi di avviso",
-        "es": "Ocultar mensajes de advertencia",
-        "pl": "Ukryj ostrzeżenia",
-        "zh-cn": "隐藏警告消息"
       }
     },
     "authors": [
