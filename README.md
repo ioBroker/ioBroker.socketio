@@ -311,7 +311,7 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 6.1.9 (2022-08-24)
 * (bluefox) Caught error by subscribe
 
 ### 6.1.8 (2022-07-08)
