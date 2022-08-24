@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.1.9",
+    "version": "6.1.10",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,18 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.1.10": {
+        "en": "Caught error by subscribe",
+        "de": "Caught-Fehler durch abonnieren",
+        "ru": "Поймать ошибку по подписке",
+        "pt": "Erro capturado por assinatura",
+        "nl": "Kreeg fouten",
+        "fr": "Erreur coquine par abonné",
+        "it": "Errore catturato da sottoscrivere",
+        "es": "Error comprado por subscribirse",
+        "pl": "Caught error by a subscriber",
+        "zh-cn": "签 约的过失"
+      },
       "6.1.8": {
         "en": "Corrected getAdapterInstances method",
         "de": "Korrigierte getAdapterInstances Methode",
