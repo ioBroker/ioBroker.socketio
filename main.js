@@ -124,7 +124,7 @@ function initWebServer(settings) {
             settings.forceWebSockets  = settings.forceWebSockets || false;
         }
 
-        adapter.getPort(settings.port, async port => {
+        adapter.getPort(settings.port, (!settings.bind || settings.bind === '0.0.0.0') ? undefined : settings.bind || undefined, async port => {
             if (parseInt(port, 10) !== settings.port && !adapter.config.findNextPort) {
                 adapter.log.error(`port ${settings.port} already in use`);
                 return adapter.terminate ? adapter.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION) : process.exit(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
