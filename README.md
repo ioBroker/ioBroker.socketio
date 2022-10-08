@@ -311,6 +311,10 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+
+### __WORK IN PROGRESS__
+* (Apollon77) Prepare for future js-controller versions
+
 ### 6.1.10 (2022-08-24)
 * (bluefox) Caught error by subscribe
 
