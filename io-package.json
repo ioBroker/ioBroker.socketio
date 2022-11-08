@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.1.10",
+    "version": "6.2.0",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.2.0": {
+        "en": "Prepare for future js-controller versions\nFunction `getObjects`for web was extended by devices, channels and enums",
+        "de": "Bereiten Sie sich auf zukünftige js-Controller-Versionen\nFunktion getObjects`for web wurde durch Geräte, Kanäle und Enums erweitert",
+        "ru": "Подготовьтесь к будущим версиям js-controller\nФункция getObjects`for web была расширена устройствами, каналами и enums",
+        "pt": "Prepare-se para futuras versões js-controller\nFunção getObjects`for web foi estendida por dispositivos, canais e enums",
+        "nl": "Bereid je voor op toekomstige Js-controller versie\nVertaling:",
+        "fr": "Préparez-vous pour les versions futures de js-controller\nFonction getObjects`for web was extended by devices, channels and enums",
+        "it": "Prepararsi per le future versioni js-controller\nFunzione getObjects`for web è stato esteso da dispositivi, canali ed enums",
+        "es": "Prepararse para futuras versiones js-controller\nFunción getObjects`for web was extended by devices, channels and enums",
+        "pl": "Prepare for future js-controller version\nFunkcjonalne zapotrzebowanie na stronie zostało przedłużone przez urządzenia, kanały i enum",
+        "uk": "Підготовка до майбутніх версій js-controller\nФункція getObjects`для веб-сторінок було розширено пристроями, каналами та енумами",
+        "zh-cn": "今后防污版本的编制\n使用装置、渠道和网站扩展了“Objects”的功能。"
+      },
       "6.1.10": {
         "en": "Caught error by subscribe",
         "de": "Caught-Fehler durch abonnieren",
@@ -90,18 +103,6 @@
         "es": "Solucionar casos de fallas informados por Sentry",
         "pl": "Napraw przypadki awarii zgłoszone przez Sentry",
         "zh-cn": "修复 Sentry 报告的崩溃案例"
-      },
-      "6.1.3": {
-        "en": "Corrected \"force web-sockets\" mode",
-        "de": "Der Modus \"Web-Sockets erzwingen\" wurde korrigiert",
-        "ru": "Исправлен режим \"форсировать веб-сокеты\"",
-        "pt": "Corrigido o modo \"forçar web-sockets\"",
-        "nl": "Gecorrigeerde \"force web-sockets\"-modus",
-        "fr": "Correction du mode \"force web-sockets\"",
-        "it": "Corretta la modalità \"force web-socket\".",
-        "es": "Modo \"forzar web-sockets\" corregido",
-        "pl": "Poprawiony tryb „wymuszania gniazd sieciowych”",
-        "zh-cn": "更正了“强制网络套接字”模式"
       }
     },
     "authors": [
