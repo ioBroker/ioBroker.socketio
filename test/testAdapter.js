@@ -2,7 +2,7 @@
 /* jshint strict: false */
 /* jslint node: true */
 const expect = require('chai').expect;
-const setup  = require('./lib/setup');
+const setup  = require('@iobroker/legacy-testing');
 
 let objects = null;
 let states  = null;
@@ -74,7 +74,7 @@ describe(`Test ${adapterShortName} adapter`, function () {
     before(`Test ${adapterShortName} adapter: Start js-controller`, function (_done) {
         this.timeout(600000); // because of first install from npm
 
-        setup.setupController(async function () {
+        setup.setupController(async () => {
             const config = await setup.getAdapterConfig();
             // enable adapter
             config.common.enabled  = true;
