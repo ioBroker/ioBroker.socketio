@@ -32,6 +32,12 @@ function startAdapter(options) {
         }
     });
 
+    adapter.on('fileChange', (id, fileName, size) => {
+        if (webServer && webServer.io) {
+            webServer.io.publishAll('fileChange', id, fileName, size);
+        }
+    });
+
     adapter.on('unload', callback => {
         try {
             adapter.setState && adapter.setState('info.connected', '', true);
