@@ -34,7 +34,7 @@ function startAdapter(options) {
 
     adapter.on('fileChange', (id, fileName, size) => {
         if (webServer && webServer.io) {
-            webServer.io.publishAll('fileChange', id, fileName, size);
+            webServer.io.publishFileAll(id, fileName, size);
         }
     });
 
