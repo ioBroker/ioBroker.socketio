@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.3.0",
+    "version": "6.3.1",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.3.1": {
+        "en": "Added `fileChange` event",
+        "de": "Datei hinzufügen Event ändern",
+        "ru": "Добавлен файл Изменить событие",
+        "pt": "Adicionado arquivo Evento de mudança",
+        "nl": "Vervoegd dossier Veranderingsevenement",
+        "fr": "Fichier ajouté Changement d ' événement",
+        "it": "Aggiunto il file Cambia evento",
+        "es": "Añadido el archivo Cambio de evento",
+        "pl": "Added file Zmiana",
+        "uk": "Додано файл Зміна події",
+        "zh-cn": "增加档案 变革活动"
+      },
       "6.3.0": {
         "en": "Added `fileChange` event",
         "de": "Datei hinzufügen Event ändern",
@@ -92,18 +105,6 @@
         "es": "Permitido correr enchufe. io detrás del proxy",
         "pl": "Wszystko to jest możliwe do uruchomienia gniazda. i tak dalej, za sprawą",
         "zh-cn": "可以管理手头。 导 言"
-      },
-      "6.1.5": {
-        "en": "Do not show requireLog message",
-        "de": "Nicht zeigen Log-Nachricht",
-        "ru": "Не показывать требуйте Войти сообщение",
-        "pt": "Não mostrar necessidade Mensagem de registo",
-        "nl": "Toon niet Logisch bericht",
-        "fr": "Ne pas montrer besoin Message d ' ouverture",
-        "it": "Non mostrare richiesta Messaggio di log",
-        "es": "No mostrar necesidad Mensaje de registro",
-        "pl": "Nie wymagać wiadomość",
-        "zh-cn": "不需要说明 后勤信息"
       }
     },
     "authors": [
