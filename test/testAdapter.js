@@ -15,7 +15,7 @@ const runningMode = require('../io-package.json').common.mode;
 
 function checkConnectionOfAdapter(cb, counter) {
     counter = counter || 0;
-    console.log('Try check #' + counter);
+    console.log(`Try check #${counter}`);
     if (counter > 30) {
         return cb && cb('Cannot check connection');
     }
