@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.3.1",
+    "version": "6.3.2",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.3.2": {
+        "en": "used new socket-classes",
+        "de": "neue sockel-klassen",
+        "ru": "использовали новые socket-классы",
+        "pt": "usado novas classes de soquete",
+        "nl": "gebruikte nieuwe sok-classes",
+        "fr": "nouvelles classes de socket utilisées",
+        "it": "nuove classi prese usate",
+        "es": "usó nuevas clases de socket",
+        "pl": "nowe typy gniazd",
+        "uk": "використовуються нові розетки-класи",
+        "zh-cn": "使用新的手寸"
+      },
       "6.3.1": {
         "en": "Added `fileChange` event",
         "de": "Datei hinzufügen Event ändern",
@@ -93,18 +106,6 @@
         "es": "Permitido sobrecargar el lenguaje del sistema",
         "pl": "Wszystko to było przeciążenie języka systemowego",
         "zh-cn": "允许使用系统语文"
-      },
-      "6.1.6": {
-        "en": "Allowed to run socket.io behind proxy",
-        "de": "Erlaubt, Steckdose zu laufen. io hinter dem Proxy",
-        "ru": "Разрешено запустить розетку. io за прокси",
-        "pt": "Permitido para executar o soquete. io atrás do proxy",
-        "nl": "Toegestaan om socket te runnen. io achter proxy",
-        "fr": "Permet de lancer la socket. io derrière proxy",
-        "it": "Permesso di eseguire la presa. io dietro proxy",
-        "es": "Permitido correr enchufe. io detrás del proxy",
-        "pl": "Wszystko to jest możliwe do uruchomienia gniazda. i tak dalej, za sprawą",
-        "zh-cn": "可以管理手头。 导 言"
       }
     },
     "authors": [
