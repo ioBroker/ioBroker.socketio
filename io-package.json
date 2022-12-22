@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.3.2",
+    "version": "6.3.3",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.3.3": {
+        "en": "used new socket-classes",
+        "de": "neue sockel-klassen",
+        "ru": "использовали новые socket-классы",
+        "pt": "usado novas classes de soquete",
+        "nl": "gebruikte nieuwe sok-classes",
+        "fr": "nouvelles classes de socket utilisées",
+        "it": "nuove classi prese usate",
+        "es": "usó nuevas clases de socket",
+        "pl": "nowe typy gniazd",
+        "uk": "використовуються нові розетки-класи",
+        "zh-cn": "使用新的手寸"
+      },
       "6.3.1": {
         "en": "Added `fileChange` event",
         "de": "Datei hinzufügen Event ändern",
