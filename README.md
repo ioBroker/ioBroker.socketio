@@ -311,6 +311,9 @@ You can set option *Force Web-Sockets* to force using only web-sockets transport
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) used new socket-classes
+
 ### 6.3.1 (2022-11-27)
 * (bluefox) Added `fileChange` event
 
