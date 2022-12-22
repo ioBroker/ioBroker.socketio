@@ -27,7 +27,7 @@
     "@alcalzone/release-script-plugin-license": "^3.5.9",
     "@iobroker/adapter-dev": "^1.2.0",
     "@iobroker/legacy-testing": "^0.1.0",
-    "socket.io-client": "^2.5.0",
+    "socket.io-client": "^4.5.4",
     "gulp": "^4.0.2"
   },
   "bugs": {
