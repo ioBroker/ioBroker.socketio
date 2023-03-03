@@ -19,7 +19,7 @@
     "@iobroker/adapter-core": "^2.6.7",
     "@iobroker/socket-classes": "1.1.2",
     "express-session": "^1.17.3",
-    "socket.io": "^2.5.0"
+    "socket.io": "^4.6.1"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^3.5.9",
