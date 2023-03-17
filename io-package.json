@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.3.4",
+    "version": "6.3.5",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.3.5": {
+        "en": "Increased the max size of the message to 200MB",
+        "de": "Erhöht die maximale Größe der Nachricht auf 200MB",
+        "ru": "Увеличен максимальный размер сообщения до 200MB",
+        "pt": "Aumento do tamanho máximo da mensagem para 200MB",
+        "nl": "Verhoog de max grootte van de boodschap naar 200MB",
+        "fr": "Augmentation de la taille maximale du message à 200 Mo",
+        "it": "Aumentata la dimensione massima del messaggio a 200MB",
+        "es": "Aumento del tamaño máximo del mensaje a 200MB",
+        "pl": "Zwiększył maksymalny rozmiar wiadomości do 200 MB",
+        "uk": "Підвищений розмір повідомлення до 200MB",
+        "zh-cn": "信息量增加至200兆赫"
+      },
       "6.3.4": {
         "en": "Allowed deletion of fullcalendar objects",
         "de": "Erlaubtes Löschen von Fullcalendar-Objekten",
@@ -95,18 +108,6 @@
         "es": "Error comprado por subscribirse",
         "pl": "Caught error by a subscriber",
         "zh-cn": "签 约的过失"
-      },
-      "6.1.8": {
-        "en": "Corrected getAdapterInstances method",
-        "de": "Korrigierte getAdapterInstances Methode",
-        "ru": "Правильный метод getAdapterInstances",
-        "pt": "Método correto getAdapterInstâncias",
-        "nl": "Vertaling:",
-        "fr": "Méthode d'admission corrigée",
-        "it": "Corretto getAdapterInstances metodo",
-        "es": "Método corregido getAdapterInstances",
-        "pl": "Poprawiona metoda gotowania AdapterInstance",
-        "zh-cn": "改用阿达佩特文法"
       }
     },
     "authors": [
