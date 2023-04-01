@@ -16,7 +16,7 @@
     "url": "https://github.com/ioBroker/ioBroker.socketio"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.6.7",
+    "@iobroker/adapter-core": "^2.6.8",
     "@iobroker/socket-classes": "1.1.2",
     "express-session": "^1.17.3",
     "socket.io": "^2.5.0"
