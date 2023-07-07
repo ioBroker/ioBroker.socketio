@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.3.5",
+    "version": "6.4.0",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.4.0": {
+        "en": "(bluefox) extended the getObjects function with the possibility to read the list of IDs",
+        "de": "(bluefox) erweitert die getObjects-Funktion mit der Möglichkeit, die Liste der IDs zu lesen",
+        "ru": "(bluefox) расширена функция getObjects с возможностью читать список IDs",
+        "pt": "(bluefox) estendeu a função getObjects com a possibilidade de ler a lista de IDs",
+        "nl": "Verlengde de getobject functioneren met de mogelijkheid om de lijst van ID's te lezen",
+        "fr": "(bluefox) a étendu la fonction getObjects avec la possibilité de lire la liste des ID",
+        "it": "(bluefox) ha esteso la funzione getObjects con la possibilità di leggere l'elenco degli ID",
+        "es": "(bluefox) extendió la función getObjects con la posibilidad de leer la lista de IDs",
+        "pl": "(bluefox) przedłużyła funkcję getObjects z możliwością odczytania listy ID",
+        "uk": "(bluefox) розширена функція getObjects з можливістю читання списку ідентифікаторів",
+        "zh-cn": "(bluefox) 扩大读者功能,使之有可能阅读裁研所的名单。"
+      },
       "6.3.5": {
         "en": "Increased the max size of the message to 200MB",
         "de": "Erhöht die maximale Größe der Nachricht auf 200MB",
@@ -96,18 +109,6 @@
         "pl": "Prepare for future js-controller version\nFunkcjonalne zapotrzebowanie na stronie zostało przedłużone przez urządzenia, kanały i enum",
         "uk": "Підготовка до майбутніх версій js-controller\nФункція getObjects`для веб-сторінок було розширено пристроями, каналами та енумами",
         "zh-cn": "今后防污版本的编制\n使用装置、渠道和网站扩展了“Objects”的功能。"
-      },
-      "6.1.10": {
-        "en": "Caught error by subscribe",
-        "de": "Caught-Fehler durch abonnieren",
-        "ru": "Поймать ошибку по подписке",
-        "pt": "Erro capturado por assinatura",
-        "nl": "Kreeg fouten",
-        "fr": "Erreur coquine par abonné",
-        "it": "Errore catturato da sottoscrivere",
-        "es": "Error comprado por subscribirse",
-        "pl": "Caught error by a subscriber",
-        "zh-cn": "签 约的过失"
       }
     },
     "authors": [
