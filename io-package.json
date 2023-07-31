@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.4.0",
+    "version": "6.5.0",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.5.0": {
+        "en": "Added the subscribing on the specific instance messages",
+        "de": "Hinzugefügt die Anmeldung auf den spezifischen Instanz Nachrichten",
+        "ru": "Добавлена подписка на конкретные сообщения",
+        "pt": "Adicionado a subscrição nas mensagens de instância específica",
+        "nl": "Voegde de subscribing toe op de specifieke instantie berichten",
+        "fr": "Ajout de l'inscription sur les messages d'instance spécifiques",
+        "it": "Aggiunto la sottoscrizione sui messaggi di istanza specifici",
+        "es": "Añadido el subscribir en los mensajes de instancia específicos",
+        "pl": "Dodać subskrypcję określonych wiadomości",
+        "uk": "Додано підспріб на конкретних повідомленнях екземпляра",
+        "zh-cn": "添加关于具体事例信息的字"
+      },
       "6.4.0": {
         "en": "(bluefox) extended the getObjects function with the possibility to read the list of IDs",
         "de": "(bluefox) erweitert die getObjects-Funktion mit der Möglichkeit, die Liste der IDs zu lesen",
@@ -96,19 +109,6 @@
         "pl": "Added file Zmiana",
         "uk": "Додано файл Зміна події",
         "zh-cn": "增加档案 变革活动"
-      },
-      "6.2.0": {
-        "en": "Prepare for future js-controller versions\nFunction `getObjects`for web was extended by devices, channels and enums",
-        "de": "Bereiten Sie sich auf zukünftige js-Controller-Versionen\nFunktion getObjects`for web wurde durch Geräte, Kanäle und Enums erweitert",
-        "ru": "Подготовьтесь к будущим версиям js-controller\nФункция getObjects`for web была расширена устройствами, каналами и enums",
-        "pt": "Prepare-se para futuras versões js-controller\nFunção getObjects`for web foi estendida por dispositivos, canais e enums",
-        "nl": "Bereid je voor op toekomstige Js-controller versie\nVertaling:",
-        "fr": "Préparez-vous pour les versions futures de js-controller\nFonction getObjects`for web was extended by devices, channels and enums",
-        "it": "Prepararsi per le future versioni js-controller\nFunzione getObjects`for web è stato esteso da dispositivi, canali ed enums",
-        "es": "Prepararse para futuras versiones js-controller\nFunción getObjects`for web was extended by devices, channels and enums",
-        "pl": "Prepare for future js-controller version\nFunkcjonalne zapotrzebowanie na stronie zostało przedłużone przez urządzenia, kanały i enum",
-        "uk": "Підготовка до майбутніх версій js-controller\nФункція getObjects`для веб-сторінок було розширено пристроями, каналами та енумами",
-        "zh-cn": "今后防污版本的编制\n使用装置、渠道和网站扩展了“Objects”的功能。"
       }
     },
     "authors": [
