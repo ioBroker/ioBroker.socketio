@@ -76,6 +76,9 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Added the subscribing on the specific instance messages
+
 ### 6.4.0 (2023-07-07)
 (bluefox) extended the getObjects function with the possibility to read the list of IDs
 

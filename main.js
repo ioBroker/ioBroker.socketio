@@ -77,6 +77,21 @@ function startAdapter(options) {
         }
     });
 
+    adapter.on('message', obj => {
+        if (!obj || obj.command !== 'im') { // if not instance message
+            return;
+        }
+
+        if (webServer && webServer.io) {
+            // to make messages shorter, we code the answer as:
+            // m - message type
+            // s - socket ID
+            // d - data
+
+            webServer.io.publishInstanceMessageAll(obj.from, obj.message.m, obj.message.s, obj.message.d);
+        }
+    });
+
     adapter.on('log', obj =>
         webServer && webServer.io && webServer.io.sendLog(obj));
 

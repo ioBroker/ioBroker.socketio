@@ -118,6 +118,7 @@
     "platform": "Javascript/Node.js",
     "mode": "daemon",
     "loglevel": "info",
+    "messagebox": true,
     "readme": "https://github.com/ioBroker/ioBroker.socketio/blob/master/README.md",
     "icon": "socketio.png",
     "keywords": [
