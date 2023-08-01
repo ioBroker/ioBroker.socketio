@@ -76,7 +76,7 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 6.5.2 (2023-08-01)
 * (bluefox) Added the subscribing on the specific instance messages
 
 ### 6.4.0 (2023-07-07)
