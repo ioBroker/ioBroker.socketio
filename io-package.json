@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.5.2",
+    "version": "6.5.3",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.5.3": {
+        "en": "added missing node16 requirement",
+        "de": "fehlende knoten16 anforderung",
+        "ru": "добавлено отсутствует требование к node16",
+        "pt": "requisito adicional node16 faltando",
+        "nl": "vermiste vereiste",
+        "fr": "exigence node16 manquante",
+        "it": "aggiunto mancante node16 requisito",
+        "es": "nodo16 faltante",
+        "pl": "zastrzeżenie",
+        "uk": "доданий відсутній вузол16 вимога",
+        "zh-cn": "增加未满足要求"
+      },
       "6.5.2": {
         "en": "Added the subscribing on the specific instance messages",
         "de": "Hinzugefügt die Anmeldung auf den spezifischen Instanz Nachrichten",
@@ -85,19 +98,6 @@
         "zh-cn": "使用新的手寸"
       },
       "6.3.1": {
-        "en": "Added `fileChange` event",
-        "de": "Datei hinzufügen Event ändern",
-        "ru": "Добавлен файл Изменить событие",
-        "pt": "Adicionado arquivo Evento de mudança",
-        "nl": "Vervoegd dossier Veranderingsevenement",
-        "fr": "Fichier ajouté Changement d ' événement",
-        "it": "Aggiunto il file Cambia evento",
-        "es": "Añadido el archivo Cambio de evento",
-        "pl": "Added file Zmiana",
-        "uk": "Додано файл Зміна події",
-        "zh-cn": "增加档案 变革活动"
-      },
-      "6.3.0": {
         "en": "Added `fileChange` event",
         "de": "Datei hinzufügen Event ändern",
         "ru": "Добавлен файл Изменить событие",
