@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.5.3",
+    "version": "6.5.4",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.5.4": {
+        "en": "upgrade socket-classes to fix crash cases",
+        "de": "upgrade-sockel-klassen, um crash-fälle zu beheben",
+        "ru": "обновить socket-классы для исправления аварийных случаев",
+        "pt": "atualizar as classes de soquete para corrigir casos de acidente",
+        "nl": "upgrade socket-classes om crash gevallen te repareren",
+        "fr": "upgrade socket-classes pour réparer les cas de crash",
+        "it": "aggiornare le classi di socket per risolvere i casi di crash",
+        "es": "actualizar las clases de socket para fijar casos de choque",
+        "pl": "ulepszenie gniazd w celu naprawy przypadków katastrofy",
+        "uk": "модернізація розетки-класів для фіксації аварійних випадків",
+        "zh-cn": "a. 升级的碎片以防备事故"
+      },
       "6.5.3": {
         "en": "added missing node16 requirement",
         "de": "fehlende knoten16 anforderung",
@@ -96,19 +109,6 @@
         "pl": "nowe typy gniazd",
         "uk": "використовуються нові розетки-класи",
         "zh-cn": "使用新的手寸"
-      },
-      "6.3.1": {
-        "en": "Added `fileChange` event",
-        "de": "Datei hinzufügen Event ändern",
-        "ru": "Добавлен файл Изменить событие",
-        "pt": "Adicionado arquivo Evento de mudança",
-        "nl": "Vervoegd dossier Veranderingsevenement",
-        "fr": "Fichier ajouté Changement d ' événement",
-        "it": "Aggiunto il file Cambia evento",
-        "es": "Añadido el archivo Cambio de evento",
-        "pl": "Added file Zmiana",
-        "uk": "Додано файл Зміна події",
-        "zh-cn": "增加档案 变革活动"
       }
     },
     "authors": [
