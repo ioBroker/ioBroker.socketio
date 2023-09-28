@@ -76,6 +76,9 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) upgraded socket-classes to correct the error by unsubscribing on client disconnect
+
 ### 6.5.5 (2023-09-14)
 * (foxriver76) upgrade socket-classes to fix crash cases
 
