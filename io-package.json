@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.5.6",
+    "version": "6.5.7",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.5.7": {
+        "en": "upgrade socket-classes to fix error with vis subscriptions",
+        "de": "upgrade-sockel-klassen, um fehler mit vis-abos zu beheben",
+        "ru": "обновить socket-классы, чтобы исправить ошибку с vis подписками",
+        "pt": "atualizar classes de soquete para corrigir erro com assinaturas vis",
+        "nl": "upgrade socket-class om fouten te maken met visuele abonnementen",
+        "fr": "upgrade socket-classes pour corriger l'erreur avec les abonnements vis",
+        "it": "aggiornare le classi socket per correggere gli errori con gli abbonamenti vis",
+        "es": "actualizar las clases de socket para corregir error con las suscripciones vis",
+        "pl": "ulepszenie gniazda w celu naprawy błędu z wizami subskrypcji",
+        "uk": "оновлення розетки-класів для фіксації помилки з підписками вісс",
+        "zh-cn": "在订阅方面,升级的手脚,以防错误。"
+      },
       "6.5.6": {
         "en": "upgraded socket-classes to correct the error by unsubscribing on client disconnect",
         "de": "erweiterte steckdosen-klassen, um den fehler zu korrigieren, indem sie auf client trennen",
@@ -96,19 +109,6 @@
         "pl": "(bluefox) przedłużyła funkcję getObjects z możliwością odczytania listy ID",
         "uk": "(bluefox) розширена функція getObjects з можливістю читання списку ідентифікаторів",
         "zh-cn": "(bluefox) 扩大读者功能,使之有可能阅读裁研所的名单。"
-      },
-      "6.3.5": {
-        "en": "Increased the max size of the message to 200MB",
-        "de": "Erhöht die maximale Größe der Nachricht auf 200MB",
-        "ru": "Увеличен максимальный размер сообщения до 200MB",
-        "pt": "Aumento do tamanho máximo da mensagem para 200MB",
-        "nl": "Verhoog de max grootte van de boodschap naar 200MB",
-        "fr": "Augmentation de la taille maximale du message à 200 Mo",
-        "it": "Aumentata la dimensione massima del messaggio a 200MB",
-        "es": "Aumento del tamaño máximo del mensaje a 200MB",
-        "pl": "Zwiększył maksymalny rozmiar wiadomości do 200 MB",
-        "uk": "Підвищений розмір повідомлення до 200MB",
-        "zh-cn": "信息量增加至200兆赫"
       }
     },
     "authors": [

@@ -76,7 +76,7 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 6.5.7 (2023-10-08)
 * (foxriver76) upgrade socket-classes to fix error with vis subscriptions
 
 ### 6.5.6 (2023-09-28)
