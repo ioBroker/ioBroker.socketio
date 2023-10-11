@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.5.7",
+    "version": "6.5.8",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.5.8": {
+        "en": "Corrected adapter termination if the alias has no target",
+        "de": "Korrigierter Adapterabschluss, wenn der Alias kein Ziel hat",
+        "ru": "Исправлено прекращение адаптера, если псевдоним не имеет цели",
+        "pt": "Terminação correta do adaptador se o alias não tiver nenhum alvo",
+        "nl": "Verminderde adapter terminatie als de alias geen doelwit heeft",
+        "fr": "Résiliation correcte de l'adaptateur si l'alias n'a pas de cible",
+        "it": "Rescissione adattatore corretta se l'alias non ha un obiettivo",
+        "es": "Terminación corregida del adaptador si el alias no tiene objetivo",
+        "pl": "Poprawne rozwiązanie adaptacyjne, jeśli alias nie ma docelowego celu",
+        "uk": "Виправлено припинення адаптера, якщо псевдонім не має цілей",
+        "zh-cn": "如果除其它外别无目标,适应适应人员终止"
+      },
       "6.5.7": {
         "en": "upgrade socket-classes to fix error with vis subscriptions",
         "de": "upgrade-sockel-klassen, um fehler mit vis-abos zu beheben",
@@ -96,19 +109,6 @@
         "pl": "Dodać subskrypcję określonych wiadomości",
         "uk": "Додано підспріб на конкретних повідомленнях екземпляра",
         "zh-cn": "添加关于具体事例信息的字"
-      },
-      "6.4.0": {
-        "en": "(bluefox) extended the getObjects function with the possibility to read the list of IDs",
-        "de": "(bluefox) erweitert die getObjects-Funktion mit der Möglichkeit, die Liste der IDs zu lesen",
-        "ru": "(bluefox) расширена функция getObjects с возможностью читать список IDs",
-        "pt": "(bluefox) estendeu a função getObjects com a possibilidade de ler a lista de IDs",
-        "nl": "Verlengde de getobject functioneren met de mogelijkheid om de lijst van ID's te lezen",
-        "fr": "(bluefox) a étendu la fonction getObjects avec la possibilité de lire la liste des ID",
-        "it": "(bluefox) ha esteso la funzione getObjects con la possibilità di leggere l'elenco degli ID",
-        "es": "(bluefox) extendió la función getObjects con la posibilidad de leer la lista de IDs",
-        "pl": "(bluefox) przedłużyła funkcję getObjects z możliwością odczytania listy ID",
-        "uk": "(bluefox) розширена функція getObjects з можливістю читання списку ідентифікаторів",
-        "zh-cn": "(bluefox) 扩大读者功能,使之有可能阅读裁研所的名单。"
       }
     },
     "authors": [
