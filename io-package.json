@@ -19,19 +19,6 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
-      "6.5.8": {
-        "en": "Corrected adapter termination if the alias has no target",
-        "de": "Korrigierter Adapterabschluss, wenn der Alias kein Ziel hat",
-        "ru": "Исправлено прекращение адаптера, если псевдоним не имеет цели",
-        "pt": "Terminação correta do adaptador se o alias não tiver nenhum alvo",
-        "nl": "Verminderde adapter terminatie als de alias geen doelwit heeft",
-        "fr": "Résiliation correcte de l'adaptateur si l'alias n'a pas de cible",
-        "it": "Rescissione adattatore corretta se l'alias non ha un obiettivo",
-        "es": "Terminación corregida del adaptador si el alias no tiene objetivo",
-        "pl": "Poprawne rozwiązanie adaptacyjne, jeśli alias nie ma docelowego celu",
-        "uk": "Виправлено припинення адаптера, якщо псевдонім не має цілей",
-        "zh-cn": "如果除其它外别无目标,适应适应人员终止"
-      },
       "6.5.7": {
         "en": "upgrade socket-classes to fix error with vis subscriptions",
         "de": "upgrade-sockel-klassen, um fehler mit vis-abos zu beheben",

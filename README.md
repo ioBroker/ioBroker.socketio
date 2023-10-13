@@ -76,7 +76,7 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
-### 6.5.8 (2023-10-11)
+### **WORK IN PROGRESS**
 * (bluefox) Corrected adapter termination if the alias has no target
 
 ### 6.5.7 (2023-10-08)
