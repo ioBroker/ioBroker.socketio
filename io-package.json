@@ -154,6 +154,11 @@
       "sentry": {
         "dsn": "https://c420b84a0da648bb8f2374541aa92888@sentry.iobroker.net/17"
       }
+    },
+    "tier": 3,
+    "licenseInformation": {
+      "type": "free",
+      "link": "https://github.com/ioBroker/ioBroker.socketio/blob/master/LICENSE"
     }
   },
   "native": {
