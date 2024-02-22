@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.6.0",
+    "version": "6.6.1",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.6.1": {
+        "en": "Just some packages were updated",
+        "de": "Nur einige Pakete wurden aktualisiert",
+        "ru": "Только некоторые пакеты были обновлены",
+        "pt": "Apenas alguns pacotes foram atualizados",
+        "nl": "Slechts enkele pakketten werden bijgewerkt",
+        "fr": "Juste quelques paquets ont été mis à jour",
+        "it": "Solo alcuni pacchetti sono stati aggiornati",
+        "es": "Sólo algunos paquetes fueron actualizados",
+        "pl": "Kilka pakietów zostało zaktualizowanych",
+        "uk": "Просто деякі пакети були оновлено",
+        "zh-cn": "只是更新了一些软件包"
+      },
       "6.6.0": {
         "en": "Corrected adapter termination if the alias has no target",
         "de": "Korrigierter Adapterabschluss, wenn der Alias kein Ziel hat",
@@ -96,19 +109,6 @@
         "pl": "zastrzeżenie",
         "uk": "доданий відсутній вузол16 вимога",
         "zh-cn": "增加未满足要求"
-      },
-      "6.5.2": {
-        "en": "Added the subscribing on the specific instance messages",
-        "de": "Hinzugefügt die Anmeldung auf den spezifischen Instanz Nachrichten",
-        "ru": "Добавлена подписка на конкретные сообщения",
-        "pt": "Adicionado a subscrição nas mensagens de instância específica",
-        "nl": "Voegde de subscribing toe op de specifieke instantie berichten",
-        "fr": "Ajout de l'inscription sur les messages d'instance spécifiques",
-        "it": "Aggiunto la sottoscrizione sui messaggi di istanza specifici",
-        "es": "Añadido el subscribir en los mensajes de instancia específicos",
-        "pl": "Dodać subskrypcję określonych wiadomości",
-        "uk": "Додано підспріб на конкретних повідомленнях екземпляра",
-        "zh-cn": "添加关于具体事例信息的字"
       }
     },
     "authors": [

@@ -76,7 +76,7 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 6.6.1 (2024-02-22)
 * (bluefox) Just some packages were updated
 
 ### 6.6.0 (2023-10-13)
