@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "6.6.1",
+    "version": "6.7.0",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -19,6 +19,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "6.7.0": {
+        "en": "ported to webserver",
+        "de": "auf webserver portiert",
+        "ru": "портируется на веб-сервер",
+        "pt": "portado para webserver",
+        "nl": "geporteerd naar webserver",
+        "fr": "porté au serveur web",
+        "it": "portato a webserver",
+        "es": "portado a servidor web",
+        "pl": "przeniesiony do serwera webserver",
+        "uk": "переглянуто веб-сервер",
+        "zh-cn": "移植到网络服务器"
+      },
       "6.6.1": {
         "en": "Just some packages were updated",
         "de": "Nur einige Pakete wurden aktualisiert",
@@ -96,19 +109,6 @@
         "pl": "ulepszenie gniazd w celu naprawy przypadków katastrofy",
         "uk": "модернізація розетки-класів для фіксації аварійних випадків",
         "zh-cn": "a. 升级的碎片以防备事故"
-      },
-      "6.5.3": {
-        "en": "added missing node16 requirement",
-        "de": "fehlende knoten16 anforderung",
-        "ru": "добавлено отсутствует требование к node16",
-        "pt": "requisito adicional node16 faltando",
-        "nl": "vermiste vereiste",
-        "fr": "exigence node16 manquante",
-        "it": "aggiunto mancante node16 requisito",
-        "es": "nodo16 faltante",
-        "pl": "zastrzeżenie",
-        "uk": "доданий відсутній вузол16 вимога",
-        "zh-cn": "增加未满足要求"
       }
     },
     "authors": [
