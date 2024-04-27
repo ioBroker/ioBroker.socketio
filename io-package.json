@@ -114,7 +114,6 @@
     "authors": [
       "bluefox <dogafox@gmail.com>"
     ],
-    "license": "MIT",
     "platform": "Javascript/Node.js",
     "mode": "daemon",
     "loglevel": "info",
@@ -158,7 +157,7 @@
     "tier": 3,
     "licenseInformation": {
       "type": "free",
-      "link": "https://github.com/ioBroker/ioBroker.socketio/blob/master/LICENSE"
+      "license": "MIT"
     }
   },
   "native": {
