@@ -1,0 +1,6 @@
+{
+  "extends": ["@foxriver76/eslint-config"],
+  "rules": {
+    "unicorn/prefer-module": 0
+  }
+}
