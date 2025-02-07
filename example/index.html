@@ -1,53 +1,53 @@
 <!doctype html>
 <html>
-<head>
-    <!-- Replace "localhost" with real IP address of controller, if default port changed, correct it too -->
-    <script type="text/javascript" src="http://localhost:8084/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="conn.js"></script>
-</head>
-<body>
-
-<!--
-    Check the browser console!
--->
-
-<script type="text/javascript">
-    servConn.namespace   = 'mobile.0';
-    servConn._useStorage = false;
-
-    var states = {};
-    servConn.init({
-        name:          'mobile.0',  // optional - default 'vis.0'
-        connLink:      'http://localhost:8084',  // optional URL of the socket.io adapter
-        socketSession: ''           // optional - used by authentication
-    }, {
-        onConnChange: function (isConnected) {
-            if (isConnected) {
-                console.log('connected');
-                servConn.getStates(function (err, _states) {
-                    var count = 0;
-                    for (var id in _states) {
-                        count++;
-                    }
-                    console.log('Received ' + count + ' states.');
-                    states = _states;
-                });
-            } else {
-                console.log('disconnected');
+    <head>
+        <!-- Replace "localhost" with real IP address of controller, if the default port changed, correct it too -->
+        <script
+            type="text/javascript"
+            src="./socket.io.js"
+        ></script>
+    </head>
+    <body>
+        <div id="output"></div>
+        <script type="module">
+            import { Connection } from './socket-client/Connection.js';
+            let states = {};
+            let text = '';
+            function printLine(line, isError) {
+                text += `<div style="${isError ? 'color: red' : ''}">${line}</div>\n`;
+                document.getElementById('output').innerHTML = text;
             }
-        },
-        onRefresh: function () {
-            window.location.reload();
-        },
-        onUpdate: function (id, state) {
-            setTimeout(function () {
-                console.log('NEW VALUE of ' + id + ': ' + JSON.stringify(state));
-                states[id] = state;
-            }, 0);
-        },
-        onError: function (err) {
-            window.alert(_('Cannot execute %s for %s, because of insufficient permissions', err.command, err.arg), _('Insufficient permissions'), 'alert', 600);
-        }
-    });
-</script>
-</body>
+
+            const socket = new Connection({
+                name: 'example.0',
+                port: 8094,
+                host: 'localhost',
+                protocol: 'http',
+                onProgress: progress => {
+                    if (progress === 0) {
+                        printLine('disconnected');
+                    }
+                },
+                onReady: () => {
+                    printLine('connected');
+                    socket.getStates('system.adapter.admin.*').then(_states => {
+                        let count = 0;
+                        for (let id in _states) {
+                            count++;
+                        }
+                        printLine(`Received ${count} states.`);
+                        states = _states;
+                    });
+
+                    socket.subscribeState('system.adapter.admin.0.*', (id, state) => {
+                        printLine(`NEW VALUE of ${id}: ${JSON.stringify(state)}`);
+                    });
+                },
+                onError: err => {
+                    debugger;
+                    printLine(`Cannot execute %s for %s, because of insufficient permissions: ${err}`);
+                },
+            });
+        </script>
+    </body>
+</html>

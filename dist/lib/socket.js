@@ -1,17 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 // this file used by iobroker.web to start the socket
-const socketio     = require('socket.io');
-const SocketIO     = require('./socketIO');
-const SocketCommon = require('@iobroker/socket-classes').SocketCommon;
-
+const socket_io_1 = __importDefault(require("socket.io"));
+const socketIO_1 = require("./socketIO");
+const socket_classes_1 = require("@iobroker/socket-classes");
 class Socket {
+    ioServer;
     constructor(server, settings, adapter, ignore, store) {
-        this.ioServer = new SocketIO(settings, adapter);
-
+        this.ioServer = new socketIO_1.SocketIO(settings, adapter);
         const socketOptions = {
             pingInterval: 120000,
             pingTimeout: 30000,
         };
-
         if (settings.forceWebSockets) {
             // socket.io 4.0
             socketOptions.transports = ['websocket'];
@@ -28,33 +31,26 @@ class Socket {
             httpOnly: true,
             path: '/'
         };*/
-
-        this.ioServer.start(server, socketio, {store, secret: settings.secret}, socketOptions);
+        this.ioServer.start(server, socket_io_1.default, { store, secret: settings.secret }, socketOptions);
     }
-
     getWhiteListIpForAddress(remoteIp, whiteListSettings) {
-        return SocketCommon.getWhiteListIpForAddress(remoteIp, whiteListSettings);
+        return socket_classes_1.SocketCommon.getWhiteListIpForAddress(remoteIp, whiteListSettings);
     }
-
     publishAll(type, id, obj) {
         return this.ioServer.publishAll(type, id, obj);
     }
-
     publishFileAll(id, fileName, size) {
         return this.ioServer.publishFileAll(id, fileName, size);
     }
-
     publishInstanceMessageAll(sourceInstance, messageType, sid, data) {
         return this.ioServer.publishInstanceMessageAll(sourceInstance, messageType, sid, data);
     }
-
     sendLog(obj) {
         this.ioServer.sendLog(obj);
     }
-
     close() {
         this.ioServer.close();
     }
 }
-
 module.exports = Socket;
+//# sourceMappingURL=socket.js.map

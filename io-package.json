@@ -1,216 +1,209 @@
 {
-  "common": {
-    "name": "socketio",
-    "version": "6.7.1",
-    "title": "socket.io",
-    "titleLang": {
-      "en": "socket.io"
+    "common": {
+        "name": "socketio",
+        "version": "6.7.1",
+        "title": "socket.io",
+        "titleLang": {
+            "en": "socket.io"
+        },
+        "desc": {
+            "en": "This adapter allows to communicate different web applications with ioBroker",
+            "de": "Dieser Adapter ermöglicht die Kommunikation verschiedener Web-Anwendungen mit ioBroker",
+            "ru": "Этот адаптер позволяет соединяться различным веб-приложениям с ioBroker",
+            "pt": "Este adaptador permite comunicar diferentes aplicativos da web com ioBroker",
+            "nl": "Met deze adapter kunt u verschillende webtoepassingen communiceren met ioBroker",
+            "fr": "Cet adaptateur permet de communiquer différentes applications web avec ioBroker",
+            "it": "Questo adattatore consente di comunicare diverse applicazioni Web con ioBroker",
+            "es": "Este adaptador permite comunicar diferentes aplicaciones web con ioBroker",
+            "pl": "Ten adapter umożliwia komunikację z różnymi aplikacjami WWW za pomocą ioBroker",
+            "uk": "Цей адаптер дозволяє спілкуватися різним веб-додаткам з ioBroker",
+            "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
+        },
+        "news": {
+            "6.7.1": {
+                "en": "Corrected call of getObjectView with null parameter",
+                "de": "Korrigierter Anruf von getObject Ansicht mit Null-Parameter",
+                "ru": "Исправленный звонок getObject Просмотр с нулевым параметром",
+                "pt": "Chamada correta de getObject Ver com parâmetro nulo",
+                "nl": "Gecorrigeerde aanroep van getObject Beeld met nul parameter",
+                "fr": "Appel corrigé de getObject Affichage avec paramètre null",
+                "it": "Chiamata corretta di getObject Visualizza con parametro null",
+                "es": "Llamada corregida de getObject Ver con parámetro null",
+                "pl": "Poprawione wywołanie getObject Widok z parametrem null",
+                "uk": "Виправлений виклик getObject Перегляд з параметром null",
+                "zh-cn": "已更正的调取对象 以无效参数查看"
+            },
+            "6.7.0": {
+                "en": "ported to webserver",
+                "de": "auf webserver portiert",
+                "ru": "портируется на веб-сервер",
+                "pt": "portado para webserver",
+                "nl": "geporteerd naar webserver",
+                "fr": "porté au serveur web",
+                "it": "portato a webserver",
+                "es": "portado a servidor web",
+                "pl": "przeniesiony do serwera webserver",
+                "uk": "переглянуто веб-сервер",
+                "zh-cn": "移植到网络服务器"
+            },
+            "6.6.1": {
+                "en": "Just some packages were updated",
+                "de": "Nur einige Pakete wurden aktualisiert",
+                "ru": "Только некоторые пакеты были обновлены",
+                "pt": "Apenas alguns pacotes foram atualizados",
+                "nl": "Slechts enkele pakketten werden bijgewerkt",
+                "fr": "Juste quelques paquets ont été mis à jour",
+                "it": "Solo alcuni pacchetti sono stati aggiornati",
+                "es": "Sólo algunos paquetes fueron actualizados",
+                "pl": "Kilka pakietów zostało zaktualizowanych",
+                "uk": "Просто деякі пакети були оновлено",
+                "zh-cn": "只是更新了一些软件包"
+            },
+            "6.6.0": {
+                "en": "Corrected adapter termination if the alias has no target",
+                "de": "Korrigierter Adapterabschluss, wenn der Alias kein Ziel hat",
+                "ru": "Исправлено прекращение адаптера, если псевдоним не имеет цели",
+                "pt": "Terminação correta do adaptador se o alias não tiver nenhum alvo",
+                "nl": "Verminderde adapter terminatie als de alias geen doelwit heeft",
+                "fr": "Résiliation correcte de l'adaptateur si l'alias n'a pas de cible",
+                "it": "Rescissione adattatore corretta se l'alias non ha un obiettivo",
+                "es": "Terminación corregida del adaptador si el alias no tiene objetivo",
+                "pl": "Poprawne rozwiązanie adaptacyjne, jeśli alias nie ma docelowego celu",
+                "uk": "Виправлено припинення адаптера, якщо псевдонім не має цілей",
+                "zh-cn": "如果除其它外别无目标,适应适应人员终止"
+            },
+            "6.5.7": {
+                "en": "upgrade socket-classes to fix error with vis subscriptions",
+                "de": "upgrade-sockel-klassen, um fehler mit vis-abos zu beheben",
+                "ru": "обновить socket-классы, чтобы исправить ошибку с vis подписками",
+                "pt": "atualizar classes de soquete para corrigir erro com assinaturas vis",
+                "nl": "upgrade socket-class om fouten te maken met visuele abonnementen",
+                "fr": "upgrade socket-classes pour corriger l'erreur avec les abonnements vis",
+                "it": "aggiornare le classi socket per correggere gli errori con gli abbonamenti vis",
+                "es": "actualizar las clases de socket para corregir error con las suscripciones vis",
+                "pl": "ulepszenie gniazda w celu naprawy błędu z wizami subskrypcji",
+                "uk": "оновлення розетки-класів для фіксації помилки з підписками вісс",
+                "zh-cn": "在订阅方面,升级的手脚,以防错误。"
+            },
+            "6.5.6": {
+                "en": "upgraded socket-classes to correct the error by unsubscribing on client disconnect",
+                "de": "erweiterte steckdosen-klassen, um den fehler zu korrigieren, indem sie auf client trennen",
+                "ru": "обновленные socket-классы, чтобы исправить ошибку, отписывая на отключение клиента",
+                "pt": "classes de soquete atualizadas para corrigir o erro ao dessubscrever no cliente desconectar",
+                "nl": "opgewaardeerde socket-class om de fout te corrigeren door onbeduidende cliënt te verbreken",
+                "fr": "les classes de socket améliorées pour corriger l'erreur en désabonnement sur le client déconnecté",
+                "it": "classi di socket aggiornate per correggere l'errore cancellando la registrazione sul client",
+                "es": "reclasos actualizados para corregir el error al darse de baja en la desconexión del cliente",
+                "pl": "ulepszona klasa gniazd w celu poprawy błędów niepodpisanych przez nieodłączność klienta",
+                "uk": "модернізовані розетки-класи для виправлення помилки від'єднанням клієнтів",
+                "zh-cn": "升级成套,以纠正错误,不用说用户脱节。"
+            },
+            "6.5.5": {
+                "en": "upgrade socket-classes to fix crash cases",
+                "de": "upgrade-sockel-klassen, um crash-fälle zu beheben",
+                "ru": "обновить socket-классы для исправления аварийных случаев",
+                "pt": "atualizar as classes de soquete para corrigir casos de acidente",
+                "nl": "upgrade socket-classes om crash gevallen te repareren",
+                "fr": "upgrade socket-classes pour réparer les cas de crash",
+                "it": "aggiornare le classi di socket per risolvere i casi di crash",
+                "es": "actualizar las clases de socket para fijar casos de choque",
+                "pl": "ulepszenie gniazd w celu naprawy przypadków katastrofy",
+                "uk": "модернізація розетки-класів для фіксації аварійних випадків",
+                "zh-cn": "a. 升级的碎片以防备事故"
+            }
+        },
+        "authors": ["bluefox <dogafox@gmail.com>"],
+        "platform": "Javascript/Node.js",
+        "mode": "daemon",
+        "loglevel": "info",
+        "messagebox": true,
+        "readme": "https://github.com/ioBroker/ioBroker.socketio/blob/master/README.md",
+        "icon": "socketio.svg",
+        "keywords": ["web", "socket.io", "communication"],
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.svg",
+        "type": "communication",
+        "stopBeforeUpdate": true,
+        "compact": true,
+        "stopTimeout": 5000,
+        "connectionType": "local",
+        "dataSource": "push",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=2.0.0"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.0.0"
+            }
+        ],
+        "restartAdapters": ["web"],
+        "plugins": {
+            "sentry": {
+                "dsn": "https://c420b84a0da648bb8f2374541aa92888@sentry.iobroker.net/17"
+            }
+        },
+        "tier": 3,
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        }
     },
-    "desc": {
-      "en": "This adapter allows to communicate different web applications with ioBroker",
-      "de": "Dieser Adapter ermöglicht die Kommunikation verschiedener Web-Anwendungen mit ioBroker",
-      "ru": "Этот адаптер позволяет соединяться различным веб-приложениям с ioBroker",
-      "pt": "Este adaptador permite comunicar diferentes aplicativos da web com ioBroker",
-      "nl": "Met deze adapter kunt u verschillende webtoepassingen communiceren met ioBroker",
-      "fr": "Cet adaptateur permet de communiquer différentes applications web avec ioBroker",
-      "it": "Questo adattatore consente di comunicare diverse applicazioni Web con ioBroker",
-      "es": "Este adaptador permite comunicar diferentes aplicaciones web con ioBroker",
-      "pl": "Ten adapter umożliwia komunikację z różnymi aplikacjami WWW za pomocą ioBroker",
-      "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
+    "native": {
+        "port": 8084,
+        "auth": false,
+        "secure": false,
+        "bind": "0.0.0.0",
+        "ttl": 3600,
+        "certPublic": "",
+        "certPrivate": "",
+        "certChained": "",
+        "defaultUser": "admin",
+        "forceWebSockets": false,
+        "leEnabled": false,
+        "leUpdate": false,
+        "leCheckPort": 80,
+        "compatibilityV2": true,
+        "language": ""
     },
-    "news": {
-      "6.7.1": {
-        "en": "Corrected call of getObjectView with null parameter",
-        "de": "Korrigierter Anruf von getObject Ansicht mit Null-Parameter",
-        "ru": "Исправленный звонок getObject Просмотр с нулевым параметром",
-        "pt": "Chamada correta de getObject Ver com parâmetro nulo",
-        "nl": "Gecorrigeerde aanroep van getObject Beeld met nul parameter",
-        "fr": "Appel corrigé de getObject Affichage avec paramètre null",
-        "it": "Chiamata corretta di getObject Visualizza con parametro null",
-        "es": "Llamada corregida de getObject Ver con parámetro null",
-        "pl": "Poprawione wywołanie getObject Widok z parametrem null",
-        "uk": "Виправлений виклик getObject Перегляд з параметром null",
-        "zh-cn": "已更正的调取对象 以无效参数查看"
-      },
-      "6.7.0": {
-        "en": "ported to webserver",
-        "de": "auf webserver portiert",
-        "ru": "портируется на веб-сервер",
-        "pt": "portado para webserver",
-        "nl": "geporteerd naar webserver",
-        "fr": "porté au serveur web",
-        "it": "portato a webserver",
-        "es": "portado a servidor web",
-        "pl": "przeniesiony do serwera webserver",
-        "uk": "переглянуто веб-сервер",
-        "zh-cn": "移植到网络服务器"
-      },
-      "6.6.1": {
-        "en": "Just some packages were updated",
-        "de": "Nur einige Pakete wurden aktualisiert",
-        "ru": "Только некоторые пакеты были обновлены",
-        "pt": "Apenas alguns pacotes foram atualizados",
-        "nl": "Slechts enkele pakketten werden bijgewerkt",
-        "fr": "Juste quelques paquets ont été mis à jour",
-        "it": "Solo alcuni pacchetti sono stati aggiornati",
-        "es": "Sólo algunos paquetes fueron actualizados",
-        "pl": "Kilka pakietów zostało zaktualizowanych",
-        "uk": "Просто деякі пакети були оновлено",
-        "zh-cn": "只是更新了一些软件包"
-      },
-      "6.6.0": {
-        "en": "Corrected adapter termination if the alias has no target",
-        "de": "Korrigierter Adapterabschluss, wenn der Alias kein Ziel hat",
-        "ru": "Исправлено прекращение адаптера, если псевдоним не имеет цели",
-        "pt": "Terminação correta do adaptador se o alias não tiver nenhum alvo",
-        "nl": "Verminderde adapter terminatie als de alias geen doelwit heeft",
-        "fr": "Résiliation correcte de l'adaptateur si l'alias n'a pas de cible",
-        "it": "Rescissione adattatore corretta se l'alias non ha un obiettivo",
-        "es": "Terminación corregida del adaptador si el alias no tiene objetivo",
-        "pl": "Poprawne rozwiązanie adaptacyjne, jeśli alias nie ma docelowego celu",
-        "uk": "Виправлено припинення адаптера, якщо псевдонім не має цілей",
-        "zh-cn": "如果除其它外别无目标,适应适应人员终止"
-      },
-      "6.5.7": {
-        "en": "upgrade socket-classes to fix error with vis subscriptions",
-        "de": "upgrade-sockel-klassen, um fehler mit vis-abos zu beheben",
-        "ru": "обновить socket-классы, чтобы исправить ошибку с vis подписками",
-        "pt": "atualizar classes de soquete para corrigir erro com assinaturas vis",
-        "nl": "upgrade socket-class om fouten te maken met visuele abonnementen",
-        "fr": "upgrade socket-classes pour corriger l'erreur avec les abonnements vis",
-        "it": "aggiornare le classi socket per correggere gli errori con gli abbonamenti vis",
-        "es": "actualizar las clases de socket para corregir error con las suscripciones vis",
-        "pl": "ulepszenie gniazda w celu naprawy błędu z wizami subskrypcji",
-        "uk": "оновлення розетки-класів для фіксації помилки з підписками вісс",
-        "zh-cn": "在订阅方面,升级的手脚,以防错误。"
-      },
-      "6.5.6": {
-        "en": "upgraded socket-classes to correct the error by unsubscribing on client disconnect",
-        "de": "erweiterte steckdosen-klassen, um den fehler zu korrigieren, indem sie auf client trennen",
-        "ru": "обновленные socket-классы, чтобы исправить ошибку, отписывая на отключение клиента",
-        "pt": "classes de soquete atualizadas para corrigir o erro ao dessubscrever no cliente desconectar",
-        "nl": "opgewaardeerde socket-class om de fout te corrigeren door onbeduidende cliënt te verbreken",
-        "fr": "les classes de socket améliorées pour corriger l'erreur en désabonnement sur le client déconnecté",
-        "it": "classi di socket aggiornate per correggere l'errore cancellando la registrazione sul client",
-        "es": "reclasos actualizados para corregir el error al darse de baja en la desconexión del cliente",
-        "pl": "ulepszona klasa gniazd w celu poprawy błędów niepodpisanych przez nieodłączność klienta",
-        "uk": "модернізовані розетки-класи для виправлення помилки від'єднанням клієнтів",
-        "zh-cn": "升级成套,以纠正错误,不用说用户脱节。"
-      },
-      "6.5.5": {
-        "en": "upgrade socket-classes to fix crash cases",
-        "de": "upgrade-sockel-klassen, um crash-fälle zu beheben",
-        "ru": "обновить socket-классы для исправления аварийных случаев",
-        "pt": "atualizar as classes de soquete para corrigir casos de acidente",
-        "nl": "upgrade socket-classes om crash gevallen te repareren",
-        "fr": "upgrade socket-classes pour réparer les cas de crash",
-        "it": "aggiornare le classi di socket per risolvere i casi di crash",
-        "es": "actualizar las clases de socket para fijar casos de choque",
-        "pl": "ulepszenie gniazd w celu naprawy przypadków katastrofy",
-        "uk": "модернізація розетки-класів для фіксації аварійних випадків",
-        "zh-cn": "a. 升级的碎片以防备事故"
-      }
-    },
-    "authors": [
-      "bluefox <dogafox@gmail.com>"
-    ],
-    "platform": "Javascript/Node.js",
-    "mode": "daemon",
-    "loglevel": "info",
-    "messagebox": true,
-    "readme": "https://github.com/ioBroker/ioBroker.socketio/blob/master/README.md",
-    "icon": "socketio.png",
-    "keywords": [
-      "web",
-      "socket.io",
-      "communication"
-    ],
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.socketio/master/admin/socketio.png",
-    "type": "communication",
-    "stopBeforeUpdate": true,
-    "compact": true,
-    "stopTimeout": 5000,
-    "connectionType": "local",
-    "dataSource": "push",
-    "adminUI": {
-      "config": "json"
-    },
-    "dependencies": [
-      {
-        "js-controller": ">=2.0.0"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=5.0.0"
-      }
-    ],
-    "restartAdapters": [
-      "web"
-    ],
-    "plugins": {
-      "sentry": {
-        "dsn": "https://c420b84a0da648bb8f2374541aa92888@sentry.iobroker.net/17"
-      }
-    },
-    "tier": 3,
-    "licenseInformation": {
-      "type": "free",
-      "license": "MIT"
-    }
-  },
-  "native": {
-    "port": 8084,
-    "auth": false,
-    "secure": false,
-    "bind": "0.0.0.0",
-    "ttl": 3600,
-    "certPublic": "",
-    "certPrivate": "",
-    "certChained": "",
-    "defaultUser": "admin",
-    "forceWebSockets": false,
-    "leEnabled": false,
-    "leUpdate": false,
-    "leCheckPort": 80,
-    "compatibilityV2": true,
-    "language": ""
-  },
-  "instanceObjects": [
-    {
-      "_id": "info",
-      "type": "channel",
-      "common": {
-        "name": "Information"
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.connected",
-      "type": "state",
-      "common": {
-        "role": "state",
-        "name": "Info about connected socket clients",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.connection",
-      "type": "state",
-      "common": {
-        "role": "indicator.connected",
-        "name": "If web server started",
-        "type": "boolean",
-        "read": true,
-        "write": false,
-        "def": false
-      },
-      "native": {}
-    }
-  ]
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connected",
+            "type": "state",
+            "common": {
+                "role": "state",
+                "name": "Info about connected socket clients",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "If web server started",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
 }

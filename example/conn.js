@@ -1,3 +1,4 @@
+// Deprecated. Use socket-client/Connection
 ////// ----------------------- Connection "class" ---------------------- ////////////
 /* jshint browser: true */
 /* global document */
@@ -1264,7 +1265,7 @@ var servConn = {
 
             if (!this._authRunning) {
                 this._authRunning = true;
-                // Try to read version
+                // Try to read a version
                 this._checkAuth(function (version) {
                     // If we have got version string, so there is no authentication, or we are authenticated
                     that._authRunning = false;
