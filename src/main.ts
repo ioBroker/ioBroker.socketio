@@ -6,8 +6,6 @@ import { SocketIO } from './lib/socketIO';
 import socketio from 'socket.io';
 import { WebServer } from '@iobroker/webserver';
 import * as session from 'express-session';
-import type { IncomingMessage, OutgoingMessage } from 'node:http';
-import { readFileSync } from 'node:fs';
 import type { SocketIoAdapterConfig } from './types';
 import { randomBytes } from 'node:crypto';
 import type { Store } from '@iobroker/socket-classes';
@@ -15,18 +13,14 @@ import type { Store } from '@iobroker/socket-classes';
 type Server = HttpServer | HttpsServer;
 
 export class SocketIoAdapter extends Adapter {
-    private wsConfig: SocketIoAdapterConfig;
+    private socketIoConfig: SocketIoAdapterConfig;
     private server: {
         server: null | Server;
         io: null | SocketIO;
-        app: ((req: IncomingMessage, res: OutgoingMessage) => void) | null;
     } = {
         server: null,
         io: null,
-        app: null,
     };
-    private readonly socketIoFile: string;
-    private bruteForce: { [ip: string]: { errors: number; time: number } } = {};
     private store: Store | null = null;
     private secret = 'Zgfr56gFe87jJOM';
     private certificates: ioBroker.Certificates | undefined;
@@ -49,8 +43,7 @@ export class SocketIoAdapter extends Adapter {
             },
         });
 
-        this.socketIoFile = readFileSync(`${__dirname}/lib/socket.io.js`).toString('utf-8');
-        this.wsConfig = this.config as SocketIoAdapterConfig;
+        this.socketIoConfig = this.config as SocketIoAdapterConfig;
         this.on('log', (obj: ioBroker.LogMessage): void => this.server?.io?.sendLog(obj));
     }
 
@@ -58,14 +51,15 @@ export class SocketIoAdapter extends Adapter {
         try {
             void this.setState('info.connected', '', true);
             void this.setState('info.connection', false, true);
-            this.log.info(`terminating http${this.wsConfig.secure ? 's' : ''} server on port ${this.wsConfig.port}`);
+            this.log.info(
+                `terminating http${this.socketIoConfig.secure ? 's' : ''} server on port ${this.socketIoConfig.port}`,
+            );
             this.server.io?.close();
             this.server.server?.close();
-
-            callback();
         } catch {
-            callback();
+            // ignore
         }
+        callback();
     }
 
     onMessage(obj: ioBroker.Message): void {
@@ -81,47 +75,50 @@ export class SocketIoAdapter extends Adapter {
         this.server?.io?.publishInstanceMessageAll(obj.from, obj.message.m, obj.message.s, obj.message.d);
     }
 
-    //this.wsConfig: {
+    //this.socketIoConfig: {
     //    "port":   8080,
     //    "auth":   false,
     //    "secure": false,
     //    "bind":   "0.0.0.0", // "::"
     //}
     initWebServer(): void {
-        this.wsConfig.port = parseInt(this.wsConfig.port as string, 10) || 0;
+        this.socketIoConfig.port = parseInt(this.socketIoConfig.port as string, 10) || 0;
 
-        if (this.wsConfig.port) {
-            if (this.wsConfig.secure && !this.certificates) {
+        if (this.socketIoConfig.port) {
+            if (this.socketIoConfig.secure && !this.certificates) {
+                // Error: authentication is enabled but no certificates found
                 return;
             }
 
-            this.wsConfig.ttl = parseInt(this.wsConfig.ttl as string, 10) || 3600;
-            this.wsConfig.forceWebSockets = this.wsConfig.forceWebSockets || false;
+            this.socketIoConfig.ttl = parseInt(this.socketIoConfig.ttl as string, 10) || 3600;
+            this.socketIoConfig.forceWebSockets = this.socketIoConfig.forceWebSockets || false;
 
-            if (this.wsConfig.auth) {
-                const AdapterStore = commonTools.session(session, this.wsConfig.ttl);
+            if (this.socketIoConfig.auth) {
+                const AdapterStore = commonTools.session(session, this.socketIoConfig.ttl);
                 // Authentication checked by server itself
                 this.store = new AdapterStore({ adapter: this });
-                this.wsConfig.forceWebSockets = this.wsConfig.forceWebSockets || false;
+                this.socketIoConfig.forceWebSockets = this.socketIoConfig.forceWebSockets || false;
             }
 
             this.getPort(
-                this.wsConfig.port,
-                !this.wsConfig.bind || this.wsConfig.bind === '0.0.0.0' ? undefined : this.wsConfig.bind || undefined,
+                this.socketIoConfig.port,
+                !this.socketIoConfig.bind || this.socketIoConfig.bind === '0.0.0.0'
+                    ? undefined
+                    : this.socketIoConfig.bind || undefined,
                 async port => {
-                    if (parseInt(port as unknown as string, 10) !== this.wsConfig.port) {
-                        this.log.error(`port ${this.wsConfig.port} already in use`);
+                    if (parseInt(port as unknown as string, 10) !== this.socketIoConfig.port) {
+                        this.log.error(`port ${this.socketIoConfig.port} already in use`);
                         return this.terminate
                             ? this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
                             : process.exit(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                     }
 
-                    this.wsConfig.port = port;
+                    this.socketIoConfig.port = port;
 
                     try {
                         const webServer = new WebServer({
                             adapter: this,
-                            secure: this.wsConfig.secure,
+                            secure: this.socketIoConfig.secure,
                         });
                         // initialize and you can use your server as known
                         this.server.server = await webServer.init();
@@ -149,7 +146,9 @@ export class SocketIoAdapter extends Adapter {
                                     'You can call in shell following scrip to allow it for node.js: "iobroker fix"',
                             );
                         } else {
-                            this.log.error(`Cannot start server on ${this.wsConfig.bind || '0.0.0.0'}:${port}: ${e}`);
+                            this.log.error(
+                                `Cannot start server on ${this.socketIoConfig.bind || '0.0.0.0'}:${port}: ${e}`,
+                            );
                         }
                         if (!serverListening) {
                             this.terminate
@@ -160,10 +159,10 @@ export class SocketIoAdapter extends Adapter {
 
                     // Start the web server
                     this.server.server.listen(
-                        this.wsConfig.port,
-                        !this.wsConfig.bind || this.wsConfig.bind === '0.0.0.0'
+                        this.socketIoConfig.port,
+                        !this.socketIoConfig.bind || this.socketIoConfig.bind === '0.0.0.0'
                             ? undefined
-                            : this.wsConfig.bind || undefined,
+                            : this.socketIoConfig.bind || undefined,
                         () => {
                             void this.setState('info.connection', true, true);
                             serverListening = true;
@@ -181,15 +180,15 @@ export class SocketIoAdapter extends Adapter {
                         compatibilityV2?: boolean;
                         forceWebSockets?: boolean;
                     } = {
-                        ttl: this.wsConfig.ttl as number,
-                        port: this.wsConfig.port,
-                        secure: this.wsConfig.secure,
-                        auth: this.wsConfig.auth,
+                        ttl: this.socketIoConfig.ttl as number,
+                        port: this.socketIoConfig.port,
+                        secure: this.socketIoConfig.secure,
+                        auth: this.socketIoConfig.auth,
                         crossDomain: true,
-                        defaultUser: this.wsConfig.defaultUser,
-                        language: this.wsConfig.language,
-                        compatibilityV2: this.wsConfig.compatibilityV2,
-                        forceWebSockets: this.wsConfig.forceWebSockets,
+                        defaultUser: this.socketIoConfig.defaultUser,
+                        language: this.socketIoConfig.language,
+                        compatibilityV2: this.socketIoConfig.compatibilityV2,
+                        forceWebSockets: this.socketIoConfig.forceWebSockets,
                     };
 
                     this.server.io = new SocketIO(settings, this);
@@ -222,9 +221,9 @@ export class SocketIoAdapter extends Adapter {
     }
 
     async main(): Promise<void> {
-        this.wsConfig = this.config as SocketIoAdapterConfig;
+        this.socketIoConfig = this.config as SocketIoAdapterConfig;
 
-        if (this.wsConfig.auth) {
+        if (this.socketIoConfig.auth) {
             // Generate secret for session manager
             const systemConfig = await this.getForeignObjectAsync('system.config');
             if (systemConfig) {
@@ -245,7 +244,7 @@ export class SocketIoAdapter extends Adapter {
             }
         }
 
-        if (this.wsConfig.secure) {
+        if (this.socketIoConfig.secure) {
             // Load certificates
             await new Promise<void>(resolve =>
                 this.getCertificates(

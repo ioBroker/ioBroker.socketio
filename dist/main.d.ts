@@ -1,9 +1,7 @@
 import { Adapter, type AdapterOptions } from '@iobroker/adapter-core';
 export declare class SocketIoAdapter extends Adapter {
-    private wsConfig;
+    private socketIoConfig;
     private server;
-    private readonly socketIoFile;
-    private bruteForce;
     private store;
     private secret;
     private certificates;
