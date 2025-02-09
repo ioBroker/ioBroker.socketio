@@ -9,7 +9,7 @@ const socketIO_1 = require("./socketIO");
 const socket_classes_1 = require("@iobroker/socket-classes");
 class Socket {
     ioServer;
-    constructor(server, settings, adapter, store) {
+    constructor(server, settings, adapter, store, checkUser) {
         this.ioServer = new socketIO_1.SocketIO(settings, adapter);
         const socketOptions = {
             pingInterval: 120000,
@@ -31,7 +31,7 @@ class Socket {
             httpOnly: true,
             path: '/'
         };*/
-        this.ioServer.start(server, socket_io_1.default, { store, secret: settings.secret }, socketOptions);
+        this.ioServer.start(server, socket_io_1.default, { store, secret: settings.secret, checkUser }, socketOptions);
     }
     getWhiteListIpForAddress(remoteIp, whiteListSettings) {
         return socket_classes_1.SocketCommon.getWhiteListIpForAddress(remoteIp, whiteListSettings);

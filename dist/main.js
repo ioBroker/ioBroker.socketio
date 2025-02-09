@@ -37,18 +37,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SocketIoAdapter = void 0;
-const adapter_core_1 = require("@iobroker/adapter-core"); // Get common adapter utils
-const socketIO_1 = require("./lib/socketIO");
-const socket_io_1 = __importDefault(require("socket.io"));
-const webserver_1 = require("@iobroker/webserver");
-const session = __importStar(require("express-session"));
 const node_crypto_1 = require("node:crypto");
+const node_fs_1 = require("node:fs");
+const session = __importStar(require("express-session"));
+const socket_io_1 = __importDefault(require("socket.io"));
+const adapter_core_1 = require("@iobroker/adapter-core"); // Get common adapter utils
+const webserver_1 = require("@iobroker/webserver");
+const socketIO_1 = require("./lib/socketIO");
 class SocketIoAdapter extends adapter_core_1.Adapter {
     socketIoConfig;
     server = {
         server: null,
         io: null,
+        app: null,
     };
+    socketIoFile;
     store = null;
     secret = 'Zgfr56gFe87jJOM';
     certificates;
@@ -69,6 +72,7 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                 this.server?.io?.publishFileAll(id, fileName, size);
             },
         });
+        this.socketIoFile = (0, node_fs_1.readFileSync)(`${__dirname}/lib/socket.io.js`).toString('utf-8');
         this.socketIoConfig = this.config;
         this.on('log', (obj) => this.server?.io?.sendLog(obj));
     }
@@ -127,6 +131,18 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                         : process.exit(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                 }
                 this.socketIoConfig.port = port;
+                this.server.app = (req, res) => {
+                    if (req.url?.includes('socket.io.js')) {
+                        // @ts-expect-error
+                        res.writeHead(200, { 'Content-Type': 'text/plain' });
+                        res.end(this.socketIoFile);
+                    }
+                    else {
+                        // @ts-expect-error
+                        res.writeHead(404);
+                        res.end('Not found');
+                    }
+                };
                 try {
                     const webServer = new webserver_1.WebServer({
                         adapter: this,
