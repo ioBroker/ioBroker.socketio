@@ -108,7 +108,8 @@ export class SocketIO extends SocketCommon {
         const socketIo = socket as unknown as SocketIoExtended;
         let wait = false;
         try {
-            const textCookie: string | undefined = socketIo.handshake.query['connect.sid'] || socketIo.handshake.headers.cookie;
+            const textCookie: string | undefined =
+                socketIo.handshake.query['connect.sid'] || socketIo.handshake.headers.cookie;
 
             if (textCookie && (!socketIo.request || !socketIo.request._query?.user)) {
                 const cookie = decodeURIComponent(textCookie);
@@ -130,7 +131,7 @@ export class SocketIO extends SocketCommon {
                             sessionID,
                             (
                                 _err: Error | null,
-                                obj: {
+                                obj?: {
                                     cookie: {
                                         originalMaxAge: number;
                                         expires: string;
@@ -233,7 +234,7 @@ export class SocketIO extends SocketCommon {
                     socketIo._sessionID!,
                     (
                         _err: Error | null,
-                        obj: {
+                        obj?: {
                             cookie: {
                                 originalMaxAge: number;
                                 expires: string;

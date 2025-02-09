@@ -1,14 +1,17 @@
-import type { Server as HttpServer } from 'http';
+import { randomBytes } from 'node:crypto';
+import type { IncomingMessage, OutgoingMessage, Server as HttpServer } from 'node:http';
 import type { Server as HttpsServer } from 'node:https';
+import { readFileSync } from 'node:fs';
+
+import * as session from 'express-session';
+import socketio from 'socket.io';
 
 import { Adapter, type AdapterOptions, commonTools, EXIT_CODES } from '@iobroker/adapter-core'; // Get common adapter utils
-import { SocketIO } from './lib/socketIO';
-import socketio from 'socket.io';
 import { WebServer } from '@iobroker/webserver';
-import * as session from 'express-session';
+import type { SocketSettings, Store } from '@iobroker/socket-classes';
+
 import type { SocketIoAdapterConfig } from './types';
-import { randomBytes } from 'node:crypto';
-import type { Store } from '@iobroker/socket-classes';
+import { SocketIO } from './lib/socketIO';
 
 type Server = HttpServer | HttpsServer;
 
@@ -17,10 +20,13 @@ export class SocketIoAdapter extends Adapter {
     private server: {
         server: null | Server;
         io: null | SocketIO;
+        app: ((req: IncomingMessage, res: OutgoingMessage) => void) | null;
     } = {
         server: null,
         io: null,
+        app: null,
     };
+    private readonly socketIoFile: string;
     private store: Store | null = null;
     private secret = 'Zgfr56gFe87jJOM';
     private certificates: ioBroker.Certificates | undefined;
@@ -43,6 +49,7 @@ export class SocketIoAdapter extends Adapter {
             },
         });
 
+        this.socketIoFile = readFileSync(`${__dirname}/lib/socket.io.js`).toString('utf-8');
         this.socketIoConfig = this.config as SocketIoAdapterConfig;
         this.on('log', (obj: ioBroker.LogMessage): void => this.server?.io?.sendLog(obj));
     }
@@ -114,6 +121,17 @@ export class SocketIoAdapter extends Adapter {
                     }
 
                     this.socketIoConfig.port = port;
+                    this.server.app = (req: IncomingMessage, res: OutgoingMessage): void => {
+                        if (req.url?.includes('socket.io.js')) {
+                            // @ts-expect-error
+                            res.writeHead(200, { 'Content-Type': 'text/plain' });
+                            res.end(this.socketIoFile);
+                        } else {
+                            // @ts-expect-error
+                            res.writeHead(404);
+                            res.end('Not found');
+                        }
+                    };
 
                     try {
                         const webServer = new WebServer({
@@ -169,24 +187,16 @@ export class SocketIoAdapter extends Adapter {
                         },
                     );
 
-                    const settings: {
-                        language?: ioBroker.Languages;
-                        defaultUser?: string;
-                        ttl?: number;
-                        secure?: boolean;
-                        auth?: boolean;
-                        crossDomain?: boolean;
-                        port?: number;
-                        compatibilityV2?: boolean;
-                        forceWebSockets?: boolean;
-                    } = {
+                    const settings: SocketSettings = {
                         ttl: this.socketIoConfig.ttl as number,
                         port: this.socketIoConfig.port,
                         secure: this.socketIoConfig.secure,
                         auth: this.socketIoConfig.auth,
-                        crossDomain: true,
                         defaultUser: this.socketIoConfig.defaultUser,
                         language: this.socketIoConfig.language,
+                        secret: this.secret,
+
+                        crossDomain: true,
                         compatibilityV2: this.socketIoConfig.compatibilityV2,
                         forceWebSockets: this.socketIoConfig.forceWebSockets,
                     };

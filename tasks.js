@@ -1,4 +1,5 @@
 const { existsSync, writeFileSync, readFileSync } = require('fs');
+const {copyFileSync} = require("node:fs");
 
 let socket = require.resolve('socket.io-client').replace(/\\/g, '/');
 // node_modules/socket.io-client/build/cjs/index.js
@@ -13,3 +14,5 @@ if (existsSync(`${parts.join('/')}/dist/socket.io.js`)) {
     parts.pop();
     writeFileSync(`${__dirname}/dist/lib/socket.io.js`, readFileSync(`${parts.join('/')}/dist/socket.io.min.js`));
 }
+
+copyFileSync(`${__dirname}/src/types.d.ts`, `${__dirname}/dist/types.d.ts`);

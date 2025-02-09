@@ -21,22 +21,7 @@ export interface SocketIoAdapterConfig {
 export declare class IOSocketClass {
     public ioServer: SocketIO | null;
 
-    constructor(
-        server: Server,
-        settings: SocketSettings,
-        adapter: ioBroker.Adapter,
-        store: Store,
-        checkUser?: (
-            user: string,
-            pass: string,
-            cb: (
-                error: Error | null,
-                result?: {
-                    logged_in: boolean;
-                },
-            ) => void,
-        ) => void,
-    );
+    constructor(server: Server, settings: SocketSettings, adapter: ioBroker.Adapter, store: Store);
 
     getWhiteListIpForAddress(
         remoteIp: string,

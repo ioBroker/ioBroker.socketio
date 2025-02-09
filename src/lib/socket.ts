@@ -4,6 +4,7 @@ import { type Server, SocketIO } from './socketIO';
 import {
     SocketCommon,
     type SocketIoOptions,
+    type SocketSettings,
     type SocketSubscribeTypes,
     type Store,
     type WhiteListSettings,
@@ -11,18 +12,23 @@ import {
 import type { SocketIO as WebSocketServer } from '@iobroker/ws-server';
 
 class Socket {
-    public ioServer: SocketIO;
+    public ioServer: SocketIO | null;
 
     constructor(
         server: Server,
-        settings: {
-            forceWebSockets?: boolean;
-            compatibilityV2?: boolean;
-            secret: string;
-        },
+        settings: SocketSettings,
         adapter: ioBroker.Adapter,
-        ignore: unknown,
         store: Store,
+        checkUser?: (
+            user: string,
+            pass: string,
+            cb: (
+                error: Error | null,
+                result?: {
+                    logged_in: boolean;
+                },
+            ) => void,
+        ) => void,
     ) {
         this.ioServer = new SocketIO(settings, adapter);
 
@@ -51,7 +57,7 @@ class Socket {
         this.ioServer.start(
             server,
             socketio as unknown as typeof WebSocketServer,
-            { store, secret: settings.secret },
+            { store, secret: settings.secret, checkUser },
             socketOptions,
         );
     }
@@ -66,23 +72,26 @@ class Socket {
     }
 
     publishAll(type: SocketSubscribeTypes, id: string, obj: ioBroker.Object | ioBroker.State | null | undefined): void {
-        return this.ioServer.publishAll(type, id, obj);
+        return this.ioServer?.publishAll(type, id, obj);
     }
 
     publishFileAll(id: string, fileName: string, size: number | null): void {
-        return this.ioServer.publishFileAll(id, fileName, size);
+        return this.ioServer?.publishFileAll(id, fileName, size);
     }
 
     publishInstanceMessageAll(sourceInstance: string, messageType: string, sid: string, data: any): void {
-        return this.ioServer.publishInstanceMessageAll(sourceInstance, messageType, sid, data);
+        return this.ioServer?.publishInstanceMessageAll(sourceInstance, messageType, sid, data);
     }
 
     sendLog(obj: ioBroker.LogMessage): void {
-        this.ioServer.sendLog(obj);
+        this.ioServer?.sendLog(obj);
     }
 
     close(): void {
-        this.ioServer.close();
+        if (this.ioServer) {
+            this.ioServer.close();
+            this.ioServer = null;
+        }
     }
 }
 

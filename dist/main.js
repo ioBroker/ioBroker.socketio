@@ -177,9 +177,10 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                     port: this.socketIoConfig.port,
                     secure: this.socketIoConfig.secure,
                     auth: this.socketIoConfig.auth,
-                    crossDomain: true,
                     defaultUser: this.socketIoConfig.defaultUser,
                     language: this.socketIoConfig.language,
+                    secret: this.secret,
+                    crossDomain: true,
                     compatibilityV2: this.socketIoConfig.compatibilityV2,
                     forceWebSockets: this.socketIoConfig.forceWebSockets,
                 };
