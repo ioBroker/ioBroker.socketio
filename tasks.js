@@ -1,5 +1,4 @@
-const { existsSync, writeFileSync, readFileSync } = require('fs');
-const {copyFileSync} = require("node:fs");
+const { copyFileSync, existsSync, writeFileSync, readFileSync } = require('node:fs');
 
 let socket = require.resolve('socket.io-client').replace(/\\/g, '/');
 // node_modules/socket.io-client/build/cjs/index.js

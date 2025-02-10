@@ -20,19 +20,6 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
-      "7.0.0": {
-        "en": "Adapter was rewritten in TypeScript",
-        "de": "Adapter wurde in TypeScript neu geschrieben",
-        "ru": "Адаптер был переписан в TypeScript",
-        "pt": "Adapter foi reescrito no TypeScript",
-        "nl": "Adapter is herschreven in TypeScript",
-        "fr": "Adaptateur a été réécrit dans TypeScript",
-        "it": "L'adattatore è stato riscritto in TypeScript",
-        "es": "Adaptador fue reescrito en TipoScript",
-        "pl": "Adapter został przepisany w TypeScript",
-        "uk": "Адаптер був записаний у TypeScript",
-        "zh-cn": "适配器在类型脚本中重写"
-      },
       "6.7.1": {
         "en": "Corrected call of getObjectView with null parameter",
         "de": "Korrigierter Anruf von getObject Ansicht mit Null-Parameter",

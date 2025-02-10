@@ -76,7 +76,7 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
-### 7.0.0 (2025-02-09)
+### **WORK IN PROGRESS**
 * (@GermanBluefox) Adapter was rewritten in TypeScript
 
 ### 6.7.1 (2024-06-26)

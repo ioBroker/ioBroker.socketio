@@ -1,6 +1,7 @@
 import { Adapter, type AdapterOptions } from '@iobroker/adapter-core';
+import type { SocketIoAdapterConfig } from './types';
 export declare class SocketIoAdapter extends Adapter {
-    private socketIoConfig;
+    config: SocketIoAdapterConfig;
     private server;
     private readonly socketIoFile;
     private store;
