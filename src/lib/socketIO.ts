@@ -42,6 +42,7 @@ export class SocketIO extends SocketCommon {
                 error: Error | null,
                 result?: {
                     logged_in: boolean;
+                    user?: string;
                 },
             ) => void,
         ) => void;
@@ -277,6 +278,7 @@ export class SocketIO extends SocketCommon {
                     error: Error | null,
                     result?: {
                         logged_in: boolean;
+                        user?: string;
                     },
                 ) => void,
             ) => void;

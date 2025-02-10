@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.2.3",
-    "@iobroker/socket-classes": "^2.0.8",
+    "@iobroker/socket-classes": "^2.0.10",
     "@iobroker/webserver": "^1.0.8",
     "express-session": "^1.18.1",
     "socket.io": "^2.5.1"

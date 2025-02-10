@@ -1,5 +1,6 @@
 import type { SocketIO } from './lib/socketIO';
 import type { Socket as IOSocketClass } from './lib/socket';
+import type { Socket as WebSocketClient } from '@iobroker/ws-server';
 
 export interface SocketIoAdapterConfig {
     port: number | string;
@@ -21,3 +22,4 @@ export interface SocketIoAdapterConfig {
 
 export type { SocketIO };
 export type { IOSocketClass };
+export type { WebSocketClient };
