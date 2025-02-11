@@ -209,11 +209,14 @@ export class SocketIO extends SocketCommon {
             address = socketIo.request.connection.remoteAddress;
         }
         if (address) {
-            return {
-                address,
-                family: address.includes(':') ? 'IPv6' : 'IPv4',
-                port: 0, // not used
-            };
+            if (address && typeof address !== 'object') {
+                return {
+                    address,
+                    family: address.includes(':') ? 'IPv6' : 'IPv4',
+                    port: 0,
+                };
+            }
+            return address as unknown as AddressInfo;
         }
         throw new Error('Cannot detect client address');
     }
