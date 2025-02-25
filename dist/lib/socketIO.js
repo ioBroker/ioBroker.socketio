@@ -64,39 +64,60 @@ class SocketIO extends socket_classes_1.SocketCommon {
             const textCookie = socketIo.handshake.query['connect.sid'] || socketIo.handshake.headers.cookie;
             if (textCookie && (!socketIo.request || !socketIo.request._query?.user)) {
                 const cookie = decodeURIComponent(textCookie);
-                const m = cookie.match(/connect\.sid=(.+)/);
-                if (m || socketIo.handshake.query['connect.sid']) {
-                    let sessionID;
-                    // If session cookie exists
-                    if (socketIo.handshake.query['connect.sid']) {
-                        sessionID = cookie_parser_1.default.signedCookie(socketIo.handshake.query['connect.sid'], this.secret);
-                    }
-                    else {
-                        const c = m[1].split(';')[0];
-                        sessionID = cookie_parser_1.default.signedCookie(c, this.secret);
-                    }
-                    if (sessionID) {
-                        // Get user for session
-                        wait = true;
-                        this.store?.get(sessionID, (_err, obj) => {
-                            if (obj?.passport?.user) {
-                                socketIo._sessionID = sessionID;
-                                if (typeof callback === 'function') {
-                                    callback(null, obj.passport.user);
+                const accessTokens = cookie.split(';').find(c => c.trim().startsWith('access_token='));
+                if (accessTokens) {
+                    const tokenStr = accessTokens.split('=')[1];
+                    wait = true;
+                    void this.store?.get(`a:${tokenStr}`, (err, token) => {
+                        const tokenData = token;
+                        if (err) {
+                            this.adapter.log.error(`Cannot get token: ${err}`);
+                            callback('Cannot get token');
+                        }
+                        else if (!tokenData?.user) {
+                            this.adapter.log.error('No session found');
+                            callback('No session found');
+                        }
+                        else {
+                            callback(null, tokenData.user, tokenData.aExp);
+                        }
+                    });
+                }
+                if (!wait) {
+                    const m = cookie.match(/connect\.sid=(.+)/);
+                    if (m || socketIo.handshake.query['connect.sid']) {
+                        let sessionID;
+                        // If session cookie exists
+                        if (socketIo.handshake.query['connect.sid']) {
+                            sessionID = cookie_parser_1.default.signedCookie(socketIo.handshake.query['connect.sid'], this.secret);
+                        }
+                        else {
+                            const c = m[1].split(';')[0];
+                            sessionID = cookie_parser_1.default.signedCookie(c, this.secret);
+                        }
+                        if (sessionID) {
+                            // Get user for session
+                            wait = true;
+                            this.store?.get(sessionID, (_err, obj) => {
+                                if (obj?.passport?.user) {
+                                    socketIo._sessionID = sessionID;
+                                    if (typeof callback === 'function') {
+                                        callback(null, obj.passport.user, obj.cookie.expires ? new Date(obj.cookie.expires).getTime() : 0);
+                                    }
+                                    else {
+                                        this.adapter.log.warn('[_getUserFromSocket] Invalid callback');
+                                    }
                                 }
                                 else {
-                                    this.adapter.log.warn('[_getUserFromSocket] Invalid callback');
+                                    if (typeof callback === 'function') {
+                                        callback('unknown user');
+                                    }
+                                    else {
+                                        this.adapter.log.warn('[_getUserFromSocket] Invalid callback');
+                                    }
                                 }
-                            }
-                            else {
-                                if (typeof callback === 'function') {
-                                    callback('unknown user');
-                                }
-                                else {
-                                    this.adapter.log.warn('[_getUserFromSocket] Invalid callback');
-                                }
-                            }
-                        });
+                            });
+                        }
                     }
                 }
             }
@@ -109,7 +130,7 @@ class SocketIO extends socket_classes_1.SocketCommon {
                         if (res) {
                             this.adapter.log.debug(`Logged in: ${user}`);
                             if (typeof callback === 'function') {
-                                callback(null, user);
+                                callback(null, user, 0);
                             }
                             else {
                                 this.adapter.log.warn('[_getUserFromSocket] Invalid callback');
@@ -144,7 +165,7 @@ class SocketIO extends socket_classes_1.SocketCommon {
             address = socketIo.request.connection.remoteAddress;
         }
         if (address) {
-            if (address && typeof address !== 'object') {
+            if (typeof address !== 'object') {
                 return {
                     address,
                     family: address.includes(':') ? 'IPv6' : 'IPv4',
@@ -158,6 +179,31 @@ class SocketIO extends socket_classes_1.SocketCommon {
     // update session ID, but not ofter than 60 seconds
     __updateSession(socket) {
         const socketIo = socket;
+        if (socket._sessionExpiresAt) {
+            // Check socket expiration time
+            if (socket._sessionExpiresAt < Date.now() - 10_000) {
+                // If less than 10 seconds, then recheck the socket
+                const accessToken = socket.conn.request.headers?.cookie
+                    ?.split(';')
+                    .find(c => c.trim().startsWith('access_token='));
+                if (accessToken) {
+                    const tokenStr = accessToken.split('=')[1];
+                    void this.store?.get(`a:${tokenStr}`, (err, token) => {
+                        const tokenData = token;
+                        if (err) {
+                            this.adapter.log.error(`Cannot get token: ${err}`);
+                        }
+                        else if (!tokenData?.user) {
+                            this.adapter.log.error('No session found');
+                        }
+                        else {
+                            socket._sessionExpiresAt = tokenData.aExp;
+                        }
+                    });
+                }
+            }
+            return socket._sessionExpiresAt > Date.now();
+        }
         if (socketIo?._sessionID) {
             const time = Date.now();
             if (socketIo._lastActivity && time - socketIo._lastActivity > (this.settings.ttl || 3600) * 1000) {

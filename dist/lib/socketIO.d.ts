@@ -15,7 +15,7 @@ export declare class SocketIO extends SocketCommon {
             user?: string;
         }) => void) => void;
     }): void;
-    __getUserFromSocket(socket: WebSocketClient, callback: (error: string | null, user?: string) => void): void;
+    __getUserFromSocket(socket: WebSocketClient, callback: (error: string | null, user?: string, expirationTime?: number) => void): void;
     __getClientAddress(socket: WebSocketClient): AddressInfo;
     __updateSession(socket: WebSocketClient): boolean;
     __getSessionID(socket: WebSocketClient): string | null;
