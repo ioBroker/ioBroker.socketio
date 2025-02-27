@@ -76,7 +76,7 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 7.0.5 (2025-02-27)
 * (@GermanBluefox) Added OAuth2 support
 
 ### 7.0.1 (2025-02-11)
