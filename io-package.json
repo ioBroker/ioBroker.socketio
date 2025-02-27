@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "7.0.2",
+    "version": "7.0.3",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -20,6 +20,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "7.0.3": {
+        "en": "Added OAuth2 support",
+        "de": "OAuth2 Unterstützung hinzugefügt",
+        "ru": "Поддержка OAuth2",
+        "pt": "Adicionado suporte OAuth2",
+        "nl": "OAuth2-ondersteuning toegevoegd",
+        "fr": "Ajout du support OAuth2",
+        "it": "Aggiunto il supporto OAuth2",
+        "es": "Apoyo adicional OAuth2",
+        "pl": "Dodano wsparcie OAuth2",
+        "uk": "Додано підтримку OAuth2",
+        "zh-cn": "添加 OAuth2 支持"
+      },
       "7.0.1": {
         "en": "Adapter was rewritten in TypeScript",
         "de": "Adapter wurde in TypeScript neu geschrieben",
