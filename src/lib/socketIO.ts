@@ -113,81 +113,90 @@ export class SocketIO extends SocketCommon {
         const socketIo = socket as unknown as SocketIoExtended;
         let wait = false;
         try {
+            let accessToken: string | undefined;
             const textCookie: string | undefined =
                 socketIo.handshake.query['connect.sid'] || socketIo.handshake.headers.cookie;
-
-            if (textCookie && (!socketIo.request || !socketIo.request._query?.user)) {
-                const cookie = decodeURIComponent(textCookie);
-                const accessTokens = cookie.split(';').find(c => c.trim().startsWith('access_token='));
-                if (accessTokens) {
-                    const tokenStr = accessTokens.split('=')[1];
-                    wait = true;
-                    void this.store?.get(`a:${tokenStr}`, (err: Error, token: any): void => {
-                        const tokenData = token as InternalStorageToken;
-                        if (err) {
-                            this.adapter.log.error(`Cannot get token: ${err}`);
-                            callback('Cannot get token');
-                        } else if (!tokenData?.user) {
-                            this.adapter.log.error('No session found');
-                            callback('No session found');
-                        } else {
-                            callback(null, tokenData.user, tokenData.aExp);
-                        }
-                    });
+            let cookie: string | undefined;
+            if (textCookie) {
+                cookie = decodeURIComponent(textCookie);
+            }
+            if (!socketIo.request || !socketIo.request._query?.user) {
+                if (cookie) {
+                    const accessTokens = cookie.split(';').find(c => c.trim().startsWith('access_token='));
+                    accessToken = accessTokens?.split('=')[1];
                 }
+                if (!accessToken) {
+                    accessToken = socketIo.request?._query?.access_token;
+                }
+            }
 
-                if (!wait) {
-                    const m = cookie.match(/connect\.sid=(.+)/);
-                    if (m || socketIo.handshake.query['connect.sid']) {
-                        let sessionID;
+            if (accessToken) {
+                wait = true;
+                void this.store?.get(`a:${accessToken}`, (err: Error, token: any): void => {
+                    const tokenData = token as InternalStorageToken;
+                    if (err) {
+                        this.adapter.log.error(`Cannot get token: ${err}`);
+                        callback('Cannot get token');
+                    } else if (!tokenData?.user) {
+                        this.adapter.log.error('No session found');
+                        callback('No session found');
+                    } else {
+                        callback(null, tokenData.user, tokenData.aExp);
+                    }
+                });
+            }
 
-                        // If session cookie exists
-                        if (socketIo.handshake.query['connect.sid']) {
-                            sessionID = cookieParser.signedCookie(socketIo.handshake.query['connect.sid'], this.secret);
-                        } else {
-                            const c = m![1].split(';')[0];
-                            sessionID = cookieParser.signedCookie(c, this.secret);
-                        }
-                        if (sessionID) {
-                            // Get user for session
-                            wait = true;
-                            this.store?.get(
-                                sessionID,
-                                (
-                                    _err: Error | null,
-                                    obj?: {
-                                        cookie: {
-                                            originalMaxAge: number;
-                                            expires: string;
-                                            httpOnly: boolean;
-                                            path: string;
-                                        };
-                                        passport: {
-                                            user: string;
-                                        };
-                                    },
-                                ): void => {
-                                    if (obj?.passport?.user) {
-                                        socketIo._sessionID = sessionID;
-                                        if (typeof callback === 'function') {
-                                            callback(
-                                                null,
-                                                obj.passport.user,
-                                                obj.cookie.expires ? new Date(obj.cookie.expires).getTime() : 0,
-                                            );
-                                        } else {
-                                            this.adapter.log.warn('[_getUserFromSocket] Invalid callback');
-                                        }
-                                    } else {
-                                        if (typeof callback === 'function') {
-                                            callback('unknown user');
-                                        } else {
-                                            this.adapter.log.warn('[_getUserFromSocket] Invalid callback');
-                                        }
-                                    }
+            if (!wait && cookie) {
+                const m = cookie.match(/connect\.sid=(.+)/);
+                if (m || socketIo.handshake.query['connect.sid']) {
+                    let sessionID;
+
+                    // If session cookie exists
+                    if (socketIo.handshake.query['connect.sid']) {
+                        sessionID = cookieParser.signedCookie(socketIo.handshake.query['connect.sid'], this.secret);
+                    } else {
+                        const c = m![1].split(';')[0];
+                        sessionID = cookieParser.signedCookie(c, this.secret);
+                    }
+                    if (sessionID) {
+                        // Get user for session
+                        wait = true;
+                        this.store?.get(
+                            sessionID,
+                            (
+                                _err: Error | null,
+                                obj?: {
+                                    cookie: {
+                                        originalMaxAge: number;
+                                        expires: string;
+                                        httpOnly: boolean;
+                                        path: string;
+                                    };
+                                    passport: {
+                                        user: string;
+                                    };
                                 },
-                            );
-                        }
+                            ): void => {
+                                if (obj?.passport?.user) {
+                                    socketIo._sessionID = sessionID;
+                                    if (typeof callback === 'function') {
+                                        callback(
+                                            null,
+                                            obj.passport.user,
+                                            obj.cookie.expires ? new Date(obj.cookie.expires).getTime() : 0,
+                                        );
+                                    } else {
+                                        this.adapter.log.warn('[_getUserFromSocket] Invalid callback');
+                                    }
+                                } else {
+                                    if (typeof callback === 'function') {
+                                        callback('unknown user');
+                                    } else {
+                                        this.adapter.log.warn('[_getUserFromSocket] Invalid callback');
+                                    }
+                                }
+                            },
+                        );
                     }
                 }
             }
@@ -430,7 +439,9 @@ export class SocketIO extends SocketCommon {
             const sockets = this.server.sockets.sockets || this.server.sockets.connected;
 
             // this could be an object or array
-            for (const socket of sockets) {
+            const socketIds = Object.keys(sockets);
+            for (const sid of socketIds) {
+                const socket = (sockets as Record<string, any>)[sid];
                 if (this.publish(socket, type, id, obj)) {
                     this.__updateSession(socket);
                 }
@@ -447,7 +458,9 @@ export class SocketIO extends SocketCommon {
             const sockets = this.server.sockets.sockets || this.server.sockets.connected;
 
             // this could be an object or array
-            for (const socket of sockets) {
+            const socketIds = Object.keys(sockets);
+            for (const sid of socketIds) {
+                const socket = (sockets as Record<string, any>)[sid];
                 if (this.publishFile(socket, id, fileName, size)) {
                     this.__updateSession(socket);
                 }
@@ -460,7 +473,9 @@ export class SocketIO extends SocketCommon {
             const sockets = this.server.sockets.sockets || this.server.sockets.connected;
 
             // this could be an object or array
-            for (const socket of sockets) {
+            const socketIds = Object.keys(sockets);
+            for (const id of socketIds) {
+                const socket = (sockets as Record<string, any>)[id];
                 if (socket.id === sid) {
                     if (this.publishInstanceMessage(socket, sourceInstance, messageType, data)) {
                         this.__updateSession(socket);

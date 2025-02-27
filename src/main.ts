@@ -1,13 +1,16 @@
 import { randomBytes } from 'node:crypto';
-import type { IncomingMessage, OutgoingMessage, Server as HttpServer } from 'node:http';
+import type { Server as HttpServer } from 'node:http';
 import type { Server as HttpsServer } from 'node:https';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
+import express, { type Express, type NextFunction, type Request, type Response } from 'express';
 import * as session from 'express-session';
 import socketio from 'socket.io';
+import * as bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 import { Adapter, type AdapterOptions, commonTools, EXIT_CODES } from '@iobroker/adapter-core'; // Get common adapter utils
-import { WebServer } from '@iobroker/webserver';
+import { WebServer, createOAuth2Server } from '@iobroker/webserver';
 import type { SocketSettings, Store } from '@iobroker/socket-classes';
 
 import type { SocketIoAdapterConfig } from './types';
@@ -20,7 +23,7 @@ export class SocketIoAdapter extends Adapter {
     private server: {
         server: null | Server;
         io: null | SocketIO;
-        app: ((req: IncomingMessage, res: OutgoingMessage) => void) | null;
+        app: Express | null;
     } = {
         server: null,
         io: null,
@@ -79,12 +82,120 @@ export class SocketIoAdapter extends Adapter {
         this.server?.io?.publishInstanceMessageAll(obj.from, obj.message.m, obj.message.s, obj.message.d);
     }
 
-    //this.config: {
-    //    "port":   8080,
-    //    "auth":   false,
-    //    "secure": false,
-    //    "bind":   "0.0.0.0", // "::"
-    //}
+    detectUser = (req: Request, res: Response, next: NextFunction): void => {
+        if (this.config.auth) {
+            // Try to extract user name from query or access token
+            if (req.query?.user && req.query.pass) {
+                // Check user and password
+                void this.checkPassword(
+                    req.query.user as string,
+                    req.query.pass as string,
+                    (res: boolean, user: string): void => {
+                        if (res) {
+                            // Store it
+                            req.user = user.startsWith(`system.adapter.`) ? user : `system.adapter.${user}`;
+                        }
+                        next();
+                    },
+                );
+                return;
+            } else if (req.query?.token || req.headers.authorization?.startsWith('Bearer ')) {
+                const accessToken = (req.query?.token as string) || req.headers.authorization?.split(' ')[1];
+                void this.getSession(`a:${accessToken}`, obj => {
+                    if (obj?.user) {
+                        req.user = obj.user.startsWith(`system.adapter.`) ? obj.user : `system.adapter.${obj.user}`;
+                    }
+                    next();
+                });
+                return;
+            } else if (req.headers.cookie) {
+                const parts = req.headers.cookie.split(' ');
+                for (let i = 0; i < parts.length; i++) {
+                    const pair = parts[i].split('=');
+                    if (pair[0] === 'access_token') {
+                        void this.getSession(`a:${pair[1]}`, obj => {
+                            if (obj?.user) {
+                                req.user = obj.user.startsWith(`system.adapter.`)
+                                    ? obj.user
+                                    : `system.adapter.${obj.user}`;
+                            }
+                            next();
+                        });
+                        return;
+                    }
+                }
+            } else if (req.headers.authorization?.startsWith('Basic ')) {
+                const parts = Buffer.from(req.headers.authorization.split(' ')[1], 'base64')
+                    .toString('utf8')
+                    .split(':');
+                const user = parts.shift();
+                const pass = parts.join(':');
+                if (user && pass) {
+                    void this.checkPassword(user, pass, (res: boolean, user: string): void => {
+                        if (res) {
+                            // Store it
+                            req.user = user.startsWith(`system.adapter.`) ? user : `system.adapter.${user}`;
+                        }
+                        next();
+                    });
+                    return;
+                }
+            }
+        } else {
+            req.user = this.config.defaultUser || 'system.user.admin';
+        }
+        next();
+    };
+
+    serveStaticFile = (req: Request, res: Response, next: NextFunction): void => {
+        const url = req.url.split('?')[0];
+
+        if (this.config.auth && (!url || url === '/' || url === '/index.html')) {
+            if (!req.user || url.includes('..')) {
+                res.setHeader('Content-Type', 'text/html');
+                res.send(readFileSync(`${__dirname}/../public/index.html`));
+                return;
+            }
+
+            if (existsSync(`${__dirname}/../example/index.html`)) {
+                res.setHeader('Content-Type', 'text/html');
+                res.send(readFileSync(`${__dirname}/../example/index.html`));
+                return;
+            }
+        } else if (!url.includes('..')) {
+            if (existsSync(`${__dirname}/../example${url === '/' ? '/index.html' : url}`)) {
+                res.setHeader('Content-Type', url === '/' || url.endsWith('.html') ? 'text/html' : 'text/javascript');
+                res.send(readFileSync(`${__dirname}/../example${url === '/' ? '/index.html' : url}`));
+                return;
+            }
+        }
+
+        // Special case for "example" file
+        if (url === '/name') {
+            // User can ask server if authentication enabled
+            res.setHeader('Content-Type', 'plain/text');
+            res.send(this.namespace);
+        } else if (url === '/auth') {
+            // User can ask server if authentication enabled
+            res.setHeader('Content-Type', 'application/json');
+            res.json({ auth: this.config.auth });
+        } else if (this.config.auth && (!url || url === '/' || url === '/login.html' || url === '/login')) {
+            res.setHeader('Content-Type', 'text/html');
+            res.send(readFileSync(`${__dirname}/../public/index.html`));
+        } else if (url === '/manifest.json') {
+            res.setHeader('Content-Type', 'application/json');
+            res.send(readFileSync(`${__dirname}/../public/manifest.json`));
+        } else if (url === '/favicon.ico') {
+            res.setHeader('Content-Type', 'image/x-icon');
+            res.send(readFileSync(`${__dirname}/../public/favicon.ico`));
+        } else if (url?.includes('socket.io.js')) {
+            res.setHeader('Content-Type', 'application/javascript');
+            res.send(this.socketIoFile);
+        } else {
+            next();
+        }
+    };
+
     initWebServer(): void {
         this.config.port = parseInt(this.config.port as string, 10) || 0;
 
@@ -116,25 +227,36 @@ export class SocketIoAdapter extends Adapter {
                     }
 
                     this.config.port = port;
-                    this.server.app = (req: IncomingMessage, res: OutgoingMessage): void => {
-                        if (req.url?.includes('socket.io.js')) {
-                            // @ts-expect-error
-                            res.writeHead(200, { 'Content-Type': 'text/plain' });
-                            res.end(this.socketIoFile);
-                        } else {
-                            // @ts-expect-error
-                            res.writeHead(404);
-                            res.end('Not found');
-                        }
-                    };
+                    this.server.app = express();
+                    // Detect user
+                    this.server.app.use(this.detectUser);
+                    // Deliver example and socket.io.js file
+                    this.server.app.use(this.serveStaticFile);
 
                     try {
                         const webServer = new WebServer({
                             adapter: this,
                             secure: this.config.secure,
+                            app: this.server.app,
                         });
                         // initialize and you can use your server as known
                         this.server.server = await webServer.init();
+
+                        if (this.config.auth) {
+                            // Install OAuth2 handler
+                            this.server.app.use(cookieParser());
+                            this.server.app.use(bodyParser.urlencoded({ extended: true }));
+                            this.server.app.use(bodyParser.json());
+
+                            // Activate OAuth2 server
+                            createOAuth2Server(this, {
+                                app: this.server.app,
+                                secure: this.config.secure,
+                                accessLifetime: parseInt(this.config.ttl as string, 10) || 3600,
+                                refreshLifetime: 60 * 60 * 24 * 7, // 1 week (Maybe adjustable?)
+                                loginPage: '/login',
+                            });
+                        }
                     } catch (err) {
                         this.log.error(`Cannot create webserver: ${err}`);
                         this.terminate
@@ -149,6 +271,11 @@ export class SocketIoAdapter extends Adapter {
                             : process.exit(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                         return;
                     }
+
+                    this.server.app.use((_req: Request, res: Response): void => {
+                        res.status(404);
+                        res.send('Not found');
+                    });
 
                     let serverListening = false;
                     this.server.server.on('error', e => {

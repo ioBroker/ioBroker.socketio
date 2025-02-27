@@ -4,13 +4,21 @@
         <!-- Replace "localhost" with real IP address of controller, if the default port changed, correct it too -->
         <script
             type="text/javascript"
-            src="./socket.io.js"
+            src="http://localhost:8084/socket.io/socket.io.js"
         ></script>
     </head>
     <body>
+        <h1>Example</h1>
+        <p>
+            This is a minimal example of communication with ioBroker socket server.
+            <br>
+            It will connect to the server and read all states of the adapter "admin" and subscribe to all states of the adapter "admin.0".
+        </p>
         <div id="output"></div>
         <script type="module">
             import { Connection } from './socket-client/Connection.js';
+
+            const HOST = 'localhost:8084';
             let states = {};
             let text = '';
             function printLine(line, isError) {
@@ -18,11 +26,44 @@
                 document.getElementById('output').innerHTML = text;
             }
 
+            function isAuthenticationEnabled() {
+                return fetch(`http://${HOST}/auth`, {
+                    method: 'GET',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data === 'true') {
+                            printLine('Authentication is enabled');
+                        } else {
+                            printLine('Authentication is disabled');
+                        }
+                        return data.auth;
+                    })
+                    .catch(err => {
+                        printLine(`Cannot get authentication status: ${err}`, true);
+                    });
+            }
+
+            if (
+                !window.location.search.includes('token=') &&
+                !window.localStorage.getItem('refresh_token') &&
+                !window.sessionStorage.getItem('refresh_token') &&
+                isAuthenticationEnabled()
+            ) {
+                printLine('Please login to the controller and reload the page');
+                window.location.href = `http://${HOST}/login?href=${window.location.href}`;
+            }
+
             const socket = new Connection({
                 name: 'example.0',
-                port: 8094,
-                host: 'localhost',
+                port: HOST.split(':')[1],
+                host: HOST.split(':')[0],
                 protocol: 'http',
+                token: window.location.search.includes('token=') ? window.location.search.split('token=')[1] : '',
                 onProgress: progress => {
                     if (progress === 0) {
                         printLine('disconnected');
