@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "7.0.6",
+    "version": "7.0.7",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -20,6 +20,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "7.0.7": {
+        "en": "Corrected the problem with the user rights\n",
+        "de": "Das Problem mit den Nutzerrechten korrigiert\n",
+        "ru": "Исправлена проблема с правами пользователя\n",
+        "pt": "Corrigido o problema com os direitos do usuário\n",
+        "nl": "Het probleem met de gebruikersrechten verhelpen\n",
+        "fr": "Correction du problème des droits d'utilisateur\n",
+        "it": "Corretto il problema con i diritti dell'utente\n",
+        "es": "Corregido el problema con los derechos del usuario\n",
+        "pl": "Naprawiono problem z prawami użytkownika\n",
+        "uk": "Виправлено проблему з правами користувачів\n",
+        "zh-cn": "纠正了用户权利的问题\n"
+      },
       "7.0.6": {
         "en": "Added OAuth2 support",
         "de": "OAuth2 Unterstützung hinzugefügt",
@@ -97,19 +110,6 @@
         "pl": "Poprawne rozwiązanie adaptacyjne, jeśli alias nie ma docelowego celu",
         "uk": "Виправлено припинення адаптера, якщо псевдонім не має цілей",
         "zh-cn": "如果除其它外别无目标,适应适应人员终止"
-      },
-      "6.5.7": {
-        "en": "upgrade socket-classes to fix error with vis subscriptions",
-        "de": "upgrade-sockel-klassen, um fehler mit vis-abos zu beheben",
-        "ru": "обновить socket-классы, чтобы исправить ошибку с vis подписками",
-        "pt": "atualizar classes de soquete para corrigir erro com assinaturas vis",
-        "nl": "upgrade socket-class om fouten te maken met visuele abonnementen",
-        "fr": "upgrade socket-classes pour corriger l'erreur avec les abonnements vis",
-        "it": "aggiornare le classi socket per correggere gli errori con gli abbonamenti vis",
-        "es": "actualizar las clases de socket para corregir error con las suscripciones vis",
-        "pl": "ulepszenie gniazda w celu naprawy błędu z wizami subskrypcji",
-        "uk": "оновлення розетки-класів для фіксації помилки з підписками вісс",
-        "zh-cn": "在订阅方面,升级的手脚,以防错误。"
       }
     },
     "authors": [
