@@ -76,9 +76,11 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (@GermanBluefox) Removed the frequent debug output
+
 ### 7.0.7 (2025-03-03)
 * (@GermanBluefox) Corrected the problem with the user rights
-*
 
 ### 7.0.6 (2025-02-28)
 * (@GermanBluefox) Added OAuth2 support
