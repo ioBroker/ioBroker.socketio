@@ -44,7 +44,7 @@
     "@types/express-session": "^1.18.1",
     "@types/node": "^22.13.9",
     "@types/passport": "^1.0.17",
-    "@types/socket.io": "^2.1.13",
+    "@types/socket.io": "^3.0.2",
     "socket.io-client": "^2.5.0",
     "typescript": "~5.8.2"
   },
