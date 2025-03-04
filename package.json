@@ -45,7 +45,7 @@
     "@types/node": "^22.13.9",
     "@types/passport": "^1.0.17",
     "@types/socket.io": "^2.1.13",
-    "socket.io-client": "^2.5.0",
+    "socket.io-client": "^4.8.1",
     "typescript": "~5.8.2"
   },
   "bugs": {
