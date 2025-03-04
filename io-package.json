@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "7.0.7",
+    "version": "7.0.8",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -20,6 +20,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "7.0.8": {
+        "en": "Removed the frequent debug output",
+        "de": "Entfernen der häufigen Debug-Ausgabe",
+        "ru": "Снят частый вывод отладки",
+        "pt": "Removido a saída de depuração frequente",
+        "nl": "De frequente debug-uitvoer is verwijderd",
+        "fr": "Supprimé la sortie de débogage fréquente",
+        "it": "Rimozione dell'uscita di debug frequente",
+        "es": "Eliminar la producción de depuración frecuente",
+        "pl": "Usunięto częste wyjście debugowania",
+        "uk": "Вилучено часте дебвуг",
+        "zh-cn": "删除频繁调试输出"
+      },
       "7.0.7": {
         "en": "Corrected the problem with the user rights\n",
         "de": "Das Problem mit den Nutzerrechten korrigiert\n",
@@ -97,19 +110,6 @@
         "pl": "Kilka pakietów zostało zaktualizowanych",
         "uk": "Просто деякі пакети були оновлено",
         "zh-cn": "只是更新了一些软件包"
-      },
-      "6.6.0": {
-        "en": "Corrected adapter termination if the alias has no target",
-        "de": "Korrigierter Adapterabschluss, wenn der Alias kein Ziel hat",
-        "ru": "Исправлено прекращение адаптера, если псевдоним не имеет цели",
-        "pt": "Terminação correta do adaptador se o alias não tiver nenhum alvo",
-        "nl": "Verminderde adapter terminatie als de alias geen doelwit heeft",
-        "fr": "Résiliation correcte de l'adaptateur si l'alias n'a pas de cible",
-        "it": "Rescissione adattatore corretta se l'alias non ha un obiettivo",
-        "es": "Terminación corregida del adaptador si el alias no tiene objetivo",
-        "pl": "Poprawne rozwiązanie adaptacyjne, jeśli alias nie ma docelowego celu",
-        "uk": "Виправлено припинення адаптера, якщо псевдонім не має цілей",
-        "zh-cn": "如果除其它外别无目标,适应适应人员终止"
       }
     },
     "authors": [
