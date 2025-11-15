@@ -6,3 +6,6 @@ admin/i18n/*/flat.txt
 iob_npm.done
 node_modules
 package-lock.json
+
+#ignore .commitinfo created by ioBroker release script
+.commitinfo
