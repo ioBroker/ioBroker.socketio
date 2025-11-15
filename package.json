@@ -22,7 +22,7 @@
     "@iobroker/adapter-core": "^3.2.3",
     "@iobroker/socket-classes": "^2.2.0",
     "@iobroker/webserver": "^1.1.7",
-    "body-parser": "^1.20.3",
+    "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
