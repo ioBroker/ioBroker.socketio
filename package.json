@@ -46,7 +46,7 @@
     "@types/passport": "^1.0.17",
     "@types/socket.io": "^2.1.13",
     "socket.io-client": "^2.5.0",
-    "typescript": "~5.8.2"
+    "typescript": "~5.9.3"
   },
   "bugs": {
     "url": "https://github.com/ioBroker/ioBroker.socketio/issues"
