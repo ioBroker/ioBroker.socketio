@@ -2,7 +2,6 @@
   "common": {
     "name": "socketio",
     "version": "7.0.8",
-    "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
     },
