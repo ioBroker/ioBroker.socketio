@@ -144,4 +144,4 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2025 @GermanBluefox <dogafox@gmail.com>
+Copyright (c) 2014-2026 @GermanBluefox <dogafox@gmail.com>
