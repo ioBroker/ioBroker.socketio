@@ -76,6 +76,9 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+- (iobroker-bot) Adapter requires node.js >= 20 now.
 ### 7.0.8 (2025-03-04)
 * (@GermanBluefox) Removed the frequent debug output
 
