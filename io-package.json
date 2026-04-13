@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "7.0.8",
+    "version": "7.1.2",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -20,6 +20,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "7.1.2": {
+        "en": "Fixed possible problems\nUpdated packages",
+        "de": "Mögliche Probleme behoben\nAktualisierte Pakete",
+        "ru": "Исправлены возможные проблемы\nОбновленные пакеты",
+        "pt": "Corrigidos possíveis problemas\nPacotes atualizados",
+        "nl": "Vaste problemen\nBijgewerkte pakketten",
+        "fr": "Correction des problèmes éventuels\nPaquets mis à jour",
+        "it": "Problemi possibili risolti\nPacchetti aggiornati",
+        "es": "Problemas posibles fijos\nPaquetes actualizados",
+        "pl": "Naprawiono ewentualne problemy\nAktualizacja pakietów",
+        "uk": "Виправлено можливі проблеми\nОновлені пакети",
+        "zh-cn": "可能出现的问题\n更新软件包"
+      },
       "7.0.8": {
         "en": "Removed the frequent debug output",
         "de": "Entfernen der häufigen Debug-Ausgabe",
@@ -97,19 +110,6 @@
         "pl": "przeniesiony do serwera webserver",
         "uk": "переглянуто веб-сервер",
         "zh-cn": "移植到网络服务器"
-      },
-      "6.6.1": {
-        "en": "Just some packages were updated",
-        "de": "Nur einige Pakete wurden aktualisiert",
-        "ru": "Только некоторые пакеты были обновлены",
-        "pt": "Apenas alguns pacotes foram atualizados",
-        "nl": "Slechts enkele pakketten werden bijgewerkt",
-        "fr": "Juste quelques paquets ont été mis à jour",
-        "it": "Solo alcuni pacchetti sono stati aggiornati",
-        "es": "Sólo algunos paquetes fueron actualizados",
-        "pl": "Kilka pakietów zostało zaktualizowanych",
-        "uk": "Просто деякі пакети були оновлено",
-        "zh-cn": "只是更新了一些软件包"
       }
     },
     "authors": [
@@ -139,7 +139,7 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=2.0.0"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
