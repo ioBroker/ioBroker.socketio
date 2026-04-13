@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "7.1.2",
+    "version": "7.1.3",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -20,6 +20,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "7.1.3": {
+        "en": "Fixed possible problems\nUpdated packages",
+        "de": "Mögliche Probleme behoben\nAktualisierte Pakete",
+        "ru": "Исправлены возможные проблемы\nОбновленные пакеты",
+        "pt": "Corrigidos possíveis problemas\nPacotes atualizados",
+        "nl": "Vaste problemen\nBijgewerkte pakketten",
+        "fr": "Correction des problèmes éventuels\nPaquets mis à jour",
+        "it": "Problemi possibili risolti\nPacchetti aggiornati",
+        "es": "Problemas posibles fijos\nPaquetes actualizados",
+        "pl": "Naprawiono ewentualne problemy\nAktualizacja pakietów",
+        "uk": "Виправлено можливі проблеми\nОновлені пакети",
+        "zh-cn": "可能出现的问题\n更新软件包"
+      },
       "7.0.8": {
         "en": "Removed the frequent debug output",
         "de": "Entfernen der häufigen Debug-Ausgabe",
