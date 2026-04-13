@@ -88,14 +88,10 @@ export class SocketIO extends SocketCommon {
                     socketIo.request._query.pass,
                     (res: boolean): void => {
                         if (res) {
-                            this.adapter.log.debug(
-                                `Logged in: ${socketIo.request._query.user}, ${socketIo.request._query.pass}`,
-                            );
+                            this.adapter.log.debug(`Logged in: ${socketIo.request._query.user}`);
                             next();
                         } else {
-                            this.adapter.log.warn(
-                                `Invalid password or user name: ${socketIo.request._query.user}, ${socketIo.request._query.pass}`,
-                            );
+                            this.adapter.log.warn(`Invalid password or user name: ${socketIo.request._query.user}`);
                             socketIo.emit(SocketCommon.COMMAND_RE_AUTHENTICATE);
                             next(new Error('Invalid password or user name'));
                         }

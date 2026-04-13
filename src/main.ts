@@ -6,7 +6,6 @@ import { existsSync, readFileSync } from 'node:fs';
 import express, { type Express, type NextFunction, type Request, type Response } from 'express';
 import * as session from 'express-session';
 import socketio from 'socket.io';
-import * as bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 import { Adapter, type AdapterOptions, commonTools, EXIT_CODES } from '@iobroker/adapter-core'; // Get common adapter utils
@@ -109,11 +108,11 @@ export class SocketIoAdapter extends Adapter {
                 });
                 return;
             } else if (req.headers.cookie) {
-                const parts = req.headers.cookie.split(' ');
-                for (let i = 0; i < parts.length; i++) {
-                    const pair = parts[i].split('=');
-                    if (pair[0] === 'access_token') {
-                        void this.getSession(`a:${pair[1]}`, obj => {
+                const accessTokenCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('access_token='));
+                if (accessTokenCookie) {
+                    const token = accessTokenCookie.trim().split('=')[1];
+                    if (token) {
+                        void this.getSession(`a:${token}`, obj => {
                             if (obj?.user) {
                                 req.user = obj.user.startsWith(`system.adapter.`)
                                     ? obj.user
@@ -173,7 +172,7 @@ export class SocketIoAdapter extends Adapter {
         // Special case for "example" file
         if (url === '/name') {
             // User can ask server if authentication enabled
-            res.setHeader('Content-Type', 'plain/text');
+            res.setHeader('Content-Type', 'text/plain');
             res.send(this.namespace);
         } else if (url === '/auth') {
             // User can ask server if authentication enabled
@@ -201,18 +200,20 @@ export class SocketIoAdapter extends Adapter {
 
         if (this.config.port) {
             if (this.config.secure && !this.certificates) {
-                // Error: authentication is enabled but no certificates found
+                this.log.error('SSL is enabled but no certificates found');
+                this.terminate
+                    ? this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
+                    : process.exit(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                 return;
             }
 
             this.config.ttl = parseInt(this.config.ttl as string, 10) || 3600;
-            this.config.forceWebSockets = this.config.forceWebSockets || false;
+            this.config.forceWebSockets ||= false;
 
             if (this.config.auth) {
                 const AdapterStore = commonTools.session(session, this.config.ttl);
                 // Authentication checked by server itself
                 this.store = new AdapterStore({ adapter: this });
-                this.config.forceWebSockets = this.config.forceWebSockets || false;
             }
 
             this.getPort(
@@ -245,8 +246,8 @@ export class SocketIoAdapter extends Adapter {
                         if (this.config.auth) {
                             // Install OAuth2 handler
                             this.server.app.use(cookieParser());
-                            this.server.app.use(bodyParser.urlencoded({ extended: true }));
-                            this.server.app.use(bodyParser.json());
+                            this.server.app.use(express.urlencoded({ extended: true }));
+                            this.server.app.use(express.json());
 
                             // Activate OAuth2 server
                             createOAuth2Server(this, {
@@ -354,9 +355,13 @@ export class SocketIoAdapter extends Adapter {
             const systemConfig = await this.getForeignObjectAsync('system.config');
             if (systemConfig) {
                 if (!systemConfig.native?.secret) {
-                    systemConfig.native = systemConfig.native || {};
-                    await new Promise<void>(resolve =>
-                        randomBytes(24, (_err: Error | null, buf: Buffer): void => {
+                    systemConfig.native ||= {};
+                    await new Promise<void>((resolve, reject) =>
+                        randomBytes(24, (err: Error | null, buf: Buffer): void => {
+                            if (err) {
+                                reject(err);
+                                return;
+                            }
                             this.secret = buf.toString('hex');
                             void this.extendForeignObject('system.config', { native: { secret: this.secret } });
                             resolve();

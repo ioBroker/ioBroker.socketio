@@ -57,7 +57,7 @@ class Socket {
         this.ioServer.start(
             server,
             socketio as unknown as typeof WebSocketServer,
-            { store, secret: settings.secret, checkUser },
+            { store, secret: settings.secret || '', checkUser },
             socketOptions,
         );
     }

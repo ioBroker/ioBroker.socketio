@@ -31,7 +31,7 @@ class Socket {
             httpOnly: true,
             path: '/'
         };*/
-        this.ioServer.start(server, socket_io_1.default, { store, secret: settings.secret, checkUser }, socketOptions);
+        this.ioServer.start(server, socket_io_1.default, { store, secret: settings.secret || '', checkUser }, socketOptions);
     }
     getWhiteListIpForAddress(remoteIp, whiteListSettings) {
         return socket_classes_1.SocketCommon.getWhiteListIpForAddress(remoteIp, whiteListSettings);
