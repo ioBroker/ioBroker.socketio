@@ -108,9 +108,7 @@ export class SocketIoAdapter extends Adapter {
                 });
                 return;
             } else if (req.headers.cookie) {
-                const accessTokenCookie = req.headers.cookie
-                    .split(';')
-                    .find(c => c.trim().startsWith('access_token='));
+                const accessTokenCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('access_token='));
                 if (accessTokenCookie) {
                     const token = accessTokenCookie.trim().split('=')[1];
                     if (token) {
