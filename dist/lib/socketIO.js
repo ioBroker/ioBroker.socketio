@@ -44,11 +44,11 @@ class SocketIO extends socket_classes_1.SocketCommon {
             else {
                 void this.adapter.checkPassword(socketIo.request._query.user, socketIo.request._query.pass, (res) => {
                     if (res) {
-                        this.adapter.log.debug(`Logged in: ${socketIo.request._query.user}, ${socketIo.request._query.pass}`);
+                        this.adapter.log.debug(`Logged in: ${socketIo.request._query.user}`);
                         next();
                     }
                     else {
-                        this.adapter.log.warn(`Invalid password or user name: ${socketIo.request._query.user}, ${socketIo.request._query.pass}`);
+                        this.adapter.log.warn(`Invalid password or user name: ${socketIo.request._query.user}`);
                         socketIo.emit(socket_classes_1.SocketCommon.COMMAND_RE_AUTHENTICATE);
                         next(new Error('Invalid password or user name'));
                     }

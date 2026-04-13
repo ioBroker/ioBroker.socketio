@@ -42,7 +42,6 @@ const node_fs_1 = require("node:fs");
 const express_1 = __importDefault(require("express"));
 const session = __importStar(require("express-session"));
 const socket_io_1 = __importDefault(require("socket.io"));
-const bodyParser = __importStar(require("body-parser"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const adapter_core_1 = require("@iobroker/adapter-core"); // Get common adapter utils
 const webserver_1 = require("@iobroker/webserver");
@@ -126,11 +125,13 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                 return;
             }
             else if (req.headers.cookie) {
-                const parts = req.headers.cookie.split(' ');
-                for (let i = 0; i < parts.length; i++) {
-                    const pair = parts[i].split('=');
-                    if (pair[0] === 'access_token') {
-                        void this.getSession(`a:${pair[1]}`, obj => {
+                const accessTokenCookie = req.headers.cookie
+                    .split(';')
+                    .find(c => c.trim().startsWith('access_token='));
+                if (accessTokenCookie) {
+                    const token = accessTokenCookie.trim().split('=')[1];
+                    if (token) {
+                        void this.getSession(`a:${token}`, obj => {
                             if (obj?.user) {
                                 req.user = obj.user.startsWith(`system.adapter.`)
                                     ? obj.user
@@ -189,7 +190,7 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
         // Special case for "example" file
         if (url === '/name') {
             // User can ask server if authentication enabled
-            res.setHeader('Content-Type', 'plain/text');
+            res.setHeader('Content-Type', 'text/plain');
             res.send(this.namespace);
         }
         else if (url === '/auth') {
@@ -221,16 +222,18 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
         this.config.port = parseInt(this.config.port, 10) || 0;
         if (this.config.port) {
             if (this.config.secure && !this.certificates) {
-                // Error: authentication is enabled but no certificates found
+                this.log.error('SSL is enabled but no certificates found');
+                this.terminate
+                    ? this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
+                    : process.exit(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                 return;
             }
             this.config.ttl = parseInt(this.config.ttl, 10) || 3600;
-            this.config.forceWebSockets = this.config.forceWebSockets || false;
+            this.config.forceWebSockets ||= false;
             if (this.config.auth) {
                 const AdapterStore = adapter_core_1.commonTools.session(session, this.config.ttl);
                 // Authentication checked by server itself
                 this.store = new AdapterStore({ adapter: this });
-                this.config.forceWebSockets = this.config.forceWebSockets || false;
             }
             this.getPort(this.config.port, !this.config.bind || this.config.bind === '0.0.0.0' ? undefined : this.config.bind || undefined, async (port) => {
                 if (parseInt(port, 10) !== this.config.port) {
@@ -256,8 +259,8 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                     if (this.config.auth) {
                         // Install OAuth2 handler
                         this.server.app.use((0, cookie_parser_1.default)());
-                        this.server.app.use(bodyParser.urlencoded({ extended: true }));
-                        this.server.app.use(bodyParser.json());
+                        this.server.app.use(express_1.default.urlencoded({ extended: true }));
+                        this.server.app.use(express_1.default.json());
                         // Activate OAuth2 server
                         (0, webserver_1.createOAuth2Server)(this, {
                             app: this.server.app,
@@ -348,8 +351,12 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
             const systemConfig = await this.getForeignObjectAsync('system.config');
             if (systemConfig) {
                 if (!systemConfig.native?.secret) {
-                    systemConfig.native = systemConfig.native || {};
-                    await new Promise(resolve => (0, node_crypto_1.randomBytes)(24, (_err, buf) => {
+                    systemConfig.native ||= {};
+                    await new Promise((resolve, reject) => (0, node_crypto_1.randomBytes)(24, (err, buf) => {
+                        if (err) {
+                            reject(err);
+                            return;
+                        }
                         this.secret = buf.toString('hex');
                         void this.extendForeignObject('system.config', { native: { secret: this.secret } });
                         resolve();
