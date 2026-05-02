@@ -76,6 +76,9 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 7.1.3 (2026-04-13)
 * (@GermanBluefox) Fixed possible problems
 * (@GermanBluefox) Updated packages
