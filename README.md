@@ -144,6 +144,8 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 ### 6.1.8 (2022-07-08)
 * (@GermanBluefox) Corrected getAdapterInstances method
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 The MIT License (MIT)
