@@ -20,19 +20,6 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
-      "8.0.0": {
-        "en": "Updated packages\nMoved socketio server classes to a separate package\nA minimal node.js version is 20",
-        "de": "Aktualisierte Pakete\nDie Socket.IO-Serverklassen wurden in ein separates Paket verschoben.\nEine minimale Node.js-Version ist 20.",
-        "ru": "Обновлены пакеты\nКлассы сервера socketio перенесены в отдельный пакет.\nМинимальная версия Node.js — 20.",
-        "pt": "Pacotes atualizados\nAs classes do servidor Socket.IO foram movidas para um pacote separado.\nA versão mínima do Node.js é 20.",
-        "nl": "Bijgewerkte pakketten\nDe Socket.IO-serverklassen zijn verplaatst naar een apart pakket.\nEen minimale Node.js-versie is 20.",
-        "fr": "Paquets mis à jour\nLes classes du serveur Socket.IO ont été déplacées vers un package séparé.\nUne version minimale de Node.js est 20",
-        "it": "Pacchetti aggiornati\nLe classi del server Socket.IO sono state spostate in un pacchetto separato.\nLa versione minima di Node.js è 20",
-        "es": "Paquetes actualizados\nSe han movido las clases del servidor socketio a un paquete separado.\nUna versión mínima de node.js es 20",
-        "pl": "Zaktualizowane pakiety\nPrzeniesiono klasy serwera socketio do osobnego pakietu\nMinimalna wersja node.js to 20",
-        "uk": "Оновлені пакети\nКласи сервера Socketio перенесено в окремий пакет.\nМінімальна версія node.js — 20",
-        "zh-cn": "更新包\n将 SocketIO 服务器类移至单独的包中\n最低 Node.js 版本要求为 20"
-      },
       "7.1.3": {
         "en": "Fixed possible problems\nUpdated packages",
         "de": "Mögliche Probleme behoben\nAktualisierte Pakete",

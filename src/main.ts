@@ -327,7 +327,6 @@ export class SocketIoAdapter extends Adapter {
                         pingTimeout: 30000,
                         cors: {
                             // for socket.4.x
-                            // @ts-expect-error fixed
                             origin: '*',
                             allowedHeaders: ['*'],
                             credentials: true,
