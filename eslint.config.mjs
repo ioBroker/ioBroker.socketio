@@ -14,13 +14,11 @@ export default [
     },
     {
         ignores: [
-            'dist/*',
+            'build/*',
             'example/*',
             'test/*',
             'eslint.config.mjs',
-            'prettier.config.mjs',
-            'tasks.js',
-            'src/lib/socket.io.js',
+            'prettier.config.mjs'
         ],
     },
     {

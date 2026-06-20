@@ -45,7 +45,7 @@ const socket_io_1 = __importDefault(require("socket.io"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const adapter_core_1 = require("@iobroker/adapter-core"); // Get common adapter utils
 const webserver_1 = require("@iobroker/webserver");
-const socketIO_1 = require("./lib/socketIO");
+const socketio_server_1 = require("@iobroker/socketio-server");
 class SocketIoAdapter extends adapter_core_1.Adapter {
     server = {
         server: null,
@@ -73,7 +73,7 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                 this.server?.io?.publishFileAll(id, fileName, size);
             },
         });
-        this.socketIoFile = (0, node_fs_1.readFileSync)(`${__dirname}/lib/socket.io.js`).toString('utf-8');
+        this.socketIoFile = (0, node_fs_1.readFileSync)(require.resolve('@iobroker/socketio-server/socket.io.js')).toString('utf-8');
         this.on('log', (obj) => this.server?.io?.sendLog(obj));
     }
     onUnload(callback) {
@@ -320,13 +320,14 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                     compatibilityV2: this.config.compatibilityV2,
                     forceWebSockets: this.config.forceWebSockets,
                 };
-                this.server.io = new socketIO_1.SocketIO(settings, this);
+                this.server.io = new socketio_server_1.SocketIO(settings, this);
                 const socketOptions = {
                     pingInterval: 120000,
                     pingTimeout: 30000,
                     cors: {
                         // for socket.4.x
-                        origin: `*`,
+                        // @ts-expect-error fixed
+                        origin: '*',
                         allowedHeaders: ['*'],
                         credentials: true,
                     },

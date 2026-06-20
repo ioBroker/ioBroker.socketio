@@ -10,10 +10,10 @@ import cookieParser from 'cookie-parser';
 
 import { Adapter, type AdapterOptions, commonTools, EXIT_CODES } from '@iobroker/adapter-core'; // Get common adapter utils
 import { WebServer, createOAuth2Server } from '@iobroker/webserver';
-import type { SocketSettings, Store } from '@iobroker/socket-classes';
+import type { SocketIoOptions, SocketSettings, Store } from '@iobroker/socket-classes';
+import { SocketIO } from '@iobroker/socketio-server';
 
 import type { SocketIoAdapterConfig } from './types';
-import { SocketIO } from './lib/socketIO';
 
 type Server = HttpServer | HttpsServer;
 
@@ -51,7 +51,8 @@ export class SocketIoAdapter extends Adapter {
             },
         });
 
-        this.socketIoFile = readFileSync(`${__dirname}/lib/socket.io.js`).toString('utf-8');
+        this.socketIoFile = readFileSync(require.resolve('@iobroker/socketio-server/socket.io.js')).toString('utf-8');
+
         this.on('log', (obj: ioBroker.LogMessage): void => this.server?.io?.sendLog(obj));
     }
 
@@ -321,12 +322,13 @@ export class SocketIoAdapter extends Adapter {
                     };
 
                     this.server.io = new SocketIO(settings, this);
-                    const socketOptions = {
+                    const socketOptions: SocketIoOptions = {
                         pingInterval: 120000,
                         pingTimeout: 30000,
                         cors: {
                             // for socket.4.x
-                            origin: `*`,
+                            // @ts-expect-error fixed
+                            origin: '*',
                             allowedHeaders: ['*'],
                             credentials: true,
                         },
