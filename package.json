@@ -19,7 +19,7 @@
     "node": ">= 18"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.4.1",
+    "@iobroker/adapter-core": "^3.4.3",
     "@iobroker/socketio-server": "^8.0.5"
   },
   "devDependencies": {
