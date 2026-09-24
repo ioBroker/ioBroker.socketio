@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "8.0.2",
+    "version": "9.0.0",
     "title": "socket.io",
     "titleLang": {
       "en": "socket.io"
@@ -20,6 +20,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "9.0.0": {
+        "en": "Adapter requires node.js >= 22 now.\nUpdated packages",
+        "de": "Adapter benötigt jetzt node.js >= 22.\nNeue Pakete",
+        "ru": "Теперь для адаптера требуется файл node.js >= 22.\nОбновленные пакеты",
+        "pt": "O adaptador exige node.js >= 2.\nPacotes novos",
+        "nl": "Voor de adapter is nu node.js >= 22 nodig.\nBijgewerkte pakketten",
+        "fr": "Adapter nécessite node.js >= 22.\nPackages mis à jour",
+        "it": "Adapter richiede node.js >= 2 ora.\nPacchi nuovi",
+        "es": "El adaptador necesita node.js >= 22 ahora.\nPaquetes nuevos",
+        "pl": "Adapter wymaga teraz node.js >= 22.\nZaktualizowane pakiety",
+        "uk": "Тепер адаптер вимагає node.js >= 22.\nОновлені пакети",
+        "zh-cn": "适配器现在需要 node.js >= 22。\n更新的软件包"
+      },
       "8.0.2": {
         "en": "Updated packages",
         "de": "Aktualisierte Pakete",
@@ -97,19 +110,6 @@
         "pl": "Dodano wsparcie OAuth2",
         "uk": "Додано підтримку OAuth2",
         "zh-cn": "添加 OAuth2 支持"
-      },
-      "7.0.1": {
-        "en": "Adapter was rewritten in TypeScript",
-        "de": "Adapter wurde in TypeScript neu geschrieben",
-        "ru": "Адаптер был переписан в TypeScript",
-        "pt": "Adapter foi reescrito no TypeScript",
-        "nl": "Adapter is herschreven in TypeScript",
-        "fr": "Adaptateur a été réécrit dans TypeScript",
-        "it": "L'adattatore è stato riscritto in TypeScript",
-        "es": "Adaptador fue reescrito en TipoScript",
-        "pl": "Adapter został przepisany w TypeScript",
-        "uk": "Адаптер був записаний у TypeScript",
-        "zh-cn": "适配器在类型脚本中重写"
       }
     },
     "authors": [

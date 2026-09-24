@@ -251,6 +251,7 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                         adapter: this,
                         secure: this.config.secure,
                         app: this.server.app,
+                        http2: false,
                     });
                     // initialize and you can use your server as known
                     this.server.server = await webServer.init();
