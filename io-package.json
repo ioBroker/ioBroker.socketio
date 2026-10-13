@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "socketio",
-    "version": "9.0.1",
+    "version": "9.0.2",
     "titleLang": {
       "en": "socket.io",
       "de": "socket.io",
@@ -29,6 +29,19 @@
       "zh-cn": "该适配器允许与ioBroker通信不同的Web应用程序"
     },
     "news": {
+      "9.0.2": {
+        "en": "The listening port is reported to the registry of used resources of js-controller 8. Added `@iobroker/webserver` as a direct dependency\nAdmin 7.6.20+ is required. Added Ukrainian and missing translations. Compact mode no longer can exit the whole host process\nAdded `socket.io` as a direct dependency to fix the crash \"socketClass is not a constructor\" (#302)",
+        "de": "Der Abhörport wird dem Ressourcenregister von JS-Controller 8 gemeldet. `@iobroker /webserver` als direkte Abhängigkeit hinzugefügt\nAdmin 7.6.20+ ist nötig. Ukrainisch und fehlende Übersetzungen hinzugefügt. Der Kompaktmodus beendet nicht mehr den Host-Prozess\n`socket.io` als direkte Abhängigkeit zum Absturz „SocketClass is not a constructor“ hinzugefügt (#302)",
+        "ru": "Порт прослушивания сообщается в реестре используемых ресурсов js-controller 8. В качестве прямой зависимости добавлено `@iobroker /webserver`\nТребуется администратор версии 7.6.20+. Добавлены переводы на украинский язык и пропущены. Компактный режим больше не позволяет выйти из всего процесса хоста\nДобавлена прямая зависимость `socket.io` для устранения сбоя «SocketClass не является конструктором» (#302)",
+        "pt": "A porta de escuta é relatada ao registro de recursos usados do js-controller 8. Adição direta de `@iobroker /webserver`\nRequer o Admin 7.6.20+. Adição de ucraniano e falta de traduções. O modo compacto não sai mais do processo host\nAdição direta de `socket.io` para corrigir a falha “SocketClass não é um construtor” (#302)",
+        "nl": "De luisterpoort wordt gerapporteerd aan het register van gebruikte bronnen van js-controller 8. `@iobroker /webserver` toegevoegd als directe afhankelijkheid\nAdmin 7.6.20+ is vereist. Oekraïens toegevoegd en vertalingen ontbreken. Compacte modus kan niet langer het hele hostproces afsluiten\n`socket.io „toegevoegd als directe afhankelijkheid om de crash „SocketClass is geen constructor” op te lossen (#302)",
+        "fr": "Le port d'écoute est signalé au registre des ressources utilisées de JS-Controller 8. Ajout de « @iobroker /webserver » comme dépendance directe\nAdmin 7.6.20+ est requis. Ukrainien ajouté et traduction manquante. Le mode compact ne peut plus arrêter le processus hôte\nAjout de « socket.io » pour corriger le crash « SocketClass is not a constructor » (#302)",
+        "it": "La porta di ascolto è riportata nel registro delle risorse usate di js-controller 8. Aggiunto «@iobroker /webserver» come dipendenza\nServe Admin 7.6.20+. Aggiunte traduzioni ucraine mancanti. La modalità compatta non chiude più l'intero host\nAggiunto `socket.io` come dipendenza diretta per il crash «SocketClass non è un costruttore» (#302)",
+        "es": "El puerto de escucha aparece en el registro de recursos usados de js-controller 8. Añadió `@iobroker /webserver` como dependencia directa\nSe necesita Admin 7.6.20+. Añadió ucraniano y faltan traducciones. El modo compacto ya no puede salir de todo el host\nSe añadió `socket.io como dependencia directa para corregir el fallo «SocketClass no es un constructor» (#302)",
+        "pl": "Port odsłuchiwania jest zgłaszany do rejestru używanych zasobów js-controller 8. Dodano `@iobroker /webserver` jako bezpośrednią zależność\nWymagany jest Admin 7.6.20+. Dodano ukraiński i brakujące tłumaczenia. Tryb kompaktowy nie może już zakończyć całego procesu hosta\nDodano `socket.io` jako bezpośrednią zależność, aby naprawić awarię „SocketClass is not a constructor” (#302)",
+        "uk": "Порт прослуховування повідомляється в реєстр використовуваних ресурсів js-контролера 8. Додано `@iobroker /веб-сервер` як пряма залежність\nАдміністратор 7.6.20+ обов'язковий. Додані українські та відсутні переклади. Компактний режим більше не може вийти з усього хост-процесу\nДодано `socket.io` як пряму залежність для виправлення аварії «SocketClass не є конструктором» (#302)",
+        "zh-cn": "监听端口将报告给 js-controller 8 的已用资源注册表。添加了 “@iobroker /webserver” 作为直接依赖关系\n需要管理员 7.6.20+。添加了乌克兰语和缺失的翻译。紧凑模式不再可以退出整个主机进程\n添加了 `socket.io` 作为直接依赖项来修复崩溃 “SocketClass 不是构造函数” (#302)"
+      },
       "9.0.0": {
         "en": "Adapter requires node.js >= 22 now.\nUpdated packages",
         "de": "Adapter benötigt jetzt node.js >= 22.\nNeue Pakete",
