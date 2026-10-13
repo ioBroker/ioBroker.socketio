@@ -202,9 +202,7 @@ export class SocketIoAdapter extends Adapter {
         if (this.config.port) {
             if (this.config.secure && !this.certificates) {
                 this.log.error('SSL is enabled but no certificates found');
-                this.terminate
-                    ? this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                    : process.exit(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                 return;
             }
 
@@ -223,9 +221,7 @@ export class SocketIoAdapter extends Adapter {
                 async port => {
                     if (parseInt(port as unknown as string, 10) !== this.config.port) {
                         this.log.error(`port ${this.config.port} already in use`);
-                        return this.terminate
-                            ? this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                            : process.exit(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                        return this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                     }
 
                     this.config.port = port;
@@ -262,16 +258,12 @@ export class SocketIoAdapter extends Adapter {
                         }
                     } catch (err) {
                         this.log.error(`Cannot create webserver: ${err}`);
-                        this.terminate
-                            ? this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                            : process.exit(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                        this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                         return;
                     }
                     if (!this.server.server) {
                         this.log.error(`Cannot create webserver`);
-                        this.terminate
-                            ? this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                            : process.exit(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                        this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                         return;
                     }
 
@@ -292,9 +284,7 @@ export class SocketIoAdapter extends Adapter {
                             this.log.error(`Cannot start server on ${this.config.bind || '0.0.0.0'}:${port}: ${e}`);
                         }
                         if (!serverListening) {
-                            this.terminate
-                                ? this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                                : process.exit(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                            this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                         }
                     });
 
@@ -345,9 +335,7 @@ export class SocketIoAdapter extends Adapter {
             );
         } else {
             this.log.error('port missing');
-            this.terminate
-                ? this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                : process.exit(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+            this.terminate(EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
         }
     }
 

@@ -19,5 +19,8 @@
   "Force Web-Sockets": "Использовать только веб-сокеты",
   "Compatibility mode with socket.io@2.x": "Режим совместимости с socket.io@2.x",
   "e.g. for Jarvis": "например для Jarvis",
-  "Language for only this instance": "Язык только для этого экземпляра"
+  "Language for only this instance": "Язык только для этого экземпляра",
+  "Main settings": "Основные настройки",
+  "Login timeout": "Тайм-аут входа",
+  "sec": "сек"
 }

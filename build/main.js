@@ -221,9 +221,7 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
         if (this.config.port) {
             if (this.config.secure && !this.certificates) {
                 this.log.error('SSL is enabled but no certificates found');
-                this.terminate
-                    ? this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                    : process.exit(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                 return;
             }
             this.config.ttl = parseInt(this.config.ttl, 10) || 3600;
@@ -236,9 +234,7 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
             this.getPort(this.config.port, !this.config.bind || this.config.bind === '0.0.0.0' ? undefined : this.config.bind || undefined, async (port) => {
                 if (parseInt(port, 10) !== this.config.port) {
                     this.log.error(`port ${this.config.port} already in use`);
-                    return this.terminate
-                        ? this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                        : process.exit(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                    return this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                 }
                 this.config.port = port;
                 this.server.app = (0, express_1.default)();
@@ -272,16 +268,12 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                 }
                 catch (err) {
                     this.log.error(`Cannot create webserver: ${err}`);
-                    this.terminate
-                        ? this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                        : process.exit(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                    this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                     return;
                 }
                 if (!this.server.server) {
                     this.log.error(`Cannot create webserver`);
-                    this.terminate
-                        ? this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                        : process.exit(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                    this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                     return;
                 }
                 this.server.app.use((_req, res) => {
@@ -299,9 +291,7 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
                         this.log.error(`Cannot start server on ${this.config.bind || '0.0.0.0'}:${port}: ${e}`);
                     }
                     if (!serverListening) {
-                        this.terminate
-                            ? this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                            : process.exit(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+                        this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                     }
                 });
                 // Start the web server
@@ -339,9 +329,7 @@ class SocketIoAdapter extends adapter_core_1.Adapter {
         }
         else {
             this.log.error('port missing');
-            this.terminate
-                ? this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION)
-                : process.exit(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
+            this.terminate(adapter_core_1.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
         }
     }
     async main() {

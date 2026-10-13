@@ -2,9 +2,18 @@
   "common": {
     "name": "socketio",
     "version": "9.0.0",
-    "title": "socket.io",
     "titleLang": {
-      "en": "socket.io"
+      "en": "socket.io",
+      "de": "socket.io",
+      "ru": "socket.io",
+      "pt": "socket.io",
+      "nl": "socket.io",
+      "fr": "socket.io",
+      "it": "socket.io",
+      "es": "socket.io",
+      "pl": "socket.io",
+      "uk": "socket.io",
+      "zh-cn": "socket.io"
     },
     "desc": {
       "en": "This adapter allows to communicate different web applications with ioBroker",
@@ -32,19 +41,6 @@
         "pl": "Adapter wymaga teraz node.js >= 22.\nZaktualizowane pakiety",
         "uk": "Тепер адаптер вимагає node.js >= 22.\nОновлені пакети",
         "zh-cn": "适配器现在需要 node.js >= 22。\n更新的软件包"
-      },
-      "8.0.2": {
-        "en": "Updated packages",
-        "de": "Aktualisierte Pakete",
-        "ru": "Обновлены пакеты",
-        "pt": "Pacotes atualizados",
-        "nl": "Bijgewerkte pakketten",
-        "fr": "Paquets mis à jour",
-        "it": "Pacchetti aggiornati",
-        "es": "Paquetes actualizados",
-        "pl": "Zaktualizowane pakiety",
-        "uk": "Оновлені пакети",
-        "zh-cn": "更新包"
       },
       "8.0.1": {
         "en": "Updated packages\nMoved socketio server classes to a separate package\nA minimal node.js version is 20",
@@ -144,7 +140,7 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=5.0.0"
+        "admin": ">=7.6.20"
       }
     ],
     "restartAdapters": [

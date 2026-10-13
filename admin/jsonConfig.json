@@ -10,26 +10,32 @@
                     "type": "ip",
                     "listenOnAllPorts": true,
                     "label": "IP",
+                    "xs": 12,
                     "sm": 12,
                     "md": 8,
-                    "lg": 5
+                    "lg": 5,
+                    "xl": 5
                 },
                 "port": {
                     "type": "number",
                     "min": 1,
                     "max": 65565,
                     "label": "Port",
+                    "xs": 12,
                     "sm": 12,
                     "md": 4,
-                    "lg": 3
+                    "lg": 3,
+                    "xl": 3
                 },
                 "secure": {
                     "newLine": true,
                     "type": "checkbox",
                     "label": "Secure(HTTPS)",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "certPublic": {
                     "type": "certificate",
@@ -37,9 +43,11 @@
                     "certType": "public",
                     "validator": "!data.secure || data.certPublic",
                     "label": "Public certificate",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "certPrivate": {
                     "hidden": "!data.secure",
@@ -47,18 +55,22 @@
                     "certType": "private",
                     "validator": "!data.secure || data.certPrivate",
                     "label": "Private certificate",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "certChained": {
                     "hidden": "!data.secure",
                     "type": "certificate",
                     "certType": "chained",
                     "label": "Chained certificate",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "auth": {
                     "newLine": true,
@@ -70,55 +82,69 @@
                         "ok": "Ignore warning",
                         "cancel": "Disable authentication",
                         "type": "warning",
-                        "alsoDependsOn": ["secure"]
+                        "alsoDependsOn": [
+                            "secure"
+                        ]
                     },
                     "label": "Authentication",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "defaultUser": {
                     "hidden": "!!data.auth",
                     "type": "user",
                     "label": "Run as",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "ttl": {
                     "hidden": "!data.auth",
                     "type": "number",
                     "label": "Login timeout",
                     "help": "sec",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "forceWebSockets": {
                     "newLine": true,
                     "type": "checkbox",
                     "label": "Force Web-Sockets",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "compatibilityV2": {
                     "hidden": "true",
                     "type": "checkbox",
                     "label": "Compatibility mode with socket.io@2.x",
                     "help": "e.g. for Jarvis",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "language": {
                     "newLine": true,
                     "label": "Language for only this instance",
                     "system": true,
                     "type": "language",
+                    "xs": 12,
                     "sm": 12,
                     "md": 4,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 }
             }
         },
@@ -160,8 +186,11 @@
                 },
                 "lePort": {
                     "newLine": true,
+                    "xs": 12,
                     "sm": 11,
+                    "md": 11,
                     "lg": 4,
+                    "xl": 4,
                     "type": "number",
                     "hidden": "!data.leEnabled || !data.leUpdate",
                     "label": "Port to check the domain",

@@ -19,5 +19,8 @@
   "Force Web-Sockets": "Forceer web-sockets",
   "Compatibility mode with socket.io@2.x": "Compatibiliteitsmodus met socket.io@2.x",
   "e.g. for Jarvis": "bijv. voor Jarvis",
-  "Language for only this instance": "Taal voor alleen deze instantie"
+  "Language for only this instance": "Taal voor alleen deze instantie",
+  "Main settings": "Hoofdinstellingen",
+  "Login timeout": "Time-out van de aanmelding",
+  "sec": "sec"
 }

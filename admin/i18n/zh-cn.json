@@ -19,5 +19,8 @@
   "Force Web-Sockets": "强制 Web 套接字",
   "Compatibility mode with socket.io@2.x": "与 socket.io@2.x 的兼容模式",
   "e.g. for Jarvis": "例如贾维斯",
-  "Language for only this instance": "仅此实例的语言"
+  "Language for only this instance": "仅此实例的语言",
+  "Main settings": "主要设置",
+  "Login timeout": "登录超时",
+  "sec": "秒"
 }

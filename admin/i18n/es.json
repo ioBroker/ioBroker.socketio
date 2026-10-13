@@ -19,5 +19,8 @@
   "Force Web-Sockets": "Forzar Web-Sockets",
   "Compatibility mode with socket.io@2.x": "Modo de compatibilidad con socket.io@2.x",
   "e.g. for Jarvis": "p.ej. para Jarvis",
-  "Language for only this instance": "Idioma solo para esta instancia"
+  "Language for only this instance": "Idioma solo para esta instancia",
+  "Main settings": "Configuración principal",
+  "Login timeout": "Tiempo de espera de inicio de sesión",
+  "sec": "seg"
 }
