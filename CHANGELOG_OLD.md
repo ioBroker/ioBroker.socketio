@@ -1,4 +1,7 @@
 # Older changes
+## 7.0.8 (2025-03-04)
+* (@GermanBluefox) Removed the frequent debug output
+
 ## 7.0.7 (2025-03-03)
 * (@GermanBluefox) Corrected the problem with the user rights
 

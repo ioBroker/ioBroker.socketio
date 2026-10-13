@@ -76,7 +76,7 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 9.0.1 (2026-10-13)
 * (@GermanBluefox) Admin 7.6.20+ is required. Added Ukrainian and missing translations. Compact mode no longer can exit the whole host process
 * (@GermanBluefox) Added `socket.io` as a direct dependency to fix the crash "socketClass is not a constructor" (#302)
 
@@ -95,9 +95,6 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 ### 7.1.3 (2026-04-13)
 * (@GermanBluefox) Fixed possible problems
 * (@GermanBluefox) Updated packages
-
-### 7.0.8 (2025-03-04)
-* (@GermanBluefox) Removed the frequent debug output
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
