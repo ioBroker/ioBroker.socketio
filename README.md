@@ -76,7 +76,8 @@ You can set the option *Force Web-Sockets* to force using only web-sockets trans
 -->
 
 ## Changelog
-### 9.0.1 (2026-10-13)
+### **WORK IN PROGRESS**
+* (@GermanBluefox) The listening port is reported to the registry of used resources of js-controller 8. Added `@iobroker/webserver` as a direct dependency
 * (@GermanBluefox) Admin 7.6.20+ is required. Added Ukrainian and missing translations. Compact mode no longer can exit the whole host process
 * (@GermanBluefox) Added `socket.io` as a direct dependency to fix the crash "socketClass is not a constructor" (#302)
 
