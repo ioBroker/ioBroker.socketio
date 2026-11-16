@@ -33,7 +33,7 @@
     "@iobroker/legacy-testing": "^4.0.0",
     "@iobroker/testing": "^6.3.1",
     "@iobroker/types": "^7.2.5",
-    "@iobroker/ws-server": "^4.5.1",
+    "@iobroker/ws-server": "^4.5.2",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
     "@types/express-session": "^1.19.0",
